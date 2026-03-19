@@ -1,4 +1,4 @@
-package com.example;
+package com.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

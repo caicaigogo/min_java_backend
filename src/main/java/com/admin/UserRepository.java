@@ -1,4 +1,4 @@
-package com.example;
+package com.admin;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

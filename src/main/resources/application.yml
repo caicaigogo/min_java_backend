@@ -1,0 +1,27 @@
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 8080
+  servlet:
+    # 应用的访问路径
+    context-path: /
+
+spring:
+  application:
+    name: SOFABoot Demo
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo_database
+    username: root
+    password: mysql-password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # JPA/Hibernate 配置
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+# 日志配置
+logging:
+  file:
+    path: ./logs
