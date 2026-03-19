@@ -1,4 +1,4 @@
-package com.admin;
+package com.admin.framework.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

@@ -25,3 +25,9 @@ spring:
 logging:
   file:
     path: ./logs
+
+# Shiro
+shiro:
+  user:
+    # 首页地址
+    indexUrl: /index
