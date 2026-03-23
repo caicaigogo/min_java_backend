@@ -43,6 +43,18 @@ public class ShiroConfig {
 
         // ⭐ 使用 setFilterChainDefinitionMap 配置拦截规则
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
+        // 对静态资源设置匿名访问
+        filterChainDefinitionMap.put("/favicon.ico**", "anon");
+        filterChainDefinitionMap.put("/ruoyi.png**", "anon");
+        filterChainDefinitionMap.put("/html/**", "anon");
+        filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/docs/**", "anon");
+        filterChainDefinitionMap.put("/fonts/**", "anon");
+        filterChainDefinitionMap.put("/img/**", "anon");
+        filterChainDefinitionMap.put("/ajax/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/ruoyi/**", "anon");
+        filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
         filterChainDefinitionMap.put("/api/users", "anon");           // 接口匿名
         filterChainDefinitionMap.put("/**", "authc");             // 其他路径需认证
 
