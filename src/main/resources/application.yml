@@ -33,3 +33,7 @@ shiro:
     indexUrl: /api/users
     # 登录地址
     loginUrl: /login
+
+  rememberMe:
+    # 是否开启记住我
+    enabled: true
