@@ -30,6 +30,7 @@ public class UserRealm extends AuthorizingRealm {
             throws AuthenticationException {
         log.error("对用户进行登录验证");
         String username = (String) token.getPrincipal();
+
         // 示例密码，实际应从数据库加载并加密
         String password = "123456";
         return new SimpleAuthenticationInfo(username, password, getName());

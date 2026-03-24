@@ -1,29 +1,29 @@
 
 $(function() {
-    validateKickout();
+    // validateKickout();
     validateRule();
-    $('.imgcode').click(function() {
-        var url = ctx + "captcha/captchaImage?type=" + captchaType + "&s=" + Math.random();
-        $(".imgcode").attr("src", url);
-    });
+    // $('.imgcode').click(function() {
+    //     var url = ctx + "captcha/captchaImage?type=" + captchaType + "&s=" + Math.random();
+    //     $(".imgcode").attr("src", url);
+    // });
 });
 
 function login() {
     var username = $.common.trim($("input[name='username']").val());
     var password = $.common.trim($("input[name='password']").val());
-    var validateCode = $("input[name='validateCode']").val();
+    // var validateCode = $("input[name='validateCode']").val();
     var rememberMe = $("input[name='rememberme']").is(':checked');
-    if($.common.isEmpty(validateCode) && captchaEnabled) {
-        $.modal.msg("请输入验证码");
-        return false;
-    }
+    // if($.common.isEmpty(validateCode) && captchaEnabled) {
+    //     $.modal.msg("请输入验证码");
+    //     return false;
+    // }
     $.ajax({
         type: "post",
         url: ctx + "login",
         data: {
             "username": username,
             "password": password,
-            "validateCode": validateCode,
+            // "validateCode": validateCode,
             "rememberMe": rememberMe
         },
         beforeSend: function () {
@@ -33,8 +33,8 @@ function login() {
             if (r.code == web_status.SUCCESS) {
                 location.href = ctx + 'index';
             } else {
-                $('.imgcode').click();
-                $(".code").val("");
+                // $('.imgcode').click();
+                // $(".code").val("");
                 $.modal.msg(r.msg);
             }
             $.modal.closeLoading();

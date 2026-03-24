@@ -30,7 +30,7 @@ logging:
 shiro:
   user:
     # 首页地址
-    indexUrl: /api/users
+    indexUrl: /index
     # 登录地址
     loginUrl: /login
 

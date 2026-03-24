@@ -55,8 +55,11 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/ruoyi/**", "anon");
         filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
-        filterChainDefinitionMap.put("/api/users", "anon");           // 接口匿名
-        filterChainDefinitionMap.put("/**", "authc");             // 其他路径需认证
+
+        // 不需要拦截的访问
+        filterChainDefinitionMap.put("/index", "anon");
+        filterChainDefinitionMap.put("/login", "anon");
+//        filterChainDefinitionMap.put("/**", "authc");             // 其他路径需认证
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
