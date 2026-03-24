@@ -11,15 +11,10 @@ spring:
     name: SOFABoot Demo
   # 数据库配置
   datasource:
-    url: jdbc:mysql://localhost:3306/demo_database
+    url: jdbc:mysql://localhost:3306/ry
     username: root
     password: mysql-password
     driver-class-name: com.mysql.cj.jdbc.Driver
-  # JPA/Hibernate 配置
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
 
 # 日志配置
 logging:
@@ -37,3 +32,12 @@ shiro:
   rememberMe:
     # 是否开启记住我
     enabled: true
+
+# MyBatis
+mybatis:
+  # 搜索指定包别名
+  typeAliasesPackage: com.admin.project.**.domain
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath:mybatis/**/*Mapper.xml
+  # 加载全局的配置文件
+  configLocation: classpath:mybatis/mybatis-config.xml

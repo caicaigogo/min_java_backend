@@ -61,7 +61,6 @@ public class LoginController extends BaseController
         try
         {
             subject.login(token);
-            System.out.println("finish");
             return success();
         }
         catch (AuthenticationException e)
