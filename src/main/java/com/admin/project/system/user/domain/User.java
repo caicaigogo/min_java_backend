@@ -40,9 +40,9 @@ public class User extends BaseEntity
 //    /** 角色ID */
 //    private Long roleId;
 //
-//    /** 登录名称 */
+    /** 登录名称 */
 //    @Excel(name = "登录名称")
-//    private String loginName;
+    private String loginName;
 //
 //    /** 用户名称 */
 //    @Excel(name = "用户名称")
@@ -163,16 +163,16 @@ public class User extends BaseEntity
 //    @Xss(message = "登录账号不能包含脚本字符")
 //    @NotBlank(message = "登录账号不能为空")
 //    @Size(min = 0, max = 30, message = "登录账号长度不能超过30个字符")
-//    public String getLoginName()
-//    {
-//        return loginName;
-//    }
-//
-//    public void setLoginName(String loginName)
-//    {
-//        this.loginName = loginName;
-//    }
-//
+    public String getLoginName()
+    {
+        return loginName;
+    }
+
+    public void setLoginName(String loginName)
+    {
+        this.loginName = loginName;
+    }
+
 //    @Xss(message = "用户昵称不能包含脚本字符")
 //    @Size(min = 0, max = 30, message = "用户昵称长度不能超过30个字符")
 //    public String getUserName()
