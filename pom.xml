@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.admin</groupId>
-    <artifactId>admin_single</artifactId>
+    <groupId>com.ruoyi</groupId>
+    <artifactId>ruoyi</artifactId>
     <version>4.8.2</version>
     <packaging>jar</packaging>
 
-    <name>admin</name>
+    <name>ruoyi</name>
     <url>http://www.ruoyi.vip</url>
     <description>若依管理系统</description>
 
@@ -213,7 +213,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
+        
         <!-- 防止进入swagger页面报类型转换错误，排除3.0.0中的引用，手动增加1.6.2版本 -->
         <dependency>
             <groupId>io.swagger</groupId>
@@ -247,7 +247,7 @@
                     <fork>true</fork> <!-- 如果没有该配置，devtools不会生效 -->
                 </configuration>
             </plugin>
-            <!-- YUI Compressor (CSS/JS压缩)
+            <!-- YUI Compressor (CSS/JS压缩) 
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>yuicompressor-maven-plugin</artifactId>
