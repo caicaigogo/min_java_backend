@@ -1,17 +1,17 @@
-//package com.ruoyi.project.system.user.controller;
-//
-//import java.util.Date;
-//import java.util.List;
-//import javax.servlet.http.Cookie;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.ModelMap;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.PathVariable;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.ResponseBody;
+package com.ruoyi.project.system.user.controller;
+
+import java.util.Date;
+import java.util.List;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 //import com.ruoyi.common.constant.ShiroConstants;
 //import com.ruoyi.common.utils.CookieUtils;
 //import com.ruoyi.common.utils.DateUtils;
@@ -20,21 +20,21 @@
 //import com.ruoyi.common.utils.text.Convert;
 //import com.ruoyi.framework.config.RuoYiConfig;
 //import com.ruoyi.framework.shiro.service.PasswordService;
-//import com.ruoyi.framework.web.controller.BaseController;
+import com.ruoyi.framework.web.controller.BaseController;
 //import com.ruoyi.framework.web.domain.AjaxResult;
 //import com.ruoyi.project.system.config.service.IConfigService;
 //import com.ruoyi.project.system.menu.domain.Menu;
 //import com.ruoyi.project.system.menu.service.IMenuService;
 //import com.ruoyi.project.system.user.domain.User;
-//
-///**
-// * 首页 业务处理
-// *
-// * @author ruoyi
-// */
-//@Controller
-//public class IndexController extends BaseController
-//{
+
+/**
+ * 首页 业务处理
+ *
+ * @author ruoyi
+ */
+@Controller
+public class IndexController extends BaseController
+{
 //    @Autowired
 //    private IMenuService menuService;
 //
@@ -181,4 +181,4 @@
 //        }
 //        return false;
 //    }
-//}
+}

@@ -1,7 +1,7 @@
-<!--<?xml version="1.0" encoding="UTF-8"?>-->
-<!--<configuration>-->
-<!--    &lt;!&ndash; 日志存放路径 &ndash;&gt;-->
-<!--	<property name="log.path" value="/Users/cgl/ruoyi/logs" />-->
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 日志存放路径 -->
+	<property name="log.path" value="/Users/cgl/ruoyi/logs" />
 <!--    &lt;!&ndash; 日志输出格式 &ndash;&gt;-->
 <!--	<property name="log.pattern" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{20} - [%method,%line] - %msg%n" />-->
 
@@ -11,7 +11,7 @@
 <!--			<pattern>${log.pattern}</pattern>-->
 <!--		</encoder>-->
 <!--	</appender>-->
-<!--	-->
+
 <!--	&lt;!&ndash; 系统日志输出 &ndash;&gt;-->
 <!--	<appender name="file_info" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
 <!--	    <file>${log.path}/sys-info.log</file>-->
@@ -34,7 +34,7 @@
 <!--            <onMismatch>DENY</onMismatch>-->
 <!--        </filter>-->
 <!--	</appender>-->
-<!--	-->
+
 <!--	<appender name="file_error" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
 <!--	    <file>${log.path}/sys-error.log</file>-->
 <!--        &lt;!&ndash; 循环政策：基于时间创建日志文件 &ndash;&gt;-->
@@ -56,7 +56,7 @@
 <!--            <onMismatch>DENY</onMismatch>-->
 <!--        </filter>-->
 <!--    </appender>-->
-<!--	-->
+
 <!--	&lt;!&ndash; 用户访问日志输出  &ndash;&gt;-->
 <!--    <appender name="sys-user" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
 <!--		<file>${log.path}/sys-user.log</file>-->
@@ -70,7 +70,7 @@
 <!--            <pattern>${log.pattern}</pattern>-->
 <!--        </encoder>-->
 <!--    </appender>-->
-<!--	-->
+
 <!--	&lt;!&ndash; 系统模块日志级别控制  &ndash;&gt;-->
 <!--	<logger name="com.ruoyi" level="info" />-->
 <!--	&lt;!&ndash; Spring日志级别控制  &ndash;&gt;-->
@@ -79,15 +79,15 @@
 <!--	<root level="info">-->
 <!--		<appender-ref ref="console" />-->
 <!--	</root>-->
-<!--	-->
+
 <!--	&lt;!&ndash;系统操作日志&ndash;&gt;-->
 <!--    <root level="info">-->
 <!--        <appender-ref ref="file_info" />-->
 <!--        <appender-ref ref="file_error" />-->
 <!--    </root>-->
-<!--	-->
+
 <!--	&lt;!&ndash;系统用户操作日志&ndash;&gt;-->
 <!--    <logger name="sys-user" level="info">-->
 <!--        <appender-ref ref="sys-user"/>-->
 <!--    </logger>-->
-<!--</configuration>-->
+</configuration>

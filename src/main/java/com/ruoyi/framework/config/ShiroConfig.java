@@ -1,36 +1,36 @@
-//package com.ruoyi.framework.config;
-//
-//import java.io.ByteArrayInputStream;
-//import java.io.IOException;
-//import java.io.InputStream;
-//import java.util.LinkedHashMap;
-//import java.util.List;
-//import java.util.Map;
-//import javax.servlet.Filter;
-//import org.apache.commons.io.IOUtils;
-//import org.apache.shiro.cache.ehcache.EhCacheManager;
-//import org.apache.shiro.codec.Base64;
-//import org.apache.shiro.config.ConfigurationException;
-//import org.apache.shiro.io.ResourceUtils;
-//import org.apache.shiro.mgt.SecurityManager;
-//import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
-//import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
-//import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-//import org.apache.shiro.web.servlet.SimpleCookie;
-//import org.springframework.beans.factory.annotation.Qualifier;
-//import org.springframework.beans.factory.annotation.Value;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
+package com.ruoyi.framework.config;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import javax.servlet.Filter;
+import org.apache.commons.io.IOUtils;
+import org.apache.shiro.cache.ehcache.EhCacheManager;
+import org.apache.shiro.codec.Base64;
+import org.apache.shiro.config.ConfigurationException;
+import org.apache.shiro.io.ResourceUtils;
+import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
+import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.servlet.SimpleCookie;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 //import com.ruoyi.common.constant.Constants;
 //import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.common.utils.security.CipherUtils;
 //import com.ruoyi.common.utils.spring.SpringUtils;
 //import com.ruoyi.framework.config.properties.PermitAllUrlProperties;
-//import com.ruoyi.framework.shiro.realm.UserRealm;
+import com.ruoyi.framework.shiro.realm.UserRealm;
 //import com.ruoyi.framework.shiro.rememberMe.CustomCookieRememberMeManager;
 //import com.ruoyi.framework.shiro.session.OnlineSessionDAO;
 //import com.ruoyi.framework.shiro.session.OnlineSessionFactory;
-//import com.ruoyi.framework.shiro.web.CustomShiroFilterFactoryBean;
+import com.ruoyi.framework.shiro.web.CustomShiroFilterFactoryBean;
 //import com.ruoyi.framework.shiro.web.filter.LogoutFilter;
 //import com.ruoyi.framework.shiro.web.filter.captcha.CaptchaValidateFilter;
 //import com.ruoyi.framework.shiro.web.filter.csrf.CsrfValidateFilter;
@@ -40,15 +40,15 @@
 //import com.ruoyi.framework.shiro.web.session.OnlineWebSessionManager;
 //import com.ruoyi.framework.shiro.web.session.SpringSessionValidationScheduler;
 //import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
-//
-///**
-// * 权限配置加载
-// *
-// * @author ruoyi
-// */
-//@Configuration
-//public class ShiroConfig
-//{
+
+/**
+ * 权限配置加载
+ *
+ * @author ruoyi
+ */
+@Configuration
+public class ShiroConfig
+{
 //    /**
 //     * Session超时时间，单位为毫秒（默认30分钟）
 //     */
@@ -115,12 +115,12 @@
 //    @Value("${shiro.cookie.cipherKey}")
 //    private String cipherKey;
 //
-//    /**
-//     * 登录地址
-//     */
-//    @Value("${shiro.user.loginUrl}")
-//    private String loginUrl;
-//
+    /**
+     * 登录地址
+     */
+    @Value("${shiro.user.loginUrl}")
+    private String loginUrl;
+
 //    /**
 //     * 权限认证失败地址
 //     */
@@ -190,18 +190,19 @@
 //        }
 //    }
 //
-//    /**
-//     * 自定义Realm
-//     */
-//    @Bean
+    /**
+     * 自定义Realm
+     */
+    @Bean
+    public UserRealm userRealm()
 //    public UserRealm userRealm(EhCacheManager cacheManager)
-//    {
-//        UserRealm userRealm = new UserRealm();
+    {
+        UserRealm userRealm = new UserRealm();
 //        userRealm.setAuthorizationCacheName(Constants.SYS_AUTH_CACHE);
 //        userRealm.setCacheManager(cacheManager);
-//        return userRealm;
-//    }
-//
+        return userRealm;
+    }
+
 //    /**
 //     * 自定义sessionDAO会话
 //     */
@@ -248,24 +249,24 @@
 //        return manager;
 //    }
 //
-//    /**
-//     * 安全管理器
-//     */
-//    @Bean
-//    public SecurityManager securityManager(UserRealm userRealm)
-//    {
-//        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-//        // 设置realm.
-//        securityManager.setRealm(userRealm);
+    /**
+     * 安全管理器
+     */
+    @Bean
+    public SecurityManager securityManager(UserRealm userRealm)
+    {
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        // 设置realm.
+        securityManager.setRealm(userRealm);
 //        // 记住我
 //        securityManager.setRememberMeManager(rememberMe ? rememberMeManager() : null);
 //        // 注入缓存管理器;
 //        securityManager.setCacheManager(getEhCacheManager());
 //        // session管理器
 //        securityManager.setSessionManager(sessionManager());
-//        return securityManager;
-//    }
-//
+        return securityManager;
+    }
+
 //    /**
 //     * 退出过滤器
 //     */
@@ -286,34 +287,34 @@
 //        csrfValidateFilter.setCsrfWhites(StringUtils.str2List(csrfWhites, ","));
 //        return csrfValidateFilter;
 //    }
-//
-//    /**
-//     * Shiro过滤器配置
-//     */
-//    @Bean
-//    public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager)
-//    {
-//        CustomShiroFilterFactoryBean shiroFilterFactoryBean = new CustomShiroFilterFactoryBean();
-//        // Shiro的核心安全接口,这个属性是必须的
-//        shiroFilterFactoryBean.setSecurityManager(securityManager);
-//        // 身份认证失败，则跳转到登录页面的配置
-//        shiroFilterFactoryBean.setLoginUrl(loginUrl);
+
+    /**
+     * Shiro过滤器配置
+     */
+    @Bean
+    public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager)
+    {
+        CustomShiroFilterFactoryBean shiroFilterFactoryBean = new CustomShiroFilterFactoryBean();
+        // Shiro的核心安全接口,这个属性是必须的
+        shiroFilterFactoryBean.setSecurityManager(securityManager);
+        // 身份认证失败，则跳转到登录页面的配置
+        shiroFilterFactoryBean.setLoginUrl(loginUrl);
 //        // 权限认证失败，则跳转到指定页面
 //        shiroFilterFactoryBean.setUnauthorizedUrl(unauthorizedUrl);
 //        // Shiro连接约束配置，即过滤链的定义
-//        LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-//        // 对静态资源设置匿名访问
-//        filterChainDefinitionMap.put("/favicon.ico**", "anon");
-//        filterChainDefinitionMap.put("/ruoyi.png**", "anon");
-//        filterChainDefinitionMap.put("/html/**", "anon");
-//        filterChainDefinitionMap.put("/css/**", "anon");
-//        filterChainDefinitionMap.put("/docs/**", "anon");
-//        filterChainDefinitionMap.put("/fonts/**", "anon");
-//        filterChainDefinitionMap.put("/img/**", "anon");
-//        filterChainDefinitionMap.put("/ajax/**", "anon");
-//        filterChainDefinitionMap.put("/js/**", "anon");
-//        filterChainDefinitionMap.put("/ruoyi/**", "anon");
-//        filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
+        LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
+        // 对静态资源设置匿名访问
+        filterChainDefinitionMap.put("/favicon.ico**", "anon");
+        filterChainDefinitionMap.put("/ruoyi.png**", "anon");
+        filterChainDefinitionMap.put("/html/**", "anon");
+        filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/docs/**", "anon");
+        filterChainDefinitionMap.put("/fonts/**", "anon");
+        filterChainDefinitionMap.put("/img/**", "anon");
+        filterChainDefinitionMap.put("/ajax/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/ruoyi/**", "anon");
+        filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
 //        // 匿名访问不鉴权注解列表
 //        List<String> permitAllUrl = SpringUtils.getBean(PermitAllUrlProperties.class).getUrls();
 //        if (StringUtils.isNotEmpty(permitAllUrl))
@@ -322,8 +323,8 @@
 //        }
 //        // 退出 logout地址，shiro去清除session
 //        filterChainDefinitionMap.put("/logout", "logout");
-//        // 不需要拦截的访问
-//        filterChainDefinitionMap.put("/login", "anon,captchaValidate");
+        // 不需要拦截的访问
+        filterChainDefinitionMap.put("/login", "anon,captchaValidate");
 //        // 注册相关
 //        filterChainDefinitionMap.put("/register", "anon,captchaValidate");
 //        // 系统权限列表
@@ -338,13 +339,13 @@
 //        // 注销成功，则跳转到指定页面
 //        filters.put("logout", logoutFilter());
 //        shiroFilterFactoryBean.setFilters(filters);
-//
-//        // 所有请求需要认证
-//        filterChainDefinitionMap.put("/**", "user,kickout,onlineSession,syncOnlineSession,csrfValidateFilter");
-//        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
-//
-//        return shiroFilterFactoryBean;
-//    }
+
+        // 所有请求需要认证
+        filterChainDefinitionMap.put("/**", "user,kickout,onlineSession,syncOnlineSession,csrfValidateFilter");
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
+
+        return shiroFilterFactoryBean;
+    }
 //
 //    /**
 //     * 自定义在线用户处理过滤器
@@ -446,4 +447,4 @@
 //        authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
 //        return authorizationAttributeSourceAdvisor;
 //    }
-//}
+}
