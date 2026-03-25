@@ -158,13 +158,13 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
 //        return isNotNull(object) && object.getClass().isArray();
 //    }
 //
-//    /**
-//     * 去空格
-//     */
-//    public static String trim(String str)
-//    {
-//        return (str == null ? "" : str.trim());
-//    }
+    /**
+     * 去空格
+     */
+    public static String trim(String str)
+    {
+        return (str == null ? "" : str.trim());
+    }
 //
 //    /**
 //     * 替换指定字符串的指定区间内字符为"*"
@@ -505,29 +505,29 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
 //
 //        return sb.toString();
 //    }
-//
-//    /**
-//     * 是否包含字符串
-//     *
-//     * @param str 验证字符串
-//     * @param strs 字符串组
-//     * @return 包含返回true
-//     */
-//    public static boolean inStringIgnoreCase(String str, String... strs)
-//    {
-//        if (str != null && strs != null)
-//        {
-//            for (String s : strs)
-//            {
-//                if (str.equalsIgnoreCase(trim(s)))
-//                {
-//                    return true;
-//                }
-//            }
-//        }
-//        return false;
-//    }
-//
+
+    /**
+     * 是否包含字符串
+     *
+     * @param str 验证字符串
+     * @param strs 字符串组
+     * @return 包含返回true
+     */
+    public static boolean inStringIgnoreCase(String str, String... strs)
+    {
+        if (str != null && strs != null)
+        {
+            for (String s : strs)
+            {
+                if (str.equalsIgnoreCase(trim(s)))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 //    /**
 //     * 删除最后一个字符串
 //     *

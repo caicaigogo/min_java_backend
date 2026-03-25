@@ -56,7 +56,7 @@ public class IndexController extends BaseController
 //        // 根据用户id取出菜单
 //        List<Menu> menus = menuService.selectMenusByUser(user);
 //        mmap.put("menus", menus);
-//        mmap.put("user", user);
+        mmap.put("user", user);
 //        mmap.put("sideTheme", configService.selectConfigByKey("sys.index.sideTheme"));
 //        mmap.put("skinName", configService.selectConfigByKey("sys.index.skinName"));
 //        Boolean footer = Convert.toBool(configService.selectConfigByKey("sys.index.footer"), true);
