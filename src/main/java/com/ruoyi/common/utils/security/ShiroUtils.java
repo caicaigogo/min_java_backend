@@ -21,11 +21,11 @@ public class ShiroUtils
         return SecurityUtils.getSubject();
     }
 
-//    public static Session getSession()
-//    {
-//        return SecurityUtils.getSubject().getSession();
-//    }
-//
+    public static Session getSession()
+    {
+        return SecurityUtils.getSubject().getSession();
+    }
+
 //    public static void logout()
 //    {
 //        getSubject().logout();

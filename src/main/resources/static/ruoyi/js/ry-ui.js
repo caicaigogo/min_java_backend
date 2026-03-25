@@ -1584,13 +1584,13 @@
         // },
         // 通用方法封装处理
         common: {
-            // // 判断字符串是否为空
-            // isEmpty: function (value) {
-            //     if (value == null || this.trim(value) == "" || value == undefined || value == "undefined") {
-            //         return true;
-            //     }
-            //     return false;
-            // },
+            // 判断字符串是否为空
+            isEmpty: function (value) {
+                if (value == null || this.trim(value) == "" || value == undefined || value == "undefined") {
+                    return true;
+                }
+                return false;
+            },
             // // 判断一个字符串是否为非空串
             // isNotEmpty: function (value) {
             //     return !$.common.isEmpty(value);

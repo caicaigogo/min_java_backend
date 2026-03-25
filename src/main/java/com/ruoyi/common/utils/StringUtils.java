@@ -17,9 +17,9 @@ import java.util.Set;
  */
 public class StringUtils extends org.apache.commons.lang3.StringUtils
 {
-//    /** 空字符串 */
-//    private static final String NULLSTR = "";
-//
+    /** 空字符串 */
+    private static final String NULLSTR = "";
+
 //    /** 下划线 */
 //    private static final char SEPARATOR = '_';
 //
@@ -58,73 +58,73 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
     {
         return !isEmpty(coll);
     }
-//
-//    /**
-//     * * 判断一个对象数组是否为空
-//     *
-//     * @param objects 要判断的对象数组
-//     ** @return true：为空 false：非空
-//     */
-//    public static boolean isEmpty(Object[] objects)
-//    {
-//        return isNull(objects) || (objects.length == 0);
-//    }
-//
-//    /**
-//     * * 判断一个对象数组是否非空
-//     *
-//     * @param objects 要判断的对象数组
-//     * @return true：非空 false：空
-//     */
-//    public static boolean isNotEmpty(Object[] objects)
-//    {
-//        return !isEmpty(objects);
-//    }
-//
-//    /**
-//     * * 判断一个Map是否为空
-//     *
-//     * @param map 要判断的Map
-//     * @return true：为空 false：非空
-//     */
-//    public static boolean isEmpty(Map<?, ?> map)
-//    {
-//        return isNull(map) || map.isEmpty();
-//    }
-//
-//    /**
-//     * * 判断一个Map是否为空
-//     *
-//     * @param map 要判断的Map
-//     * @return true：非空 false：空
-//     */
-//    public static boolean isNotEmpty(Map<?, ?> map)
-//    {
-//        return !isEmpty(map);
-//    }
-//
-//    /**
-//     * * 判断一个字符串是否为空串
-//     *
-//     * @param str String
-//     * @return true：为空 false：非空
-//     */
-//    public static boolean isEmpty(String str)
-//    {
-//        return isNull(str) || NULLSTR.equals(str.trim());
-//    }
-//
-//    /**
-//     * * 判断一个字符串是否为非空串
-//     *
-//     * @param str String
-//     * @return true：非空串 false：空串
-//     */
-//    public static boolean isNotEmpty(String str)
-//    {
-//        return !isEmpty(str);
-//    }
-//
+
+    /**
+     * * 判断一个对象数组是否为空
+     *
+     * @param objects 要判断的对象数组
+     ** @return true：为空 false：非空
+     */
+    public static boolean isEmpty(Object[] objects)
+    {
+        return isNull(objects) || (objects.length == 0);
+    }
+
+    /**
+     * * 判断一个对象数组是否非空
+     *
+     * @param objects 要判断的对象数组
+     * @return true：非空 false：空
+     */
+    public static boolean isNotEmpty(Object[] objects)
+    {
+        return !isEmpty(objects);
+    }
+
+    /**
+     * * 判断一个Map是否为空
+     *
+     * @param map 要判断的Map
+     * @return true：为空 false：非空
+     */
+    public static boolean isEmpty(Map<?, ?> map)
+    {
+        return isNull(map) || map.isEmpty();
+    }
+
+    /**
+     * * 判断一个Map是否为空
+     *
+     * @param map 要判断的Map
+     * @return true：非空 false：空
+     */
+    public static boolean isNotEmpty(Map<?, ?> map)
+    {
+        return !isEmpty(map);
+    }
+
+    /**
+     * * 判断一个字符串是否为空串
+     *
+     * @param str String
+     * @return true：为空 false：非空
+     */
+    public static boolean isEmpty(String str)
+    {
+        return isNull(str) || NULLSTR.equals(str.trim());
+    }
+
+    /**
+     * * 判断一个字符串是否为非空串
+     *
+     * @param str String
+     * @return true：非空串 false：空串
+     */
+    public static boolean isNotEmpty(String str)
+    {
+        return !isEmpty(str);
+    }
+
     /**
      * * 判断一个对象是否为空
      *

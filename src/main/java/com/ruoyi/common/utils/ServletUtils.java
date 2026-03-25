@@ -76,15 +76,15 @@ public class ServletUtils
 //    {
 //        return Convert.toBool(getRequest().getParameter(name), defaultValue);
 //    }
-//
-//    /**
-//     * 获取request
-//     */
-//    public static HttpServletRequest getRequest()
-//    {
-//        return getRequestAttributes().getRequest();
-//    }
-//
+
+    /**
+     * 获取request
+     */
+    public static HttpServletRequest getRequest()
+    {
+        return getRequestAttributes().getRequest();
+    }
+
 //    /**
 //     * 获取response
 //     */
@@ -100,12 +100,12 @@ public class ServletUtils
 //    {
 //        return getRequest().getSession();
 //    }
-//
-//    public static ServletRequestAttributes getRequestAttributes()
-//    {
-//        RequestAttributes attributes = RequestContextHolder.getRequestAttributes();
-//        return (ServletRequestAttributes) attributes;
-//    }
+
+    public static ServletRequestAttributes getRequestAttributes()
+    {
+        RequestAttributes attributes = RequestContextHolder.getRequestAttributes();
+        return (ServletRequestAttributes) attributes;
+    }
 
     /**
      * 将字符串渲染到客户端
