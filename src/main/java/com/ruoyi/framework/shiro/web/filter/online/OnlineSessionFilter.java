@@ -8,11 +8,11 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.AccessControlFilter;
 import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Value;
-//import com.ruoyi.common.constant.ShiroConstants;
-//import com.ruoyi.common.utils.security.ShiroUtils;
+import com.ruoyi.common.constant.ShiroConstants;
+import com.ruoyi.common.utils.security.ShiroUtils;
 import com.ruoyi.framework.shiro.session.OnlineSessionDAO;
-//import com.ruoyi.project.monitor.online.domain.OnlineSession;
-//import com.ruoyi.project.system.user.domain.User;
+import com.ruoyi.project.monitor.online.domain.OnlineSession;
+import com.ruoyi.project.system.user.domain.User;
 
 /**
  * 自定义访问控制
@@ -42,31 +42,31 @@ public class OnlineSessionFilter extends AccessControlFilter
             return true;
         }
         Session session = onlineSessionDAO.readSession(subject.getSession().getId());
-//        if (session != null && session instanceof OnlineSession)
-//        {
-//            OnlineSession onlineSession = (OnlineSession) session;
-//            request.setAttribute(ShiroConstants.ONLINE_SESSION, onlineSession);
-//            // 把user对象设置进去
-//            boolean isGuest = onlineSession.getUserId() == null || onlineSession.getUserId() == 0L;
-//            if (isGuest == true)
-//            {
-//                User user = ShiroUtils.getSysUser();
-//                if (user != null)
-//                {
-//                    onlineSession.setUserId(user.getUserId());
-//                    onlineSession.setLoginName(user.getLoginName());
-//                    onlineSession.setAvatar(user.getAvatar());
-//                    onlineSession.setDeptName(user.getDept().getDeptName());
-//                    onlineSession.markAttributeChanged();
-//                    onlineSessionDAO.update(onlineSession);
-//                }
-//            }
-//
-//            if (onlineSession.getStatus() == OnlineSession.OnlineStatus.off_line)
-//            {
-//                return false;
-//            }
-//        }
+        if (session != null && session instanceof OnlineSession)
+        {
+            OnlineSession onlineSession = (OnlineSession) session;
+            request.setAttribute(ShiroConstants.ONLINE_SESSION, onlineSession);
+            // 把user对象设置进去
+            boolean isGuest = onlineSession.getUserId() == null || onlineSession.getUserId() == 0L;
+            if (isGuest == true)
+            {
+                User user = ShiroUtils.getSysUser();
+                if (user != null)
+                {
+                    onlineSession.setUserId(user.getUserId());
+                    onlineSession.setLoginName(user.getLoginName());
+                    onlineSession.setAvatar(user.getAvatar());
+                    onlineSession.setDeptName(user.getDept().getDeptName());
+                    onlineSession.markAttributeChanged();
+                    onlineSessionDAO.update(onlineSession);
+                }
+            }
+
+            if (onlineSession.getStatus() == OnlineSession.OnlineStatus.off_line)
+            {
+                return false;
+            }
+        }
         return true;
     }
 

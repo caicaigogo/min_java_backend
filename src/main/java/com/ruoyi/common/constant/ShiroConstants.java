@@ -42,11 +42,11 @@ public class ShiroConstants
 //     */
 //    public static final String X_CSRF_TOKEN = "X-CSRF-Token";
 //
-//    /**
-//     * 当前在线会话
-//     */
-//    public static final String ONLINE_SESSION = "online_session";
-//
+    /**
+     * 当前在线会话
+     */
+    public static final String ONLINE_SESSION = "online_session";
+
     /**
      * 验证码key
      */

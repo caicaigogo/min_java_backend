@@ -63,13 +63,13 @@ public class OnlineSessionDAO extends EnterpriseCacheSessionDAO
         }
         return onlineSessionFactory.createSession(userOnline);
     }
-//
-//    @Override
-//    public void update(Session session) throws UnknownSessionException
-//    {
-//        super.update(session);
-//    }
-//
+
+    @Override
+    public void update(Session session) throws UnknownSessionException
+    {
+        super.update(session);
+    }
+
 //    /**
 //     * 更新会话；如更新会话最后访问时间/停止会话/设置超时时间/设置移除属性等会调用
 //     */
