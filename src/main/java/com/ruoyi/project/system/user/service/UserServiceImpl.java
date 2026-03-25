@@ -1,23 +1,23 @@
-//package com.ruoyi.project.system.user.service;
-//
-//import java.util.ArrayList;
-//import java.util.Date;
-//import java.util.List;
-//import java.util.stream.Collectors;
-//import javax.validation.ConstraintViolationException;
-//import javax.validation.Validator;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
-//import org.springframework.util.CollectionUtils;
+package com.ruoyi.project.system.user.service;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.validation.ConstraintViolationException;
+import javax.validation.Validator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 //import com.ruoyi.common.constant.UserConstants;
 //import com.ruoyi.common.exception.ServiceException;
 //import com.ruoyi.common.utils.DateUtils;
 //import com.ruoyi.common.utils.ExceptionUtil;
 //import com.ruoyi.common.utils.Md5Utils;
-//import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.common.utils.bean.BeanValidators;
 //import com.ruoyi.common.utils.html.EscapeUtil;
 //import com.ruoyi.common.utils.security.ShiroUtils;
@@ -31,26 +31,26 @@
 //import com.ruoyi.project.system.post.mapper.PostMapper;
 //import com.ruoyi.project.system.role.domain.Role;
 //import com.ruoyi.project.system.role.mapper.RoleMapper;
-//import com.ruoyi.project.system.user.domain.User;
+import com.ruoyi.project.system.user.domain.User;
 //import com.ruoyi.project.system.user.domain.UserPost;
 //import com.ruoyi.project.system.user.domain.UserRole;
-//import com.ruoyi.project.system.user.mapper.UserMapper;
+import com.ruoyi.project.system.user.mapper.UserMapper;
 //import com.ruoyi.project.system.user.mapper.UserPostMapper;
 //import com.ruoyi.project.system.user.mapper.UserRoleMapper;
-//
-///**
-// * 用户 业务层处理
-// *
-// * @author ruoyi
-// */
-//@Service
-//public class UserServiceImpl implements IUserService
-//{
-//    private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
-//
-//    @Autowired
-//    private UserMapper userMapper;
-//
+
+/**
+ * 用户 业务层处理
+ *
+ * @author ruoyi
+ */
+@Service
+public class UserServiceImpl implements IUserService
+{
+    private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
+
+    @Autowired
+    private UserMapper userMapper;
+
 //    @Autowired
 //    private RoleMapper roleMapper;
 //
@@ -114,19 +114,19 @@
 //    {
 //        return userMapper.selectUnallocatedList(user);
 //    }
-//
-//    /**
-//     * 通过用户名查询用户
-//     *
-//     * @param userName 用户名
-//     * @return 用户对象信息
-//     */
-//    @Override
-//    public User selectUserByLoginName(String userName)
-//    {
-//        return userMapper.selectUserByLoginName(userName);
-//    }
-//
+
+    /**
+     * 通过用户名查询用户
+     *
+     * @param userName 用户名
+     * @return 用户对象信息
+     */
+    @Override
+    public User selectUserByLoginName(String userName)
+    {
+        return userMapper.selectUserByLoginName(userName);
+    }
+
 //    /**
 //     * 通过手机号码查询用户
 //     *
@@ -606,4 +606,4 @@
 //    {
 //        return userMapper.updateUserStatus(user.getUserId(), user.getStatus());
 //    }
-//}
+}

@@ -1,17 +1,20 @@
-//package com.ruoyi.project.system.user.mapper;
-//
-//import java.util.Date;
-//import java.util.List;
-//import org.apache.ibatis.annotations.Param;
-//import com.ruoyi.project.system.user.domain.User;
-//
-///**
-// * 用户表 数据层
-// *
-// * @author ruoyi
-// */
-//public interface UserMapper
-//{
+package com.ruoyi.project.system.user.mapper;
+
+import java.util.Date;
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import com.ruoyi.project.system.user.domain.User;
+
+/**
+ * 用户表 数据层
+ *
+ * @author ruoyi
+ */
+@Mapper
+public interface UserMapper
+{
 //    /**
 //     * 根据条件分页查询用户列表
 //     *
@@ -35,15 +38,15 @@
 //     * @return 用户信息集合信息
 //     */
 //    public List<User> selectUnallocatedList(User user);
-//
-//    /**
-//     * 通过用户名查询用户
-//     *
-//     * @param userName 用户名
-//     * @return 用户对象信息
-//     */
-//    public User selectUserByLoginName(String userName);
-//
+
+    /**
+     * 通过用户名查询用户
+     *
+     * @param userName 用户名
+     * @return 用户对象信息
+     */
+    public User selectUserByLoginName(String userName);
+
 //    /**
 //     * 通过手机号码查询用户
 //     *
@@ -161,4 +164,4 @@
 //     * @return 结果
 //     */
 //    public User checkEmailUnique(String email);
-//}
+}

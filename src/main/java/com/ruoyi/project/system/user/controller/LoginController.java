@@ -57,10 +57,10 @@ public class LoginController extends BaseController
     public AjaxResult ajaxLogin(String username, String password, Boolean rememberMe)
     {
         UsernamePasswordToken token = new UsernamePasswordToken(username, password, rememberMe);
-//        Subject subject = SecurityUtils.getSubject();
+        Subject subject = SecurityUtils.getSubject();
         try
         {
-//            subject.login(token);
+            subject.login(token);
             return success();
         }
         catch (AuthenticationException e)

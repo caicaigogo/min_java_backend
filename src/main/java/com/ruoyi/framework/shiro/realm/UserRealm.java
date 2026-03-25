@@ -27,10 +27,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import com.ruoyi.common.exception.user.UserPasswordNotMatchException;
 //import com.ruoyi.common.exception.user.UserPasswordRetryLimitExceedException;
 //import com.ruoyi.common.utils.security.ShiroUtils;
-//import com.ruoyi.framework.shiro.service.LoginService;
+import com.ruoyi.framework.shiro.service.LoginService;
 //import com.ruoyi.project.system.menu.service.IMenuService;
 //import com.ruoyi.project.system.role.service.IRoleService;
-//import com.ruoyi.project.system.user.domain.User;
+import com.ruoyi.project.system.user.domain.User;
 
 /**
  * 自定义Realm 处理登录 权限
@@ -46,9 +46,9 @@ public class UserRealm extends AuthorizingRealm
 //
 //    @Autowired
 //    private IRoleService roleService;
-//
-//    @Autowired
-//    private LoginService loginService;
+
+    @Autowired
+    private LoginService loginService;
 
     /**
      * 授权
@@ -94,12 +94,12 @@ public class UserRealm extends AuthorizingRealm
         {
             password = new String(upToken.getPassword());
         }
-//
-//        User user = null;
-//        try
-//        {
-//            user = loginService.login(username, password);
-//        }
+
+        User user = null;
+        try
+        {
+            user = loginService.login(username, password);
+        }
 //        catch (CaptchaException e)
 //        {
 //            throw new AuthenticationException(e.getMessage(), e);
@@ -124,13 +124,12 @@ public class UserRealm extends AuthorizingRealm
 //        {
 //            throw new LockedAccountException(e.getMessage(), e);
 //        }
-//        catch (Exception e)
-//        {
-//            log.info("对用户[" + username + "]进行登录验证..验证未通过{}", e.getMessage());
-//            throw new AuthenticationException(e.getMessage(), e);
-//        }
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(username, password, getName());
-//        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, password, getName());
+        catch (Exception e)
+        {
+            log.info("对用户[" + username + "]进行登录验证..验证未通过{}", e.getMessage());
+            throw new AuthenticationException(e.getMessage(), e);
+        }
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, password, getName());
         return info;
     }
 //

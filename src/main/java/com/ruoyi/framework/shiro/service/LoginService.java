@@ -1,9 +1,9 @@
-//package com.ruoyi.framework.shiro.service;
-//
-//import java.util.List;
-//import java.util.Set;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Component;
+package com.ruoyi.framework.shiro.service;
+
+import java.util.List;
+import java.util.Set;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 //import com.ruoyi.common.constant.Constants;
 //import com.ruoyi.common.constant.ShiroConstants;
 //import com.ruoyi.common.constant.UserConstants;
@@ -24,23 +24,23 @@
 //import com.ruoyi.project.system.config.service.IConfigService;
 //import com.ruoyi.project.system.menu.service.IMenuService;
 //import com.ruoyi.project.system.role.domain.Role;
-//import com.ruoyi.project.system.user.domain.User;
+import com.ruoyi.project.system.user.domain.User;
 //import com.ruoyi.project.system.user.domain.UserStatus;
-//import com.ruoyi.project.system.user.service.IUserService;
-//
-///**
-// * 登录校验方法
-// *
-// * @author ruoyi
-// */
-//@Component
-//public class LoginService
-//{
+import com.ruoyi.project.system.user.service.IUserService;
+
+/**
+ * 登录校验方法
+ *
+ * @author ruoyi
+ */
+@Component
+public class LoginService
+{
 //    @Autowired
 //    private PasswordService passwordService;
-//
-//    @Autowired
-//    private IUserService userService;
+
+    @Autowired
+    private IUserService userService;
 //
 //    @Autowired
 //    private IMenuService menuService;
@@ -48,11 +48,11 @@
 //    @Autowired
 //    private IConfigService configService;
 //
-//    /**
-//     * 登录
-//     */
-//    public User login(String username, String password)
-//    {
+    /**
+     * 登录
+     */
+    public User login(String username, String password)
+    {
 //        // 验证码校验
 //        if (ShiroConstants.CAPTCHA_ERROR.equals(ServletUtils.getRequest().getAttribute(ShiroConstants.CURRENT_CAPTCHA)))
 //        {
@@ -88,10 +88,10 @@
 //            AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("login.blocked")));
 //            throw new BlackListException();
 //        }
-//
-//        // 查询用户信息
-//        User user = userService.selectUserByLoginName(username);
-//
+
+        // 查询用户信息
+        User user = userService.selectUserByLoginName(username);
+
 //        /**
 //        if (user == null && maybeMobilePhoneNumber(username))
 //        {
@@ -127,8 +127,8 @@
 //        AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_SUCCESS, MessageUtils.message("user.login.success")));
 //        setRolePermission(user);
 //        recordLoginInfo(user.getUserId());
-//        return user;
-//    }
+        return user;
+    }
 //
 //    /**
 //    private boolean maybeEmail(String username)
@@ -181,4 +181,4 @@
 //    {
 //        userService.updateLoginInfo(userId, ShiroUtils.getIp(), DateUtils.getNowDate());
 //    }
-//}
+}
