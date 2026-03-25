@@ -31,7 +31,6 @@ function login() {
         },
         success: function(r) {
             if (r.code == web_status.SUCCESS) {
-                $.modal.msg('SUCCESS');
                 location.href = ctx + 'index';
             } else {
                 // $('.imgcode').click();

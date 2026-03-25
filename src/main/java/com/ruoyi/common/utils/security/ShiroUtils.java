@@ -1,26 +1,26 @@
-//package com.ruoyi.common.utils.security;
-//
-//import org.apache.shiro.SecurityUtils;
-//import org.apache.shiro.session.Session;
-//import org.apache.shiro.subject.Subject;
-//import org.apache.shiro.subject.PrincipalCollection;
-//import org.apache.shiro.subject.SimplePrincipalCollection;
-//import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.bean.BeanUtils;
-//import com.ruoyi.project.system.user.domain.User;
-//
-///**
-// * shiro 工具类
-// *
-// * @author ruoyi
-// */
-//public class ShiroUtils
-//{
-//    public static Subject getSubject()
-//    {
-//        return SecurityUtils.getSubject();
-//    }
-//
+package com.ruoyi.common.utils.security;
+
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.SimplePrincipalCollection;
+import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.bean.BeanUtils;
+import com.ruoyi.project.system.user.domain.User;
+
+/**
+ * shiro 工具类
+ *
+ * @author ruoyi
+ */
+public class ShiroUtils
+{
+    public static Subject getSubject()
+    {
+        return SecurityUtils.getSubject();
+    }
+
 //    public static Session getSession()
 //    {
 //        return SecurityUtils.getSubject().getSession();
@@ -31,18 +31,18 @@
 //        getSubject().logout();
 //    }
 //
-//    public static User getSysUser()
-//    {
-//        User user = null;
-//        Object obj = getSubject().getPrincipal();
-//        if (StringUtils.isNotNull(obj))
-//        {
-//            user = new User();
-//            BeanUtils.copyBeanProp(user, obj);
-//        }
-//        return user;
-//    }
-//
+    public static User getSysUser()
+    {
+        User user = null;
+        Object obj = getSubject().getPrincipal();
+        if (StringUtils.isNotNull(obj))
+        {
+            user = new User();
+            BeanUtils.copyBeanProp(user, obj);
+        }
+        return user;
+    }
+
 //    public static void setSysUser(User user)
 //    {
 //        Subject subject = getSubject();
@@ -93,4 +93,4 @@
 //    {
 //        return userId != null && 1L == userId;
 //    }
-//}
+}

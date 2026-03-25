@@ -25,7 +25,7 @@ import com.ruoyi.framework.web.controller.BaseController;
 //import com.ruoyi.project.system.config.service.IConfigService;
 //import com.ruoyi.project.system.menu.domain.Menu;
 //import com.ruoyi.project.system.menu.service.IMenuService;
-//import com.ruoyi.project.system.user.domain.User;
+import com.ruoyi.project.system.user.domain.User;
 
 /**
  * 首页 业务处理
@@ -47,12 +47,12 @@ public class IndexController extends BaseController
 //    @Autowired
 //    private RuoYiConfig ruoYiConfig;
 //
-//    // 系统首页
-//    @GetMapping("/index")
-//    public String index(ModelMap mmap, HttpServletRequest request)
-//    {
-//        // 取身份信息
-//        User user = getSysUser();
+    // 系统首页
+    @GetMapping("/index")
+    public String index(ModelMap mmap, HttpServletRequest request)
+    {
+        // 取身份信息
+        User user = getSysUser();
 //        // 根据用户id取出菜单
 //        List<Menu> menus = menuService.selectMenusByUser(user);
 //        mmap.put("menus", menus);
@@ -88,9 +88,10 @@ public class IndexController extends BaseController
 //        String webIndex = "topnav".equalsIgnoreCase(indexStyle) ? "index-topnav" : "index";
 //        // CSRF Token
 //        request.getSession().setAttribute(ShiroConstants.CSRF_TOKEN, ServletUtils.generateToken());
+        return "login";
 //        return webIndex;
-//    }
-//
+    }
+
 //    // 锁定屏幕
 //    @GetMapping("/lockscreen")
 //    public String lockscreen(ModelMap mmap)

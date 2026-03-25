@@ -12,14 +12,14 @@ import com.github.pagehelper.PageInfo;
 //import com.ruoyi.common.utils.DateUtils;
 //import com.ruoyi.common.utils.PageUtils;
 //import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.security.ShiroUtils;
+import com.ruoyi.common.utils.security.ShiroUtils;
 //import com.ruoyi.common.utils.sql.SqlUtil;
 import com.ruoyi.framework.web.domain.AjaxResult;
 //import com.ruoyi.framework.web.domain.AjaxResult.Type;
 //import com.ruoyi.framework.web.page.PageDomain;
 //import com.ruoyi.framework.web.page.TableDataInfo;
 //import com.ruoyi.framework.web.page.TableSupport;
-//import com.ruoyi.project.system.user.domain.User;
+import com.ruoyi.project.system.user.domain.User;
 
 /**
  * web层通用数据处理
@@ -166,14 +166,14 @@ public class BaseController
 //    {
 //        return StringUtils.format("redirect:{}", url);
 //    }
-//
-//    /**
-//     * 获取用户缓存信息
-//     */
-//    public User getSysUser()
-//    {
-//        return ShiroUtils.getSysUser();
-//    }
+
+    /**
+     * 获取用户缓存信息
+     */
+    public User getSysUser()
+    {
+        return ShiroUtils.getSysUser();
+    }
 //
 //    /**
 //     * 设置用户缓存信息

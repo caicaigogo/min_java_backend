@@ -1,18 +1,18 @@
-//package com.ruoyi.common.utils.bean;
-//
-//import java.lang.reflect.Method;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.regex.Matcher;
-//import java.util.regex.Pattern;
-//
-///**
-// * Bean 工具类
-// *
-// * @author ruoyi
-// */
-//public class BeanUtils extends org.springframework.beans.BeanUtils
-//{
+package com.ruoyi.common.utils.bean;
+
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * Bean 工具类
+ *
+ * @author ruoyi
+ */
+public class BeanUtils extends org.springframework.beans.BeanUtils
+{
 //    /** Bean方法名中属性名开始的下标 */
 //    private static final int BEAN_METHOD_PROP_INDEX = 3;
 //
@@ -22,24 +22,24 @@
 //    /** * 匹配setter方法的正则表达式 */
 //    private static final Pattern SET_PATTERN = Pattern.compile("set(\\p{javaUpperCase}\\w*)");
 //
-//    /**
-//     * Bean属性复制工具方法。
-//     *
-//     * @param dest 目标对象
-//     * @param src 源对象
-//     */
-//    public static void copyBeanProp(Object dest, Object src)
-//    {
-//        try
-//        {
-//            copyProperties(src, dest);
-//        }
-//        catch (Exception e)
-//        {
-//            e.printStackTrace();
-//        }
-//    }
-//
+    /**
+     * Bean属性复制工具方法。
+     *
+     * @param dest 目标对象
+     * @param src 源对象
+     */
+    public static void copyBeanProp(Object dest, Object src)
+    {
+        try
+        {
+            copyProperties(src, dest);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 //    /**
 //     * 获取对象的setter方法。
 //     *
@@ -107,4 +107,4 @@
 //    {
 //        return m1.substring(BEAN_METHOD_PROP_INDEX).equals(m2.substring(BEAN_METHOD_PROP_INDEX));
 //    }
-//}
+}
