@@ -88,7 +88,7 @@ public class IndexController extends BaseController
 //        String webIndex = "topnav".equalsIgnoreCase(indexStyle) ? "index-topnav" : "index";
 //        // CSRF Token
 //        request.getSession().setAttribute(ShiroConstants.CSRF_TOKEN, ServletUtils.generateToken());
-        return "login";
+        return "index";
 //        return webIndex;
     }
 
