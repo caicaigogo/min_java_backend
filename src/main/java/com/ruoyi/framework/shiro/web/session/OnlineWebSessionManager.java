@@ -1,18 +1,18 @@
-//package com.ruoyi.framework.shiro.web.session;
-//
-//import java.util.ArrayList;
-//import java.util.Collection;
-//import java.util.Date;
-//import java.util.List;
-//import org.apache.commons.lang3.time.DateUtils;
-//import org.apache.shiro.session.ExpiredSessionException;
-//import org.apache.shiro.session.InvalidSessionException;
-//import org.apache.shiro.session.Session;
-//import org.apache.shiro.session.mgt.DefaultSessionKey;
-//import org.apache.shiro.session.mgt.SessionKey;
-//import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+package com.ruoyi.framework.shiro.web.session;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+import org.apache.commons.lang3.time.DateUtils;
+import org.apache.shiro.session.ExpiredSessionException;
+import org.apache.shiro.session.InvalidSessionException;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.session.mgt.DefaultSessionKey;
+import org.apache.shiro.session.mgt.SessionKey;
+import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 //import com.ruoyi.common.constant.ShiroConstants;
 //import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.common.utils.bean.BeanUtils;
@@ -20,16 +20,16 @@
 //import com.ruoyi.project.monitor.online.domain.OnlineSession;
 //import com.ruoyi.project.monitor.online.domain.UserOnline;
 //import com.ruoyi.project.monitor.online.service.UserOnlineServiceImpl;
-//
-///**
-// * 主要是在此如果会话的属性修改了 就标识下其修改了 然后方便 OnlineSessionDao同步
-// *
-// * @author ruoyi
-// */
-//public class OnlineWebSessionManager extends DefaultWebSessionManager
-//{
-//    private static final Logger log = LoggerFactory.getLogger(OnlineWebSessionManager.class);
-//
+
+/**
+ * 主要是在此如果会话的属性修改了 就标识下其修改了 然后方便 OnlineSessionDao同步
+ *
+ * @author ruoyi
+ */
+public class OnlineWebSessionManager extends DefaultWebSessionManager
+{
+    private static final Logger log = LoggerFactory.getLogger(OnlineWebSessionManager.class);
+
 //    @Override
 //    public void setAttribute(SessionKey sessionKey, Object attributeKey, Object value) throws InvalidSessionException
 //    {
@@ -172,4 +172,4 @@
 //    {
 //        throw new UnsupportedOperationException("getActiveSessions method not supported");
 //    }
-//}
+}

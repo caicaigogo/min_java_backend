@@ -1,14 +1,14 @@
-//package com.ruoyi.common.constant;
-//
-//import java.util.Locale;
-//
-///**
-// * 通用常量信息
-// *
-// * @author ruoyi
-// */
-//public class Constants
-//{
+package com.ruoyi.common.constant;
+
+import java.util.Locale;
+
+/**
+ * 通用常量信息
+ *
+ * @author ruoyi
+ */
+public class Constants
+{
 //    /**
 //     * UTF-8 字符集
 //     */
@@ -63,12 +63,12 @@
 //     * 登录失败
 //     */
 //    public static final String LOGIN_FAIL = "Error";
-//
-//    /**
-//     * 系统用户授权缓存
-//     */
-//    public static final String SYS_AUTH_CACHE = "sys-authCache";
-//
+
+    /**
+     * 系统用户授权缓存
+     */
+    public static final String SYS_AUTH_CACHE = "sys-authCache";
+
 //    /**
 //     * 参数管理 cache name
 //     */
@@ -119,4 +119,4 @@
 //     */
 //    public static final String[] JOB_ERROR_STR = { "java.net.URL", "javax.naming.InitialContext", "org.yaml.snakeyaml",
 //            "org.springframework", "com.ruoyi.common.utils.file", "com.ruoyi.framework.config", "com.ruoyi.project.tool" };
-//}
+}
