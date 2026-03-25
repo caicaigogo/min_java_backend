@@ -28,14 +28,14 @@ import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.framework.config.properties.PermitAllUrlProperties;
 import com.ruoyi.framework.shiro.realm.UserRealm;
 //import com.ruoyi.framework.shiro.rememberMe.CustomCookieRememberMeManager;
-//import com.ruoyi.framework.shiro.session.OnlineSessionDAO;
+import com.ruoyi.framework.shiro.session.OnlineSessionDAO;
 //import com.ruoyi.framework.shiro.session.OnlineSessionFactory;
 import com.ruoyi.framework.shiro.web.CustomShiroFilterFactoryBean;
 //import com.ruoyi.framework.shiro.web.filter.LogoutFilter;
 import com.ruoyi.framework.shiro.web.filter.captcha.CaptchaValidateFilter;
 //import com.ruoyi.framework.shiro.web.filter.csrf.CsrfValidateFilter;
 import com.ruoyi.framework.shiro.web.filter.kickout.KickoutSessionFilter;
-//import com.ruoyi.framework.shiro.web.filter.online.OnlineSessionFilter;
+import com.ruoyi.framework.shiro.web.filter.online.OnlineSessionFilter;
 //import com.ruoyi.framework.shiro.web.filter.sync.SyncOnlineSessionFilter;
 import com.ruoyi.framework.shiro.web.session.OnlineWebSessionManager;
 //import com.ruoyi.framework.shiro.web.session.SpringSessionValidationScheduler;
@@ -202,16 +202,16 @@ public class ShiroConfig
         return userRealm;
     }
 
-//    /**
-//     * 自定义sessionDAO会话
-//     */
-//    @Bean
-//    public OnlineSessionDAO sessionDAO()
-//    {
-//        OnlineSessionDAO sessionDAO = new OnlineSessionDAO();
-//        return sessionDAO;
-//    }
-//
+    /**
+     * 自定义sessionDAO会话
+     */
+    @Bean
+    public OnlineSessionDAO sessionDAO()
+    {
+        OnlineSessionDAO sessionDAO = new OnlineSessionDAO();
+        return sessionDAO;
+    }
+
 //    /**
 //     * 自定义sessionFactory会话
 //     */
@@ -330,7 +330,7 @@ public class ShiroConfig
 //        // filterChainDefinitionMap.putAll(SpringUtils.getBean(IMenuService.class).selectPermsAll());
 //
         Map<String, Filter> filters = new LinkedHashMap<String, Filter>();
-//        filters.put("onlineSession", onlineSessionFilter());
+        filters.put("onlineSession", onlineSessionFilter());
 //        filters.put("syncOnlineSession", syncOnlineSessionFilter());
         filters.put("captchaValidate", captchaValidateFilter());
 //        filters.put("csrfValidateFilter", csrfValidateFilter());
@@ -340,24 +340,24 @@ public class ShiroConfig
         shiroFilterFactoryBean.setFilters(filters);
 
         // 所有请求需要认证
-        filterChainDefinitionMap.put("/**", "user");
+        filterChainDefinitionMap.put("/**", "user,kickout,onlineSession");
 //        filterChainDefinitionMap.put("/**", "user,kickout,onlineSession,syncOnlineSession,csrfValidateFilter");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
         return shiroFilterFactoryBean;
     }
-//
-//    /**
-//     * 自定义在线用户处理过滤器
-//     */
-//    public OnlineSessionFilter onlineSessionFilter()
-//    {
-//        OnlineSessionFilter onlineSessionFilter = new OnlineSessionFilter();
-//        onlineSessionFilter.setLoginUrl(loginUrl);
-//        onlineSessionFilter.setOnlineSessionDAO(sessionDAO());
-//        return onlineSessionFilter;
-//    }
-//
+
+    /**
+     * 自定义在线用户处理过滤器
+     */
+    public OnlineSessionFilter onlineSessionFilter()
+    {
+        OnlineSessionFilter onlineSessionFilter = new OnlineSessionFilter();
+        onlineSessionFilter.setLoginUrl(loginUrl);
+        onlineSessionFilter.setOnlineSessionDAO(sessionDAO());
+        return onlineSessionFilter;
+    }
+
 //    /**
 //     * 自定义在线用户同步过滤器
 //     */

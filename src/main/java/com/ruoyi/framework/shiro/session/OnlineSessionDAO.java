@@ -1,25 +1,25 @@
-//package com.ruoyi.framework.shiro.session;
-//
-//import java.io.Serializable;
-//import java.util.Date;
-//import org.apache.shiro.session.Session;
-//import org.apache.shiro.session.UnknownSessionException;
-//import org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.beans.factory.annotation.Value;
+package com.ruoyi.framework.shiro.session;
+
+import java.io.Serializable;
+import java.util.Date;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.session.UnknownSessionException;
+import org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 //import com.ruoyi.framework.manager.AsyncManager;
 //import com.ruoyi.framework.manager.factory.AsyncFactory;
-//import com.ruoyi.project.monitor.online.domain.OnlineSession;
-//import com.ruoyi.project.monitor.online.domain.UserOnline;
-//import com.ruoyi.project.monitor.online.service.IUserOnlineService;
-//
-///**
-// * 针对自定义的ShiroSession的db操作
-// *
-// * @author ruoyi
-// */
-//public class OnlineSessionDAO extends EnterpriseCacheSessionDAO
-//{
+import com.ruoyi.project.monitor.online.domain.OnlineSession;
+import com.ruoyi.project.monitor.online.domain.UserOnline;
+import com.ruoyi.project.monitor.online.service.IUserOnlineService;
+
+/**
+ * 针对自定义的ShiroSession的db操作
+ *
+ * @author ruoyi
+ */
+public class OnlineSessionDAO extends EnterpriseCacheSessionDAO
+{
 //    /**
 //     * 同步session到数据库的周期 单位为毫秒（默认1分钟）
 //     */
@@ -31,12 +31,12 @@
 //     */
 //    private static final String LAST_SYNC_DB_TIMESTAMP = OnlineSessionDAO.class.getName() + "LAST_SYNC_DB_TIMESTAMP";
 //
-//    @Autowired
-//    private IUserOnlineService onlineService;
-//
-//    @Autowired
-//    private OnlineSessionFactory onlineSessionFactory;
-//
+    @Autowired
+    private IUserOnlineService onlineService;
+
+    @Autowired
+    private OnlineSessionFactory onlineSessionFactory;
+
 //    public OnlineSessionDAO()
 //    {
 //        super();
@@ -47,22 +47,22 @@
 //        super();
 //    }
 //
-//    /**
-//     * 根据会话ID获取会话
-//     *
-//     * @param sessionId 会话ID
-//     * @return ShiroSession
-//     */
-//    @Override
-//    protected Session doReadSession(Serializable sessionId)
-//    {
-//        UserOnline userOnline = onlineService.selectOnlineById(String.valueOf(sessionId));
-//        if (userOnline == null)
-//        {
-//            return null;
-//        }
-//        return onlineSessionFactory.createSession(userOnline);
-//    }
+    /**
+     * 根据会话ID获取会话
+     *
+     * @param sessionId 会话ID
+     * @return ShiroSession
+     */
+    @Override
+    protected Session doReadSession(Serializable sessionId)
+    {
+        UserOnline userOnline = onlineService.selectOnlineById(String.valueOf(sessionId));
+        if (userOnline == null)
+        {
+            return null;
+        }
+        return onlineSessionFactory.createSession(userOnline);
+    }
 //
 //    @Override
 //    public void update(Session session) throws UnknownSessionException
@@ -123,4 +123,4 @@
 //        onlineSession.setStatus(OnlineSession.OnlineStatus.off_line);
 //        onlineService.deleteOnlineById(String.valueOf(onlineSession.getId()));
 //    }
-//}
+}

@@ -1,23 +1,25 @@
-//package com.ruoyi.project.monitor.online.mapper;
-//
-//import java.util.List;
-//import com.ruoyi.project.monitor.online.domain.UserOnline;
-//
-///**
-// * 在线用户 数据层
-// *
-// * @author ruoyi
-// */
-//public interface UserOnlineMapper
-//{
-//    /**
-//     * 通过会话序号查询信息
-//     *
-//     * @param sessionId 会话ID
-//     * @return 在线用户信息
-//     */
-//    public UserOnline selectOnlineById(String sessionId);
-//
+package com.ruoyi.project.monitor.online.mapper;
+
+import java.util.List;
+import com.ruoyi.project.monitor.online.domain.UserOnline;
+import org.apache.ibatis.annotations.Mapper;
+
+/**
+ * 在线用户 数据层
+ *
+ * @author ruoyi
+ */
+@Mapper
+public interface UserOnlineMapper
+{
+    /**
+     * 通过会话序号查询信息
+     *
+     * @param sessionId 会话ID
+     * @return 在线用户信息
+     */
+    public UserOnline selectOnlineById(String sessionId);
+
 //    /**
 //     * 通过会话序号删除信息
 //     *
@@ -49,4 +51,4 @@
 //     * @return 会话集合
 //     */
 //    public List<UserOnline> selectOnlineByExpired(String lastAccessTime);
-//}
+}

@@ -1,19 +1,19 @@
-//package com.ruoyi.common.utils.http;
-//
+package com.ruoyi.common.utils.http;
+
 //import java.util.regex.Matcher;
 //import java.util.regex.Pattern;
-//import com.ruoyi.common.utils.StringUtils;
-//import nl.basjes.parse.useragent.UserAgent;
-//import nl.basjes.parse.useragent.UserAgentAnalyzer;
-//
-///**
-// * UserAgent解析工具类
-// *
-// * @author ruoyi
-// */
-//public class UserAgentUtils
-//{
-//    public static final String UNKNOWN = "";
+import com.ruoyi.common.utils.StringUtils;
+import nl.basjes.parse.useragent.UserAgent;
+import nl.basjes.parse.useragent.UserAgentAnalyzer;
+
+/**
+ * UserAgent解析工具类
+ *
+ * @author ruoyi
+ */
+public class UserAgentUtils
+{
+    public static final String UNKNOWN = "";
 //
 //    // 浏览器正则表达式模式
 //    private static final Pattern CHROME_PATTERN = Pattern.compile("Chrome/(\\d+)(?:\\.\\d+)*");
@@ -36,47 +36,47 @@
 //    private static final Pattern LINUX_PATTERN = Pattern.compile("Linux");
 //    private static final Pattern CHROMEOS_PATTERN = Pattern.compile("CrOS");
 //
-//    private static final UserAgentAnalyzer userAgentAnalyzer = UserAgentAnalyzer
-//            .newBuilder().hideMatcherLoadStats()
-//            .withCache(5000)
-//            .showMinimalVersion()
-//            .withField(UserAgent.AGENT_NAME_VERSION)
-//            .withField(UserAgent.OPERATING_SYSTEM_NAME_VERSION)
-//            .build();
-//
-//    /**
-//     * 获取客户端浏览器
-//     */
-//    public static String getBrowser(String userAgent)
-//    {
-//        UserAgent.ImmutableUserAgent iua = userAgentAnalyzer.parse(userAgent);
-//        String agentNameVersion = iua.get(UserAgent.AGENT_NAME_VERSION).getValue();
-//        if (StringUtils.isBlank(agentNameVersion) || agentNameVersion.contains("??"))
-//        {
-//            return formatBrowser(userAgent);
-//        }
-//        return agentNameVersion;
-//    }
-//
-//    /**
-//     * 获取客户端操作系统
-//     */
-//    public static String getOperatingSystem(String userAgent)
-//    {
-//        UserAgent.ImmutableUserAgent iua = userAgentAnalyzer.parse(userAgent);
-//        String operatingSystemNameVersion = iua.get(UserAgent.OPERATING_SYSTEM_NAME_VERSION).getValue();
-//        if (StringUtils.isBlank(operatingSystemNameVersion) || operatingSystemNameVersion.contains("??"))
-//        {
-//            return formatOperatingSystem(userAgent);
-//        }
-//        return operatingSystemNameVersion;
-//    }
-//
-//    /**
-//     * 全面浏览器检测
-//     */
-//    private static String formatBrowser(String browser)
-//    {
+    private static final UserAgentAnalyzer userAgentAnalyzer = UserAgentAnalyzer
+            .newBuilder().hideMatcherLoadStats()
+            .withCache(5000)
+            .showMinimalVersion()
+            .withField(UserAgent.AGENT_NAME_VERSION)
+            .withField(UserAgent.OPERATING_SYSTEM_NAME_VERSION)
+            .build();
+
+    /**
+     * 获取客户端浏览器
+     */
+    public static String getBrowser(String userAgent)
+    {
+        UserAgent.ImmutableUserAgent iua = userAgentAnalyzer.parse(userAgent);
+        String agentNameVersion = iua.get(UserAgent.AGENT_NAME_VERSION).getValue();
+        if (StringUtils.isBlank(agentNameVersion) || agentNameVersion.contains("??"))
+        {
+            return formatBrowser(userAgent);
+        }
+        return agentNameVersion;
+    }
+
+    /**
+     * 获取客户端操作系统
+     */
+    public static String getOperatingSystem(String userAgent)
+    {
+        UserAgent.ImmutableUserAgent iua = userAgentAnalyzer.parse(userAgent);
+        String operatingSystemNameVersion = iua.get(UserAgent.OPERATING_SYSTEM_NAME_VERSION).getValue();
+        if (StringUtils.isBlank(operatingSystemNameVersion) || operatingSystemNameVersion.contains("??"))
+        {
+            return formatOperatingSystem(userAgent);
+        }
+        return operatingSystemNameVersion;
+    }
+
+    /**
+     * 全面浏览器检测
+     */
+    private static String formatBrowser(String browser)
+    {
 //        // Chrome系列浏览器
 //        Matcher chromeMatcher = CHROME_PATTERN.matcher(browser);
 //        if (chromeMatcher.find() && (browser.contains("Chrome") || browser.contains("CriOS")))
@@ -143,14 +143,14 @@
 //        {
 //            return "Internet Explorer" + ieMatcher.group(1);
 //        }
-//        return UNKNOWN;
-//    }
-//
-//    /**
-//     * 检测操作系统
-//     */
-//    private static String formatOperatingSystem(String operatingSystem)
-//    {
+        return UNKNOWN;
+    }
+
+    /**
+     * 检测操作系统
+     */
+    private static String formatOperatingSystem(String operatingSystem)
+    {
 //        // Windows系统
 //        Matcher windowsMatcher = WINDOWS_PATTERN.matcher(operatingSystem);
 //        if (windowsMatcher.find())
@@ -186,8 +186,8 @@
 //        {
 //            return "Chrome OS";
 //        }
-//        return UNKNOWN;
-//    }
+        return UNKNOWN;
+    }
 //
 //    /**
 //     * 提取优化的主版本号
@@ -251,4 +251,4 @@
 //                return extractMajorVersion(version);
 //        }
 //    }
-//}
+}

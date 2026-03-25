@@ -1,24 +1,24 @@
-//package com.ruoyi.project.monitor.online.service;
-//
-//import java.util.Date;
-//import java.util.List;
-//import com.ruoyi.project.monitor.online.domain.UserOnline;
-//
-///**
-// * 在线用户 服务层
-// *
-// * @author ruoyi
-// */
-//public interface IUserOnlineService
-//{
-//    /**
-//     * 通过会话序号查询信息
-//     *
-//     * @param sessionId 会话ID
-//     * @return 在线用户信息
-//     */
-//    public UserOnline selectOnlineById(String sessionId);
-//
+package com.ruoyi.project.monitor.online.service;
+
+import java.util.Date;
+import java.util.List;
+import com.ruoyi.project.monitor.online.domain.UserOnline;
+
+/**
+ * 在线用户 服务层
+ *
+ * @author ruoyi
+ */
+public interface IUserOnlineService
+{
+    /**
+     * 通过会话序号查询信息
+     *
+     * @param sessionId 会话ID
+     * @return 在线用户信息
+     */
+    public UserOnline selectOnlineById(String sessionId);
+
 //    /**
 //     * 通过会话序号删除信息
 //     *
@@ -72,4 +72,4 @@
 //     * @return 会话集合
 //     */
 //    public List<UserOnline> selectOnlineByExpired(Date expiredDate);
-//}
+}

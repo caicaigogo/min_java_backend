@@ -1,31 +1,31 @@
-//package com.ruoyi.project.monitor.online.service;
-//
-//import java.io.Serializable;
-//import java.util.Date;
-//import java.util.Deque;
-//import java.util.List;
-//import org.apache.shiro.cache.Cache;
-//import org.apache.shiro.cache.ehcache.EhCacheManager;
-//import org.apache.shiro.session.Session;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
+package com.ruoyi.project.monitor.online.service;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Deque;
+import java.util.List;
+import org.apache.shiro.cache.Cache;
+import org.apache.shiro.cache.ehcache.EhCacheManager;
+import org.apache.shiro.session.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 //import com.ruoyi.common.constant.ShiroConstants;
 //import com.ruoyi.common.utils.DateUtils;
 //import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.framework.shiro.session.OnlineSessionDAO;
-//import com.ruoyi.project.monitor.online.domain.UserOnline;
-//import com.ruoyi.project.monitor.online.mapper.UserOnlineMapper;
-//
-///**
-// * 在线用户 服务层处理
-// *
-// * @author ruoyi
-// */
-//@Service
-//public class UserOnlineServiceImpl implements IUserOnlineService
-//{
-//    @Autowired
-//    private UserOnlineMapper userOnlineDao;
+import com.ruoyi.project.monitor.online.domain.UserOnline;
+import com.ruoyi.project.monitor.online.mapper.UserOnlineMapper;
+
+/**
+ * 在线用户 服务层处理
+ *
+ * @author ruoyi
+ */
+@Service
+public class UserOnlineServiceImpl implements IUserOnlineService
+{
+    @Autowired
+    private UserOnlineMapper userOnlineDao;
 //
 //    @Autowired
 //    private OnlineSessionDAO onlineSessionDAO;
@@ -33,18 +33,18 @@
 //    @Autowired
 //    private EhCacheManager ehCacheManager;
 //
-//    /**
-//     * 通过会话序号查询信息
-//     *
-//     * @param sessionId 会话ID
-//     * @return 在线用户信息
-//     */
-//    @Override
-//    public UserOnline selectOnlineById(String sessionId)
-//    {
-//        return userOnlineDao.selectOnlineById(sessionId);
-//    }
-//
+    /**
+     * 通过会话序号查询信息
+     *
+     * @param sessionId 会话ID
+     * @return 在线用户信息
+     */
+    @Override
+    public UserOnline selectOnlineById(String sessionId)
+    {
+        return userOnlineDao.selectOnlineById(sessionId);
+    }
+
 //    /**
 //     * 通过会话序号删除信息
 //     *
@@ -148,4 +148,4 @@
 //        String lastAccessTime = DateUtils.parseDateToStr(DateUtils.YYYY_MM_DD_HH_MM_SS, expiredDate);
 //        return userOnlineDao.selectOnlineByExpired(lastAccessTime);
 //    }
-//}
+}
