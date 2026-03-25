@@ -14,7 +14,7 @@ import com.github.pagehelper.PageInfo;
 //import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.common.utils.security.ShiroUtils;
 //import com.ruoyi.common.utils.sql.SqlUtil;
-//import com.ruoyi.framework.web.domain.AjaxResult;
+import com.ruoyi.framework.web.domain.AjaxResult;
 //import com.ruoyi.framework.web.domain.AjaxResult.Type;
 //import com.ruoyi.framework.web.page.PageDomain;
 //import com.ruoyi.framework.web.page.TableDataInfo;
@@ -111,46 +111,46 @@ public class BaseController
 //        return result ? success() : error();
 //    }
 //
-//    /**
-//     * 返回成功
-//     */
-//    public AjaxResult success()
-//    {
-//        return AjaxResult.success();
-//    }
-//
-//    /**
-//     * 返回失败消息
-//     */
-//    public AjaxResult error()
-//    {
-//        return AjaxResult.error();
-//    }
-//
-//    /**
-//     * 返回成功消息
-//     */
-//    public AjaxResult success(String message)
-//    {
-//        return AjaxResult.success(message);
-//    }
-//
-//    /**
-//     * 返回成功数据
-//     */
-//    public static AjaxResult success(Object data)
-//    {
-//        return AjaxResult.success("操作成功", data);
-//    }
-//
-//    /**
-//     * 返回失败消息
-//     */
-//    public AjaxResult error(String message)
-//    {
-//        return AjaxResult.error(message);
-//    }
-//
+    /**
+     * 返回成功
+     */
+    public AjaxResult success()
+    {
+        return AjaxResult.success();
+    }
+
+    /**
+     * 返回失败消息
+     */
+    public AjaxResult error()
+    {
+        return AjaxResult.error();
+    }
+
+    /**
+     * 返回成功消息
+     */
+    public AjaxResult success(String message)
+    {
+        return AjaxResult.success(message);
+    }
+
+    /**
+     * 返回成功数据
+     */
+    public static AjaxResult success(Object data)
+    {
+        return AjaxResult.success("操作成功", data);
+    }
+
+    /**
+     * 返回失败消息
+     */
+    public AjaxResult error(String message)
+    {
+        return AjaxResult.error(message);
+    }
+
 //    /**
 //     * 返回错误码消息
 //     */

@@ -1,22 +1,22 @@
-//package com.ruoyi.common.utils;
-//
-//import java.util.ArrayList;
-//import java.util.Collection;
-//import java.util.HashSet;
-//import java.util.List;
-//import java.util.Map;
-//import java.util.Set;
+package com.ruoyi.common.utils;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 //import org.springframework.util.AntPathMatcher;
 //import com.ruoyi.common.constant.Constants;
 //import com.ruoyi.common.utils.text.StrFormatter;
-//
-///**
-// * 字符串工具类
-// *
-// * @author ruoyi
-// */
-//public class StringUtils extends org.apache.commons.lang3.StringUtils
-//{
+
+/**
+ * 字符串工具类
+ *
+ * @author ruoyi
+ */
+public class StringUtils extends org.apache.commons.lang3.StringUtils
+{
 //    /** 空字符串 */
 //    private static final String NULLSTR = "";
 //
@@ -37,27 +37,27 @@
 //        return value != null ? value : defaultValue;
 //    }
 //
-//    /**
-//     * * 判断一个Collection是否为空， 包含List，Set，Queue
-//     *
-//     * @param coll 要判断的Collection
-//     * @return true：为空 false：非空
-//     */
-//    public static boolean isEmpty(Collection<?> coll)
-//    {
-//        return isNull(coll) || coll.isEmpty();
-//    }
-//
-//    /**
-//     * * 判断一个Collection是否非空，包含List，Set，Queue
-//     *
-//     * @param coll 要判断的Collection
-//     * @return true：非空 false：空
-//     */
-//    public static boolean isNotEmpty(Collection<?> coll)
-//    {
-//        return !isEmpty(coll);
-//    }
+    /**
+     * * 判断一个Collection是否为空， 包含List，Set，Queue
+     *
+     * @param coll 要判断的Collection
+     * @return true：为空 false：非空
+     */
+    public static boolean isEmpty(Collection<?> coll)
+    {
+        return isNull(coll) || coll.isEmpty();
+    }
+
+    /**
+     * * 判断一个Collection是否非空，包含List，Set，Queue
+     *
+     * @param coll 要判断的Collection
+     * @return true：非空 false：空
+     */
+    public static boolean isNotEmpty(Collection<?> coll)
+    {
+        return !isEmpty(coll);
+    }
 //
 //    /**
 //     * * 判断一个对象数组是否为空
@@ -125,28 +125,28 @@
 //        return !isEmpty(str);
 //    }
 //
-//    /**
-//     * * 判断一个对象是否为空
-//     *
-//     * @param object Object
-//     * @return true：为空 false：非空
-//     */
-//    public static boolean isNull(Object object)
-//    {
-//        return object == null;
-//    }
-//
-//    /**
-//     * * 判断一个对象是否非空
-//     *
-//     * @param object Object
-//     * @return true：非空 false：空
-//     */
-//    public static boolean isNotNull(Object object)
-//    {
-//        return !isNull(object);
-//    }
-//
+    /**
+     * * 判断一个对象是否为空
+     *
+     * @param object Object
+     * @return true：为空 false：非空
+     */
+    public static boolean isNull(Object object)
+    {
+        return object == null;
+    }
+
+    /**
+     * * 判断一个对象是否非空
+     *
+     * @param object Object
+     * @return true：非空 false：空
+     */
+    public static boolean isNotNull(Object object)
+    {
+        return !isNull(object);
+    }
+
 //    /**
 //     * * 判断一个对象是否是数组类型（Java基本型别的数组）
 //     *
@@ -711,4 +711,4 @@
 //        }
 //        return sb.toString();
 //    }
-//}
+}
