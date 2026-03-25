@@ -7,15 +7,15 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-//import com.ruoyi.common.utils.security.ShiroUtils;
+import com.ruoyi.common.utils.security.ShiroUtils;
 //import com.ruoyi.common.xss.Xss;
-//import com.ruoyi.framework.aspectj.lang.annotation.Excel;
-//import com.ruoyi.framework.aspectj.lang.annotation.Excel.ColumnType;
-//import com.ruoyi.framework.aspectj.lang.annotation.Excel.Type;
-//import com.ruoyi.framework.aspectj.lang.annotation.Excels;
+import com.ruoyi.framework.aspectj.lang.annotation.Excel;
+import com.ruoyi.framework.aspectj.lang.annotation.Excel.ColumnType;
+import com.ruoyi.framework.aspectj.lang.annotation.Excel.Type;
+import com.ruoyi.framework.aspectj.lang.annotation.Excels;
 import com.ruoyi.framework.web.domain.BaseEntity;
-//import com.ruoyi.project.system.dept.domain.Dept;
-//import com.ruoyi.project.system.role.domain.Role;
+import com.ruoyi.project.system.dept.domain.Dept;
+import com.ruoyi.project.system.role.domain.Role;
 
 /**
  * 用户对象 sys_user
@@ -27,11 +27,11 @@ public class User extends BaseEntity
     private static final long serialVersionUID = 1L;
 
     /** 用户ID */
-//    @Excel(name = "用户序号", type = Type.EXPORT, cellType = ColumnType.NUMERIC, prompt = "用户编号")
+    @Excel(name = "用户序号", type = Type.EXPORT, cellType = ColumnType.NUMERIC, prompt = "用户编号")
     private Long userId;
 
     /** 部门ID */
-//    @Excel(name = "部门编号", type = Type.IMPORT)
+    @Excel(name = "部门编号", type = Type.IMPORT)
     private Long deptId;
 
     /** 部门父ID */
@@ -41,26 +41,26 @@ public class User extends BaseEntity
     private Long roleId;
 
     /** 登录名称 */
-//    @Excel(name = "登录名称")
+    @Excel(name = "登录名称")
     private String loginName;
 
     /** 用户名称 */
-//    @Excel(name = "用户名称")
+    @Excel(name = "用户名称")
     private String userName;
 
     /** 用户类型 */
     private String userType;
 
     /** 用户邮箱 */
-//    @Excel(name = "用户邮箱")
+    @Excel(name = "用户邮箱")
     private String email;
 
     /** 手机号码 */
-//    @Excel(name = "手机号码", cellType = ColumnType.TEXT)
+    @Excel(name = "手机号码", cellType = ColumnType.TEXT)
     private String phonenumber;
 
     /** 用户性别 */
-//    @Excel(name = "用户性别", readConverterExp = "0=男,1=女,2=未知")
+    @Excel(name = "用户性别", readConverterExp = "0=男,1=女,2=未知")
     private String sex;
 
     /** 用户头像 */
@@ -73,37 +73,37 @@ public class User extends BaseEntity
     private String salt;
 
     /** 账号状态（0正常 1停用） */
-//    @Excel(name = "账号状态", readConverterExp = "0=正常,1=停用")
+    @Excel(name = "账号状态", readConverterExp = "0=正常,1=停用")
     private String status;
 
     /** 删除标志（0代表存在 2代表删除） */
     private String delFlag;
 
     /** 最后登录IP */
-//    @Excel(name = "最后登录IP", type = Type.EXPORT)
+    @Excel(name = "最后登录IP", type = Type.EXPORT)
     private String loginIp;
 
     /** 最后登录时间 */
-//    @Excel(name = "最后登录时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss", type = Type.EXPORT)
+    @Excel(name = "最后登录时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss", type = Type.EXPORT)
     private Date loginDate;
 
     /** 密码最后更新时间 */
     private Date pwdUpdateDate;
 
-//    /** 部门对象 */
-//    @Excels({
-//        @Excel(name = "部门名称", targetAttr = "deptName", type = Type.EXPORT),
-//        @Excel(name = "部门负责人", targetAttr = "leader", type = Type.EXPORT)
-//    })
-//    private Dept dept;
-//
-//    private List<Role> roles;
-//
-//    /** 角色组 */
-//    private Long[] roleIds;
-//
-//    /** 岗位组 */
-//    private Long[] postIds;
+    /** 部门对象 */
+    @Excels({
+        @Excel(name = "部门名称", targetAttr = "deptName", type = Type.EXPORT),
+        @Excel(name = "部门负责人", targetAttr = "leader", type = Type.EXPORT)
+    })
+    private Dept dept;
+
+    private List<Role> roles;
+
+    /** 角色组 */
+    private Long[] roleIds;
+
+    /** 岗位组 */
+    private Long[] postIds;
 
     public User()
     {
@@ -125,10 +125,10 @@ public class User extends BaseEntity
         this.userId = userId;
     }
 
-//    public boolean isAdmin()
-//    {
-//        return ShiroUtils.isAdmin(this.userId);
-//    }
+    public boolean isAdmin()
+    {
+        return ShiroUtils.isAdmin(this.userId);
+    }
 
     public Long getDeptId()
     {
@@ -321,75 +321,75 @@ public class User extends BaseEntity
         this.pwdUpdateDate = pwdUpdateDate;
     }
 
-//    public Dept getDept()
-//    {
-//        if (dept == null)
-//        {
-//            dept = new Dept();
-//        }
-//        return dept;
-//    }
-//
-//    public void setDept(Dept dept)
-//    {
-//        this.dept = dept;
-//    }
-//
-//    public List<Role> getRoles()
-//    {
-//        return roles;
-//    }
-//
-//    public void setRoles(List<Role> roles)
-//    {
-//        this.roles = roles;
-//    }
-//
-//    public Long[] getRoleIds()
-//    {
-//        return roleIds;
-//    }
-//
-//    public void setRoleIds(Long[] roleIds)
-//    {
-//        this.roleIds = roleIds;
-//    }
-//
-//    public Long[] getPostIds()
-//    {
-//        return postIds;
-//    }
-//
-//    public void setPostIds(Long[] postIds)
-//    {
-//        this.postIds = postIds;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-//            .append("userId", getUserId())
-//            .append("deptId", getDeptId())
-//            .append("loginName", getLoginName())
-//            .append("userName", getUserName())
-//            .append("userType", getUserType())
-//            .append("email", getEmail())
-//            .append("phonenumber", getPhonenumber())
-//            .append("sex", getSex())
-//            .append("avatar", getAvatar())
-//            .append("password", getPassword())
-//            .append("salt", getSalt())
-//            .append("status", getStatus())
-//            .append("delFlag", getDelFlag())
-//            .append("loginIp", getLoginIp())
-//            .append("loginDate", getLoginDate())
-//            .append("createBy", getCreateBy())
-//            .append("createTime", getCreateTime())
-//            .append("updateBy", getUpdateBy())
-//            .append("updateTime", getUpdateTime())
-//            .append("remark", getRemark())
-//            .append("dept", getDept())
-//            .append("roles", getRoles())
-//            .toString();
-//    }
+    public Dept getDept()
+    {
+        if (dept == null)
+        {
+            dept = new Dept();
+        }
+        return dept;
+    }
+
+    public void setDept(Dept dept)
+    {
+        this.dept = dept;
+    }
+
+    public List<Role> getRoles()
+    {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles)
+    {
+        this.roles = roles;
+    }
+
+    public Long[] getRoleIds()
+    {
+        return roleIds;
+    }
+
+    public void setRoleIds(Long[] roleIds)
+    {
+        this.roleIds = roleIds;
+    }
+
+    public Long[] getPostIds()
+    {
+        return postIds;
+    }
+
+    public void setPostIds(Long[] postIds)
+    {
+        this.postIds = postIds;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
+            .append("userId", getUserId())
+            .append("deptId", getDeptId())
+            .append("loginName", getLoginName())
+            .append("userName", getUserName())
+            .append("userType", getUserType())
+            .append("email", getEmail())
+            .append("phonenumber", getPhonenumber())
+            .append("sex", getSex())
+            .append("avatar", getAvatar())
+            .append("password", getPassword())
+            .append("salt", getSalt())
+            .append("status", getStatus())
+            .append("delFlag", getDelFlag())
+            .append("loginIp", getLoginIp())
+            .append("loginDate", getLoginDate())
+            .append("createBy", getCreateBy())
+            .append("createTime", getCreateTime())
+            .append("updateBy", getUpdateBy())
+            .append("updateTime", getUpdateTime())
+            .append("remark", getRemark())
+            .append("dept", getDept())
+            .append("roles", getRoles())
+            .toString();
+    }
 }

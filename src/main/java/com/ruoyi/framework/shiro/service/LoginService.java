@@ -92,17 +92,17 @@ public class LoginService
         // 查询用户信息
         User user = userService.selectUserByLoginName(username);
 
-//        /**
-//        if (user == null && maybeMobilePhoneNumber(username))
-//        {
-//            user = userService.selectUserByPhoneNumber(username);
-//        }
-//
-//        if (user == null && maybeEmail(username))
-//        {
-//            user = userService.selectUserByEmail(username);
-//        }
-//        */
+        /**
+        if (user == null && maybeMobilePhoneNumber(username))
+        {
+            user = userService.selectUserByPhoneNumber(username);
+        }
+
+        if (user == null && maybeEmail(username))
+        {
+            user = userService.selectUserByEmail(username);
+        }
+        */
 
         if (user == null)
         {
