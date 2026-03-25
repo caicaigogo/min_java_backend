@@ -32,7 +32,7 @@ import com.ruoyi.framework.shiro.realm.UserRealm;
 //import com.ruoyi.framework.shiro.session.OnlineSessionFactory;
 import com.ruoyi.framework.shiro.web.CustomShiroFilterFactoryBean;
 //import com.ruoyi.framework.shiro.web.filter.LogoutFilter;
-//import com.ruoyi.framework.shiro.web.filter.captcha.CaptchaValidateFilter;
+import com.ruoyi.framework.shiro.web.filter.captcha.CaptchaValidateFilter;
 //import com.ruoyi.framework.shiro.web.filter.csrf.CsrfValidateFilter;
 //import com.ruoyi.framework.shiro.web.filter.kickout.KickoutSessionFilter;
 //import com.ruoyi.framework.shiro.web.filter.online.OnlineSessionFilter;
@@ -72,18 +72,18 @@ public class ShiroConfig
 //     */
 //    @Value("${shiro.session.kickoutAfter}")
 //    private boolean kickoutAfter;
-//
-//    /**
-//     * 验证码开关
-//     */
-//    @Value("${shiro.user.captchaEnabled}")
-//    private boolean captchaEnabled;
-//
-//    /**
-//     * 验证码类型
-//     */
-//    @Value("${shiro.user.captchaType}")
-//    private String captchaType;
+
+    /**
+     * 验证码开关
+     */
+    @Value("${shiro.user.captchaEnabled}")
+    private boolean captchaEnabled;
+
+    /**
+     * 验证码类型
+     */
+    @Value("${shiro.user.captchaType}")
+    private String captchaType;
 //
 //    /**
 //     * 设置Cookie的域名
@@ -324,22 +324,21 @@ public class ShiroConfig
 //        // 退出 logout地址，shiro去清除session
 //        filterChainDefinitionMap.put("/logout", "logout");
         // 不需要拦截的访问
-        filterChainDefinitionMap.put("/login", "anon");
-//        filterChainDefinitionMap.put("/login", "anon,captchaValidate");
+        filterChainDefinitionMap.put("/login", "anon,captchaValidate");
 //        // 注册相关
 //        filterChainDefinitionMap.put("/register", "anon,captchaValidate");
 //        // 系统权限列表
 //        // filterChainDefinitionMap.putAll(SpringUtils.getBean(IMenuService.class).selectPermsAll());
 //
-//        Map<String, Filter> filters = new LinkedHashMap<String, Filter>();
+        Map<String, Filter> filters = new LinkedHashMap<String, Filter>();
 //        filters.put("onlineSession", onlineSessionFilter());
 //        filters.put("syncOnlineSession", syncOnlineSessionFilter());
-//        filters.put("captchaValidate", captchaValidateFilter());
+        filters.put("captchaValidate", captchaValidateFilter());
 //        filters.put("csrfValidateFilter", csrfValidateFilter());
 //        filters.put("kickout", kickoutSessionFilter());
 //        // 注销成功，则跳转到指定页面
 //        filters.put("logout", logoutFilter());
-//        shiroFilterFactoryBean.setFilters(filters);
+        shiroFilterFactoryBean.setFilters(filters);
 
         // 所有请求需要认证
         filterChainDefinitionMap.put("/**", "user");
@@ -370,17 +369,17 @@ public class ShiroConfig
 //        return syncOnlineSessionFilter;
 //    }
 //
-//    /**
-//     * 自定义验证码过滤器
-//     */
-//    public CaptchaValidateFilter captchaValidateFilter()
-//    {
-//        CaptchaValidateFilter captchaValidateFilter = new CaptchaValidateFilter();
-//        captchaValidateFilter.setCaptchaEnabled(captchaEnabled);
-//        captchaValidateFilter.setCaptchaType(captchaType);
-//        return captchaValidateFilter;
-//    }
-//
+    /**
+     * 自定义验证码过滤器
+     */
+    public CaptchaValidateFilter captchaValidateFilter()
+    {
+        CaptchaValidateFilter captchaValidateFilter = new CaptchaValidateFilter();
+        captchaValidateFilter.setCaptchaEnabled(captchaEnabled);
+        captchaValidateFilter.setCaptchaType(captchaType);
+        return captchaValidateFilter;
+    }
+
 //    /**
 //     * cookie 属性设置
 //     */

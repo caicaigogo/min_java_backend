@@ -1,12 +1,12 @@
-//package com.ruoyi.common.constant;
-//
-///**
-// * Shiro通用常量
-// *
-// * @author ruoyi
-// */
-//public class ShiroConstants
-//{
+package com.ruoyi.common.constant;
+
+/**
+ * Shiro通用常量
+ *
+ * @author ruoyi
+ */
+public class ShiroConstants
+{
 //    /**
 //     * 当前登录的用户
 //     */
@@ -47,31 +47,31 @@
 //     */
 //    public static final String ONLINE_SESSION = "online_session";
 //
-//    /**
-//     * 验证码key
-//     */
-//    public static final String CURRENT_CAPTCHA = "captcha";
-//
-//    /**
-//     * 验证码开关
-//     */
-//    public static final String CURRENT_ENABLED = "captchaEnabled";
-//
-//    /**
-//     * 验证码类型
-//     */
-//    public static final String CURRENT_TYPE = "captchaType";
-//
-//    /**
-//     * 验证码
-//     */
-//    public static final String CURRENT_VALIDATECODE = "validateCode";
-//
-//    /**
-//     * 验证码错误
-//     */
-//    public static final String CAPTCHA_ERROR = "captchaError";
-//
+    /**
+     * 验证码key
+     */
+    public static final String CURRENT_CAPTCHA = "captcha";
+
+    /**
+     * 验证码开关
+     */
+    public static final String CURRENT_ENABLED = "captchaEnabled";
+
+    /**
+     * 验证码类型
+     */
+    public static final String CURRENT_TYPE = "captchaType";
+
+    /**
+     * 验证码
+     */
+    public static final String CURRENT_VALIDATECODE = "validateCode";
+
+    /**
+     * 验证码错误
+     */
+    public static final String CAPTCHA_ERROR = "captchaError";
+
 //    /**
 //     * 登录记录缓存
 //     */
@@ -81,4 +81,4 @@
 //     * 系统活跃用户缓存
 //     */
 //    public static final String SYS_USERCACHE = "sys-userCache";
-//}
+}
