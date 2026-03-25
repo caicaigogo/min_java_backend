@@ -58,8 +58,8 @@ spring:
 #  jackson:
 #    time-zone: GMT+8
 #    date-format: yyyy-MM-dd HH:mm:ss
-  profiles:
-    active: druid
+#  profiles:
+#    active: druid
 #  # 文件上传
 #  servlet:
 #    multipart:
@@ -72,7 +72,11 @@ spring:
 #    restart:
 #      # 热部署开关
 #      enabled: true
-
+  datasource:
+    url: jdbc:mysql://localhost:3306/ry
+    username: root
+    password: mysql-password
+    driver-class-name: com.mysql.cj.jdbc.Driver
 ## MyBatis
 #mybatis:
 #    # 搜索指定包别名
