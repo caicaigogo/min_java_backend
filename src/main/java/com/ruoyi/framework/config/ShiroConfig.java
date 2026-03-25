@@ -324,6 +324,7 @@ public class ShiroConfig
 //        // 退出 logout地址，shiro去清除session
 //        filterChainDefinitionMap.put("/logout", "logout");
         // 不需要拦截的访问
+        filterChainDefinitionMap.put("/login", "anon");
 //        filterChainDefinitionMap.put("/login", "anon,captchaValidate");
 //        // 注册相关
 //        filterChainDefinitionMap.put("/register", "anon,captchaValidate");
@@ -341,6 +342,7 @@ public class ShiroConfig
 //        shiroFilterFactoryBean.setFilters(filters);
 
         // 所有请求需要认证
+        filterChainDefinitionMap.put("/**", "user");
 //        filterChainDefinitionMap.put("/**", "user,kickout,onlineSession,syncOnlineSession,csrfValidateFilter");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
