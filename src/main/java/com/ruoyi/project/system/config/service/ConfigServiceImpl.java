@@ -1,29 +1,29 @@
-//package com.ruoyi.project.system.config.service;
-//
-//import java.util.List;
-//import javax.annotation.PostConstruct;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
+package com.ruoyi.project.system.config.service;
+
+import java.util.List;
+import javax.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 //import com.ruoyi.common.constant.Constants;
 //import com.ruoyi.common.constant.UserConstants;
 //import com.ruoyi.common.exception.ServiceException;
 //import com.ruoyi.common.utils.CacheUtils;
-//import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.common.utils.security.ShiroUtils;
 //import com.ruoyi.common.utils.text.Convert;
-//import com.ruoyi.project.system.config.domain.Config;
-//import com.ruoyi.project.system.config.mapper.ConfigMapper;
-//
-///**
-// * 参数配置 服务层实现
-// *
-// * @author ruoyi
-// */
-//@Service
-//public class ConfigServiceImpl implements IConfigService
-//{
-//    @Autowired
-//    private ConfigMapper configMapper;
+import com.ruoyi.project.system.config.domain.Config;
+import com.ruoyi.project.system.config.mapper.ConfigMapper;
+
+/**
+ * 参数配置 服务层实现
+ *
+ * @author ruoyi
+ */
+@Service
+public class ConfigServiceImpl implements IConfigService
+{
+    @Autowired
+    private ConfigMapper configMapper;
 //
 //    /**
 //     * 项目启动时，初始化参数到缓存
@@ -47,32 +47,32 @@
 //        config.setConfigId(configId);
 //        return configMapper.selectConfig(config);
 //    }
-//
-//    /**
-//     * 根据键名查询参数配置信息
-//     *
-//     * @param configKey 参数名称
-//     * @return 参数键值
-//     */
-//    @Override
-//    public String selectConfigByKey(String configKey)
-//    {
+
+    /**
+     * 根据键名查询参数配置信息
+     *
+     * @param configKey 参数名称
+     * @return 参数键值
+     */
+    @Override
+    public String selectConfigByKey(String configKey)
+    {
 //        String configValue = Convert.toStr(CacheUtils.get(getCacheName(), getCacheKey(configKey)));
 //        if (StringUtils.isNotEmpty(configValue))
 //        {
 //            return configValue;
 //        }
-//        Config config = new Config();
-//        config.setConfigKey(configKey);
-//        Config retConfig = configMapper.selectConfig(config);
-//        if (StringUtils.isNotNull(retConfig))
-//        {
+        Config config = new Config();
+        config.setConfigKey(configKey);
+        Config retConfig = configMapper.selectConfig(config);
+        if (StringUtils.isNotNull(retConfig))
+        {
 //            CacheUtils.put(getCacheName(), getCacheKey(configKey), retConfig.getConfigValue());
-//            return retConfig.getConfigValue();
-//        }
-//        return StringUtils.EMPTY;
-//    }
-//
+            return retConfig.getConfigValue();
+        }
+        return StringUtils.EMPTY;
+    }
+
 //    /**
 //     * 查询参数配置列表
 //     *
@@ -218,4 +218,4 @@
 //    {
 //        return Constants.SYS_CONFIG_KEY + configKey;
 //    }
-//}
+}

@@ -1,22 +1,25 @@
-//package com.ruoyi.project.system.config.mapper;
-//
-//import com.ruoyi.project.system.config.domain.Config;
-//import java.util.List;
-//
-///**
-// * 参数配置 数据层
-// *
-// * @author ruoyi
-// */
-//public interface ConfigMapper
-//{
-//    /**
-//     * 查询参数配置信息
-//     *
-//     * @param config 参数配置信息
-//     * @return 参数配置信息
-//     */
-//    public Config selectConfig(Config config);
+package com.ruoyi.project.system.config.mapper;
+
+import com.ruoyi.project.system.config.domain.Config;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+
+/**
+ * 参数配置 数据层
+ *
+ * @author ruoyi
+ */
+@Mapper
+public interface ConfigMapper
+{
+    /**
+     * 查询参数配置信息
+     *
+     * @param config 参数配置信息
+     * @return 参数配置信息
+     */
+    public Config selectConfig(Config config);
 //
 //    /**
 //     * 通过ID查询配置
@@ -73,4 +76,4 @@
 //     * @return 结果
 //     */
 //    public int deleteConfigByIds(String[] configIds);
-//}
+}

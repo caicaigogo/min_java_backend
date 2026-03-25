@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.ruoyi.common.utils.ServletUtils;
 import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.text.Convert;
+import com.ruoyi.common.utils.text.Convert;
 import com.ruoyi.framework.web.controller.BaseController;
 import com.ruoyi.framework.web.domain.AjaxResult;
-//import com.ruoyi.framework.web.service.ConfigService;
+import com.ruoyi.framework.web.service.ConfigService;
 
 /**
  * 登录验证
@@ -34,8 +34,8 @@ public class LoginController extends BaseController
     @Value("${shiro.rememberMe.enabled: false}")
     private boolean rememberMe;
 
-//    @Autowired
-//    private ConfigService configService;
+    @Autowired
+    private ConfigService configService;
 
     @GetMapping("/login")
     public String login(HttpServletRequest request, HttpServletResponse response, ModelMap mmap)
@@ -47,8 +47,8 @@ public class LoginController extends BaseController
         }
         // 是否开启记住我
         mmap.put("isRemembered", rememberMe);
-//        // 是否开启用户注册
-//        mmap.put("isAllowRegister", Convert.toBool(configService.getKey("sys.account.registerUser"), false));
+        // 是否开启用户注册
+        mmap.put("isAllowRegister", Convert.toBool(configService.getKey("sys.account.registerUser"), false));
         return "login";
     }
 
@@ -74,9 +74,9 @@ public class LoginController extends BaseController
         }
     }
 
-//    @GetMapping("/unauth")
-//    public String unauth()
-//    {
-//        return "error/unauth";
-//    }
+    @GetMapping("/unauth")
+    public String unauth()
+    {
+        return "error/unauth";
+    }
 }

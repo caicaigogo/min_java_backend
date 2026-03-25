@@ -1,15 +1,15 @@
-//package com.ruoyi.project.system.config.service;
-//
+package com.ruoyi.project.system.config.service;
+
 //import com.ruoyi.project.system.config.domain.Config;
-//import java.util.List;
-//
-///**
-// * 参数配置 服务层
-// *
-// * @author ruoyi
-// */
-//public interface IConfigService
-//{
+import java.util.List;
+
+/**
+ * 参数配置 服务层
+ *
+ * @author ruoyi
+ */
+public interface IConfigService
+{
 //    /**
 //     * 查询参数配置信息
 //     *
@@ -18,14 +18,14 @@
 //     */
 //    public Config selectConfigById(Long configId);
 //
-//    /**
-//     * 根据键名查询参数配置信息
-//     *
-//     * @param configKey 参数键名
-//     * @return 参数键值
-//     */
-//    public String selectConfigByKey(String configKey);
-//
+    /**
+     * 根据键名查询参数配置信息
+     *
+     * @param configKey 参数键名
+     * @return 参数键值
+     */
+    public String selectConfigByKey(String configKey);
+
 //    /**
 //     * 查询参数配置列表
 //     *
@@ -79,4 +79,4 @@
 //     * @return 结果
 //     */
 //    public boolean checkConfigKeyUnique(Config config);
-//}
+}
