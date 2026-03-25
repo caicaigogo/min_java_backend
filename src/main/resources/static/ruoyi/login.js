@@ -2,10 +2,10 @@
 $(function() {
     // validateKickout();
     validateRule();
-    // $('.imgcode').click(function() {
-    //     var url = ctx + "captcha/captchaImage?type=" + captchaType + "&s=" + Math.random();
-    //     $(".imgcode").attr("src", url);
-    // });
+    $('.imgcode').click(function() {
+        var url = ctx + "captcha/captchaImage?type=" + captchaType + "&s=" + Math.random();
+        $(".imgcode").attr("src", url);
+    });
 });
 
 function login() {
@@ -33,8 +33,8 @@ function login() {
             if (r.code == web_status.SUCCESS) {
                 location.href = ctx + 'index';
             } else {
-                // $('.imgcode').click();
-                // $(".code").val("");
+                $('.imgcode').click();
+                $(".code").val("");
                 $.modal.msg(r.msg);
             }
             $.modal.closeLoading();

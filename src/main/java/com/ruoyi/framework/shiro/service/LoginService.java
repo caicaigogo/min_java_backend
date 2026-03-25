@@ -6,22 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 //import com.ruoyi.common.constant.Constants;
 import com.ruoyi.common.constant.ShiroConstants;
-//import com.ruoyi.common.constant.UserConstants;
-//import com.ruoyi.common.exception.user.BlackListException;
+import com.ruoyi.common.constant.UserConstants;
+import com.ruoyi.common.exception.user.BlackListException;
 import com.ruoyi.common.exception.user.CaptchaException;
 //import com.ruoyi.common.exception.user.UserBlockedException;
 //import com.ruoyi.common.exception.user.UserDeleteException;
-//import com.ruoyi.common.exception.user.UserNotExistsException;
-//import com.ruoyi.common.exception.user.UserPasswordNotMatchException;
+import com.ruoyi.common.exception.user.UserNotExistsException;
+import com.ruoyi.common.exception.user.UserPasswordNotMatchException;
 //import com.ruoyi.common.utils.DateUtils;
-//import com.ruoyi.common.utils.IpUtils;
+import com.ruoyi.common.utils.IpUtils;
 //import com.ruoyi.common.utils.MessageUtils;
 import com.ruoyi.common.utils.ServletUtils;
-//import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.security.ShiroUtils;
+import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.security.ShiroUtils;
 //import com.ruoyi.framework.manager.AsyncManager;
 //import com.ruoyi.framework.manager.factory.AsyncFactory;
-//import com.ruoyi.project.system.config.service.IConfigService;
+import com.ruoyi.project.system.config.service.IConfigService;
 //import com.ruoyi.project.system.menu.service.IMenuService;
 //import com.ruoyi.project.system.role.domain.Role;
 import com.ruoyi.project.system.user.domain.User;
@@ -44,10 +44,10 @@ public class LoginService
 //
 //    @Autowired
 //    private IMenuService menuService;
-//
-//    @Autowired
-//    private IConfigService configService;
-//
+
+    @Autowired
+    private IConfigService configService;
+
     /**
      * 登录
      */
@@ -59,35 +59,35 @@ public class LoginService
 //            AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.jcaptcha.error")));
             throw new CaptchaException();
         }
-//        // 用户名或密码为空 错误
-//        if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password))
-//        {
+        // 用户名或密码为空 错误
+        if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password))
+        {
 //            AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("not.null")));
-//            throw new UserNotExistsException();
-//        }
-//        // 密码如果不在指定范围内 错误
-//        if (password.length() < UserConstants.PASSWORD_MIN_LENGTH
-//                || password.length() > UserConstants.PASSWORD_MAX_LENGTH)
-//        {
+            throw new UserNotExistsException();
+        }
+        // 密码如果不在指定范围内 错误
+        if (password.length() < UserConstants.PASSWORD_MIN_LENGTH
+                || password.length() > UserConstants.PASSWORD_MAX_LENGTH)
+        {
 //            AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.password.not.match")));
-//            throw new UserPasswordNotMatchException();
-//        }
-//
-//        // 用户名不在指定范围内 错误
-//        if (username.length() < UserConstants.USERNAME_MIN_LENGTH
-//                || username.length() > UserConstants.USERNAME_MAX_LENGTH)
-//        {
+            throw new UserPasswordNotMatchException();
+        }
+
+        // 用户名不在指定范围内 错误
+        if (username.length() < UserConstants.USERNAME_MIN_LENGTH
+                || username.length() > UserConstants.USERNAME_MAX_LENGTH)
+        {
 //            AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.password.not.match")));
-//            throw new UserPasswordNotMatchException();
-//        }
-//
-//        // IP黑名单校验
-//        String blackStr = configService.selectConfigByKey("sys.login.blackIPList");
-//        if (IpUtils.isMatchedIp(blackStr, ShiroUtils.getIp()))
-//        {
+            throw new UserPasswordNotMatchException();
+        }
+
+        // IP黑名单校验
+        String blackStr = configService.selectConfigByKey("sys.login.blackIPList");
+        if (IpUtils.isMatchedIp(blackStr, ShiroUtils.getIp()))
+        {
 //            AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("login.blocked")));
-//            throw new BlackListException();
-//        }
+            throw new BlackListException();
+        }
 
         // 查询用户信息
         User user = userService.selectUserByLoginName(username);
@@ -103,12 +103,12 @@ public class LoginService
 //            user = userService.selectUserByEmail(username);
 //        }
 //        */
-//
-//        if (user == null)
-//        {
+
+        if (user == null)
+        {
 //            AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.not.exists")));
-//            throw new UserNotExistsException();
-//        }
+            throw new UserNotExistsException();
+        }
 //
 //        if (UserStatus.DELETED.getCode().equals(user.getDelFlag()))
 //        {
@@ -129,7 +129,7 @@ public class LoginService
 //        recordLoginInfo(user.getUserId());
         return user;
     }
-//
+
 //    /**
 //    private boolean maybeEmail(String username)
 //    {
