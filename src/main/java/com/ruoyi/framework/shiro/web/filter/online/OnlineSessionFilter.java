@@ -76,22 +76,22 @@ public class OnlineSessionFilter extends AccessControlFilter
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception
     {
-//        Subject subject = getSubject(request, response);
-//        if (subject != null)
-//        {
-//            subject.logout();
-//        }
-//        saveRequestAndRedirectToLogin(request, response);
+        Subject subject = getSubject(request, response);
+        if (subject != null)
+        {
+            subject.logout();
+        }
+        saveRequestAndRedirectToLogin(request, response);
         return false;
     }
 
-//    // 跳转到登录页
-//    @Override
-//    protected void redirectToLogin(ServletRequest request, ServletResponse response) throws IOException
-//    {
-//        WebUtils.issueRedirect(request, response, loginUrl);
-//    }
-//
+    // 跳转到登录页
+    @Override
+    protected void redirectToLogin(ServletRequest request, ServletResponse response) throws IOException
+    {
+        WebUtils.issueRedirect(request, response, loginUrl);
+    }
+
     public void setOnlineSessionDAO(OnlineSessionDAO onlineSessionDAO)
     {
         this.onlineSessionDAO = onlineSessionDAO;
