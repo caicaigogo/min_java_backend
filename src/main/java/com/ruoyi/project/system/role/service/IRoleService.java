@@ -1,17 +1,17 @@
-//package com.ruoyi.project.system.role.service;
-//
-//import java.util.List;
-//import java.util.Set;
-//import com.ruoyi.project.system.role.domain.Role;
-//import com.ruoyi.project.system.user.domain.UserRole;
-//
-///**
-// * 角色业务层
-// *
-// * @author ruoyi
-// */
-//public interface IRoleService
-//{
+package com.ruoyi.project.system.role.service;
+
+import java.util.List;
+import java.util.Set;
+import com.ruoyi.project.system.role.domain.Role;
+import com.ruoyi.project.system.user.domain.UserRole;
+
+/**
+ * 角色业务层
+ *
+ * @author ruoyi
+ */
+public interface IRoleService
+{
 //    /**
 //     * 根据条件分页查询角色数据
 //     *
@@ -19,15 +19,15 @@
 //     * @return 角色数据集合信息
 //     */
 //    public List<Role> selectRoleList(Role role);
-//
-//    /**
-//     * 根据用户ID查询角色列表
-//     *
-//     * @param userId 用户ID
-//     * @return 权限列表
-//     */
-//    public Set<String> selectRoleKeys(Long userId);
-//
+
+    /**
+     * 根据用户ID查询角色列表
+     *
+     * @param userId 用户ID
+     * @return 权限列表
+     */
+    public Set<String> selectRoleKeys(Long userId);
+
 //    /**
 //     * 根据用户ID查询角色权限
 //     *
@@ -163,4 +163,4 @@
 //     * @return 结果
 //     */
 //    public int insertAuthUsers(Long roleId, String userIds);
-//}
+}

@@ -42,23 +42,23 @@ public interface MenuMapper
      * @return 菜单列表
      */
     public List<Menu> selectMenusByUserId(Long userId);
-//
-//    /**
-//     * 根据用户ID查询权限
-//     *
-//     * @param userId 用户ID
-//     * @return 权限列表
-//     */
-//    public List<String> selectPermsByUserId(Long userId);
-//
-//    /**
-//     * 根据角色ID查询权限
-//     *
-//     * @param roleId 角色ID
-//     * @return 权限列表
-//     */
-//    public List<String> selectPermsByRoleId(Long roleId);
-//
+
+    /**
+     * 根据用户ID查询权限
+     *
+     * @param userId 用户ID
+     * @return 权限列表
+     */
+    public List<String> selectPermsByUserId(Long userId);
+
+    /**
+     * 根据角色ID查询权限
+     *
+     * @param roleId 角色ID
+     * @return 权限列表
+     */
+    public List<String> selectPermsByRoleId(Long roleId);
+
 //    /**
 //     * 根据角色ID查询菜单
 //     *

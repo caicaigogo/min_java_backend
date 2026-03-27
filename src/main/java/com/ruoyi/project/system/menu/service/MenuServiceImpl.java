@@ -104,48 +104,48 @@ public class MenuServiceImpl implements IMenuService
 //        }
 //        return menuList;
 //    }
-//
-//    /**
-//     * 根据用户ID查询权限
-//     *
-//     * @param userId 用户ID
-//     * @return 权限列表
-//     */
-//    @Override
-//    public Set<String> selectPermsByUserId(Long userId)
-//    {
-//        List<String> perms = menuMapper.selectPermsByUserId(userId);
-//        Set<String> permsSet = new HashSet<>();
-//        for (String perm : perms)
-//        {
-//            if (StringUtils.isNotEmpty(perm))
-//            {
-//                permsSet.addAll(Arrays.asList(perm.trim().split(",")));
-//            }
-//        }
-//        return permsSet;
-//    }
-//
-//    /**
-//     * 根据角色ID查询权限
-//     *
-//     * @param roleId 角色ID
-//     * @return 权限列表
-//     */
-//    @Override
-//    public Set<String> selectPermsByRoleId(Long roleId)
-//    {
-//        List<String> perms = menuMapper.selectPermsByRoleId(roleId);
-//        Set<String> permsSet = new HashSet<>();
-//        for (String perm : perms)
-//        {
-//            if (StringUtils.isNotEmpty(perm))
-//            {
-//                permsSet.addAll(Arrays.asList(perm.trim().split(",")));
-//            }
-//        }
-//        return permsSet;
-//    }
+
+    /**
+     * 根据用户ID查询权限
+     *
+     * @param userId 用户ID
+     * @return 权限列表
+     */
+    @Override
+    public Set<String> selectPermsByUserId(Long userId)
+    {
+        List<String> perms = menuMapper.selectPermsByUserId(userId);
+        Set<String> permsSet = new HashSet<>();
+        for (String perm : perms)
+        {
+            if (StringUtils.isNotEmpty(perm))
+            {
+                permsSet.addAll(Arrays.asList(perm.trim().split(",")));
+            }
+        }
+        return permsSet;
+    }
+
+    /**
+     * 根据角色ID查询权限
+     *
+     * @param roleId 角色ID
+     * @return 权限列表
+     */
+    @Override
+    public Set<String> selectPermsByRoleId(Long roleId)
+    {
+        List<String> perms = menuMapper.selectPermsByRoleId(roleId);
+        Set<String> permsSet = new HashSet<>();
+        for (String perm : perms)
+        {
+            if (StringUtils.isNotEmpty(perm))
+            {
+                permsSet.addAll(Arrays.asList(perm.trim().split(",")));
+            }
+        }
+        return permsSet;
+    }
 //
 //    /**
 //     * 根据角色ID查询菜单

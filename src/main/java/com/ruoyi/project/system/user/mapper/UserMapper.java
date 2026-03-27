@@ -123,16 +123,16 @@ public interface UserMapper
 //     */
 //    public int resetUserPwd(@Param("userId") Long userId, @Param("password") String password, @Param("salt") String salt);
 //
-//    /**
-//     * 更新用户登录信息（IP和登录时间）
-//     *
-//     * @param userId 用户ID
-//     * @param loginIp 登录IP地址
-//     * @param loginDate 登录时间
-//     * @return 结果
-//     */
-//    public int updateLoginInfo(@Param("userId") Long userId, @Param("loginIp") String loginIp, @Param("loginDate") Date loginDate);
-//
+    /**
+     * 更新用户登录信息（IP和登录时间）
+     *
+     * @param userId 用户ID
+     * @param loginIp 登录IP地址
+     * @param loginDate 登录时间
+     * @return 结果
+     */
+    public int updateLoginInfo(@Param("userId") Long userId, @Param("loginIp") String loginIp, @Param("loginDate") Date loginDate);
+
 //    /**
 //     * 新增用户信息
 //     *

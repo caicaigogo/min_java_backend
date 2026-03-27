@@ -1,39 +1,39 @@
-//package com.ruoyi.project.system.role.service;
-//
-//import java.util.ArrayList;
-//import java.util.Arrays;
-//import java.util.HashSet;
-//import java.util.List;
-//import java.util.Set;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
-//import com.ruoyi.common.constant.UserConstants;
+package com.ruoyi.project.system.role.service;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.ruoyi.common.constant.UserConstants;
 //import com.ruoyi.common.exception.ServiceException;
-//import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.common.utils.security.ShiroUtils;
 //import com.ruoyi.common.utils.spring.SpringUtils;
 //import com.ruoyi.common.utils.text.Convert;
 //import com.ruoyi.framework.aspectj.lang.annotation.DataScope;
-//import com.ruoyi.project.system.role.domain.Role;
+import com.ruoyi.project.system.role.domain.Role;
 //import com.ruoyi.project.system.role.domain.RoleDept;
 //import com.ruoyi.project.system.role.domain.RoleMenu;
 //import com.ruoyi.project.system.role.mapper.RoleDeptMapper;
-//import com.ruoyi.project.system.role.mapper.RoleMapper;
+import com.ruoyi.project.system.role.mapper.RoleMapper;
 //import com.ruoyi.project.system.role.mapper.RoleMenuMapper;
-//import com.ruoyi.project.system.user.domain.UserRole;
+import com.ruoyi.project.system.user.domain.UserRole;
 //import com.ruoyi.project.system.user.mapper.UserRoleMapper;
-//
-///**
-// * 角色 业务层处理
-// *
-// * @author ruoyi
-// */
-//@Service
-//public class RoleServiceImpl implements IRoleService
-//{
-//    @Autowired
-//    private RoleMapper roleMapper;
+
+/**
+ * 角色 业务层处理
+ *
+ * @author ruoyi
+ */
+@Service
+public class RoleServiceImpl implements IRoleService
+{
+    @Autowired
+    private RoleMapper roleMapper;
 //
 //    @Autowired
 //    private RoleMenuMapper roleMenuMapper;
@@ -56,27 +56,27 @@
 //    {
 //        return roleMapper.selectRoleList(role);
 //    }
-//
-//    /**
-//     * 根据用户ID查询权限
-//     *
-//     * @param userId 用户ID
-//     * @return 权限列表
-//     */
-//    @Override
-//    public Set<String> selectRoleKeys(Long userId)
-//    {
-//        List<Role> perms = roleMapper.selectRolesByUserId(userId);
-//        Set<String> permsSet = new HashSet<>();
-//        for (Role perm : perms)
-//        {
-//            if (StringUtils.isNotNull(perm))
-//            {
-//                permsSet.addAll(Arrays.asList(perm.getRoleKey().trim().split(",")));
-//            }
-//        }
-//        return permsSet;
-//    }
+
+    /**
+     * 根据用户ID查询权限
+     *
+     * @param userId 用户ID
+     * @return 权限列表
+     */
+    @Override
+    public Set<String> selectRoleKeys(Long userId)
+    {
+        List<Role> perms = roleMapper.selectRolesByUserId(userId);
+        Set<String> permsSet = new HashSet<>();
+        for (Role perm : perms)
+        {
+            if (StringUtils.isNotNull(perm))
+            {
+                permsSet.addAll(Arrays.asList(perm.getRoleKey().trim().split(",")));
+            }
+        }
+        return permsSet;
+    }
 //
 //    /**
 //     * 根据用户ID查询角色
@@ -416,4 +416,4 @@
 //        }
 //        return userRoleMapper.batchUserRole(list);
 //    }
-//}
+}

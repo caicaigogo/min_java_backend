@@ -38,22 +38,22 @@ public interface IMenuService
 //     * @return 所有菜单信息
 //     */
 //    public List<Menu> selectMenuAll();
-//
-//    /**
-//     * 根据用户ID查询权限
-//     *
-//     * @param userId 用户ID
-//     * @return 权限列表
-//     */
-//    public Set<String> selectPermsByUserId(Long userId);
-//
-//    /**
-//     * 根据角色ID查询权限
-//     *
-//     * @param roleId 角色ID
-//     * @return 权限列表
-//     */
-//    public Set<String> selectPermsByRoleId(Long roleId);
+
+    /**
+     * 根据用户ID查询权限
+     *
+     * @param userId 用户ID
+     * @return 权限列表
+     */
+    public Set<String> selectPermsByUserId(Long userId);
+
+    /**
+     * 根据角色ID查询权限
+     *
+     * @param roleId 角色ID
+     * @return 权限列表
+     */
+    public Set<String> selectPermsByRoleId(Long roleId);
 //
 //    /**
 //     * 根据角色ID查询菜单

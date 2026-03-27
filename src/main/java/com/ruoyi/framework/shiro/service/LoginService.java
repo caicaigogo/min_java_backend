@@ -9,11 +9,11 @@ import com.ruoyi.common.constant.ShiroConstants;
 import com.ruoyi.common.constant.UserConstants;
 import com.ruoyi.common.exception.user.BlackListException;
 import com.ruoyi.common.exception.user.CaptchaException;
-//import com.ruoyi.common.exception.user.UserBlockedException;
-//import com.ruoyi.common.exception.user.UserDeleteException;
+import com.ruoyi.common.exception.user.UserBlockedException;
+import com.ruoyi.common.exception.user.UserDeleteException;
 import com.ruoyi.common.exception.user.UserNotExistsException;
 import com.ruoyi.common.exception.user.UserPasswordNotMatchException;
-//import com.ruoyi.common.utils.DateUtils;
+import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.common.utils.IpUtils;
 import com.ruoyi.common.utils.MessageUtils;
 import com.ruoyi.common.utils.ServletUtils;
@@ -22,10 +22,10 @@ import com.ruoyi.common.utils.security.ShiroUtils;
 import com.ruoyi.framework.manager.AsyncManager;
 import com.ruoyi.framework.manager.factory.AsyncFactory;
 import com.ruoyi.project.system.config.service.IConfigService;
-//import com.ruoyi.project.system.menu.service.IMenuService;
-//import com.ruoyi.project.system.role.domain.Role;
+import com.ruoyi.project.system.menu.service.IMenuService;
+import com.ruoyi.project.system.role.domain.Role;
 import com.ruoyi.project.system.user.domain.User;
-//import com.ruoyi.project.system.user.domain.UserStatus;
+import com.ruoyi.project.system.user.domain.UserStatus;
 import com.ruoyi.project.system.user.service.IUserService;
 
 /**
@@ -36,14 +36,14 @@ import com.ruoyi.project.system.user.service.IUserService;
 @Component
 public class LoginService
 {
-//    @Autowired
-//    private PasswordService passwordService;
+    @Autowired
+    private PasswordService passwordService;
 
     @Autowired
     private IUserService userService;
-//
-//    @Autowired
-//    private IMenuService menuService;
+
+    @Autowired
+    private IMenuService menuService;
 
     @Autowired
     private IConfigService configService;
@@ -109,76 +109,76 @@ public class LoginService
             AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.not.exists")));
             throw new UserNotExistsException();
         }
-//
-//        if (UserStatus.DELETED.getCode().equals(user.getDelFlag()))
-//        {
-//            AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.password.delete")));
-//            throw new UserDeleteException();
-//        }
-//
-//        if (UserStatus.DISABLE.getCode().equals(user.getStatus()))
-//        {
-//            AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.blocked")));
-//            throw new UserBlockedException();
-//        }
-//
-//        passwordService.validate(user, password);
-//
-//        AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_SUCCESS, MessageUtils.message("user.login.success")));
-//        setRolePermission(user);
-//        recordLoginInfo(user.getUserId());
+
+        if (UserStatus.DELETED.getCode().equals(user.getDelFlag()))
+        {
+            AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.password.delete")));
+            throw new UserDeleteException();
+        }
+
+        if (UserStatus.DISABLE.getCode().equals(user.getStatus()))
+        {
+            AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.blocked")));
+            throw new UserBlockedException();
+        }
+
+        passwordService.validate(user, password);
+
+        AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_SUCCESS, MessageUtils.message("user.login.success")));
+        setRolePermission(user);
+        recordLoginInfo(user.getUserId());
         return user;
     }
 
-//    /**
-//    private boolean maybeEmail(String username)
-//    {
-//        if (!username.matches(UserConstants.EMAIL_PATTERN))
-//        {
-//            return false;
-//        }
-//        return true;
-//    }
-//
-//    private boolean maybeMobilePhoneNumber(String username)
-//    {
-//        if (!username.matches(UserConstants.MOBILE_PHONE_NUMBER_PATTERN))
-//        {
-//            return false;
-//        }
-//        return true;
-//    }
-//    */
-//
-//    /**
-//     * 设置角色权限
-//     *
-//     * @param user 用户信息
-//     */
-//    public void setRolePermission(User user)
-//    {
-//        List<Role> roles = user.getRoles();
-//        if (!roles.isEmpty())
-//        {
-//            // 设置permissions属性，以便数据权限匹配权限
-//            for (Role role : roles)
-//            {
-//                if (StringUtils.equals(role.getStatus(), UserConstants.ROLE_NORMAL) && !role.isAdmin())
-//                {
-//                    Set<String> rolePerms = menuService.selectPermsByRoleId(role.getRoleId());
-//                    role.setPermissions(rolePerms);
-//                }
-//            }
-//        }
-//    }
-//
-//    /**
-//     * 记录登录信息
-//     *
-//     * @param userId 用户ID
-//     */
-//    public void recordLoginInfo(Long userId)
-//    {
-//        userService.updateLoginInfo(userId, ShiroUtils.getIp(), DateUtils.getNowDate());
-//    }
+    /**
+    private boolean maybeEmail(String username)
+    {
+        if (!username.matches(UserConstants.EMAIL_PATTERN))
+        {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean maybeMobilePhoneNumber(String username)
+    {
+        if (!username.matches(UserConstants.MOBILE_PHONE_NUMBER_PATTERN))
+        {
+            return false;
+        }
+        return true;
+    }
+    */
+
+    /**
+     * 设置角色权限
+     *
+     * @param user 用户信息
+     */
+    public void setRolePermission(User user)
+    {
+        List<Role> roles = user.getRoles();
+        if (!roles.isEmpty())
+        {
+            // 设置permissions属性，以便数据权限匹配权限
+            for (Role role : roles)
+            {
+                if (StringUtils.equals(role.getStatus(), UserConstants.ROLE_NORMAL) && !role.isAdmin())
+                {
+                    Set<String> rolePerms = menuService.selectPermsByRoleId(role.getRoleId());
+                    role.setPermissions(rolePerms);
+                }
+            }
+        }
+    }
+
+    /**
+     * 记录登录信息
+     *
+     * @param userId 用户ID
+     */
+    public void recordLoginInfo(Long userId)
+    {
+        userService.updateLoginInfo(userId, ShiroUtils.getIp(), DateUtils.getNowDate());
+    }
 }

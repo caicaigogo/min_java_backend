@@ -72,10 +72,10 @@ public class ShiroConstants
      */
     public static final String CAPTCHA_ERROR = "captchaError";
 
-//    /**
-//     * 登录记录缓存
-//     */
-//    public static final String LOGIN_RECORD_CACHE = "loginRecordCache";
+    /**
+     * 登录记录缓存
+     */
+    public static final String LOGIN_RECORD_CACHE = "loginRecordCache";
 
     /**
      * 系统活跃用户缓存

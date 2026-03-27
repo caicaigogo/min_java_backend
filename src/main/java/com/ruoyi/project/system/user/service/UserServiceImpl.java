@@ -300,19 +300,19 @@ public class UserServiceImpl implements IUserService
 //        return userMapper.updateUserAvatar(userId, avatar) > 0;
 //    }
 //
-//    /**
-//     * 更新用户登录信息（IP和登录时间）
-//     *
-//     * @param userId 用户ID
-//     * @param loginIp 登录IP地址
-//     * @param loginDate 登录时间
-//     * @return 结果
-//     */
-//    public void updateLoginInfo(Long userId, String loginIp, Date loginDate)
-//    {
-//        userMapper.updateLoginInfo(userId, loginIp, loginDate);
-//    }
-//
+    /**
+     * 更新用户登录信息（IP和登录时间）
+     *
+     * @param userId 用户ID
+     * @param loginIp 登录IP地址
+     * @param loginDate 登录时间
+     * @return 结果
+     */
+    public void updateLoginInfo(Long userId, String loginIp, Date loginDate)
+    {
+        userMapper.updateLoginInfo(userId, loginIp, loginDate);
+    }
+
 //    /**
 //     * 用户授权角色
 //     *

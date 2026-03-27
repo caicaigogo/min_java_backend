@@ -8,7 +8,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ruoyi.common.utils.security.ShiroUtils;
-//import com.ruoyi.common.xss.Xss;
+import com.ruoyi.common.xss.Xss;
 import com.ruoyi.framework.aspectj.lang.annotation.Excel;
 import com.ruoyi.framework.aspectj.lang.annotation.Excel.ColumnType;
 import com.ruoyi.framework.aspectj.lang.annotation.Excel.Type;
@@ -159,8 +159,8 @@ public class User extends BaseEntity
     {
         this.roleId = roleId;
     }
-//
-//    @Xss(message = "登录账号不能包含脚本字符")
+
+    @Xss(message = "登录账号不能包含脚本字符")
     @NotBlank(message = "登录账号不能为空")
     @Size(min = 0, max = 30, message = "登录账号长度不能超过30个字符")
     public String getLoginName()
@@ -173,7 +173,7 @@ public class User extends BaseEntity
         this.loginName = loginName;
     }
 
-//    @Xss(message = "用户昵称不能包含脚本字符")
+    @Xss(message = "用户昵称不能包含脚本字符")
     @Size(min = 0, max = 30, message = "用户昵称长度不能超过30个字符")
     public String getUserName()
     {
@@ -195,7 +195,7 @@ public class User extends BaseEntity
         this.userType = userType;
     }
 
-//    @Email(message = "邮箱格式不正确")
+    @Email(message = "邮箱格式不正确")
     @Size(min = 0, max = 50, message = "邮箱长度不能超过50个字符")
     public String getEmail()
     {
@@ -260,16 +260,16 @@ public class User extends BaseEntity
         this.salt = salt;
     }
 
-//    /**
-//     * 生成随机盐
-//     */
-//    public void randomSalt()
-//    {
-//        // 一个Byte占两个字节，此处生成的3字节，字符串长度为6
-//        SecureRandomNumberGenerator secureRandom = new SecureRandomNumberGenerator();
-//        String hex = secureRandom.nextBytes(3).toHex();
-//        setSalt(hex);
-//    }
+    /**
+     * 生成随机盐
+     */
+    public void randomSalt()
+    {
+        // 一个Byte占两个字节，此处生成的3字节，字符串长度为6
+        SecureRandomNumberGenerator secureRandom = new SecureRandomNumberGenerator();
+        String hex = secureRandom.nextBytes(3).toHex();
+        setSalt(hex);
+    }
 
     public String getStatus()
     {
