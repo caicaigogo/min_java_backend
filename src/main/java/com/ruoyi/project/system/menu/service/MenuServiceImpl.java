@@ -1,67 +1,67 @@
-//package com.ruoyi.project.system.menu.service;
-//
-//import java.text.MessageFormat;
-//import java.util.ArrayList;
-//import java.util.Arrays;
-//import java.util.HashSet;
-//import java.util.LinkedHashMap;
-//import java.util.LinkedList;
-//import java.util.List;
-//import java.util.Set;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
-//import com.ruoyi.common.constant.UserConstants;
+package com.ruoyi.project.system.menu.service;
+
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.ruoyi.common.constant.UserConstants;
 //import com.ruoyi.common.exception.ServiceException;
-//import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.TreeUtils;
-//import com.ruoyi.common.utils.security.ShiroUtils;
-//import com.ruoyi.common.utils.text.Convert;
+import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.TreeUtils;
+import com.ruoyi.common.utils.security.ShiroUtils;
+import com.ruoyi.common.utils.text.Convert;
 //import com.ruoyi.framework.web.domain.Ztree;
-//import com.ruoyi.project.system.menu.domain.Menu;
-//import com.ruoyi.project.system.menu.mapper.MenuMapper;
-//import com.ruoyi.project.system.role.domain.Role;
+import com.ruoyi.project.system.menu.domain.Menu;
+import com.ruoyi.project.system.menu.mapper.MenuMapper;
+import com.ruoyi.project.system.role.domain.Role;
 //import com.ruoyi.project.system.role.mapper.RoleMenuMapper;
-//import com.ruoyi.project.system.user.domain.User;
-//
-///**
-// * 菜单 业务层处理
-// *
-// * @author ruoyi
-// */
-//@Service
-//public class MenuServiceImpl implements IMenuService
-//{
+import com.ruoyi.project.system.user.domain.User;
+
+/**
+ * 菜单 业务层处理
+ *
+ * @author ruoyi
+ */
+@Service
+public class MenuServiceImpl implements IMenuService
+{
 //    public static final String PREMISSION_STRING = "perms[\"{0}\"]";
-//
-//    @Autowired
-//    private MenuMapper menuMapper;
-//
+
+    @Autowired
+    private MenuMapper menuMapper;
+
 //    @Autowired
 //    private RoleMenuMapper roleMenuMapper;
-//
-//    /**
-//     * 根据用户查询菜单
-//     *
-//     * @param user 用户信息
-//     * @return 菜单列表
-//     */
-//    @Override
-//    public List<Menu> selectMenusByUser(User user)
-//    {
-//        List<Menu> menus = new LinkedList<Menu>();
-//        // 管理员显示所有菜单信息
-//        if (user.isAdmin())
-//        {
-//            menus = menuMapper.selectMenuNormalAll();
-//        }
-//        else
-//        {
-//            menus = menuMapper.selectMenusByUserId(user.getUserId());
-//        }
-//        return TreeUtils.getChildPerms(menus, 0);
-//    }
-//
+
+    /**
+     * 根据用户查询菜单
+     *
+     * @param user 用户信息
+     * @return 菜单列表
+     */
+    @Override
+    public List<Menu> selectMenusByUser(User user)
+    {
+        List<Menu> menus = new LinkedList<Menu>();
+        // 管理员显示所有菜单信息
+        if (user.isAdmin())
+        {
+            menus = menuMapper.selectMenuNormalAll();
+        }
+        else
+        {
+            menus = menuMapper.selectMenusByUserId(user.getUserId());
+        }
+        return TreeUtils.getChildPerms(menus, 0);
+    }
+
 //    /**
 //     * 查询菜单集合
 //     *
@@ -370,4 +370,4 @@
 //        }
 //        return UserConstants.UNIQUE;
 //    }
-//}
+}

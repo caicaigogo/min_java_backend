@@ -161,8 +161,8 @@ public class User extends BaseEntity
     }
 //
 //    @Xss(message = "登录账号不能包含脚本字符")
-//    @NotBlank(message = "登录账号不能为空")
-//    @Size(min = 0, max = 30, message = "登录账号长度不能超过30个字符")
+    @NotBlank(message = "登录账号不能为空")
+    @Size(min = 0, max = 30, message = "登录账号长度不能超过30个字符")
     public String getLoginName()
     {
         return loginName;
@@ -174,7 +174,7 @@ public class User extends BaseEntity
     }
 
 //    @Xss(message = "用户昵称不能包含脚本字符")
-//    @Size(min = 0, max = 30, message = "用户昵称长度不能超过30个字符")
+    @Size(min = 0, max = 30, message = "用户昵称长度不能超过30个字符")
     public String getUserName()
     {
         return userName;
@@ -196,7 +196,7 @@ public class User extends BaseEntity
     }
 
 //    @Email(message = "邮箱格式不正确")
-//    @Size(min = 0, max = 50, message = "邮箱长度不能超过50个字符")
+    @Size(min = 0, max = 50, message = "邮箱长度不能超过50个字符")
     public String getEmail()
     {
         return email;
@@ -207,7 +207,7 @@ public class User extends BaseEntity
         this.email = email;
     }
 
-//    @Size(min = 0, max = 11, message = "手机号码长度不能超过11个字符")
+    @Size(min = 0, max = 11, message = "手机号码长度不能超过11个字符")
     public String getPhonenumber()
     {
         return phonenumber;

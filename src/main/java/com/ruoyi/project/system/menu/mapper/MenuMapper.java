@@ -1,23 +1,25 @@
-//package com.ruoyi.project.system.menu.mapper;
-//
-//import java.util.List;
+package com.ruoyi.project.system.menu.mapper;
+
+import java.util.List;
 //import org.apache.ibatis.annotations.Param;
-//import com.ruoyi.project.system.menu.domain.Menu;
-//
-///**
-// * 菜单表 数据层
-// *
-// * @author ruoyi
-// */
-//public interface MenuMapper
-//{
-//    /**
-//     * 查询系统所有菜单（含按钮）
-//     *
-//     * @return 菜单列表
-//     */
-//    public List<Menu> selectMenuAll();
-//
+import com.ruoyi.project.system.menu.domain.Menu;
+import org.apache.ibatis.annotations.Mapper;
+
+/**
+ * 菜单表 数据层
+ *
+ * @author ruoyi
+ */
+@Mapper
+public interface MenuMapper
+{
+    /**
+     * 查询系统所有菜单（含按钮）
+     *
+     * @return 菜单列表
+     */
+    public List<Menu> selectMenuAll();
+
 //    /**
 //     * 根据用户ID查询菜单
 //     *
@@ -25,21 +27,21 @@
 //     * @return 菜单列表
 //     */
 //    public List<Menu> selectMenuAllByUserId(Long userId);
-//
-//    /**
-//     * 查询系统正常显示菜单（不含按钮）
-//     *
-//     * @return 菜单列表
-//     */
-//    public List<Menu> selectMenuNormalAll();
-//
-//    /**
-//     * 根据用户ID查询菜单
-//     *
-//     * @param userId 用户ID
-//     * @return 菜单列表
-//     */
-//    public List<Menu> selectMenusByUserId(Long userId);
+
+    /**
+     * 查询系统正常显示菜单（不含按钮）
+     *
+     * @return 菜单列表
+     */
+    public List<Menu> selectMenuNormalAll();
+
+    /**
+     * 根据用户ID查询菜单
+     *
+     * @param userId 用户ID
+     * @return 菜单列表
+     */
+    public List<Menu> selectMenusByUserId(Long userId);
 //
 //    /**
 //     * 根据用户ID查询权限
@@ -137,4 +139,4 @@
 //     * @return 结果
 //     */
 //    public Menu checkMenuNameUnique(@Param("menuName") String menuName, @Param("parentId") Long parentId);
-//}
+}

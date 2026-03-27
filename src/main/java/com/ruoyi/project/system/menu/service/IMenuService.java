@@ -1,29 +1,29 @@
-//package com.ruoyi.project.system.menu.service;
-//
-//import java.util.List;
-//import java.util.Map;
-//import java.util.Set;
-//
+package com.ruoyi.project.system.menu.service;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 //import com.ruoyi.framework.web.domain.Ztree;
-//import com.ruoyi.project.system.menu.domain.Menu;
-//import com.ruoyi.project.system.role.domain.Role;
-//import com.ruoyi.project.system.user.domain.User;
-//
-///**
-// * 菜单 业务层
-// *
-// * @author ruoyi
-// */
-//public interface IMenuService
-//{
-//    /**
-//     * 根据用户ID查询菜单
-//     *
-//     * @param user 用户信息
-//     * @return 菜单列表
-//     */
-//    public List<Menu> selectMenusByUser(User user);
-//
+import com.ruoyi.project.system.menu.domain.Menu;
+import com.ruoyi.project.system.role.domain.Role;
+import com.ruoyi.project.system.user.domain.User;
+
+/**
+ * 菜单 业务层
+ *
+ * @author ruoyi
+ */
+public interface IMenuService
+{
+    /**
+     * 根据用户ID查询菜单
+     *
+     * @param user 用户信息
+     * @return 菜单列表
+     */
+    public List<Menu> selectMenusByUser(User user);
+
 //    /**
 //     * 查询系统菜单列表
 //     *
@@ -140,4 +140,4 @@
 //     * @return 结果
 //     */
 //    public boolean checkMenuNameUnique(Menu menu);
-//}
+}
