@@ -20,13 +20,13 @@ public interface UserOnlineMapper
      */
     public UserOnline selectOnlineById(String sessionId);
 
-//    /**
-//     * 通过会话序号删除信息
-//     *
-//     * @param sessionId 会话ID
-//     * @return 在线用户信息
-//     */
-//    public int deleteOnlineById(String sessionId);
+    /**
+     * 通过会话序号删除信息
+     *
+     * @param sessionId 会话ID
+     * @return 在线用户信息
+     */
+    public int deleteOnlineById(String sessionId);
 
     /**
      * 保存会话信息

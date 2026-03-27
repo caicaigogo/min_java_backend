@@ -24,12 +24,12 @@ import org.springframework.context.annotation.Configuration;
 import com.ruoyi.common.constant.Constants;
 import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.common.utils.security.CipherUtils;
-//import com.ruoyi.common.utils.spring.SpringUtils;
+import com.ruoyi.common.utils.spring.SpringUtils;
 //import com.ruoyi.framework.config.properties.PermitAllUrlProperties;
 import com.ruoyi.framework.shiro.realm.UserRealm;
 //import com.ruoyi.framework.shiro.rememberMe.CustomCookieRememberMeManager;
 import com.ruoyi.framework.shiro.session.OnlineSessionDAO;
-//import com.ruoyi.framework.shiro.session.OnlineSessionFactory;
+import com.ruoyi.framework.shiro.session.OnlineSessionFactory;
 import com.ruoyi.framework.shiro.web.CustomShiroFilterFactoryBean;
 import com.ruoyi.framework.shiro.web.filter.LogoutFilter;
 import com.ruoyi.framework.shiro.web.filter.captcha.CaptchaValidateFilter;
@@ -38,7 +38,7 @@ import com.ruoyi.framework.shiro.web.filter.kickout.KickoutSessionFilter;
 import com.ruoyi.framework.shiro.web.filter.online.OnlineSessionFilter;
 import com.ruoyi.framework.shiro.web.filter.sync.SyncOnlineSessionFilter;
 import com.ruoyi.framework.shiro.web.session.OnlineWebSessionManager;
-//import com.ruoyi.framework.shiro.web.session.SpringSessionValidationScheduler;
+import com.ruoyi.framework.shiro.web.session.SpringSessionValidationScheduler;
 //import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 
 /**
@@ -49,17 +49,17 @@ import com.ruoyi.framework.shiro.web.session.OnlineWebSessionManager;
 @Configuration
 public class ShiroConfig
 {
-//    /**
-//     * Session超时时间，单位为毫秒（默认30分钟）
-//     */
-//    @Value("${shiro.session.expireTime}")
-//    private int expireTime;
-//
-//    /**
-//     * 相隔多久检查一次session的有效性，单位毫秒，默认就是10分钟
-//     */
-//    @Value("${shiro.session.validationInterval}")
-//    private int validationInterval;
+    /**
+     * Session超时时间，单位为毫秒（默认30分钟）
+     */
+    @Value("${shiro.session.expireTime}")
+    private int expireTime;
+
+    /**
+     * 相隔多久检查一次session的有效性，单位毫秒，默认就是10分钟
+     */
+    @Value("${shiro.session.validationInterval}")
+    private int validationInterval;
 
     /**
      * 同一个用户最大会话数
@@ -212,15 +212,15 @@ public class ShiroConfig
         return sessionDAO;
     }
 
-//    /**
-//     * 自定义sessionFactory会话
-//     */
-//    @Bean
-//    public OnlineSessionFactory sessionFactory()
-//    {
-//        OnlineSessionFactory sessionFactory = new OnlineSessionFactory();
-//        return sessionFactory;
-//    }
+    /**
+     * 自定义sessionFactory会话
+     */
+    @Bean
+    public OnlineSessionFactory sessionFactory()
+    {
+        OnlineSessionFactory sessionFactory = new OnlineSessionFactory();
+        return sessionFactory;
+    }
 
     /**
      * 会话管理器
@@ -231,20 +231,20 @@ public class ShiroConfig
         OnlineWebSessionManager manager = new OnlineWebSessionManager();
         // 加入缓存管理器
         manager.setCacheManager(getEhCacheManager());
-//        // 删除过期的session
-//        manager.setDeleteInvalidSessions(true);
-//        // 设置全局session超时时间
-//        manager.setGlobalSessionTimeout(expireTime * 60 * 1000);
-//        // 去掉 JSESSIONID
-//        manager.setSessionIdUrlRewritingEnabled(false);
-//        // 定义要使用的无效的Session定时调度器
-//        manager.setSessionValidationScheduler(SpringUtils.getBean(SpringSessionValidationScheduler.class));
-//        // 是否定时检查session
-//        manager.setSessionValidationSchedulerEnabled(true);
-//        // 自定义SessionDao
-//        manager.setSessionDAO(sessionDAO());
-//        // 自定义sessionFactory
-//        manager.setSessionFactory(sessionFactory());
+        // 删除过期的session
+        manager.setDeleteInvalidSessions(true);
+        // 设置全局session超时时间
+        manager.setGlobalSessionTimeout(expireTime * 60 * 1000);
+        // 去掉 JSESSIONID
+        manager.setSessionIdUrlRewritingEnabled(false);
+        // 定义要使用的无效的Session定时调度器
+        manager.setSessionValidationScheduler(SpringUtils.getBean(SpringSessionValidationScheduler.class));
+        // 是否定时检查session
+        manager.setSessionValidationSchedulerEnabled(true);
+        // 自定义SessionDao
+        manager.setSessionDAO(sessionDAO());
+        // 自定义sessionFactory
+        manager.setSessionFactory(sessionFactory());
         return manager;
     }
 

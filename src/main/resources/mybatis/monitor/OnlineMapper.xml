@@ -41,10 +41,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         values (#{sessionId}, #{loginName}, #{deptName}, #{ipaddr}, #{loginLocation}, #{browser}, #{os}, #{status}, #{startTimestamp}, #{lastAccessTime}, #{expireTime})
 	</insert>
 
-<!-- 	<delete id="deleteOnlineById" parameterType="String">-->
-<!-- 		delete from sys_user_online where sessionId = #{sessionId}-->
-<!-- 	</delete>-->
-<!-- 	-->
+ 	<delete id="deleteOnlineById" parameterType="String">
+ 		delete from sys_user_online where sessionId = #{sessionId}
+ 	</delete>
+
 <!-- 	<select id="selectUserOnlineList" parameterType="UserOnline" resultMap="UserOnlineResult">-->
 <!--		<include refid="selectOnlineVo"/>-->
 <!--		<where>-->

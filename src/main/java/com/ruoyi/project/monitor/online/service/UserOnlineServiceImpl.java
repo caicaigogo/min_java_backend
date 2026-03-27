@@ -45,21 +45,21 @@ public class UserOnlineServiceImpl implements IUserOnlineService
         return userOnlineDao.selectOnlineById(sessionId);
     }
 
-//    /**
-//     * 通过会话序号删除信息
-//     *
-//     * @param sessionId 会话ID
-//     * @return 在线用户信息
-//     */
-//    @Override
-//    public void deleteOnlineById(String sessionId)
-//    {
-//        UserOnline userOnline = selectOnlineById(sessionId);
-//        if (StringUtils.isNotNull(userOnline))
-//        {
-//            userOnlineDao.deleteOnlineById(sessionId);
-//        }
-//    }
+    /**
+     * 通过会话序号删除信息
+     *
+     * @param sessionId 会话ID
+     * @return 在线用户信息
+     */
+    @Override
+    public void deleteOnlineById(String sessionId)
+    {
+        UserOnline userOnline = selectOnlineById(sessionId);
+        if (StringUtils.isNotNull(userOnline))
+        {
+            userOnlineDao.deleteOnlineById(sessionId);
+        }
+    }
 //
 //    /**
 //     * 通过会话序号删除信息

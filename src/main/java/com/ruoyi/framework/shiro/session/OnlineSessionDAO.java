@@ -109,18 +109,18 @@ public class OnlineSessionDAO extends EnterpriseCacheSessionDAO
         AsyncManager.me().execute(AsyncFactory.syncSessionToDb(onlineSession));
     }
 
-//    /**
-//     * 当会话过期/停止（如用户退出时）属性等会调用
-//     */
-//    @Override
-//    protected void doDelete(Session session)
-//    {
-//        OnlineSession onlineSession = (OnlineSession) session;
-//        if (null == onlineSession)
-//        {
-//            return;
-//        }
-//        onlineSession.setStatus(OnlineSession.OnlineStatus.off_line);
-//        onlineService.deleteOnlineById(String.valueOf(onlineSession.getId()));
-//    }
+    /**
+     * 当会话过期/停止（如用户退出时）属性等会调用
+     */
+    @Override
+    protected void doDelete(Session session)
+    {
+        OnlineSession onlineSession = (OnlineSession) session;
+        if (null == onlineSession)
+        {
+            return;
+        }
+        onlineSession.setStatus(OnlineSession.OnlineStatus.off_line);
+        onlineService.deleteOnlineById(String.valueOf(onlineSession.getId()));
+    }
 }
