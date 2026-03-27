@@ -9,9 +9,9 @@ import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-//import com.ruoyi.common.constant.ShiroConstants;
+import com.ruoyi.common.constant.ShiroConstants;
 //import com.ruoyi.common.utils.DateUtils;
-//import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.framework.shiro.session.OnlineSessionDAO;
 import com.ruoyi.project.monitor.online.domain.UserOnline;
 import com.ruoyi.project.monitor.online.mapper.UserOnlineMapper;
@@ -29,10 +29,10 @@ public class UserOnlineServiceImpl implements IUserOnlineService
 //
 //    @Autowired
 //    private OnlineSessionDAO onlineSessionDAO;
-//
-//    @Autowired
-//    private EhCacheManager ehCacheManager;
-//
+
+    @Autowired
+    private EhCacheManager ehCacheManager;
+
     /**
      * 通过会话序号查询信息
      *
@@ -118,24 +118,24 @@ public class UserOnlineServiceImpl implements IUserOnlineService
 //        session.setTimeout(1000);
 //        userOnlineDao.deleteOnlineById(sessionId);
 //    }
-//
-//    /**
-//     * 清理用户缓存
-//     *
-//     * @param loginName 登录名称
-//     * @param sessionId 会话ID
-//     */
-//    @Override
-//    public void removeUserCache(String loginName, String sessionId)
-//    {
-//        Cache<String, Deque<Serializable>> cache = ehCacheManager.getCache(ShiroConstants.SYS_USERCACHE);
-//        Deque<Serializable> deque = cache.get(loginName);
-//        if (StringUtils.isEmpty(deque) || deque.size() == 0)
-//        {
-//            return;
-//        }
-//        deque.remove(sessionId);
-//    }
+
+    /**
+     * 清理用户缓存
+     *
+     * @param loginName 登录名称
+     * @param sessionId 会话ID
+     */
+    @Override
+    public void removeUserCache(String loginName, String sessionId)
+    {
+        Cache<String, Deque<Serializable>> cache = ehCacheManager.getCache(ShiroConstants.SYS_USERCACHE);
+        Deque<Serializable> deque = cache.get(loginName);
+        if (StringUtils.isEmpty(deque) || deque.size() == 0)
+        {
+            return;
+        }
+        deque.remove(sessionId);
+    }
 //
 //    /**
 //     * 查询会话集合

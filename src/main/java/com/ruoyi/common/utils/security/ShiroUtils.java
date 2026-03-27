@@ -67,12 +67,12 @@ public class ShiroUtils
     {
         return StringUtils.substring(getSubject().getSession().getHost(), 0, 128);
     }
-//
-//    public static String getSessionId()
-//    {
-//        return String.valueOf(getSubject().getSession().getId());
-//    }
-//
+
+    public static String getSessionId()
+    {
+        return String.valueOf(getSubject().getSession().getId());
+    }
+
 //    /**
 //     * 是否为管理员
 //     *

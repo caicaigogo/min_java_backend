@@ -56,15 +56,15 @@ public interface IUserOnlineService
 //     * @param sessionId 会话ID
 //     */
 //    public void forceLogout(String sessionId);
-//
-//    /**
-//     * 清理用户缓存
-//     *
-//     * @param loginName 登录名称
-//     * @param sessionId 会话ID
-//     */
-//    public void removeUserCache(String loginName, String sessionId);
-//
+
+    /**
+     * 清理用户缓存
+     *
+     * @param loginName 登录名称
+     * @param sessionId 会话ID
+     */
+    public void removeUserCache(String loginName, String sessionId);
+
 //    /**
 //     * 查询会话集合
 //     *

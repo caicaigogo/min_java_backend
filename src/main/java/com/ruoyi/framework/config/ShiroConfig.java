@@ -31,7 +31,7 @@ import com.ruoyi.framework.shiro.realm.UserRealm;
 import com.ruoyi.framework.shiro.session.OnlineSessionDAO;
 //import com.ruoyi.framework.shiro.session.OnlineSessionFactory;
 import com.ruoyi.framework.shiro.web.CustomShiroFilterFactoryBean;
-//import com.ruoyi.framework.shiro.web.filter.LogoutFilter;
+import com.ruoyi.framework.shiro.web.filter.LogoutFilter;
 import com.ruoyi.framework.shiro.web.filter.captcha.CaptchaValidateFilter;
 import com.ruoyi.framework.shiro.web.filter.csrf.CsrfValidateFilter;
 import com.ruoyi.framework.shiro.web.filter.kickout.KickoutSessionFilter;
@@ -266,15 +266,15 @@ public class ShiroConfig
         return securityManager;
     }
 
-//    /**
-//     * 退出过滤器
-//     */
-//    public LogoutFilter logoutFilter()
-//    {
-//        LogoutFilter logoutFilter = new LogoutFilter();
-//        logoutFilter.setLoginUrl(loginUrl);
-//        return logoutFilter;
-//    }
+    /**
+     * 退出过滤器
+     */
+    public LogoutFilter logoutFilter()
+    {
+        LogoutFilter logoutFilter = new LogoutFilter();
+        logoutFilter.setLoginUrl(loginUrl);
+        return logoutFilter;
+    }
 
     /**
      * csrf过滤器
@@ -320,12 +320,12 @@ public class ShiroConfig
 //        {
 //            permitAllUrl.forEach(url -> filterChainDefinitionMap.put(url, "anon"));
 //        }
-//        // 退出 logout地址，shiro去清除session
-//        filterChainDefinitionMap.put("/logout", "logout");
+        // 退出 logout地址，shiro去清除session
+        filterChainDefinitionMap.put("/logout", "logout");
         // 不需要拦截的访问
         filterChainDefinitionMap.put("/login", "anon,captchaValidate");
-//        // 注册相关
-//        filterChainDefinitionMap.put("/register", "anon,captchaValidate");
+        // 注册相关
+        filterChainDefinitionMap.put("/register", "anon,captchaValidate");
 //        // 系统权限列表
 //        // filterChainDefinitionMap.putAll(SpringUtils.getBean(IMenuService.class).selectPermsAll());
 //
@@ -335,8 +335,8 @@ public class ShiroConfig
         filters.put("captchaValidate", captchaValidateFilter());
         filters.put("csrfValidateFilter", csrfValidateFilter());
         filters.put("kickout", kickoutSessionFilter());
-//        // 注销成功，则跳转到指定页面
-//        filters.put("logout", logoutFilter());
+        // 注销成功，则跳转到指定页面
+        filters.put("logout", logoutFilter());
         shiroFilterFactoryBean.setFilters(filters);
 
         // 所有请求需要认证
