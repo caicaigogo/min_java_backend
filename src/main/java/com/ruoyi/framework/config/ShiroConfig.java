@@ -36,7 +36,7 @@ import com.ruoyi.framework.shiro.web.filter.captcha.CaptchaValidateFilter;
 //import com.ruoyi.framework.shiro.web.filter.csrf.CsrfValidateFilter;
 import com.ruoyi.framework.shiro.web.filter.kickout.KickoutSessionFilter;
 import com.ruoyi.framework.shiro.web.filter.online.OnlineSessionFilter;
-//import com.ruoyi.framework.shiro.web.filter.sync.SyncOnlineSessionFilter;
+import com.ruoyi.framework.shiro.web.filter.sync.SyncOnlineSessionFilter;
 import com.ruoyi.framework.shiro.web.session.OnlineWebSessionManager;
 //import com.ruoyi.framework.shiro.web.session.SpringSessionValidationScheduler;
 //import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
@@ -331,7 +331,7 @@ public class ShiroConfig
 //
         Map<String, Filter> filters = new LinkedHashMap<String, Filter>();
         filters.put("onlineSession", onlineSessionFilter());
-//        filters.put("syncOnlineSession", syncOnlineSessionFilter());
+        filters.put("syncOnlineSession", syncOnlineSessionFilter());
         filters.put("captchaValidate", captchaValidateFilter());
 //        filters.put("csrfValidateFilter", csrfValidateFilter());
         filters.put("kickout", kickoutSessionFilter());
@@ -340,7 +340,7 @@ public class ShiroConfig
         shiroFilterFactoryBean.setFilters(filters);
 
         // 所有请求需要认证
-        filterChainDefinitionMap.put("/**", "user,kickout,onlineSession");
+        filterChainDefinitionMap.put("/**", "user,kickout,onlineSession,syncOnlineSession");
 //        filterChainDefinitionMap.put("/**", "user,kickout,onlineSession,syncOnlineSession,csrfValidateFilter");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
@@ -358,16 +358,16 @@ public class ShiroConfig
         return onlineSessionFilter;
     }
 
-//    /**
-//     * 自定义在线用户同步过滤器
-//     */
-//    public SyncOnlineSessionFilter syncOnlineSessionFilter()
-//    {
-//        SyncOnlineSessionFilter syncOnlineSessionFilter = new SyncOnlineSessionFilter();
-//        syncOnlineSessionFilter.setOnlineSessionDAO(sessionDAO());
-//        return syncOnlineSessionFilter;
-//    }
-//
+    /**
+     * 自定义在线用户同步过滤器
+     */
+    public SyncOnlineSessionFilter syncOnlineSessionFilter()
+    {
+        SyncOnlineSessionFilter syncOnlineSessionFilter = new SyncOnlineSessionFilter();
+        syncOnlineSessionFilter.setOnlineSessionDAO(sessionDAO());
+        return syncOnlineSessionFilter;
+    }
+
     /**
      * 自定义验证码过滤器
      */

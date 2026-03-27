@@ -79,18 +79,18 @@ public class UserOnlineServiceImpl implements IUserOnlineService
 //            }
 //        }
 //    }
-//
-//    /**
-//     * 保存会话信息
-//     *
-//     * @param online 会话信息
-//     */
-//    @Override
-//    public void saveOnline(UserOnline online)
-//    {
-//        userOnlineDao.saveOnline(online);
-//    }
-//
+
+    /**
+     * 保存会话信息
+     *
+     * @param online 会话信息
+     */
+    @Override
+    public void saveOnline(UserOnline online)
+    {
+        userOnlineDao.saveOnline(online);
+    }
+
 //    /**
 //     * 查询会话集合
 //     *

@@ -27,14 +27,14 @@ public interface UserOnlineMapper
 //     * @return 在线用户信息
 //     */
 //    public int deleteOnlineById(String sessionId);
-//
-//    /**
-//     * 保存会话信息
-//     *
-//     * @param online 会话信息
-//     * @return 结果
-//     */
-//    public int saveOnline(UserOnline online);
+
+    /**
+     * 保存会话信息
+     *
+     * @param online 会话信息
+     * @return 结果
+     */
+    public int saveOnline(UserOnline online);
 //
 //    /**
 //     * 查询会话集合

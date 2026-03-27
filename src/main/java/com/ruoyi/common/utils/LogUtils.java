@@ -1,21 +1,21 @@
-//package com.ruoyi.common.utils;
-//
-//import com.alibaba.fastjson.JSON;
-//import org.apache.shiro.SecurityUtils;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-//import javax.servlet.http.HttpServletRequest;
-//import java.io.PrintWriter;
-//import java.io.StringWriter;
-//import java.util.Map;
-//
-///**
-// * 处理并记录日志文件
-// *
-// * @author ruoyi
-// */
-//public class LogUtils
-//{
+package com.ruoyi.common.utils;
+
+import com.alibaba.fastjson.JSON;
+import org.apache.shiro.SecurityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import javax.servlet.http.HttpServletRequest;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.Map;
+
+/**
+ * 处理并记录日志文件
+ *
+ * @author ruoyi
+ */
+public class LogUtils
+{
 //    public static final Logger ERROR_LOG = LoggerFactory.getLogger("sys-error");
 //    public static final Logger ACCESS_LOG = LoggerFactory.getLogger("sys-access");
 //
@@ -101,15 +101,15 @@
 //        getErrorLog().error(s.toString());
 //
 //    }
-//
-//    public static String getBlock(Object msg)
-//    {
-//        if (msg == null)
-//        {
-//            msg = "";
-//        }
-//        return "[" + msg.toString() + "]";
-//    }
+
+    public static String getBlock(Object msg)
+    {
+        if (msg == null)
+        {
+            msg = "";
+        }
+        return "[" + msg.toString() + "]";
+    }
 //
 //    protected static String getParams(HttpServletRequest request)
 //    {
@@ -131,4 +131,4 @@
 //    {
 //        return ERROR_LOG;
 //    }
-//}
+}
