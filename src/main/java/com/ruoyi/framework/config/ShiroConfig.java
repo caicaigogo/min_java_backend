@@ -23,11 +23,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.ruoyi.common.constant.Constants;
 import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.security.CipherUtils;
+import com.ruoyi.common.utils.security.CipherUtils;
 import com.ruoyi.common.utils.spring.SpringUtils;
 //import com.ruoyi.framework.config.properties.PermitAllUrlProperties;
 import com.ruoyi.framework.shiro.realm.UserRealm;
-//import com.ruoyi.framework.shiro.rememberMe.CustomCookieRememberMeManager;
+import com.ruoyi.framework.shiro.rememberMe.CustomCookieRememberMeManager;
 import com.ruoyi.framework.shiro.session.OnlineSessionDAO;
 import com.ruoyi.framework.shiro.session.OnlineSessionFactory;
 import com.ruoyi.framework.shiro.web.CustomShiroFilterFactoryBean;
@@ -84,37 +84,37 @@ public class ShiroConfig
      */
     @Value("${shiro.user.captchaType}")
     private String captchaType;
-//
-//    /**
-//     * 设置Cookie的域名
-//     */
-//    @Value("${shiro.cookie.domain}")
-//    private String domain;
-//
-//    /**
-//     * 设置cookie的有效访问路径
-//     */
-//    @Value("${shiro.cookie.path}")
-//    private String path;
-//
-//    /**
-//     * 设置HttpOnly属性
-//     */
-//    @Value("${shiro.cookie.httpOnly}")
-//    private boolean httpOnly;
-//
-//    /**
-//     * 设置Cookie的过期时间，秒为单位
-//     */
-//    @Value("${shiro.cookie.maxAge}")
-//    private int maxAge;
-//
-//    /**
-//     * 设置cipherKey密钥
-//     */
-//    @Value("${shiro.cookie.cipherKey}")
-//    private String cipherKey;
-//
+
+    /**
+     * 设置Cookie的域名
+     */
+    @Value("${shiro.cookie.domain}")
+    private String domain;
+
+    /**
+     * 设置cookie的有效访问路径
+     */
+    @Value("${shiro.cookie.path}")
+    private String path;
+
+    /**
+     * 设置HttpOnly属性
+     */
+    @Value("${shiro.cookie.httpOnly}")
+    private boolean httpOnly;
+
+    /**
+     * 设置Cookie的过期时间，秒为单位
+     */
+    @Value("${shiro.cookie.maxAge}")
+    private int maxAge;
+
+    /**
+     * 设置cipherKey密钥
+     */
+    @Value("${shiro.cookie.cipherKey}")
+    private String cipherKey;
+
     /**
      * 登录地址
      */
@@ -126,12 +126,12 @@ public class ShiroConfig
 //     */
 //    @Value("${shiro.user.unauthorizedUrl}")
 //    private String unauthorizedUrl;
-//
-//    /**
-//     * 是否开启记住我功能
-//     */
-//    @Value("${shiro.rememberMe.enabled: false}")
-//    private boolean rememberMe;
+
+    /**
+     * 是否开启记住我功能
+     */
+    @Value("${shiro.rememberMe.enabled: false}")
+    private boolean rememberMe;
 
     /**
      * 是否开启csrf
@@ -257,8 +257,8 @@ public class ShiroConfig
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         // 设置realm.
         securityManager.setRealm(userRealm);
-//        // 记住我
-//        securityManager.setRememberMeManager(rememberMe ? rememberMeManager() : null);
+        // 记住我
+        securityManager.setRememberMeManager(rememberMe ? rememberMeManager() : null);
         // 注入缓存管理器;
         securityManager.setCacheManager(getEhCacheManager());
         // session管理器
@@ -300,7 +300,7 @@ public class ShiroConfig
         shiroFilterFactoryBean.setLoginUrl(loginUrl);
 //        // 权限认证失败，则跳转到指定页面
 //        shiroFilterFactoryBean.setUnauthorizedUrl(unauthorizedUrl);
-//        // Shiro连接约束配置，即过滤链的定义
+        // Shiro连接约束配置，即过滤链的定义
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         // 对静态资源设置匿名访问
         filterChainDefinitionMap.put("/favicon.ico**", "anon");
@@ -378,36 +378,36 @@ public class ShiroConfig
         return captchaValidateFilter;
     }
 
-//    /**
-//     * cookie 属性设置
-//     */
-//    public SimpleCookie rememberMeCookie()
-//    {
-//        SimpleCookie cookie = new SimpleCookie("rememberMe");
-//        cookie.setDomain(domain);
-//        cookie.setPath(path);
-//        cookie.setHttpOnly(httpOnly);
-//        cookie.setMaxAge(maxAge * 24 * 60 * 60);
-//        return cookie;
-//    }
-//
-//    /**
-//     * 记住我
-//     */
-//    public CustomCookieRememberMeManager rememberMeManager()
-//    {
-//        CustomCookieRememberMeManager cookieRememberMeManager = new CustomCookieRememberMeManager();
-//        cookieRememberMeManager.setCookie(rememberMeCookie());
-//        if (StringUtils.isNotEmpty(cipherKey))
-//        {
-//            cookieRememberMeManager.setCipherKey(Base64.decode(cipherKey));
-//        }
-//        else
-//        {
-//            cookieRememberMeManager.setCipherKey(CipherUtils.generateNewKey(128, "AES").getEncoded());
-//        }
-//        return cookieRememberMeManager;
-//    }
+    /**
+     * cookie 属性设置
+     */
+    public SimpleCookie rememberMeCookie()
+    {
+        SimpleCookie cookie = new SimpleCookie("rememberMe");
+        cookie.setDomain(domain);
+        cookie.setPath(path);
+        cookie.setHttpOnly(httpOnly);
+        cookie.setMaxAge(maxAge * 24 * 60 * 60);
+        return cookie;
+    }
+
+    /**
+     * 记住我
+     */
+    public CustomCookieRememberMeManager rememberMeManager()
+    {
+        CustomCookieRememberMeManager cookieRememberMeManager = new CustomCookieRememberMeManager();
+        cookieRememberMeManager.setCookie(rememberMeCookie());
+        if (StringUtils.isNotEmpty(cipherKey))
+        {
+            cookieRememberMeManager.setCipherKey(Base64.decode(cipherKey));
+        }
+        else
+        {
+            cookieRememberMeManager.setCipherKey(CipherUtils.generateNewKey(128, "AES").getEncoded());
+        }
+        return cookieRememberMeManager;
+    }
 
     /**
      * 同一个用户多设备登录限制
