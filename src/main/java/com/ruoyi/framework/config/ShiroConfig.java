@@ -25,7 +25,7 @@ import com.ruoyi.common.constant.Constants;
 import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.security.CipherUtils;
 import com.ruoyi.common.utils.spring.SpringUtils;
-//import com.ruoyi.framework.config.properties.PermitAllUrlProperties;
+import com.ruoyi.framework.config.properties.PermitAllUrlProperties;
 import com.ruoyi.framework.shiro.realm.UserRealm;
 import com.ruoyi.framework.shiro.rememberMe.CustomCookieRememberMeManager;
 import com.ruoyi.framework.shiro.session.OnlineSessionDAO;
@@ -39,7 +39,7 @@ import com.ruoyi.framework.shiro.web.filter.online.OnlineSessionFilter;
 import com.ruoyi.framework.shiro.web.filter.sync.SyncOnlineSessionFilter;
 import com.ruoyi.framework.shiro.web.session.OnlineWebSessionManager;
 import com.ruoyi.framework.shiro.web.session.SpringSessionValidationScheduler;
-//import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 
 /**
  * 权限配置加载
@@ -121,11 +121,11 @@ public class ShiroConfig
     @Value("${shiro.user.loginUrl}")
     private String loginUrl;
 
-//    /**
-//     * 权限认证失败地址
-//     */
-//    @Value("${shiro.user.unauthorizedUrl}")
-//    private String unauthorizedUrl;
+    /**
+     * 权限认证失败地址
+     */
+    @Value("${shiro.user.unauthorizedUrl}")
+    private String unauthorizedUrl;
 
     /**
      * 是否开启记住我功能
@@ -298,8 +298,8 @@ public class ShiroConfig
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         // 身份认证失败，则跳转到登录页面的配置
         shiroFilterFactoryBean.setLoginUrl(loginUrl);
-//        // 权限认证失败，则跳转到指定页面
-//        shiroFilterFactoryBean.setUnauthorizedUrl(unauthorizedUrl);
+        // 权限认证失败，则跳转到指定页面
+        shiroFilterFactoryBean.setUnauthorizedUrl(unauthorizedUrl);
         // Shiro连接约束配置，即过滤链的定义
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         // 对静态资源设置匿名访问
@@ -314,21 +314,21 @@ public class ShiroConfig
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/ruoyi/**", "anon");
         filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
-//        // 匿名访问不鉴权注解列表
-//        List<String> permitAllUrl = SpringUtils.getBean(PermitAllUrlProperties.class).getUrls();
-//        if (StringUtils.isNotEmpty(permitAllUrl))
-//        {
-//            permitAllUrl.forEach(url -> filterChainDefinitionMap.put(url, "anon"));
-//        }
+        // 匿名访问不鉴权注解列表
+        List<String> permitAllUrl = SpringUtils.getBean(PermitAllUrlProperties.class).getUrls();
+        if (StringUtils.isNotEmpty(permitAllUrl))
+        {
+            permitAllUrl.forEach(url -> filterChainDefinitionMap.put(url, "anon"));
+        }
         // 退出 logout地址，shiro去清除session
         filterChainDefinitionMap.put("/logout", "logout");
         // 不需要拦截的访问
         filterChainDefinitionMap.put("/login", "anon,captchaValidate");
         // 注册相关
         filterChainDefinitionMap.put("/register", "anon,captchaValidate");
-//        // 系统权限列表
-//        // filterChainDefinitionMap.putAll(SpringUtils.getBean(IMenuService.class).selectPermsAll());
-//
+        // 系统权限列表
+        // filterChainDefinitionMap.putAll(SpringUtils.getBean(IMenuService.class).selectPermsAll());
+
         Map<String, Filter> filters = new LinkedHashMap<String, Filter>();
         filters.put("onlineSession", onlineSessionFilter());
         filters.put("syncOnlineSession", syncOnlineSessionFilter());
@@ -426,24 +426,24 @@ public class ShiroConfig
         return kickoutSessionFilter;
     }
 
-//    /**
-//     * thymeleaf模板引擎和shiro框架的整合
-//     */
-//    @Bean
-//    public ShiroDialect shiroDialect()
-//    {
-//        return new ShiroDialect();
-//    }
-//
-//    /**
-//     * 开启Shiro注解通知器
-//     */
-//    @Bean
-//    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(
-//            @Qualifier("securityManager") SecurityManager securityManager)
-//    {
-//        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
-//        authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
-//        return authorizationAttributeSourceAdvisor;
-//    }
+    /**
+     * thymeleaf模板引擎和shiro框架的整合
+     */
+    @Bean
+    public ShiroDialect shiroDialect()
+    {
+        return new ShiroDialect();
+    }
+
+    /**
+     * 开启Shiro注解通知器
+     */
+    @Bean
+    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(
+            @Qualifier("securityManager") SecurityManager securityManager)
+    {
+        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
+        authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
+        return authorizationAttributeSourceAdvisor;
+    }
 }
