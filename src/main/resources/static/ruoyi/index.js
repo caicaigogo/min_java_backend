@@ -1,14 +1,14 @@
-// /**
-//  * 首页方法封装处理
-//  * Copyright (c) 2019 ruoyi
-//  */
-// var isMobile = false;
-// var sidebarHeight = isMobile ? '100%' : '96%';
-//
-// $(function() {
-//     // MetsiMenu
-//     $('#side-menu').metisMenu();
-//
+/**
+ * 首页方法封装处理
+ * Copyright (c) 2019 ruoyi
+ */
+var isMobile = false;
+var sidebarHeight = isMobile ? '100%' : '96%';
+
+$(function() {
+    // MetsiMenu
+    $('#side-menu').metisMenu();
+
 //     // 固定菜单栏
 //     $('.sidebar-collapse').slimScroll({
 //         height: sidebarHeight,
@@ -44,8 +44,8 @@
 //     if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
 //         $('#content-main').css('overflow-y', 'auto');
 //     }
-//
-// });
+
+});
 //
 // $(window).bind("load resize", function() {
 //     isMobile = $.common.isMobile() || $(window).width() < 769;

@@ -27,8 +27,8 @@ public class ServletUtils
      */
     private final static String[] agent = { "Android", "iPhone", "iPod", "iPad", "Windows Phone", "MQQBrowser" };
 
-//    private static final SecureRandom secureRandom = new SecureRandom();
-//
+    private static final SecureRandom secureRandom = new SecureRandom();
+
 //    /**
 //     * 获取String参数
 //     */
@@ -217,16 +217,16 @@ public class ServletUtils
 //            return StringUtils.EMPTY;
 //        }
 //    }
-//
-//    /**
-//     * 生成CSRF Token
-//     *
-//     * @return 解码后的内容
-//     */
-//    public static String generateToken()
-//    {
-//        byte[] bytes = new byte[32];
-//        secureRandom.nextBytes(bytes);
-//        return Base64.getEncoder().encodeToString(bytes);
-//    }
+
+    /**
+     * 生成CSRF Token
+     *
+     * @return 解码后的内容
+     */
+    public static String generateToken()
+    {
+        byte[] bytes = new byte[32];
+        secureRandom.nextBytes(bytes);
+        return Base64.getEncoder().encodeToString(bytes);
+    }
 }

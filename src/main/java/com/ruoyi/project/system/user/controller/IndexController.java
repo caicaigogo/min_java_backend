@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-//import com.ruoyi.common.constant.ShiroConstants;
+import com.ruoyi.common.constant.ShiroConstants;
 //import com.ruoyi.common.utils.CookieUtils;
-//import com.ruoyi.common.utils.DateUtils;
+import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.common.utils.ServletUtils;
 import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.text.Convert;
@@ -66,8 +66,8 @@ public class IndexController extends BaseController
         mmap.put("mainClass", contentMainClass(footer, tagsView));
         mmap.put("copyrightYear", ruoYiConfig.getCopyrightYear());
         mmap.put("demoEnabled", ruoYiConfig.isDemoEnabled());
-//        mmap.put("isDefaultModifyPwd", initPasswordIsModify(user.getPwdUpdateDate()));
-//        mmap.put("isPasswordExpired", passwordIsExpiration(user.getPwdUpdateDate()));
+        mmap.put("isDefaultModifyPwd", initPasswordIsModify(user.getPwdUpdateDate()));
+        mmap.put("isPasswordExpired", passwordIsExpiration(user.getPwdUpdateDate()));
         mmap.put("isMobile", ServletUtils.checkAgentIsMobile(ServletUtils.getRequest().getHeader("User-Agent")));
 
         // 菜单导航显示风格
@@ -75,19 +75,19 @@ public class IndexController extends BaseController
         // 移动端，默认使左侧导航菜单，否则取默认配置
         String indexStyle = ServletUtils.checkAgentIsMobile(ServletUtils.getRequest().getHeader("User-Agent")) ? "index" : menuStyle;
 
-//        // 优先Cookie配置导航菜单
-//        Cookie[] cookies = ServletUtils.getRequest().getCookies();
-//        for (Cookie cookie : cookies)
-//        {
-//            if (StringUtils.isNotEmpty(cookie.getName()) && "nav-style".equalsIgnoreCase(cookie.getName()))
-//            {
-//                indexStyle = cookie.getValue();
-//                break;
-//            }
-//        }
+        // 优先Cookie配置导航菜单
+        Cookie[] cookies = ServletUtils.getRequest().getCookies();
+        for (Cookie cookie : cookies)
+        {
+            if (StringUtils.isNotEmpty(cookie.getName()) && "nav-style".equalsIgnoreCase(cookie.getName()))
+            {
+                indexStyle = cookie.getValue();
+                break;
+            }
+        }
         String webIndex = "topnav".equalsIgnoreCase(indexStyle) ? "index-topnav" : "index";
-//        // CSRF Token
-//        request.getSession().setAttribute(ShiroConstants.CSRF_TOKEN, ServletUtils.generateToken());
+        // CSRF Token
+        request.getSession().setAttribute(ShiroConstants.CSRF_TOKEN, ServletUtils.generateToken());
         return webIndex;
     }
 
@@ -157,28 +157,28 @@ public class IndexController extends BaseController
         }
         return StringUtils.EMPTY;
     }
-//
-//    // 检查初始密码是否提醒修改
-//    public boolean initPasswordIsModify(Date pwdUpdateDate)
-//    {
-//        Integer initPasswordModify = Convert.toInt(configService.selectConfigByKey("sys.account.initPasswordModify"));
-//        return initPasswordModify != null && initPasswordModify == 1 && pwdUpdateDate == null;
-//    }
-//
-//    // 检查密码是否过期
-//    public boolean passwordIsExpiration(Date pwdUpdateDate)
-//    {
-//        Integer passwordValidateDays = Convert.toInt(configService.selectConfigByKey("sys.account.passwordValidateDays"));
-//        if (passwordValidateDays !=null && passwordValidateDays > 0)
-//        {
-//            if (StringUtils.isNull(pwdUpdateDate))
-//            {
-//                // 如果从未修改过初始密码，直接提醒过期
-//                return true;
-//            }
-//            Date nowDate = DateUtils.getNowDate();
-//            return DateUtils.differentDaysByMillisecond(nowDate, pwdUpdateDate) > passwordValidateDays;
-//        }
-//        return false;
-//    }
+
+    // 检查初始密码是否提醒修改
+    public boolean initPasswordIsModify(Date pwdUpdateDate)
+    {
+        Integer initPasswordModify = Convert.toInt(configService.selectConfigByKey("sys.account.initPasswordModify"));
+        return initPasswordModify != null && initPasswordModify == 1 && pwdUpdateDate == null;
+    }
+
+    // 检查密码是否过期
+    public boolean passwordIsExpiration(Date pwdUpdateDate)
+    {
+        Integer passwordValidateDays = Convert.toInt(configService.selectConfigByKey("sys.account.passwordValidateDays"));
+        if (passwordValidateDays !=null && passwordValidateDays > 0)
+        {
+            if (StringUtils.isNull(pwdUpdateDate))
+            {
+                // 如果从未修改过初始密码，直接提醒过期
+                return true;
+            }
+            Date nowDate = DateUtils.getNowDate();
+            return DateUtils.differentDaysByMillisecond(nowDate, pwdUpdateDate) > passwordValidateDays;
+        }
+        return false;
+    }
 }
