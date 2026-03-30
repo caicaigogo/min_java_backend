@@ -9,13 +9,13 @@ $(function() {
     // MetsiMenu
     $('#side-menu').metisMenu();
 
-//     // 固定菜单栏
-//     $('.sidebar-collapse').slimScroll({
-//         height: sidebarHeight,
-//         railOpacity: 0.9,
-//         alwaysVisible: false
-//     });
-//
+    // 固定菜单栏
+    $('.sidebar-collapse').slimScroll({
+        height: sidebarHeight,
+        railOpacity: 0.9,
+        alwaysVisible: false
+    });
+
 //     // 菜单切换
 //     $('.navbar-minimalize').click(function() {
 //     	if (isMobile) {
@@ -26,18 +26,18 @@ $(function() {
 //         SmoothlyMenu();
 //     });
 //
-//     $('#side-menu>li').click(function() {
-//     	if ($('body').hasClass('canvas-menu mini-navbar')) {
-//             NavToggle();
-//         }
-//
-//     });
-//     $('#side-menu>li li a:not(:has(span))').click(function() {
-//         if ($(window).width() < 769) {
-//             NavToggle();
-//         }
-//     });
-//
+    $('#side-menu>li').click(function() {
+    	if ($('body').hasClass('canvas-menu mini-navbar')) {
+            NavToggle();
+        }
+
+    });
+    $('#side-menu>li li a:not(:has(span))').click(function() {
+        if ($(window).width() < 769) {
+            NavToggle();
+        }
+    });
+
 //     $('.nav-close').click(NavToggle);
 //
 //     //ios浏览器兼容性处理
@@ -46,26 +46,26 @@ $(function() {
 //     }
 
 });
-//
-// $(window).bind("load resize", function() {
-//     isMobile = $.common.isMobile() || $(window).width() < 769;
-//     if (isMobile) {
-//         $('body').addClass('canvas-menu');
-//         $("body").removeClass("mini-navbar");
-//         $("nav .logo").addClass("hide");
-//         $(".slimScrollDiv").css({ "overflow": "hidden" });
-//         $('.navbar-static-side').fadeOut();
-//     } else {
-//     	if ($('body').hasClass('canvas-menu')) {
-//     	    $('body').addClass('fixed-sidebar');
-//     	    $('body').removeClass('canvas-menu');
-//     	    $("body").removeClass("mini-navbar");
-//     	    $("nav .logo").removeClass("hide");
-//     	    $(".slimScrollDiv").css({ "overflow": "visible" });
-//     	    $('.navbar-static-side').fadeIn();
-//     	}
-//     }
-// });
+
+$(window).bind("load resize", function() {
+    isMobile = $.common.isMobile() || $(window).width() < 769;
+    if (isMobile) {
+        $('body').addClass('canvas-menu');
+        $("body").removeClass("mini-navbar");
+        $("nav .logo").addClass("hide");
+        $(".slimScrollDiv").css({ "overflow": "hidden" });
+        $('.navbar-static-side').fadeOut();
+    } else {
+    	if ($('body').hasClass('canvas-menu')) {
+    	    $('body').addClass('fixed-sidebar');
+    	    $('body').removeClass('canvas-menu');
+    	    $("body").removeClass("mini-navbar");
+    	    $("nav .logo").removeClass("hide");
+    	    $(".slimScrollDiv").css({ "overflow": "visible" });
+    	    $('.navbar-static-side').fadeIn();
+    	}
+    }
+});
 //
 // function openToCurrentTab(obj) {
 //     if (isScrollToTop) {
@@ -99,10 +99,10 @@ $(function() {
 //     }
 // }
 //
-// function NavToggle() {
-//     $('.navbar-minimalize').trigger('click');
-// }
-//
+function NavToggle() {
+    $('.navbar-minimalize').trigger('click');
+}
+
 // function fixedSidebar() {
 //     $('#side-menu').hide();
 //     $("nav .logo").addClass("hide");
@@ -138,11 +138,11 @@ $(function() {
 //         $('#side-menu').removeAttr('style');
 //     }
 // }
-//
-// /**
-//  * iframe处理
-//  */
-// $(function() {
+
+/**
+ * iframe处理
+ */
+$(function() {
 //     //计算元素集合的总宽度
 //     function calSumWidth(elements) {
 //         var width = 0;
@@ -664,4 +664,4 @@ $(function() {
 //             },
 //         }
 //     });
-// });
+});

@@ -1591,10 +1591,10 @@
                 }
                 return false;
             },
-            // // 判断一个字符串是否为非空串
-            // isNotEmpty: function (value) {
-            //     return !$.common.isEmpty(value);
-            // },
+            // 判断一个字符串是否为非空串
+            isNotEmpty: function (value) {
+                return !$.common.isEmpty(value);
+            },
             // // 如果值是空，则返回指定默认字符串，否则返回字符串本身
             // nullToDefault: function (value, defaultValue) {
             //     return $.common.isEmpty(value) ? defaultValue : value;
@@ -1620,10 +1620,10 @@
                 }
                 return value.toString().replace(/(^\s*)|(\s*$)|\r|\n/g, "");
             },
-            // // 比较两个字符串（大小写敏感）
-            // equals: function (str, that) {
-            //     return str == that;
-            // },
+            // 比较两个字符串（大小写敏感）
+            equals: function (str, that) {
+                return str == that;
+            },
             // // 比较两个字符串（大小写不敏感）
             // equalsIgnoreCase: function (str, that) {
             //     return String(str).toUpperCase() === String(that).toUpperCase();
