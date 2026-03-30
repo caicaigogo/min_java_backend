@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 //import com.ruoyi.common.constant.ShiroConstants;
 //import com.ruoyi.common.utils.CookieUtils;
 //import com.ruoyi.common.utils.DateUtils;
-//import com.ruoyi.common.utils.ServletUtils;
-//import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.text.Convert;
-//import com.ruoyi.framework.config.RuoYiConfig;
+import com.ruoyi.common.utils.ServletUtils;
+import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.text.Convert;
+import com.ruoyi.framework.config.RuoYiConfig;
 //import com.ruoyi.framework.shiro.service.PasswordService;
 import com.ruoyi.framework.web.controller.BaseController;
 //import com.ruoyi.framework.web.domain.AjaxResult;
-//import com.ruoyi.project.system.config.service.IConfigService;
+import com.ruoyi.project.system.config.service.IConfigService;
 import com.ruoyi.project.system.menu.domain.Menu;
 import com.ruoyi.project.system.menu.service.IMenuService;
 import com.ruoyi.project.system.user.domain.User;
@@ -38,15 +38,15 @@ public class IndexController extends BaseController
     @Autowired
     private IMenuService menuService;
 
-//    @Autowired
-//    private IConfigService configService;
-//
+    @Autowired
+    private IConfigService configService;
+
 //    @Autowired
 //    private PasswordService passwordService;
 //
-//    @Autowired
-//    private RuoYiConfig ruoYiConfig;
-//
+    @Autowired
+    private RuoYiConfig ruoYiConfig;
+
     // 系统首页
     @GetMapping("/index")
     public String index(ModelMap mmap, HttpServletRequest request)
@@ -57,24 +57,24 @@ public class IndexController extends BaseController
         List<Menu> menus = menuService.selectMenusByUser(user);
         mmap.put("menus", menus);
         mmap.put("user", user);
-//        mmap.put("sideTheme", configService.selectConfigByKey("sys.index.sideTheme"));
-//        mmap.put("skinName", configService.selectConfigByKey("sys.index.skinName"));
-//        Boolean footer = Convert.toBool(configService.selectConfigByKey("sys.index.footer"), true);
-//        Boolean tagsView = Convert.toBool(configService.selectConfigByKey("sys.index.tagsView"), true);
-//        mmap.put("footer", footer);
-//        mmap.put("tagsView", tagsView);
-//        mmap.put("mainClass", contentMainClass(footer, tagsView));
-//        mmap.put("copyrightYear", ruoYiConfig.getCopyrightYear());
-//        mmap.put("demoEnabled", ruoYiConfig.isDemoEnabled());
+        mmap.put("sideTheme", configService.selectConfigByKey("sys.index.sideTheme"));
+        mmap.put("skinName", configService.selectConfigByKey("sys.index.skinName"));
+        Boolean footer = Convert.toBool(configService.selectConfigByKey("sys.index.footer"), true);
+        Boolean tagsView = Convert.toBool(configService.selectConfigByKey("sys.index.tagsView"), true);
+        mmap.put("footer", footer);
+        mmap.put("tagsView", tagsView);
+        mmap.put("mainClass", contentMainClass(footer, tagsView));
+        mmap.put("copyrightYear", ruoYiConfig.getCopyrightYear());
+        mmap.put("demoEnabled", ruoYiConfig.isDemoEnabled());
 //        mmap.put("isDefaultModifyPwd", initPasswordIsModify(user.getPwdUpdateDate()));
 //        mmap.put("isPasswordExpired", passwordIsExpiration(user.getPwdUpdateDate()));
-//        mmap.put("isMobile", ServletUtils.checkAgentIsMobile(ServletUtils.getRequest().getHeader("User-Agent")));
-//
-//        // 菜单导航显示风格
-//        String menuStyle = configService.selectConfigByKey("sys.index.menuStyle");
-//        // 移动端，默认使左侧导航菜单，否则取默认配置
-//        String indexStyle = ServletUtils.checkAgentIsMobile(ServletUtils.getRequest().getHeader("User-Agent")) ? "index" : menuStyle;
-//
+        mmap.put("isMobile", ServletUtils.checkAgentIsMobile(ServletUtils.getRequest().getHeader("User-Agent")));
+
+        // 菜单导航显示风格
+        String menuStyle = configService.selectConfigByKey("sys.index.menuStyle");
+        // 移动端，默认使左侧导航菜单，否则取默认配置
+        String indexStyle = ServletUtils.checkAgentIsMobile(ServletUtils.getRequest().getHeader("User-Agent")) ? "index" : menuStyle;
+
 //        // 优先Cookie配置导航菜单
 //        Cookie[] cookies = ServletUtils.getRequest().getCookies();
 //        for (Cookie cookie : cookies)
@@ -85,11 +85,10 @@ public class IndexController extends BaseController
 //                break;
 //            }
 //        }
-//        String webIndex = "topnav".equalsIgnoreCase(indexStyle) ? "index-topnav" : "index";
+        String webIndex = "topnav".equalsIgnoreCase(indexStyle) ? "index-topnav" : "index";
 //        // CSRF Token
 //        request.getSession().setAttribute(ShiroConstants.CSRF_TOKEN, ServletUtils.generateToken());
-        return "index";
-//        return webIndex;
+        return webIndex;
     }
 
 //    // 锁定屏幕
@@ -141,23 +140,23 @@ public class IndexController extends BaseController
 //        return "main";
 //    }
 //
-//    // content-main class
-//    public String contentMainClass(Boolean footer, Boolean tagsView)
-//    {
-//        if (!footer && !tagsView)
-//        {
-//            return "tagsview-footer-hide";
-//        }
-//        else if (!footer)
-//        {
-//            return "footer-hide";
-//        }
-//        else if (!tagsView)
-//        {
-//            return "tagsview-hide";
-//        }
-//        return StringUtils.EMPTY;
-//    }
+    // content-main class
+    public String contentMainClass(Boolean footer, Boolean tagsView)
+    {
+        if (!footer && !tagsView)
+        {
+            return "tagsview-footer-hide";
+        }
+        else if (!footer)
+        {
+            return "footer-hide";
+        }
+        else if (!tagsView)
+        {
+            return "tagsview-hide";
+        }
+        return StringUtils.EMPTY;
+    }
 //
 //    // 检查初始密码是否提醒修改
 //    public boolean initPasswordIsModify(Date pwdUpdateDate)
