@@ -131,15 +131,15 @@ public class IndexController extends BaseController
 //    {
 //        CookieUtils.setCookie(response, "nav-style", style);
 //    }
-//
-//    // 系统介绍
-//    @GetMapping("/system/main")
-//    public String main(ModelMap mmap)
-//    {
-//        mmap.put("version", ruoYiConfig.getVersion());
-//        return "main";
-//    }
-//
+
+    // 系统介绍
+    @GetMapping("/system/main")
+    public String main(ModelMap mmap)
+    {
+        mmap.put("version", ruoYiConfig.getVersion());
+        return "main";
+    }
+
     // content-main class
     public String contentMainClass(Boolean footer, Boolean tagsView)
     {
