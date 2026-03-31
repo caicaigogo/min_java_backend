@@ -2,12 +2,12 @@
  * 通用js方法封装处理
  * Copyright (c) 2019 ruoyi
  */
-//
-// // 当前table相关信息
-// var table = {
-//     config: {},
-//     // 当前实例配置
-//     options: {},
+
+// 当前table相关信息
+var table = {
+    config: {},
+    // 当前实例配置
+    options: {},
 //     // 设置实例配置
 //     set: function(id) {
 //         if ($.common.getLength(table.config) > 1 && $.common.isNotEmpty(event)) {
@@ -25,578 +25,578 @@
 //     rememberSelecteds: {},
 //     // 记住选择ID组
 //     rememberSelectedIds: {}
-// };
+};
 
 (function ($) {
     $.extend({
         // _tree: {},
         // bttTable: {},
-        // // 表格封装处理
-        // table: {
-        //     // 初始化表格参数
-        //     init: function(options) {
-        //         var defaults = {
-        //             id: "bootstrap-table",
-        //             type: 0, // 0 代表bootstrapTable 1代表bootstrapTreeTable
-        //             method: 'post',
-        //             height: undefined,
-        //             sidePagination: "server",
-        //             undefinedText: '-',
-        //             sortName: undefined,
-        //             sortOrder: "asc",
-        //             pagination: true,
-        //             paginationLoop: false,
-        //             pageSize: 10,
-        //             pageNumber: 1,
-        //             pageList: [10, 25, 50, 100],
-        //             toolbar: "toolbar",
-        //             loadingFontSize: 13,
-        //             striped: false,
-        //             escape: true,
-        //             firstLoad: true,
-        //             showFooter: false,
-        //             search: false,
-        //             showSearch: true,
-        //             showPageGo: false,
-        //             showRefresh: true,
-        //             showColumns: true,
-        //             showToggle: true,
-        //             showExport: false,
-        //             showPrint: false,
-        //             exportDataType: 'all',
-        //             exportTypes: ['csv', 'txt', 'doc', 'excel'],
-        //             clickToSelect: false,
-        //             singleSelect: false,
-        //             mobileResponsive: true,
-        //             maintainSelected: false,
-        //             rememberSelected: false,
-        //             fixedColumns: false,
-        //             fixedNumber: 0,
-        //             fixedRightNumber: 0,
-        //             queryParams: $.table.queryParams,
-        //             rowStyle: undefined
-        //         };
-        //         var options = $.extend(defaults, options);
-        //         table.options = options;
-        //         table.config[options.id] = options;
-        //         $.table.initEvent();
-        //         $('#' + options.id).bootstrapTable({
-        //             id: options.id,
-        //             url: options.url,                                   // 请求后台的URL（*）
-        //             contentType: "application/x-www-form-urlencoded",   // 编码类型
-        //             method: options.method,                             // 请求方式（*）
-        //             cache: false,                                       // 是否使用缓存
-        //             height: options.height,                             // 表格的高度
-        //             striped: options.striped,                           // 是否显示行间隔色
-        //             undefinedText: options.undefinedText,               // 数据值为空时显示的内容
-        //             sortable: true,                                     // 是否启用排序
-        //             sortStable: true,                                   // 设置为 true 将获得稳定的排序
-        //             sortName: options.sortName,                         // 排序列名称
-        //             sortOrder: options.sortOrder,                       // 排序方式  asc 或者 desc
-        //             pagination: options.pagination,                     // 是否显示分页（*）
-        //             paginationLoop: options.paginationLoop,             // 是否启用分页条无限循环的功能
-        //             pageNumber: 1,                                      // 初始化加载第一页，默认第一页
-        //             pageSize: options.pageSize,                         // 每页的记录行数（*）
-        //             pageList: options.pageList,                         // 可供选择的每页的行数（*）
-        //             firstLoad: options.firstLoad,                       // 是否首次请求加载数据，对于数据较大可以配置false
-        //             escape: options.escape,                             // 转义HTML字符串
-        //             showFooter: options.showFooter,                     // 是否显示表尾
-        //             iconSize: 'outline',                                // 图标大小：undefined默认的按钮尺寸 xs超小按钮sm小按钮lg大按钮
-        //             toolbar: '#' + options.toolbar,                     // 指定工作栏
-        //             virtualScroll: options.virtualScroll,               // 是否启动虚拟滚动（大量数据纯展示时使用)
-        //             loadingFontSize: options.loadingFontSize,           // 自定义加载文本的字体大小
-        //             sidePagination: options.sidePagination,             // server启用服务端分页client客户端分页
-        //             search: options.search,                             // 是否显示搜索框功能
-        //             searchText: options.searchText,                     // 搜索框初始显示的内容，默认为空
-        //             showSearch: options.showSearch,                     // 是否显示检索信息
-        //             showPageGo: options.showPageGo,                     // 是否显示跳转页
-        //             showRefresh: options.showRefresh,                   // 是否显示刷新按钮
-        //             showColumns: options.showColumns,                   // 是否显示隐藏某列下拉框
-        //             showToggle: options.showToggle,                     // 是否显示详细视图和列表视图的切换按钮
-        //             showExport: options.showExport,                     // 是否支持导出文件
-        //             showPrint: options.showPrint,                       // 是否支持打印页面
-        //             showHeader: options.showHeader,                     // 是否显示表头
-        //             showFullscreen: options.showFullscreen,             // 是否显示全屏按钮
-        //             uniqueId: options.uniqueId,                         // 唯一的标识符
-        //             clickToSelect: options.clickToSelect,               // 是否启用点击选中行
-        //             singleSelect: options.singleSelect,                 // 是否单选checkbox
-        //             mobileResponsive: options.mobileResponsive,         // 是否支持移动端适配
-        //             cardView: options.cardView,                         // 是否启用显示卡片视图
-        //             detailView: options.detailView,                     // 是否启用显示细节视图
-        //             onCheck: options.onCheck,                           // 当选择此行时触发
-        //             onUncheck: options.onUncheck,                       // 当取消此行时触发
-        //             onCheckAll: options.onCheckAll,                     // 当全选行时触发
-        //             onUncheckAll: options.onUncheckAll,                 // 当取消全选行时触发
-        //             onClickRow: options.onClickRow,                     // 点击某行触发的事件
-        //             onDblClickRow: options.onDblClickRow,               // 双击某行触发的事件
-        //             onClickCell: options.onClickCell,                   // 单击某格触发的事件
-        //             onDblClickCell: options.onDblClickCell,             // 双击某格触发的事件
-        //             onEditableSave: options.onEditableSave,             // 行内编辑保存的事件
-        //             onExpandRow: options.onExpandRow,                   // 点击详细视图的事件
-        //             onPostBody: options.onPostBody,                     // 渲染完成后执行的事件
-        //             maintainSelected: options.maintainSelected,         // 前端翻页时保留所选行
-        //             rememberSelected: options.rememberSelected,         // 启用翻页记住前面的选择
-        //             fixedColumns: options.fixedColumns,                 // 是否启用冻结列（左侧）
-        //             fixedNumber: options.fixedNumber,                   // 列冻结的个数（左侧）
-        //             fixedRightNumber: options.fixedRightNumber,         // 列冻结的个数（右侧）
-        //             onReorderRow: options.onReorderRow,                 // 当拖拽结束后处理函数
-        //             queryParams: options.queryParams,                   // 传递参数（*）
-        //             rowStyle: options.rowStyle,                         // 通过自定义函数设置行样式
-        //             footerStyle: options.footerStyle,                   // 通过自定义函数设置页脚样式
-        //             headerStyle: options.headerStyle,                   // 通过自定义函数设置标题样式
-        //             selectItemName: options.selectItemName,             // 自定义radio/checkbox的name值
-        //             columns: options.columns,                           // 显示列信息（*）
-        //             data: options.data,                                 // 被加载的数据
-        //             responseHandler: $.table.responseHandler,           // 在加载服务器发送来的数据之前处理函数
-        //             onLoadSuccess: $.table.onLoadSuccess,               // 当所有数据被加载时触发处理函数
-        //             exportOptions: options.exportOptions,               // 前端导出忽略列索引
-        //             exportDataType: options.exportDataType,             // 导出方式（默认all：导出所有数据；basic：导出当前页的数据；selected：导出选中的数据）
-        //             exportTypes: options.exportTypes,                   // 导出文件类型 （json、xml、png、csv、txt、sql、doc、excel、xlsx、powerpoint、pdf）
-        //             printPageBuilder: options.printPageBuilder,         // 自定义打印页面模板
-        //             detailFormatter: options.detailFormatter,           // 在行下面展示其他数据列表
-        //         });
-        //     },
-        //     // 获取实例ID，如存在多个返回#id1,#id2 delimeter分隔符
-        //     getOptionsIds: function(separator) {
-        //         var _separator = $.common.isEmpty(separator) ? "," : separator;
-        //         var optionsIds = "";
-        //         $.each(table.config, function(key, value){
-        //             optionsIds += "#" + key + _separator;
-        //         });
-        //         return optionsIds.substring(0, optionsIds.length - 1);
-        //     },
-        //     // 查询条件
-        //     queryParams: function(params) {
-        //         table.set();
-        //         var curParams = {
-        //             // 传递参数查询参数
-        //             pageSize:       params.limit,
-        //             pageNum:        params.offset / params.limit + 1,
-        //             searchValue:    params.search,
-        //             orderByColumn:  params.sort,
-        //             isAsc:          params.order
-        //         };
-        //         var currentId = $.common.isEmpty(table.options.formId) ? $('form').attr('id') : table.options.formId;
-        //         return $.extend(curParams, $.common.formToJSON(currentId));
-        //     },
-        //     // 请求获取数据后处理回调函数
-        //     responseHandler: function(res) {
-        //         if (typeof table.get(this.id).responseHandler == "function") {
-        //             table.get(this.id).responseHandler(res);
-        //         }
-        //         var thisOptions = table.config[this.id];
-        //         if (res.code == web_status.SUCCESS) {
-        //             if ($.common.isNotEmpty(thisOptions.sidePagination) && thisOptions.sidePagination == 'client') {
-        //                 return res.rows;
-        //             } else {
-        //                 if ($.common.isNotEmpty(thisOptions.rememberSelected) && thisOptions.rememberSelected) {
-        //                     var column = $.common.isEmpty(thisOptions.uniqueId) ? thisOptions.columns[1].field : thisOptions.uniqueId;
-        //                     $.each(res.rows, function(i, row) {
-        //                         row.state = $.inArray(row[column], table.rememberSelectedIds[thisOptions.id]) !== -1;
-        //                     })
-        //                 }
-        //                 return { rows: res.rows, total: res.total };
-        //             }
-        //         } else {
-        //             $.modal.alertWarning(res.msg);
-        //             return { rows: [], total: 0 };
-        //         }
-        //     },
-        //     // 初始化事件
-        //     initEvent: function() {
-        //         // 实例ID信息
-        //         var optionsIds = $.table.getOptionsIds();
-        //         // 监听事件处理
-        //         $(optionsIds).on(TABLE_EVENTS, function () {
-        //             table.set($(this).attr("id"));
-        //         });
-        //         // 在表格体渲染完成，并在 DOM 中可见后触发（事件）
-        //         $(optionsIds).on("post-body.bs.table", function (e, args) {
-        //             // 浮动提示框特效
-        //             $(".table [data-toggle='tooltip']").tooltip();
-        //             // 气泡弹出框特效
-        //             $('.table [data-toggle="popover"]').popover();
-        //         });
-        //         // 选中、取消、全部选中、全部取消（事件）
-        //         $(optionsIds).on("check.bs.table check-all.bs.table uncheck.bs.table uncheck-all.bs.table", function (e, rowsAfter, rowsBefore) {
-        //             // 复选框分页保留保存选中数组
-        //             var rows = $.common.equals("uncheck-all", e.type) ? rowsBefore : rowsAfter;
-        //             var rowIds = $.table.affectedRowIds(rows);
-        //             if ($.common.isNotEmpty(table.options.rememberSelected) && table.options.rememberSelected) {
-        //                 func = $.inArray(e.type, ['check', 'check-all']) > -1 ? 'union' : 'difference';
-        //                 var selectedIds = table.rememberSelectedIds[table.options.id];
-        //                 if ($.common.isNotEmpty(selectedIds)) {
-        //                     table.rememberSelectedIds[table.options.id] = _[func](selectedIds, rowIds);
-        //                 } else {
-        //                     table.rememberSelectedIds[table.options.id] = _[func]([], rowIds);
-        //                 }
-        //                 var selectedRows = table.rememberSelecteds[table.options.id];
-        //                 if ($.common.isNotEmpty(selectedRows)) {
-        //                     table.rememberSelecteds[table.options.id] = _[func](selectedRows, rows);
-        //                 } else {
-        //                     table.rememberSelecteds[table.options.id] = _[func]([], rows);
-        //                 }
-        //             }
-        //         });
-        //         // 加载成功、选中、取消、全部选中、全部取消（事件）
-        //         $(optionsIds).on("check.bs.table uncheck.bs.table check-all.bs.table uncheck-all.bs.table load-success.bs.table", function () {
-        //             var toolbar = table.options.toolbar;
-        //             var uniqueId = table.options.uniqueId;
-        //             // 工具栏按钮控制
-        //             var rows = $.common.isEmpty(uniqueId) ? $.table.selectFirstColumns() : $.table.selectColumns(uniqueId);
-        //             // 非多个禁用
-        //             $('#' + toolbar + ' .multiple').toggleClass('disabled', !rows.length);
-        //             // 非单个禁用
-        //             $('#' + toolbar + ' .single').toggleClass('disabled', rows.length!=1);
-        //         });
-        //         // 图片预览事件
-        //         $(optionsIds).off("click").on("click", '.img-circle', function() {
-        //             var src = $(this).attr('src');
-        //             var target = $(this).data('target');
-        //             if ($.common.equals("self", target)) {
-        //                 var height = $(this).data('height');
-        //                 var width = $(this).data('width');
-        //                 top.layer.open({
-        //                     title: false,
-        //                     type: 1,
-        //                     closeBtn: true,
-        //                     shadeClose: true,
-        //                     content: "<img src='" + src + "' height='" + height + "' width='" + width + "'/>"
-        //                 });
-        //             } else if ($.common.equals("blank", target)) {
-        //                 window.open(src);
-        //             }
-        //         });
-        //         // 单击tooltip事件
-        //         $(optionsIds).on("click", '.tooltip-show', function() {
-        //             var target = $(this).data('target');
-        //             var input = $(this).prev();
-        //             if ($.common.equals("copy", target)) {
-        //                 input.select();
-        //                 document.execCommand("copy");
-        //             } else if ($.common.equals("open", target)) {
-        //                 top.layer.alert(input.val(), {
-        //                     title: "信息内容",
-        //                     area: ['400px', ''],
-        //                     shadeClose: true,
-        //                     btn: ['关闭'],
-        //                     btnclass: ['btn btn-primary'],
-        //                 });
-        //             }
-        //         });
-        //     },
-        //     // 当所有数据被加载时触发
-        //     onLoadSuccess: function(data) {
-        //         if (typeof table.options.onLoadSuccess == "function") {
-        //             table.options.onLoadSuccess(data);
-        //         }
-        //     },
-        //     // 表格销毁
-        //     destroy: function (tableId) {
-        //         var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-        //         $("#" + currentId).bootstrapTable('destroy');
-        //         delete table.rememberSelectedIds[currentId];
-        //         delete table.rememberSelecteds[currentId];
-        //     },
-        //     // 序列号生成
-        //     serialNumber: function (index, tableId) {
-        //         var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-        //         var tableParams = $("#" + currentId).bootstrapTable('getOptions');
-        //         var pageSize = $.common.isNotEmpty(tableParams.pageSize) ? tableParams.pageSize: table.options.pageSize;
-        //         var pageNumber = $.common.isNotEmpty(tableParams.pageNumber) ? tableParams.pageNumber: table.options.pageNumber;
-        //         if (table.options.sidePagination == 'client') {
-        //             return index + 1;
-        //         }
-        //         return pageSize * (pageNumber - 1) + index + 1;
-        //     },
-        //     // 列超出指定长度浮动提示 target（copy单击复制文本 open弹窗打开文本）
-        //     tooltip: function (value, length, target) {
-        //         var _length = $.common.isEmpty(length) ? 20 : length;
-        //         var _text = "";
-        //         var _value = $.common.nullToStr(value);
-        //         var _target = $.common.isEmpty(target) ? 'copy' : target;
-        //         if (_value.length > _length) {
-        //             _text = _value.substr(0, _length) + "...";
-        //             _value = _value.replace(/\'/g,"&apos;");
-        //             _value = _value.replace(/\"/g,"&quot;");
-        //             var actions = [];
-        //             actions.push($.common.sprintf('<input style="opacity: 0;position: absolute;z-index:-1" type="text" value="%s"/>', _value));
-        //             actions.push($.common.sprintf('<a href="###" class="tooltip-show" data-toggle="tooltip" data-target="%s" title="%s">%s</a>', _target, _value, _text));
-        //             return actions.join('');
-        //         } else {
-        //             _text = _value;
-        //             return _text;
-        //         }
-        //     },
-        //     // 下拉按钮切换
-        //     dropdownToggle: function (value) {
-        //         var actions = [];
-        //         actions.push('<div class="btn-group">');
-        //         actions.push('<button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">');
-        //         actions.push('<i class="fa fa-cog"></i>&nbsp;<span class="fa fa-chevron-down"></span></button>');
-        //         actions.push('<ul class="dropdown-menu">');
-        //         actions.push(value.replace(/<a/g,"<li><a").replace(/<\/a>/g,"</a></li>"));
-        //         actions.push('</ul>');
-        //         actions.push('</div>');
-        //         return actions.join('');
-        //     },
-        //     // 图片预览
-        //     imageView: function (value, height, width, target) {
-        //         if ($.common.isEmpty(width)) {
-        //             width = 'auto';
-        //         }
-        //         if ($.common.isEmpty(height)) {
-        //             height = 'auto';
-        //         }
-        //         // blank or self
-        //         var _target = $.common.isEmpty(target) ? 'self' : target;
-        //         if ($.common.isNotEmpty(value)) {
-        //             return $.common.sprintf("<img class='img-circle img-xs' data-height='%s' data-width='%s' data-target='%s' src='%s'/>", height, width, _target, value);
-        //         } else {
-        //             return $.common.nullToStr(value);
-        //         }
-        //     },
-        //     // 搜索-默认第一个form
-        //     search: function(formId, tableId, pageNumber, pageSize) {
-        //         table.set(tableId);
-        //         table.options.formId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
-        //         var params = $.common.isEmpty(tableId) ? $("#" + table.options.id).bootstrapTable('getOptions') : $("#" + tableId).bootstrapTable('getOptions');
-        //         if ($.common.isNotEmpty(pageNumber)) {
-        //             params.pageNumber = pageNumber;
-        //         }
-        //         if ($.common.isNotEmpty(pageSize)) {
-        //             params.pageSize = pageSize;
-        //         }
-        //         if ($.common.isNotEmpty(tableId)) {
-        //             $("#" + tableId).bootstrapTable('refresh', params);
-        //         } else{
-        //             $("#" + table.options.id).bootstrapTable('refresh', params);
-        //         }
-        //     },
-        //     // 导出数据
-        //     exportExcel: function(formId) {
-        //         table.set();
-        //         $.modal.confirm("确定导出所有" + table.options.modalName + "吗？", function() {
-        //             var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
-        //             var params = $("#" + table.options.id).bootstrapTable('getOptions');
-        //             var dataParam = $("#" + currentId).serializeArray();
-        //             dataParam.push({ "name": "orderByColumn", "value": params.sortName });
-        //             dataParam.push({ "name": "isAsc", "value": params.sortOrder });
-        //             $.modal.loading("正在导出数据，请稍候...");
-        //             $.post(table.options.exportUrl, dataParam, function(result) {
-        //                 if (result.code == web_status.SUCCESS) {
-        //                     window.location.href = ctx + "common/download?fileName=" + encodeURI(result.msg) + "&delete=" + true;
-        //                 } else if (result.code == web_status.WARNING) {
-        //                     $.modal.alertWarning(result.msg)
-        //                 } else {
-        //                     $.modal.alertError(result.msg);
-        //                 }
-        //                 $.modal.closeLoading();
-        //             });
-        //         });
-        //     },
-        //     // 下载模板
-        //     importTemplate: function() {
-        //         $.get(activeWindow().table.options.importTemplateUrl, function(result) {
-        //             if (result.code == web_status.SUCCESS) {
-        //                 window.location.href = ctx + "common/download?fileName=" + encodeURI(result.msg) + "&delete=" + true;
-        //             } else if (result.code == web_status.WARNING) {
-        //                 $.modal.alertWarning(result.msg)
-        //             } else {
-        //                 $.modal.alertError(result.msg);
-        //             }
-        //         });
-        //     },
-        //     // 导入数据
-        //     importExcel: function(formId, width, height) {
-        //         table.set();
-        //         var currentId = $.common.isEmpty(formId) ? 'importTpl' : formId;
-        //         var _width = $.common.isEmpty(width) ? "400" : width;
-        //         var _height = $.common.isEmpty(height) ? "230" : height;
-        //         top.layer.open({
-        //             type: 1,
-        //             area: [_width + 'px', _height + 'px'],
-        //             fix: false,
-        //             //不固定
-        //             maxmin: true,
-        //             shade: 0.3,
-        //             title: '导入' + table.options.modalName + '数据',
-        //             content: $('#' + currentId).html(),
-        //             btn: ['<i class="fa fa-check"></i> 导入', '<i class="fa fa-remove"></i> 取消'],
-        //             // 弹层外区域关闭
-        //             shadeClose: true,
-        //             btn1: function(index, layero){
-        //                 var file = layero.find('#file').val();
-        //                 if (file == '' || (!$.common.endWith(file, '.xls') && !$.common.endWith(file, '.xlsx'))) {
-        //                     $.modal.msgWarning("请选择后缀为 “xls”或“xlsx”的文件。");
-        //                     return false;
-        //                 }
-        //                 var index = top.layer.load(2, {shade: false});
-        //                 $.modal.disable();
-        //                 var formData = new FormData(layero.find('form')[0]);
-        //                 $.ajax({
-        //                     url: table.options.importUrl,
-        //                     data: formData,
-        //                     cache: false,
-        //                     contentType: false,
-        //                     processData: false,
-        //                     type: 'POST',
-        //                     success: function (result) {
-        //                         if (result.code == web_status.SUCCESS) {
-        //                         	$.modal.close(index);
-        //                             $.modal.closeAll();
-        //                             $.modal.alertSuccess(result.msg);
-        //                             $.table.refresh();
-        //                         } else if (result.code == web_status.WARNING) {
-        //                         	$.modal.close(index);
-        //                             $.modal.enable();
-        //                             $.modal.alertWarning(result.msg)
-        //                         } else {
-        //                             $.modal.close(index);
-        //                             $.modal.enable();
-        //                             $.modal.alertError(result.msg);
-        //                         }
-        //                     },
-        //                     complete: function () {
-        //                     	layero.find('#file').val('');
-        //                     }
-        //                 });
-        //             }
-        //         });
-        //     },
-        //     // 刷新表格
-        //     refresh: function(tableId, pageNumber, pageSize, url) {
-        //         var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-        //         var params = $("#" + currentId).bootstrapTable('getOptions');
-        //         if ($.common.isEmpty(pageNumber)) {
-        //             pageNumber = params.pageNumber;
-        //         }
-        //         if ($.common.isEmpty(pageSize)) {
-        //             pageSize = params.pageSize;
-        //         }
-        //         if ($.common.isEmpty(url)) {
-        //             url = $.common.isEmpty(url) ? params.url : url;
-        //         }
-        //         $("#" + currentId).bootstrapTable('refresh', {
-        //             silent: true,
-        //             url: url,
-        //             pageNumber: pageNumber,
-        //             pageSize: pageSize
-        //         });
-        //     },
-        //     // 刷新options配置
-        //     refreshOptions: function(options, tableId) {
-        //         var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-        //         $("#" + currentId).bootstrapTable('refreshOptions', options);
-        //     },
-        //     // 查询表格指定列值 deDuplication（ true去重、false不去重）
-        //     selectColumns: function(column, deDuplication) {
-        //         var distinct = $.common.isEmpty(deDuplication) ? true : deDuplication;
-        //         var rows = $.map($("#" + table.options.id).bootstrapTable('getSelections'), function (row) {
-        //             return $.common.getItemField(row, column);
-        //         });
-        //         if ($.common.isNotEmpty(table.options.rememberSelected) && table.options.rememberSelected) {
-        //             var selectedRows = table.rememberSelecteds[table.options.id];
-        //             if ($.common.isNotEmpty(selectedRows)) {
-        //                 rows = $.map(table.rememberSelecteds[table.options.id], function (row) {
-        //                     return $.common.getItemField(row, column);
-        //                 });
-        //             }
-        //         }
-        //         return distinct ? $.common.uniqueFn(rows) : rows;
-        //     },
-        //     // 获取当前页选中或者取消的行ID
-        //     affectedRowIds: function(rows) {
-        //         var column = $.common.isEmpty(table.options.uniqueId) ? table.options.columns[1].field : table.options.uniqueId;
-        //         var rowIds;
-        //         if ($.isArray(rows)) {
-        //             rowIds = $.map(rows, function(row) {
-        //                 return $.common.getItemField(row, column);
-        //             });
-        //         } else {
-        //             rowIds = [rows[column]];
-        //         }
-        //         return rowIds;
-        //     },
-        //     // 查询表格首列值deDuplication（ true去重、false不去重）
-        //     selectFirstColumns: function(deDuplication) {
-        //         var distinct = $.common.isEmpty(deDuplication) ? true : deDuplication;
-        //         var rows = $.map($("#" + table.options.id).bootstrapTable('getSelections'), function (row) {
-        //             return $.common.getItemField(row, table.options.columns[1].field);
-        //         });
-        //         if ($.common.isNotEmpty(table.options.rememberSelected) && table.options.rememberSelected) {
-        //             var selectedRows = table.rememberSelecteds[table.options.id];
-        //             if ($.common.isNotEmpty(selectedRows)) {
-        //                 rows = $.map(selectedRows, function (row) {
-        //                     return $.common.getItemField(row, table.options.columns[1].field);
-        //                 });
-        //             }
-        //         }
-        //         return distinct ? $.common.uniqueFn(rows) : rows;
-        //     },
-        //     // 回显数据字典
-        //     selectDictLabel: function(datas, value) {
-        //         if ($.common.isEmpty(datas) || $.common.isEmpty(value)) {
-        //             return '';
-        //         }
-        //         var actions = [];
-        //         $.each(datas, function(index, dict) {
-        //             if (dict.dictValue == ('' + value)) {
-        //                 var listClass = $.common.equals("default", dict.listClass) || $.common.isEmpty(dict.listClass) ? "" : "badge badge-" + dict.listClass;
-        //                 var cssClass = $.common.isNotEmpty(dict.cssClass) ? dict.cssClass : listClass;
-        //                 actions.push($.common.sprintf("<span class='%s'>%s</span>", cssClass, dict.dictLabel));
-        //                 return false;
-        //             }
-        //         });
-        //         if (actions.length === 0) {
-        //             actions.push($.common.sprintf("<span>%s</span>", value))
-        //         }
-        //         return actions.join('');
-        //     },
-        //     // 回显数据字典（字符串数组）
-        //     selectDictLabels: function(datas, value, separator) {
-        //         if ($.common.isEmpty(datas) || $.common.isEmpty(value)) {
-        //             return '';
-        //         }
-        //         var currentSeparator = $.common.isEmpty(separator) ? "," : separator;
-        //         var actions = [];
-        //         $.each(value.split(currentSeparator), function(i, val) {
-        //             var match = false
-        //             $.each(datas, function(index, dict) {
-        //                 if (dict.dictValue == ('' + val)) {
-        //                     var listClass = $.common.equals("default", dict.listClass) || $.common.isEmpty(dict.listClass) ? "" : "badge badge-" + dict.listClass;
-        //                     actions.push($.common.sprintf("<span class='%s'>%s</span>", listClass, dict.dictLabel));
-        //                     match = true
-        //                     return false;
-        //                 }
-        //             });
-        //             if (!match) {
-        //                 actions.push($.common.sprintf("<span> %s </span>", val));
-        //             }
-        //         });
-        //         return actions.join('');
-        //     },
-        //     // 显示表格指定列
-        //     showColumn: function(column, tableId) {
-        //         var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-        //         $("#" + currentId).bootstrapTable('showColumn', column);
-        //     },
-        //     // 隐藏表格指定列
-        //     hideColumn: function(column, tableId) {
-        //         var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-        //         $("#" + currentId).bootstrapTable('hideColumn', column);
-        //     },
-        //     // 显示所有表格列
-        //     showAllColumns: function(tableId) {
-        //         var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-        //         $("#" + currentId).bootstrapTable('showAllColumns');
-        //     },
-        //     // 隐藏所有表格列
-        //     hideAllColumns: function(tableId) {
-        //         var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-        //         $("#" + currentId).bootstrapTable('hideAllColumns');
-        //     }
-        // },
+        // 表格封装处理
+        table: {
+            // 初始化表格参数
+            init: function(options) {
+                var defaults = {
+                    id: "bootstrap-table",
+                    type: 0, // 0 代表bootstrapTable 1代表bootstrapTreeTable
+                    method: 'post',
+                    height: undefined,
+                    sidePagination: "server",
+                    undefinedText: '-',
+                    sortName: undefined,
+                    sortOrder: "asc",
+                    pagination: true,
+                    paginationLoop: false,
+                    pageSize: 10,
+                    pageNumber: 1,
+                    pageList: [10, 25, 50, 100],
+                    toolbar: "toolbar",
+                    loadingFontSize: 13,
+                    striped: false,
+                    escape: true,
+                    firstLoad: true,
+                    showFooter: false,
+                    search: false,
+                    showSearch: true,
+                    showPageGo: false,
+                    showRefresh: true,
+                    showColumns: true,
+                    showToggle: true,
+                    showExport: false,
+                    showPrint: false,
+                    exportDataType: 'all',
+                    exportTypes: ['csv', 'txt', 'doc', 'excel'],
+                    clickToSelect: false,
+                    singleSelect: false,
+                    mobileResponsive: true,
+                    maintainSelected: false,
+                    rememberSelected: false,
+                    fixedColumns: false,
+                    fixedNumber: 0,
+                    fixedRightNumber: 0,
+                    // queryParams: $.table.queryParams,
+                    rowStyle: undefined
+                };
+                var options = $.extend(defaults, options);
+                table.options = options;
+                table.config[options.id] = options;
+            //     $.table.initEvent();
+                $('#' + options.id).bootstrapTable({
+                    id: options.id,
+                    url: options.url,                                   // 请求后台的URL（*）
+                    contentType: "application/x-www-form-urlencoded",   // 编码类型
+                    method: options.method,                             // 请求方式（*）
+                    cache: false,                                       // 是否使用缓存
+                    height: options.height,                             // 表格的高度
+                    striped: options.striped,                           // 是否显示行间隔色
+                    undefinedText: options.undefinedText,               // 数据值为空时显示的内容
+                    sortable: true,                                     // 是否启用排序
+                    sortStable: true,                                   // 设置为 true 将获得稳定的排序
+                    sortName: options.sortName,                         // 排序列名称
+                    sortOrder: options.sortOrder,                       // 排序方式  asc 或者 desc
+                    pagination: options.pagination,                     // 是否显示分页（*）
+                    paginationLoop: options.paginationLoop,             // 是否启用分页条无限循环的功能
+                    pageNumber: 1,                                      // 初始化加载第一页，默认第一页
+                    pageSize: options.pageSize,                         // 每页的记录行数（*）
+                    pageList: options.pageList,                         // 可供选择的每页的行数（*）
+                    firstLoad: options.firstLoad,                       // 是否首次请求加载数据，对于数据较大可以配置false
+                    escape: options.escape,                             // 转义HTML字符串
+                    showFooter: options.showFooter,                     // 是否显示表尾
+                    iconSize: 'outline',                                // 图标大小：undefined默认的按钮尺寸 xs超小按钮sm小按钮lg大按钮
+                    toolbar: '#' + options.toolbar,                     // 指定工作栏
+                    virtualScroll: options.virtualScroll,               // 是否启动虚拟滚动（大量数据纯展示时使用)
+                    loadingFontSize: options.loadingFontSize,           // 自定义加载文本的字体大小
+                    sidePagination: options.sidePagination,             // server启用服务端分页client客户端分页
+                    search: options.search,                             // 是否显示搜索框功能
+                    searchText: options.searchText,                     // 搜索框初始显示的内容，默认为空
+                    showSearch: options.showSearch,                     // 是否显示检索信息
+                    showPageGo: options.showPageGo,                     // 是否显示跳转页
+                    showRefresh: options.showRefresh,                   // 是否显示刷新按钮
+                    showColumns: options.showColumns,                   // 是否显示隐藏某列下拉框
+                    showToggle: options.showToggle,                     // 是否显示详细视图和列表视图的切换按钮
+                    showExport: options.showExport,                     // 是否支持导出文件
+                    showPrint: options.showPrint,                       // 是否支持打印页面
+                    showHeader: options.showHeader,                     // 是否显示表头
+                    showFullscreen: options.showFullscreen,             // 是否显示全屏按钮
+                    uniqueId: options.uniqueId,                         // 唯一的标识符
+                    clickToSelect: options.clickToSelect,               // 是否启用点击选中行
+                    singleSelect: options.singleSelect,                 // 是否单选checkbox
+                    mobileResponsive: options.mobileResponsive,         // 是否支持移动端适配
+                    cardView: options.cardView,                         // 是否启用显示卡片视图
+                    detailView: options.detailView,                     // 是否启用显示细节视图
+                    onCheck: options.onCheck,                           // 当选择此行时触发
+                    onUncheck: options.onUncheck,                       // 当取消此行时触发
+                    onCheckAll: options.onCheckAll,                     // 当全选行时触发
+                    onUncheckAll: options.onUncheckAll,                 // 当取消全选行时触发
+                    onClickRow: options.onClickRow,                     // 点击某行触发的事件
+                    onDblClickRow: options.onDblClickRow,               // 双击某行触发的事件
+                    onClickCell: options.onClickCell,                   // 单击某格触发的事件
+                    onDblClickCell: options.onDblClickCell,             // 双击某格触发的事件
+                    onEditableSave: options.onEditableSave,             // 行内编辑保存的事件
+                    onExpandRow: options.onExpandRow,                   // 点击详细视图的事件
+                    onPostBody: options.onPostBody,                     // 渲染完成后执行的事件
+                    maintainSelected: options.maintainSelected,         // 前端翻页时保留所选行
+                    rememberSelected: options.rememberSelected,         // 启用翻页记住前面的选择
+                    fixedColumns: options.fixedColumns,                 // 是否启用冻结列（左侧）
+                    fixedNumber: options.fixedNumber,                   // 列冻结的个数（左侧）
+                    fixedRightNumber: options.fixedRightNumber,         // 列冻结的个数（右侧）
+                    onReorderRow: options.onReorderRow,                 // 当拖拽结束后处理函数
+                    // queryParams: options.queryParams,                   // 传递参数（*）
+                    rowStyle: options.rowStyle,                         // 通过自定义函数设置行样式
+                    footerStyle: options.footerStyle,                   // 通过自定义函数设置页脚样式
+                    headerStyle: options.headerStyle,                   // 通过自定义函数设置标题样式
+                    selectItemName: options.selectItemName,             // 自定义radio/checkbox的name值
+                    columns: options.columns,                           // 显示列信息（*）
+                    data: options.data,                                 // 被加载的数据
+                    // responseHandler: $.table.responseHandler,           // 在加载服务器发送来的数据之前处理函数
+                    // onLoadSuccess: $.table.onLoadSuccess,               // 当所有数据被加载时触发处理函数
+                    exportOptions: options.exportOptions,               // 前端导出忽略列索引
+                    exportDataType: options.exportDataType,             // 导出方式（默认all：导出所有数据；basic：导出当前页的数据；selected：导出选中的数据）
+                    exportTypes: options.exportTypes,                   // 导出文件类型 （json、xml、png、csv、txt、sql、doc、excel、xlsx、powerpoint、pdf）
+                    printPageBuilder: options.printPageBuilder,         // 自定义打印页面模板
+                    detailFormatter: options.detailFormatter,           // 在行下面展示其他数据列表
+                });
+            },
+            // // 获取实例ID，如存在多个返回#id1,#id2 delimeter分隔符
+            // getOptionsIds: function(separator) {
+            //     var _separator = $.common.isEmpty(separator) ? "," : separator;
+            //     var optionsIds = "";
+            //     $.each(table.config, function(key, value){
+            //         optionsIds += "#" + key + _separator;
+            //     });
+            //     return optionsIds.substring(0, optionsIds.length - 1);
+            // },
+            // // 查询条件
+            // queryParams: function(params) {
+            //     table.set();
+            //     var curParams = {
+            //         // 传递参数查询参数
+            //         pageSize:       params.limit,
+            //         pageNum:        params.offset / params.limit + 1,
+            //         searchValue:    params.search,
+            //         orderByColumn:  params.sort,
+            //         isAsc:          params.order
+            //     };
+            //     var currentId = $.common.isEmpty(table.options.formId) ? $('form').attr('id') : table.options.formId;
+            //     return $.extend(curParams, $.common.formToJSON(currentId));
+            // },
+            // // 请求获取数据后处理回调函数
+            // responseHandler: function(res) {
+            //     if (typeof table.get(this.id).responseHandler == "function") {
+            //         table.get(this.id).responseHandler(res);
+            //     }
+            //     var thisOptions = table.config[this.id];
+            //     if (res.code == web_status.SUCCESS) {
+            //         if ($.common.isNotEmpty(thisOptions.sidePagination) && thisOptions.sidePagination == 'client') {
+            //             return res.rows;
+            //         } else {
+            //             if ($.common.isNotEmpty(thisOptions.rememberSelected) && thisOptions.rememberSelected) {
+            //                 var column = $.common.isEmpty(thisOptions.uniqueId) ? thisOptions.columns[1].field : thisOptions.uniqueId;
+            //                 $.each(res.rows, function(i, row) {
+            //                     row.state = $.inArray(row[column], table.rememberSelectedIds[thisOptions.id]) !== -1;
+            //                 })
+            //             }
+            //             return { rows: res.rows, total: res.total };
+            //         }
+            //     } else {
+            //         $.modal.alertWarning(res.msg);
+            //         return { rows: [], total: 0 };
+            //     }
+            // },
+            // // 初始化事件
+            // initEvent: function() {
+            //     // 实例ID信息
+            //     var optionsIds = $.table.getOptionsIds();
+            //     // 监听事件处理
+            //     $(optionsIds).on(TABLE_EVENTS, function () {
+            //         table.set($(this).attr("id"));
+            //     });
+            //     // 在表格体渲染完成，并在 DOM 中可见后触发（事件）
+            //     $(optionsIds).on("post-body.bs.table", function (e, args) {
+            //         // 浮动提示框特效
+            //         $(".table [data-toggle='tooltip']").tooltip();
+            //         // 气泡弹出框特效
+            //         $('.table [data-toggle="popover"]').popover();
+            //     });
+            //     // 选中、取消、全部选中、全部取消（事件）
+            //     $(optionsIds).on("check.bs.table check-all.bs.table uncheck.bs.table uncheck-all.bs.table", function (e, rowsAfter, rowsBefore) {
+            //         // 复选框分页保留保存选中数组
+            //         var rows = $.common.equals("uncheck-all", e.type) ? rowsBefore : rowsAfter;
+            //         var rowIds = $.table.affectedRowIds(rows);
+            //         if ($.common.isNotEmpty(table.options.rememberSelected) && table.options.rememberSelected) {
+            //             func = $.inArray(e.type, ['check', 'check-all']) > -1 ? 'union' : 'difference';
+            //             var selectedIds = table.rememberSelectedIds[table.options.id];
+            //             if ($.common.isNotEmpty(selectedIds)) {
+            //                 table.rememberSelectedIds[table.options.id] = _[func](selectedIds, rowIds);
+            //             } else {
+            //                 table.rememberSelectedIds[table.options.id] = _[func]([], rowIds);
+            //             }
+            //             var selectedRows = table.rememberSelecteds[table.options.id];
+            //             if ($.common.isNotEmpty(selectedRows)) {
+            //                 table.rememberSelecteds[table.options.id] = _[func](selectedRows, rows);
+            //             } else {
+            //                 table.rememberSelecteds[table.options.id] = _[func]([], rows);
+            //             }
+            //         }
+            //     });
+            //     // 加载成功、选中、取消、全部选中、全部取消（事件）
+            //     $(optionsIds).on("check.bs.table uncheck.bs.table check-all.bs.table uncheck-all.bs.table load-success.bs.table", function () {
+            //         var toolbar = table.options.toolbar;
+            //         var uniqueId = table.options.uniqueId;
+            //         // 工具栏按钮控制
+            //         var rows = $.common.isEmpty(uniqueId) ? $.table.selectFirstColumns() : $.table.selectColumns(uniqueId);
+            //         // 非多个禁用
+            //         $('#' + toolbar + ' .multiple').toggleClass('disabled', !rows.length);
+            //         // 非单个禁用
+            //         $('#' + toolbar + ' .single').toggleClass('disabled', rows.length!=1);
+            //     });
+            //     // 图片预览事件
+            //     $(optionsIds).off("click").on("click", '.img-circle', function() {
+            //         var src = $(this).attr('src');
+            //         var target = $(this).data('target');
+            //         if ($.common.equals("self", target)) {
+            //             var height = $(this).data('height');
+            //             var width = $(this).data('width');
+            //             top.layer.open({
+            //                 title: false,
+            //                 type: 1,
+            //                 closeBtn: true,
+            //                 shadeClose: true,
+            //                 content: "<img src='" + src + "' height='" + height + "' width='" + width + "'/>"
+            //             });
+            //         } else if ($.common.equals("blank", target)) {
+            //             window.open(src);
+            //         }
+            //     });
+            //     // 单击tooltip事件
+            //     $(optionsIds).on("click", '.tooltip-show', function() {
+            //         var target = $(this).data('target');
+            //         var input = $(this).prev();
+            //         if ($.common.equals("copy", target)) {
+            //             input.select();
+            //             document.execCommand("copy");
+            //         } else if ($.common.equals("open", target)) {
+            //             top.layer.alert(input.val(), {
+            //                 title: "信息内容",
+            //                 area: ['400px', ''],
+            //                 shadeClose: true,
+            //                 btn: ['关闭'],
+            //                 btnclass: ['btn btn-primary'],
+            //             });
+            //         }
+            //     });
+            // },
+            // // 当所有数据被加载时触发
+            // onLoadSuccess: function(data) {
+            //     if (typeof table.options.onLoadSuccess == "function") {
+            //         table.options.onLoadSuccess(data);
+            //     }
+            // },
+            // // 表格销毁
+            // destroy: function (tableId) {
+            //     var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+            //     $("#" + currentId).bootstrapTable('destroy');
+            //     delete table.rememberSelectedIds[currentId];
+            //     delete table.rememberSelecteds[currentId];
+            // },
+            // // 序列号生成
+            // serialNumber: function (index, tableId) {
+            //     var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+            //     var tableParams = $("#" + currentId).bootstrapTable('getOptions');
+            //     var pageSize = $.common.isNotEmpty(tableParams.pageSize) ? tableParams.pageSize: table.options.pageSize;
+            //     var pageNumber = $.common.isNotEmpty(tableParams.pageNumber) ? tableParams.pageNumber: table.options.pageNumber;
+            //     if (table.options.sidePagination == 'client') {
+            //         return index + 1;
+            //     }
+            //     return pageSize * (pageNumber - 1) + index + 1;
+            // },
+            // // 列超出指定长度浮动提示 target（copy单击复制文本 open弹窗打开文本）
+            // tooltip: function (value, length, target) {
+            //     var _length = $.common.isEmpty(length) ? 20 : length;
+            //     var _text = "";
+            //     var _value = $.common.nullToStr(value);
+            //     var _target = $.common.isEmpty(target) ? 'copy' : target;
+            //     if (_value.length > _length) {
+            //         _text = _value.substr(0, _length) + "...";
+            //         _value = _value.replace(/\'/g,"&apos;");
+            //         _value = _value.replace(/\"/g,"&quot;");
+            //         var actions = [];
+            //         actions.push($.common.sprintf('<input style="opacity: 0;position: absolute;z-index:-1" type="text" value="%s"/>', _value));
+            //         actions.push($.common.sprintf('<a href="###" class="tooltip-show" data-toggle="tooltip" data-target="%s" title="%s">%s</a>', _target, _value, _text));
+            //         return actions.join('');
+            //     } else {
+            //         _text = _value;
+            //         return _text;
+            //     }
+            // },
+            // // 下拉按钮切换
+            // dropdownToggle: function (value) {
+            //     var actions = [];
+            //     actions.push('<div class="btn-group">');
+            //     actions.push('<button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">');
+            //     actions.push('<i class="fa fa-cog"></i>&nbsp;<span class="fa fa-chevron-down"></span></button>');
+            //     actions.push('<ul class="dropdown-menu">');
+            //     actions.push(value.replace(/<a/g,"<li><a").replace(/<\/a>/g,"</a></li>"));
+            //     actions.push('</ul>');
+            //     actions.push('</div>');
+            //     return actions.join('');
+            // },
+            // // 图片预览
+            // imageView: function (value, height, width, target) {
+            //     if ($.common.isEmpty(width)) {
+            //         width = 'auto';
+            //     }
+            //     if ($.common.isEmpty(height)) {
+            //         height = 'auto';
+            //     }
+            //     // blank or self
+            //     var _target = $.common.isEmpty(target) ? 'self' : target;
+            //     if ($.common.isNotEmpty(value)) {
+            //         return $.common.sprintf("<img class='img-circle img-xs' data-height='%s' data-width='%s' data-target='%s' src='%s'/>", height, width, _target, value);
+            //     } else {
+            //         return $.common.nullToStr(value);
+            //     }
+            // },
+            // // 搜索-默认第一个form
+            // search: function(formId, tableId, pageNumber, pageSize) {
+            //     table.set(tableId);
+            //     table.options.formId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
+            //     var params = $.common.isEmpty(tableId) ? $("#" + table.options.id).bootstrapTable('getOptions') : $("#" + tableId).bootstrapTable('getOptions');
+            //     if ($.common.isNotEmpty(pageNumber)) {
+            //         params.pageNumber = pageNumber;
+            //     }
+            //     if ($.common.isNotEmpty(pageSize)) {
+            //         params.pageSize = pageSize;
+            //     }
+            //     if ($.common.isNotEmpty(tableId)) {
+            //         $("#" + tableId).bootstrapTable('refresh', params);
+            //     } else{
+            //         $("#" + table.options.id).bootstrapTable('refresh', params);
+            //     }
+            // },
+            // // 导出数据
+            // exportExcel: function(formId) {
+            //     table.set();
+            //     $.modal.confirm("确定导出所有" + table.options.modalName + "吗？", function() {
+            //         var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
+            //         var params = $("#" + table.options.id).bootstrapTable('getOptions');
+            //         var dataParam = $("#" + currentId).serializeArray();
+            //         dataParam.push({ "name": "orderByColumn", "value": params.sortName });
+            //         dataParam.push({ "name": "isAsc", "value": params.sortOrder });
+            //         $.modal.loading("正在导出数据，请稍候...");
+            //         $.post(table.options.exportUrl, dataParam, function(result) {
+            //             if (result.code == web_status.SUCCESS) {
+            //                 window.location.href = ctx + "common/download?fileName=" + encodeURI(result.msg) + "&delete=" + true;
+            //             } else if (result.code == web_status.WARNING) {
+            //                 $.modal.alertWarning(result.msg)
+            //             } else {
+            //                 $.modal.alertError(result.msg);
+            //             }
+            //             $.modal.closeLoading();
+            //         });
+            //     });
+            // },
+            // // 下载模板
+            // importTemplate: function() {
+            //     $.get(activeWindow().table.options.importTemplateUrl, function(result) {
+            //         if (result.code == web_status.SUCCESS) {
+            //             window.location.href = ctx + "common/download?fileName=" + encodeURI(result.msg) + "&delete=" + true;
+            //         } else if (result.code == web_status.WARNING) {
+            //             $.modal.alertWarning(result.msg)
+            //         } else {
+            //             $.modal.alertError(result.msg);
+            //         }
+            //     });
+            // },
+            // // 导入数据
+            // importExcel: function(formId, width, height) {
+            //     table.set();
+            //     var currentId = $.common.isEmpty(formId) ? 'importTpl' : formId;
+            //     var _width = $.common.isEmpty(width) ? "400" : width;
+            //     var _height = $.common.isEmpty(height) ? "230" : height;
+            //     top.layer.open({
+            //         type: 1,
+            //         area: [_width + 'px', _height + 'px'],
+            //         fix: false,
+            //         //不固定
+            //         maxmin: true,
+            //         shade: 0.3,
+            //         title: '导入' + table.options.modalName + '数据',
+            //         content: $('#' + currentId).html(),
+            //         btn: ['<i class="fa fa-check"></i> 导入', '<i class="fa fa-remove"></i> 取消'],
+            //         // 弹层外区域关闭
+            //         shadeClose: true,
+            //         btn1: function(index, layero){
+            //             var file = layero.find('#file').val();
+            //             if (file == '' || (!$.common.endWith(file, '.xls') && !$.common.endWith(file, '.xlsx'))) {
+            //                 $.modal.msgWarning("请选择后缀为 “xls”或“xlsx”的文件。");
+            //                 return false;
+            //             }
+            //             var index = top.layer.load(2, {shade: false});
+            //             $.modal.disable();
+            //             var formData = new FormData(layero.find('form')[0]);
+            //             $.ajax({
+            //                 url: table.options.importUrl,
+            //                 data: formData,
+            //                 cache: false,
+            //                 contentType: false,
+            //                 processData: false,
+            //                 type: 'POST',
+            //                 success: function (result) {
+            //                     if (result.code == web_status.SUCCESS) {
+            //                     	$.modal.close(index);
+            //                         $.modal.closeAll();
+            //                         $.modal.alertSuccess(result.msg);
+            //                         $.table.refresh();
+            //                     } else if (result.code == web_status.WARNING) {
+            //                     	$.modal.close(index);
+            //                         $.modal.enable();
+            //                         $.modal.alertWarning(result.msg)
+            //                     } else {
+            //                         $.modal.close(index);
+            //                         $.modal.enable();
+            //                         $.modal.alertError(result.msg);
+            //                     }
+            //                 },
+            //                 complete: function () {
+            //                 	layero.find('#file').val('');
+            //                 }
+            //             });
+            //         }
+            //     });
+            // },
+            // // 刷新表格
+            // refresh: function(tableId, pageNumber, pageSize, url) {
+            //     var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+            //     var params = $("#" + currentId).bootstrapTable('getOptions');
+            //     if ($.common.isEmpty(pageNumber)) {
+            //         pageNumber = params.pageNumber;
+            //     }
+            //     if ($.common.isEmpty(pageSize)) {
+            //         pageSize = params.pageSize;
+            //     }
+            //     if ($.common.isEmpty(url)) {
+            //         url = $.common.isEmpty(url) ? params.url : url;
+            //     }
+            //     $("#" + currentId).bootstrapTable('refresh', {
+            //         silent: true,
+            //         url: url,
+            //         pageNumber: pageNumber,
+            //         pageSize: pageSize
+            //     });
+            // },
+            // // 刷新options配置
+            // refreshOptions: function(options, tableId) {
+            //     var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+            //     $("#" + currentId).bootstrapTable('refreshOptions', options);
+            // },
+            // // 查询表格指定列值 deDuplication（ true去重、false不去重）
+            // selectColumns: function(column, deDuplication) {
+            //     var distinct = $.common.isEmpty(deDuplication) ? true : deDuplication;
+            //     var rows = $.map($("#" + table.options.id).bootstrapTable('getSelections'), function (row) {
+            //         return $.common.getItemField(row, column);
+            //     });
+            //     if ($.common.isNotEmpty(table.options.rememberSelected) && table.options.rememberSelected) {
+            //         var selectedRows = table.rememberSelecteds[table.options.id];
+            //         if ($.common.isNotEmpty(selectedRows)) {
+            //             rows = $.map(table.rememberSelecteds[table.options.id], function (row) {
+            //                 return $.common.getItemField(row, column);
+            //             });
+            //         }
+            //     }
+            //     return distinct ? $.common.uniqueFn(rows) : rows;
+            // },
+            // // 获取当前页选中或者取消的行ID
+            // affectedRowIds: function(rows) {
+            //     var column = $.common.isEmpty(table.options.uniqueId) ? table.options.columns[1].field : table.options.uniqueId;
+            //     var rowIds;
+            //     if ($.isArray(rows)) {
+            //         rowIds = $.map(rows, function(row) {
+            //             return $.common.getItemField(row, column);
+            //         });
+            //     } else {
+            //         rowIds = [rows[column]];
+            //     }
+            //     return rowIds;
+            // },
+            // // 查询表格首列值deDuplication（ true去重、false不去重）
+            // selectFirstColumns: function(deDuplication) {
+            //     var distinct = $.common.isEmpty(deDuplication) ? true : deDuplication;
+            //     var rows = $.map($("#" + table.options.id).bootstrapTable('getSelections'), function (row) {
+            //         return $.common.getItemField(row, table.options.columns[1].field);
+            //     });
+            //     if ($.common.isNotEmpty(table.options.rememberSelected) && table.options.rememberSelected) {
+            //         var selectedRows = table.rememberSelecteds[table.options.id];
+            //         if ($.common.isNotEmpty(selectedRows)) {
+            //             rows = $.map(selectedRows, function (row) {
+            //                 return $.common.getItemField(row, table.options.columns[1].field);
+            //             });
+            //         }
+            //     }
+            //     return distinct ? $.common.uniqueFn(rows) : rows;
+            // },
+            // // 回显数据字典
+            // selectDictLabel: function(datas, value) {
+            //     if ($.common.isEmpty(datas) || $.common.isEmpty(value)) {
+            //         return '';
+            //     }
+            //     var actions = [];
+            //     $.each(datas, function(index, dict) {
+            //         if (dict.dictValue == ('' + value)) {
+            //             var listClass = $.common.equals("default", dict.listClass) || $.common.isEmpty(dict.listClass) ? "" : "badge badge-" + dict.listClass;
+            //             var cssClass = $.common.isNotEmpty(dict.cssClass) ? dict.cssClass : listClass;
+            //             actions.push($.common.sprintf("<span class='%s'>%s</span>", cssClass, dict.dictLabel));
+            //             return false;
+            //         }
+            //     });
+            //     if (actions.length === 0) {
+            //         actions.push($.common.sprintf("<span>%s</span>", value))
+            //     }
+            //     return actions.join('');
+            // },
+            // // 回显数据字典（字符串数组）
+            // selectDictLabels: function(datas, value, separator) {
+            //     if ($.common.isEmpty(datas) || $.common.isEmpty(value)) {
+            //         return '';
+            //     }
+            //     var currentSeparator = $.common.isEmpty(separator) ? "," : separator;
+            //     var actions = [];
+            //     $.each(value.split(currentSeparator), function(i, val) {
+            //         var match = false
+            //         $.each(datas, function(index, dict) {
+            //             if (dict.dictValue == ('' + val)) {
+            //                 var listClass = $.common.equals("default", dict.listClass) || $.common.isEmpty(dict.listClass) ? "" : "badge badge-" + dict.listClass;
+            //                 actions.push($.common.sprintf("<span class='%s'>%s</span>", listClass, dict.dictLabel));
+            //                 match = true
+            //                 return false;
+            //             }
+            //         });
+            //         if (!match) {
+            //             actions.push($.common.sprintf("<span> %s </span>", val));
+            //         }
+            //     });
+            //     return actions.join('');
+            // },
+            // // 显示表格指定列
+            // showColumn: function(column, tableId) {
+            //     var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+            //     $("#" + currentId).bootstrapTable('showColumn', column);
+            // },
+            // // 隐藏表格指定列
+            // hideColumn: function(column, tableId) {
+            //     var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+            //     $("#" + currentId).bootstrapTable('hideColumn', column);
+            // },
+            // // 显示所有表格列
+            // showAllColumns: function(tableId) {
+            //     var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+            //     $("#" + currentId).bootstrapTable('showAllColumns');
+            // },
+            // // 隐藏所有表格列
+            // hideAllColumns: function(tableId) {
+            //     var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+            //     $("#" + currentId).bootstrapTable('hideAllColumns');
+            // }
+        },
         // // 表格树封装处理
         // treeTable: {
         //     // 初始化表格
