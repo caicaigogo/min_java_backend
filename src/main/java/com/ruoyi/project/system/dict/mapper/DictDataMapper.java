@@ -1,16 +1,19 @@
-//package com.ruoyi.project.system.dict.mapper;
-//
-//import java.util.List;
-//import org.apache.ibatis.annotations.Param;
-//import com.ruoyi.project.system.dict.domain.DictData;
-//
-///**
-// * 字典表 数据层
-// *
-// * @author ruoyi
-// */
-//public interface DictDataMapper
-//{
+package com.ruoyi.project.system.dict.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import com.ruoyi.project.system.dict.domain.DictData;
+
+/**
+ * 字典表 数据层
+ *
+ * @author ruoyi
+ */
+@Mapper
+public interface DictDataMapper
+{
 //    /**
 //     * 根据条件分页查询字典数据
 //     *
@@ -19,14 +22,14 @@
 //     */
 //    public List<DictData> selectDictDataList(DictData dictData);
 //
-//    /**
-//     * 根据字典类型查询字典数据
-//     *
-//     * @param dictType 字典类型
-//     * @return 字典数据集合信息
-//     */
-//    public List<DictData> selectDictDataByType(String dictType);
-//
+    /**
+     * 根据字典类型查询字典数据
+     *
+     * @param dictType 字典类型
+     * @return 字典数据集合信息
+     */
+    public List<DictData> selectDictDataByType(String dictType);
+
 //    /**
 //     * 根据字典类型和字典键值查询字典数据信息
 //     *
@@ -92,4 +95,4 @@
 //     * @return 结果
 //     */
 //    public int updateDictDataType(@Param("oldDictType") String oldDictType, @Param("newDictType") String newDictType);
-//}
+}

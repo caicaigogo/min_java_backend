@@ -30,10 +30,10 @@ public class UserConstants
 //
 //    /** 字典正常状态 */
 //    public static final String DICT_NORMAL = "0";
-//
-//    /** 是否为系统默认（是） */
-//    public static final String YES = "Y";
-//
+
+    /** 是否为系统默认（是） */
+    public static final String YES = "Y";
+
 //    /** 是否唯一的返回标识 */
 //    public final static boolean UNIQUE = true;
 //    public final static boolean NOT_UNIQUE = false;

@@ -318,11 +318,11 @@ $(function() {
             }
             $('.mainContent').append(str1);
 
-            $.modal.loading("数据加载中，请稍候...");
-
-            $('.mainContent iframe:visible').on('load', function() {
-            	$.modal.closeLoading();
-            });
+            // $.modal.loading("数据加载中，请稍候...");
+            //
+            // $('.mainContent iframe:visible').on('load', function() {
+            // 	$.modal.closeLoading();
+            // });
 
             // 添加选项卡
             $('.menuTabs .page-tabs-content').append(str);

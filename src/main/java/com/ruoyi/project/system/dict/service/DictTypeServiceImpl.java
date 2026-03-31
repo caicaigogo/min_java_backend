@@ -1,40 +1,40 @@
-//package com.ruoyi.project.system.dict.service;
-//
-//import java.util.ArrayList;
-//import java.util.Comparator;
-//import java.util.List;
-//import java.util.Map;
-//import java.util.stream.Collectors;
-//import javax.annotation.PostConstruct;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
-//import com.ruoyi.common.constant.UserConstants;
+package com.ruoyi.project.system.dict.service;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.ruoyi.common.constant.UserConstants;
 //import com.ruoyi.common.exception.ServiceException;
-//import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.security.ShiroUtils;
-//import com.ruoyi.common.utils.text.Convert;
+import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.security.ShiroUtils;
+import com.ruoyi.common.utils.text.Convert;
 //import com.ruoyi.framework.web.domain.Ztree;
-//import com.ruoyi.project.system.dict.domain.DictData;
+import com.ruoyi.project.system.dict.domain.DictData;
 //import com.ruoyi.project.system.dict.domain.DictType;
-//import com.ruoyi.project.system.dict.mapper.DictDataMapper;
+import com.ruoyi.project.system.dict.mapper.DictDataMapper;
 //import com.ruoyi.project.system.dict.mapper.DictTypeMapper;
-//import com.ruoyi.project.system.dict.utils.DictUtils;
-//
-///**
-// * 字典 业务层处理
-// *
-// * @author ruoyi
-// */
-//@Service
-//public class DictTypeServiceImpl implements IDictTypeService
-//{
+import com.ruoyi.project.system.dict.utils.DictUtils;
+
+/**
+ * 字典 业务层处理
+ *
+ * @author ruoyi
+ */
+@Service
+public class DictTypeServiceImpl implements IDictTypeService
+{
 //    @Autowired
 //    private DictTypeMapper dictTypeMapper;
-//
-//    @Autowired
-//    private DictDataMapper dictDataMapper;
-//
+
+    @Autowired
+    private DictDataMapper dictDataMapper;
+
 //    /**
 //     * 项目启动时，初始化字典到缓存
 //     */
@@ -67,28 +67,28 @@
 //        return dictTypeMapper.selectDictTypeAll();
 //    }
 //
-//    /**
-//     * 根据字典类型查询字典数据
-//     *
-//     * @param dictType 字典类型
-//     * @return 字典数据集合信息
-//     */
-//    @Override
-//    public List<DictData> selectDictDataByType(String dictType)
-//    {
-//        List<DictData> dictDatas = DictUtils.getDictCache(dictType);
-//        if (StringUtils.isNotEmpty(dictDatas))
-//        {
-//            return dictDatas;
-//        }
-//        dictDatas = dictDataMapper.selectDictDataByType(dictType);
-//        if (StringUtils.isNotEmpty(dictDatas))
-//        {
-//            DictUtils.setDictCache(dictType, dictDatas);
-//            return dictDatas;
-//        }
-//        return null;
-//    }
+    /**
+     * 根据字典类型查询字典数据
+     *
+     * @param dictType 字典类型
+     * @return 字典数据集合信息
+     */
+    @Override
+    public List<DictData> selectDictDataByType(String dictType)
+    {
+        List<DictData> dictDatas = DictUtils.getDictCache(dictType);
+        if (StringUtils.isNotEmpty(dictDatas))
+        {
+            return dictDatas;
+        }
+        dictDatas = dictDataMapper.selectDictDataByType(dictType);
+        if (StringUtils.isNotEmpty(dictDatas))
+        {
+            DictUtils.setDictCache(dictType, dictDatas);
+            return dictDatas;
+        }
+        return null;
+    }
 //
 //    /**
 //     * 根据字典类型ID查询信息
@@ -259,4 +259,4 @@
 //        sb.append("&nbsp;&nbsp;&nbsp;" + dictType.getDictType());
 //        return sb.toString();
 //    }
-//}
+}
