@@ -1,43 +1,43 @@
-//package com.ruoyi.framework.web.service;
-//
-//import java.beans.BeanInfo;
-//import java.beans.Introspector;
-//import java.beans.PropertyDescriptor;
-//import org.apache.shiro.SecurityUtils;
-//import org.apache.shiro.subject.Subject;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-//import org.springframework.stereotype.Service;
-//import com.ruoyi.common.utils.StringUtils;
-//
-///**
-// * RuoYi首创 js调用 thymeleaf 实现按钮权限可见性
-// *
-// * @author ruoyi
-// */
-//@Service("permission")
-//public class PermissionService
-//{
-//    private static final Logger log = LoggerFactory.getLogger(PermissionService.class);
-//
-//    /** 没有权限，hidden用于前端隐藏按钮 */
-//    public static final String NOACCESS = "hidden";
+package com.ruoyi.framework.web.service;
+
+import java.beans.BeanInfo;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import com.ruoyi.common.utils.StringUtils;
+
+/**
+ * RuoYi首创 js调用 thymeleaf 实现按钮权限可见性
+ *
+ * @author ruoyi
+ */
+@Service("permission")
+public class PermissionService
+{
+    private static final Logger log = LoggerFactory.getLogger(PermissionService.class);
+
+    /** 没有权限，hidden用于前端隐藏按钮 */
+    public static final String NOACCESS = "hidden";
 //
 //    private static final String ROLE_DELIMETER = ",";
 //
 //    private static final String PERMISSION_DELIMETER = ",";
-//
-//    /**
-//     * 验证用户是否具备某权限，无权限返回hidden用于前端隐藏（如需返回Boolean使用isPermitted）
-//     *
-//     * @param permission 权限字符串
-//     * @return 用户是否具备某权限
-//     */
-//    public String hasPermi(String permission)
-//    {
-//        return isPermitted(permission) ? StringUtils.EMPTY : NOACCESS;
-//    }
-//
+
+    /**
+     * 验证用户是否具备某权限，无权限返回hidden用于前端隐藏（如需返回Boolean使用isPermitted）
+     *
+     * @param permission 权限字符串
+     * @return 用户是否具备某权限
+     */
+    public String hasPermi(String permission)
+    {
+        return isPermitted(permission) ? StringUtils.EMPTY : NOACCESS;
+    }
+
 //    /**
 //     * 验证用户是否不具备某权限，与 hasPermi逻辑相反。无权限返回hidden用于前端隐藏（如需返回Boolean使用isLacksPermitted）
 //     *
@@ -103,18 +103,18 @@
 //        Subject subject = SecurityUtils.getSubject();
 //        return subject != null && subject.getPrincipal() != null;
 //    }
-//
-//    /**
-//     * 判断用户是否拥有某个权限
-//     *
-//     * @param permission 权限字符串
-//     * @return 用户是否具备某权限
-//     */
-//    public boolean isPermitted(String permission)
-//    {
-//        return SecurityUtils.getSubject().isPermitted(permission);
-//    }
-//
+
+    /**
+     * 判断用户是否拥有某个权限
+     *
+     * @param permission 权限字符串
+     * @return 用户是否具备某权限
+     */
+    public boolean isPermitted(String permission)
+    {
+        return SecurityUtils.getSubject().isPermitted(permission);
+    }
+
 //    /**
 //     * 判断用户是否不具备某权限，与 isPermitted逻辑相反。
 //     *
@@ -259,4 +259,4 @@
 //        }
 //        return null;
 //    }
-//}
+}
