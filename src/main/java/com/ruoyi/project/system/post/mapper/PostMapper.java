@@ -1,15 +1,17 @@
-//package com.ruoyi.project.system.post.mapper;
-//
-//import java.util.List;
-//import com.ruoyi.project.system.post.domain.Post;
-//
-///**
-// * 岗位信息 数据层
-// *
-// * @author ruoyi
-// */
-//public interface PostMapper
-//{
+package com.ruoyi.project.system.post.mapper;
+
+import java.util.List;
+import com.ruoyi.project.system.post.domain.Post;
+import org.apache.ibatis.annotations.Mapper;
+
+/**
+ * 岗位信息 数据层
+ *
+ * @author ruoyi
+ */
+@Mapper
+public interface PostMapper
+{
 //    /**
 //     * 查询岗位数据集合
 //     *
@@ -24,15 +26,15 @@
 //     * @return 岗位列表
 //     */
 //    public List<Post> selectPostAll();
-//
-//    /**
-//     * 根据用户ID查询岗位
-//     *
-//     * @param userId 用户ID
-//     * @return 岗位列表
-//     */
-//    public List<Post> selectPostsByUserId(Long userId);
-//
+
+    /**
+     * 根据用户ID查询岗位
+     *
+     * @param userId 用户ID
+     * @return 岗位列表
+     */
+    public List<Post> selectPostsByUserId(Long userId);
+
 //    /**
 //     * 通过岗位ID查询岗位信息
 //     *
@@ -80,4 +82,4 @@
 //     * @return 结果
 //     */
 //    public Post checkPostCodeUnique(String postCode);
-//}
+}

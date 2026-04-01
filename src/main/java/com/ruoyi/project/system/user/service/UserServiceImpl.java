@@ -13,24 +13,24 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 //import com.ruoyi.common.constant.UserConstants;
-//import com.ruoyi.common.exception.ServiceException;
+import com.ruoyi.common.exception.ServiceException;
 //import com.ruoyi.common.utils.DateUtils;
 //import com.ruoyi.common.utils.ExceptionUtil;
 //import com.ruoyi.common.utils.Md5Utils;
 import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.common.utils.bean.BeanValidators;
 //import com.ruoyi.common.utils.html.EscapeUtil;
-//import com.ruoyi.common.utils.security.ShiroUtils;
-//import com.ruoyi.common.utils.spring.SpringUtils;
+import com.ruoyi.common.utils.security.ShiroUtils;
+import com.ruoyi.common.utils.spring.SpringUtils;
 //import com.ruoyi.common.utils.text.Convert;
 import com.ruoyi.framework.aspectj.lang.annotation.DataScope;
 //import com.ruoyi.framework.shiro.service.PasswordService;
 //import com.ruoyi.project.system.config.service.IConfigService;
 //import com.ruoyi.project.system.dept.service.IDeptService;
-//import com.ruoyi.project.system.post.domain.Post;
-//import com.ruoyi.project.system.post.mapper.PostMapper;
-//import com.ruoyi.project.system.role.domain.Role;
-//import com.ruoyi.project.system.role.mapper.RoleMapper;
+import com.ruoyi.project.system.post.domain.Post;
+import com.ruoyi.project.system.post.mapper.PostMapper;
+import com.ruoyi.project.system.role.domain.Role;
+import com.ruoyi.project.system.role.mapper.RoleMapper;
 import com.ruoyi.project.system.user.domain.User;
 //import com.ruoyi.project.system.user.domain.UserPost;
 //import com.ruoyi.project.system.user.domain.UserRole;
@@ -51,12 +51,12 @@ public class UserServiceImpl implements IUserService
     @Autowired
     private UserMapper userMapper;
 
-//    @Autowired
-//    private RoleMapper roleMapper;
-//
-//    @Autowired
-//    private PostMapper postMapper;
-//
+    @Autowired
+    private RoleMapper roleMapper;
+
+    @Autowired
+    private PostMapper postMapper;
+
 //    @Autowired
 //    private UserPostMapper userPostMapper;
 //
@@ -151,17 +151,17 @@ public class UserServiceImpl implements IUserService
 //        return userMapper.selectUserByEmail(email);
 //    }
 //
-//    /**
-//     * 通过用户ID查询用户
-//     *
-//     * @param userId 用户ID
-//     * @return 用户对象信息
-//     */
-//    @Override
-//    public User selectUserById(Long userId)
-//    {
-//        return userMapper.selectUserById(userId);
-//    }
+    /**
+     * 通过用户ID查询用户
+     *
+     * @param userId 用户ID
+     * @return 用户对象信息
+     */
+    @Override
+    public User selectUserById(Long userId)
+    {
+        return userMapper.selectUserById(userId);
+    }
 //
 //    /**
 //     * 通过用户ID查询用户和角色关联
@@ -461,60 +461,60 @@ public class UserServiceImpl implements IUserService
 //        }
 //    }
 //
-//    /**
-//     * 校验用户是否有数据权限
-//     *
-//     * @param userId 用户id
-//     */
-//    @Override
-//    public void checkUserDataScope(Long userId)
-//    {
-//        if (!ShiroUtils.isAdmin())
-//        {
-//            User user = new User();
-//            user.setUserId(userId);
-//            List<User> users = SpringUtils.getAopProxy(this).selectUserList(user);
-//            if (StringUtils.isEmpty(users))
-//            {
-//                throw new ServiceException("没有权限访问用户数据！");
-//            }
-//        }
-//    }
-//
-//    /**
-//     * 查询用户所属角色组
-//     *
-//     * @param userId 用户ID
-//     * @return 结果
-//     */
-//    @Override
-//    public String selectUserRoleGroup(Long userId)
-//    {
-//        List<Role> list = roleMapper.selectRolesByUserId(userId);
-//        if (CollectionUtils.isEmpty(list))
-//        {
-//            return StringUtils.EMPTY;
-//        }
-//        return list.stream().map(Role::getRoleName).collect(Collectors.joining(","));
-//    }
-//
-//    /**
-//     * 查询用户所属岗位组
-//     *
-//     * @param userId 用户ID
-//     * @return 结果
-//     */
-//    @Override
-//    public String selectUserPostGroup(Long userId)
-//    {
-//        List<Post> list = postMapper.selectPostsByUserId(userId);
-//        if (CollectionUtils.isEmpty(list))
-//        {
-//            return StringUtils.EMPTY;
-//        }
-//        return list.stream().map(Post::getPostName).collect(Collectors.joining(","));
-//    }
-//
+    /**
+     * 校验用户是否有数据权限
+     *
+     * @param userId 用户id
+     */
+    @Override
+    public void checkUserDataScope(Long userId)
+    {
+        if (!ShiroUtils.isAdmin())
+        {
+            User user = new User();
+            user.setUserId(userId);
+            List<User> users = SpringUtils.getAopProxy(this).selectUserList(user);
+            if (StringUtils.isEmpty(users))
+            {
+                throw new ServiceException("没有权限访问用户数据！");
+            }
+        }
+    }
+
+    /**
+     * 查询用户所属角色组
+     *
+     * @param userId 用户ID
+     * @return 结果
+     */
+    @Override
+    public String selectUserRoleGroup(Long userId)
+    {
+        List<Role> list = roleMapper.selectRolesByUserId(userId);
+        if (CollectionUtils.isEmpty(list))
+        {
+            return StringUtils.EMPTY;
+        }
+        return list.stream().map(Role::getRoleName).collect(Collectors.joining(","));
+    }
+
+    /**
+     * 查询用户所属岗位组
+     *
+     * @param userId 用户ID
+     * @return 结果
+     */
+    @Override
+    public String selectUserPostGroup(Long userId)
+    {
+        List<Post> list = postMapper.selectPostsByUserId(userId);
+        if (CollectionUtils.isEmpty(list))
+        {
+            return StringUtils.EMPTY;
+        }
+        return list.stream().map(Post::getPostName).collect(Collectors.joining(","));
+    }
+
 //    /**
 //     * 导入用户数据
 //     *

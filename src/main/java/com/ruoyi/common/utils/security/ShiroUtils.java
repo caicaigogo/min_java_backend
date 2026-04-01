@@ -26,11 +26,11 @@ public class ShiroUtils
         return SecurityUtils.getSubject().getSession();
     }
 
-//    public static void logout()
-//    {
-//        getSubject().logout();
-//    }
-//
+    public static void logout()
+    {
+        getSubject().logout();
+    }
+
     public static User getSysUser()
     {
         User user = null;
@@ -52,16 +52,16 @@ public class ShiroUtils
 //        // 重新加载Principal
 //        subject.runAs(newPrincipalCollection);
 //    }
-//
-//    public static Long getUserId()
-//    {
-//        return getSysUser().getUserId().longValue();
-//    }
-//
-//    public static String getLoginName()
-//    {
-//        return getSysUser().getLoginName();
-//    }
+
+    public static Long getUserId()
+    {
+        return getSysUser().getUserId().longValue();
+    }
+
+    public static String getLoginName()
+    {
+        return getSysUser().getLoginName();
+    }
 
     public static String getIp()
     {
@@ -73,15 +73,15 @@ public class ShiroUtils
         return String.valueOf(getSubject().getSession().getId());
     }
 
-//    /**
-//     * 是否为管理员
-//     *
-//     * @return 结果
-//     */
-//    public static boolean isAdmin()
-//    {
-//        return isAdmin(getUserId());
-//    }
+    /**
+     * 是否为管理员
+     *
+     * @return 结果
+     */
+    public static boolean isAdmin()
+    {
+        return isAdmin(getUserId());
+    }
 
     /**
      * 是否为管理员

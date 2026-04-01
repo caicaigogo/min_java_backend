@@ -1,25 +1,25 @@
-//package com.ruoyi.project.system.dict.service;
-//
-//import java.util.List;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import com.ruoyi.common.utils.security.ShiroUtils;
-//import com.ruoyi.common.utils.text.Convert;
-//import com.ruoyi.project.system.dict.domain.DictData;
-//import com.ruoyi.project.system.dict.mapper.DictDataMapper;
-//import com.ruoyi.project.system.dict.utils.DictUtils;
-//
-///**
-// * 字典 业务层处理
-// *
-// * @author ruoyi
-// */
-//@Service
-//public class DictDataServiceImpl implements IDictDataService
-//{
-//    @Autowired
-//    private DictDataMapper dictDataMapper;
-//
+package com.ruoyi.project.system.dict.service;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.ruoyi.common.utils.security.ShiroUtils;
+import com.ruoyi.common.utils.text.Convert;
+import com.ruoyi.project.system.dict.domain.DictData;
+import com.ruoyi.project.system.dict.mapper.DictDataMapper;
+import com.ruoyi.project.system.dict.utils.DictUtils;
+
+/**
+ * 字典 业务层处理
+ *
+ * @author ruoyi
+ */
+@Service
+public class DictDataServiceImpl implements IDictDataService
+{
+    @Autowired
+    private DictDataMapper dictDataMapper;
+
 //    /**
 //     * 根据条件分页查询字典数据
 //     *
@@ -32,19 +32,19 @@
 //        return dictDataMapper.selectDictDataList(dictData);
 //    }
 //
-//    /**
-//     * 根据字典类型和字典键值查询字典数据信息
-//     *
-//     * @param dictType 字典类型
-//     * @param dictValue 字典键值
-//     * @return 字典标签
-//     */
-//    @Override
-//    public String selectDictLabel(String dictType, String dictValue)
-//    {
-//        return dictDataMapper.selectDictLabel(dictType, dictValue);
-//    }
-//
+    /**
+     * 根据字典类型和字典键值查询字典数据信息
+     *
+     * @param dictType 字典类型
+     * @param dictValue 字典键值
+     * @return 字典标签
+     */
+    @Override
+    public String selectDictLabel(String dictType, String dictValue)
+    {
+        return dictDataMapper.selectDictLabel(dictType, dictValue);
+    }
+
 //    /**
 //     * 根据字典数据ID查询信息
 //     *
@@ -112,4 +112,4 @@
 //        }
 //        return row;
 //    }
-//}
+}

@@ -60,14 +60,14 @@ public interface IUserService
 //     */
 //    public User selectUserByEmail(String email);
 //
-//    /**
-//     * 通过用户ID查询用户
-//     *
-//     * @param userId 用户ID
-//     * @return 用户对象信息
-//     */
-//    public User selectUserById(Long userId);
-//
+    /**
+     * 通过用户ID查询用户
+     *
+     * @param userId 用户ID
+     * @return 用户对象信息
+     */
+    public User selectUserById(Long userId);
+
 //    /**
 //     * 通过用户ID查询用户和角色关联
 //     *
@@ -191,29 +191,29 @@ public interface IUserService
 //     */
 //    public void checkUserAllowed(User user);
 //
-//    /**
-//     * 校验用户是否有数据权限
-//     *
-//     * @param userId 用户id
-//     */
-//    public void checkUserDataScope(Long userId);
-//
-//    /**
-//     * 根据用户ID查询用户所属角色组
-//     *
-//     * @param userId 用户ID
-//     * @return 结果
-//     */
-//    public String selectUserRoleGroup(Long userId);
-//
-//    /**
-//     * 根据用户ID查询用户所属岗位组
-//     *
-//     * @param userId 用户ID
-//     * @return 结果
-//     */
-//    public String selectUserPostGroup(Long userId);
-//
+    /**
+     * 校验用户是否有数据权限
+     *
+     * @param userId 用户id
+     */
+    public void checkUserDataScope(Long userId);
+
+    /**
+     * 根据用户ID查询用户所属角色组
+     *
+     * @param userId 用户ID
+     * @return 结果
+     */
+    public String selectUserRoleGroup(Long userId);
+
+    /**
+     * 根据用户ID查询用户所属岗位组
+     *
+     * @param userId 用户ID
+     * @return 结果
+     */
+    public String selectUserPostGroup(Long userId);
+
 //    /**
 //     * 导入用户数据
 //     *
