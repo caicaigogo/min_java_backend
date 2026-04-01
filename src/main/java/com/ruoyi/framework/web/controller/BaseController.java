@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.InitBinder;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 //import com.ruoyi.common.utils.DateUtils;
-//import com.ruoyi.common.utils.PageUtils;
+import com.ruoyi.common.utils.PageUtils;
 //import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.security.ShiroUtils;
 //import com.ruoyi.common.utils.sql.SqlUtil;
 import com.ruoyi.framework.web.domain.AjaxResult;
 //import com.ruoyi.framework.web.domain.AjaxResult.Type;
 //import com.ruoyi.framework.web.page.PageDomain;
-//import com.ruoyi.framework.web.page.TableDataInfo;
+import com.ruoyi.framework.web.page.TableDataInfo;
 //import com.ruoyi.framework.web.page.TableSupport;
 import com.ruoyi.project.system.user.domain.User;
 
@@ -47,14 +47,14 @@ public class BaseController
 //        });
 //    }
 //
-//    /**
-//     * 设置请求分页数据
-//     */
-//    protected void startPage()
-//    {
-//        PageUtils.startPage();
-//    }
-//
+    /**
+     * 设置请求分页数据
+     */
+    protected void startPage()
+    {
+        PageUtils.startPage();
+    }
+
 //    /**
 //     * 设置请求排序数据
 //     */
@@ -68,26 +68,26 @@ public class BaseController
 //        }
 //    }
 //
-//    /**
-//     * 清理分页的线程变量
-//     */
-//    protected void clearPage()
-//    {
-//        PageUtils.clearPage();
-//    }
-//
-//    /**
-//     * 响应请求分页数据
-//     */
-//    @SuppressWarnings({ "rawtypes", "unchecked" })
-//    protected TableDataInfo getDataTable(List<?> list)
-//    {
-//        TableDataInfo rspData = new TableDataInfo();
-//        rspData.setCode(0);
-//        rspData.setRows(list);
-//        rspData.setTotal(new PageInfo(list).getTotal());
-//        return rspData;
-//    }
+    /**
+     * 清理分页的线程变量
+     */
+    protected void clearPage()
+    {
+        PageUtils.clearPage();
+    }
+
+    /**
+     * 响应请求分页数据
+     */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    protected TableDataInfo getDataTable(List<?> list)
+    {
+        TableDataInfo rspData = new TableDataInfo();
+        rspData.setCode(0);
+        rspData.setRows(list);
+        rspData.setTotal(new PageInfo(list).getTotal());
+        return rspData;
+    }
 //
 //    /**
 //     * 响应返回结果

@@ -23,7 +23,7 @@ import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.common.utils.security.ShiroUtils;
 //import com.ruoyi.common.utils.spring.SpringUtils;
 //import com.ruoyi.common.utils.text.Convert;
-//import com.ruoyi.framework.aspectj.lang.annotation.DataScope;
+import com.ruoyi.framework.aspectj.lang.annotation.DataScope;
 //import com.ruoyi.framework.shiro.service.PasswordService;
 //import com.ruoyi.project.system.config.service.IConfigService;
 //import com.ruoyi.project.system.dept.service.IDeptService;
@@ -75,19 +75,19 @@ public class UserServiceImpl implements IUserService
 //    @Autowired
 //    protected Validator validator;
 //
-//    /**
-//     * 根据条件分页查询用户列表
-//     *
-//     * @param user 用户信息
-//     * @return 用户信息集合信息
-//     */
-//    @Override
-//    @DataScope(deptAlias = "d", userAlias = "u")
-//    public List<User> selectUserList(User user)
-//    {
-//        // 生成数据权限过滤条件
-//        return userMapper.selectUserList(user);
-//    }
+    /**
+     * 根据条件分页查询用户列表
+     *
+     * @param user 用户信息
+     * @return 用户信息集合信息
+     */
+    @Override
+    @DataScope(deptAlias = "d", userAlias = "u")
+    public List<User> selectUserList(User user)
+    {
+        // 生成数据权限过滤条件
+        return userMapper.selectUserList(user);
+    }
 //
 //    /**
 //     * 根据条件分页查询已分配用户角色列表

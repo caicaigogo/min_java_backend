@@ -580,19 +580,19 @@ public class Convert
         }
     }
 
-//    /**
-//     * 转换为boolean<br>
-//     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
-//     * 转换失败不会报错
-//     *
-//     * @param value 被转换的值
-//     * @return 结果
-//     */
-//    public static Boolean toBool(Object value)
-//    {
-//        return toBool(value, null);
-//    }
-//
+    /**
+     * 转换为boolean<br>
+     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */
+    public static Boolean toBool(Object value)
+    {
+        return toBool(value, null);
+    }
+
 //    /**
 //     * 转换为Enum对象<br>
 //     * 如果给定的值为空，或者转换失败，返回默认值<br>

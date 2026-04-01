@@ -13,7 +13,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 //import com.ruoyi.common.constant.Constants;
-//import com.ruoyi.common.utils.text.Convert;
+import com.ruoyi.common.utils.text.Convert;
 
 /**
  * 客户端工具类
@@ -29,14 +29,14 @@ public class ServletUtils
 
     private static final SecureRandom secureRandom = new SecureRandom();
 
-//    /**
-//     * 获取String参数
-//     */
-//    public static String getParameter(String name)
-//    {
-//        return getRequest().getParameter(name);
-//    }
-//
+    /**
+     * 获取String参数
+     */
+    public static String getParameter(String name)
+    {
+        return getRequest().getParameter(name);
+    }
+
 //    /**
 //     * 获取String参数
 //     */
@@ -61,21 +61,21 @@ public class ServletUtils
 //        return Convert.toInt(getRequest().getParameter(name), defaultValue);
 //    }
 //
-//    /**
-//     * 获取Boolean参数
-//     */
-//    public static Boolean getParameterToBool(String name)
-//    {
-//        return Convert.toBool(getRequest().getParameter(name));
-//    }
-//
-//    /**
-//     * 获取Boolean参数
-//     */
-//    public static Boolean getParameterToBool(String name, Boolean defaultValue)
-//    {
-//        return Convert.toBool(getRequest().getParameter(name), defaultValue);
-//    }
+    /**
+     * 获取Boolean参数
+     */
+    public static Boolean getParameterToBool(String name)
+    {
+        return Convert.toBool(getRequest().getParameter(name));
+    }
+
+    /**
+     * 获取Boolean参数
+     */
+    public static Boolean getParameterToBool(String name, Boolean defaultValue)
+    {
+        return Convert.toBool(getRequest().getParameter(name), defaultValue);
+    }
 
     /**
      * 获取request

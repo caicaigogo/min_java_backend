@@ -15,14 +15,14 @@ import com.ruoyi.project.system.user.domain.User;
 @Mapper
 public interface UserMapper
 {
-//    /**
-//     * 根据条件分页查询用户列表
-//     *
-//     * @param user 用户信息
-//     * @return 用户信息集合信息
-//     */
-//    public List<User> selectUserList(User user);
-//
+    /**
+     * 根据条件分页查询用户列表
+     *
+     * @param user 用户信息
+     * @return 用户信息集合信息
+     */
+    public List<User> selectUserList(User user);
+
 //    /**
 //     * 根据条件分页查询已配用户角色列表
 //     *

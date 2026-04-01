@@ -24,7 +24,7 @@ import com.ruoyi.common.utils.text.Convert;
 import com.ruoyi.framework.web.controller.BaseController;
 import com.ruoyi.framework.web.domain.AjaxResult;
 //import com.ruoyi.framework.web.domain.Ztree;
-//import com.ruoyi.framework.web.page.TableDataInfo;
+import com.ruoyi.framework.web.page.TableDataInfo;
 import com.ruoyi.project.system.dept.domain.Dept;
 //import com.ruoyi.project.system.dept.service.IDeptService;
 //import com.ruoyi.project.system.post.service.IPostService;
@@ -43,9 +43,9 @@ import com.ruoyi.project.system.user.service.IUserService;
 public class UserController extends BaseController
 {
     private String prefix = "system/user";
-//
-//    @Autowired
-//    private IUserService userService;
+
+    @Autowired
+    private IUserService userService;
 //
 //    @Autowired
 //    private IRoleService roleService;
@@ -63,15 +63,15 @@ public class UserController extends BaseController
         return prefix + "/user";
     }
 
-//    @RequiresPermissions("system:user:list")
-//    @PostMapping("/list")
-//    @ResponseBody
-//    public TableDataInfo list(User user)
-//    {
-//        startPage();
-//        List<User> list = userService.selectUserList(user);
-//        return getDataTable(list);
-//    }
+    @RequiresPermissions("system:user:list")
+    @PostMapping("/list")
+    @ResponseBody
+    public TableDataInfo list(User user)
+    {
+        startPage();
+        List<User> list = userService.selectUserList(user);
+        return getDataTable(list);
+    }
 //
 //    @Log(title = "用户管理", businessType = BusinessType.EXPORT)
 //    @RequiresPermissions("system:user:export")
