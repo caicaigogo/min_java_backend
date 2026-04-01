@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 import org.springframework.util.AntPathMatcher;
 //import com.ruoyi.common.constant.Constants;
-//import com.ruoyi.common.utils.text.StrFormatter;
+import com.ruoyi.common.utils.text.StrFormatter;
 
 /**
  * 字符串工具类
@@ -312,27 +312,27 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
 //        return NULLSTR;
 //    }
 //
-//    /**
-//     * 格式化文本, {} 表示占位符<br>
-//     * 此方法只是简单将占位符 {} 按照顺序替换为参数<br>
-//     * 如果想输出 {} 使用 \\转义 { 即可，如果想输出 {} 之前的 \ 使用双转义符 \\\\ 即可<br>
-//     * 例：<br>
-//     * 通常使用：format("this is {} for {}", "a", "b") -> this is a for b<br>
-//     * 转义{}： format("this is \\{} for {}", "a", "b") -> this is \{} for a<br>
-//     * 转义\： format("this is \\\\{} for {}", "a", "b") -> this is \a for b<br>
-//     *
-//     * @param template 文本模板，被替换的部分用 {} 表示
-//     * @param params 参数值
-//     * @return 格式化后的文本
-//     */
-//    public static String format(String template, Object... params)
-//    {
-//        if (isEmpty(params) || isEmpty(template))
-//        {
-//            return template;
-//        }
-//        return StrFormatter.format(template, params);
-//    }
+    /**
+     * 格式化文本, {} 表示占位符<br>
+     * 此方法只是简单将占位符 {} 按照顺序替换为参数<br>
+     * 如果想输出 {} 使用 \\转义 { 即可，如果想输出 {} 之前的 \ 使用双转义符 \\\\ 即可<br>
+     * 例：<br>
+     * 通常使用：format("this is {} for {}", "a", "b") -> this is a for b<br>
+     * 转义{}： format("this is \\{} for {}", "a", "b") -> this is \{} for a<br>
+     * 转义\： format("this is \\\\{} for {}", "a", "b") -> this is \a for b<br>
+     *
+     * @param template 文本模板，被替换的部分用 {} 表示
+     * @param params 参数值
+     * @return 格式化后的文本
+     */
+    public static String format(String template, Object... params)
+    {
+        if (isEmpty(params) || isEmpty(template))
+        {
+            return template;
+        }
+        return StrFormatter.format(template, params);
+    }
 //
 //    /**
 //     * 是否为http(s)://开头
@@ -407,33 +407,33 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
 
         return list;
     }
-//
-//    /**
-//     * 判断给定的collection列表中是否包含数组array 判断给定的数组array中是否包含给定的元素value
-//     *
-//     * @param collection 给定的集合
-//     * @param array 给定的数组
-//     * @return boolean 结果
-//     */
-//    public static boolean containsAny(Collection<String> collection, String... array)
-//    {
-//        if (isEmpty(collection) || isEmpty(array))
-//        {
-//            return false;
-//        }
-//        else
-//        {
-//            for (String str : array)
-//            {
-//                if (collection.contains(str))
-//                {
-//                    return true;
-//                }
-//            }
-//            return false;
-//        }
-//    }
-//
+
+    /**
+     * 判断给定的collection列表中是否包含数组array 判断给定的数组array中是否包含给定的元素value
+     *
+     * @param collection 给定的集合
+     * @param array 给定的数组
+     * @return boolean 结果
+     */
+    public static boolean containsAny(Collection<String> collection, String... array)
+    {
+        if (isEmpty(collection) || isEmpty(array))
+        {
+            return false;
+        }
+        else
+        {
+            for (String str : array)
+            {
+                if (collection.contains(str))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
 //    /**
 //     * 查找指定字符串是否包含指定字符串列表中的任意一个字符串同时串忽略大小写
 //     *

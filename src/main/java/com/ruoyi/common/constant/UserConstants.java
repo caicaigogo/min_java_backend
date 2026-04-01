@@ -18,10 +18,10 @@ public class UserConstants
 
     /** 角色正常状态 */
     public static final String ROLE_NORMAL = "0";
-//
-//    /** 角色封禁状态 */
-//    public static final String ROLE_DISABLE = "1";
-//
+
+    /** 角色封禁状态 */
+    public static final String ROLE_DISABLE = "1";
+
 //    /** 部门正常状态 */
 //    public static final String DEPT_NORMAL = "0";
 //
