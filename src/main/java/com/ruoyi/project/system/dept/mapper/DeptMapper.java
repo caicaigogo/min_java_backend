@@ -1,16 +1,19 @@
-//package com.ruoyi.project.system.dept.mapper;
-//
-//import java.util.List;
-//import org.apache.ibatis.annotations.Param;
-//import com.ruoyi.project.system.dept.domain.Dept;
-//
-///**
-// * 部门管理 数据层
-// *
-// * @author ruoyi
-// */
-//public interface DeptMapper
-//{
+package com.ruoyi.project.system.dept.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import com.ruoyi.project.system.dept.domain.Dept;
+
+/**
+ * 部门管理 数据层
+ *
+ * @author ruoyi
+ */
+@Mapper
+public interface DeptMapper
+{
 //    /**
 //     * 查询下级部门数量
 //     *
@@ -27,14 +30,14 @@
 //     */
 //    public int checkDeptExistUser(Long deptId);
 //
-//    /**
-//     * 查询部门管理数据
-//     *
-//     * @param dept 部门信息
-//     * @return 部门信息集合
-//     */
-//    public List<Dept> selectDeptList(Dept dept);
-//
+    /**
+     * 查询部门管理数据
+     *
+     * @param dept 部门信息
+     * @return 部门信息集合
+     */
+    public List<Dept> selectDeptList(Dept dept);
+
 //    /**
 //     * 删除部门管理信息
 //     *
@@ -114,4 +117,4 @@
 //     * @return 子部门数
 //     */
 //    public int selectNormalChildrenDeptById(Long deptId);
-//}
+}

@@ -1,34 +1,34 @@
-//package com.ruoyi.project.system.dept.service;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//import org.apache.commons.lang3.ArrayUtils;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
-//import com.ruoyi.common.constant.UserConstants;
-//import com.ruoyi.common.exception.ServiceException;
-//import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.security.ShiroUtils;
-//import com.ruoyi.common.utils.spring.SpringUtils;
-//import com.ruoyi.common.utils.text.Convert;
-//import com.ruoyi.framework.aspectj.lang.annotation.DataScope;
-//import com.ruoyi.framework.web.domain.Ztree;
-//import com.ruoyi.project.system.dept.domain.Dept;
-//import com.ruoyi.project.system.dept.mapper.DeptMapper;
-//import com.ruoyi.project.system.role.domain.Role;
-//
-///**
-// * 部门管理 服务实现
-// *
-// * @author ruoyi
-// */
-//@Service
-//public class DeptServiceImpl implements IDeptService
-//{
-//    @Autowired
-//    private DeptMapper deptMapper;
-//
+package com.ruoyi.project.system.dept.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.ruoyi.common.constant.UserConstants;
+import com.ruoyi.common.exception.ServiceException;
+import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.security.ShiroUtils;
+import com.ruoyi.common.utils.spring.SpringUtils;
+import com.ruoyi.common.utils.text.Convert;
+import com.ruoyi.framework.aspectj.lang.annotation.DataScope;
+import com.ruoyi.framework.web.domain.Ztree;
+import com.ruoyi.project.system.dept.domain.Dept;
+import com.ruoyi.project.system.dept.mapper.DeptMapper;
+import com.ruoyi.project.system.role.domain.Role;
+
+/**
+ * 部门管理 服务实现
+ *
+ * @author ruoyi
+ */
+@Service
+public class DeptServiceImpl implements IDeptService
+{
+    @Autowired
+    private DeptMapper deptMapper;
+
 //    /**
 //     * 查询部门管理数据
 //     *
@@ -42,20 +42,20 @@
 //        return deptMapper.selectDeptList(dept);
 //    }
 //
-//    /**
-//     * 查询部门管理树
-//     *
-//     * @param dept 部门信息
-//     * @return 所有部门信息
-//     */
-//    @Override
-//    @DataScope(deptAlias = "d")
-//    public List<Ztree> selectDeptTree(Dept dept)
-//    {
-//        List<Dept> deptList = deptMapper.selectDeptList(dept);
-//        List<Ztree> ztrees = initZtree(deptList);
-//        return ztrees;
-//    }
+    /**
+     * 查询部门管理树
+     *
+     * @param dept 部门信息
+     * @return 所有部门信息
+     */
+    @Override
+    @DataScope(deptAlias = "d")
+    public List<Ztree> selectDeptTree(Dept dept)
+    {
+        List<Dept> deptList = deptMapper.selectDeptList(dept);
+        List<Ztree> ztrees = initZtree(deptList);
+        return ztrees;
+    }
 //
 //    /**
 //     * 查询部门管理树（排除下级）
@@ -100,47 +100,47 @@
 //        }
 //        return ztrees;
 //    }
-//
-//    /**
-//     * 对象转部门树
-//     *
-//     * @param deptList 部门列表
-//     * @return 树结构列表
-//     */
-//    public List<Ztree> initZtree(List<Dept> deptList)
-//    {
-//        return initZtree(deptList, null);
-//    }
-//
-//    /**
-//     * 对象转部门树
-//     *
-//     * @param deptList 部门列表
-//     * @param roleDeptList 角色已存在菜单列表
-//     * @return 树结构列表
-//     */
-//    public List<Ztree> initZtree(List<Dept> deptList, List<String> roleDeptList)
-//    {
-//        List<Ztree> ztrees = new ArrayList<Ztree>();
-//        boolean isCheck = StringUtils.isNotNull(roleDeptList);
-//        for (Dept dept : deptList)
-//        {
-//            if (UserConstants.DEPT_NORMAL.equals(dept.getStatus()))
-//            {
-//                Ztree ztree = new Ztree();
-//                ztree.setId(dept.getDeptId());
-//                ztree.setpId(dept.getParentId());
-//                ztree.setName(dept.getDeptName());
-//                ztree.setTitle(dept.getDeptName());
-//                if (isCheck)
-//                {
-//                    ztree.setChecked(roleDeptList.contains(dept.getDeptId() + dept.getDeptName()));
-//                }
-//                ztrees.add(ztree);
-//            }
-//        }
-//        return ztrees;
-//    }
+
+    /**
+     * 对象转部门树
+     *
+     * @param deptList 部门列表
+     * @return 树结构列表
+     */
+    public List<Ztree> initZtree(List<Dept> deptList)
+    {
+        return initZtree(deptList, null);
+    }
+
+    /**
+     * 对象转部门树
+     *
+     * @param deptList 部门列表
+     * @param roleDeptList 角色已存在菜单列表
+     * @return 树结构列表
+     */
+    public List<Ztree> initZtree(List<Dept> deptList, List<String> roleDeptList)
+    {
+        List<Ztree> ztrees = new ArrayList<Ztree>();
+        boolean isCheck = StringUtils.isNotNull(roleDeptList);
+        for (Dept dept : deptList)
+        {
+            if (UserConstants.DEPT_NORMAL.equals(dept.getStatus()))
+            {
+                Ztree ztree = new Ztree();
+                ztree.setId(dept.getDeptId());
+                ztree.setpId(dept.getParentId());
+                ztree.setName(dept.getDeptName());
+                ztree.setTitle(dept.getDeptName());
+                if (isCheck)
+                {
+                    ztree.setChecked(roleDeptList.contains(dept.getDeptId() + dept.getDeptName()));
+                }
+                ztrees.add(ztree);
+            }
+        }
+        return ztrees;
+    }
 //
 //    /**
 //     * 根据父部门ID查询下级部门数量
@@ -345,4 +345,4 @@
 //            }
 //        }
 //    }
-//}
+}

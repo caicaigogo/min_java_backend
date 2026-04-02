@@ -110,7 +110,7 @@
 	    		$('#scroll-up').toTop(opt);
 	    	}
 		    queryUserList();
-		    // queryDeptTree();
+		    queryDeptTree();
 		});
 
 		function queryUserList() {
@@ -192,23 +192,23 @@
 		    };
 		    $.table.init(options);
 		}
-		//
-		// function queryDeptTree()
-		// {
-		// 	var url = ctx + "system/user/deptTreeData";
-		// 	var options = {
-		//         url: url,
-		//         expandLevel: 2,
-		//         onClick : zOnClick
-		//     };
-		// 	$.tree.init(options);
-		//
-		// 	function zOnClick(event, treeId, treeNode) {
-		// 		$("#deptId").val(treeNode.id);
-		// 		$("#parentId").val(treeNode.pId);
-		// 		$.table.search();
-		// 	}
-		// }
+
+		function queryDeptTree()
+		{
+			var url = ctx + "system/user/deptTreeData";
+			var options = {
+		        url: url,
+		        expandLevel: 2,
+		        onClick : zOnClick
+		    };
+			$.tree.init(options);
+
+			function zOnClick(event, treeId, treeNode) {
+				$("#deptId").val(treeNode.id);
+				$("#parentId").val(treeNode.pId);
+				// $.table.search();
+			}
+		}
 		//
 		// $('#btnExpand').click(function() {
 		// 	$._tree.expandAll(true);

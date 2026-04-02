@@ -29,7 +29,7 @@ var table = {
 
 (function ($) {
     $.extend({
-        // _tree: {},
+        _tree: {},
         // bttTable: {},
         // 表格封装处理
         table: {
@@ -1397,64 +1397,64 @@ var table = {
         //         return $("#" + currentId).validate().resetForm();
         //     }
         // },
-        // // 树插件封装处理
-        // tree: {
-        //     _option: {},
-        //     _lastValue: {},
-        //     // 初始化树结构
-        //     init: function(options) {
-        //         var defaults = {
-        //             id: "tree",                    // 属性ID
-        //             expandLevel: 0,                // 展开等级节点
-        //             view: {
-        //                 selectedMulti: false,      // 设置是否允许同时选中多个节点
-        //                 nameIsHTML: true           // 设置 name 属性是否支持 HTML 脚本
-        //             },
-        //             check: {
-        //                 enable: false,             // 置 zTree 的节点上是否显示 checkbox / radio
-        //                 nocheckInherit: true,      // 设置子节点是否自动继承
-        //                 chkboxType: { "Y": "ps", "N": "ps" } // 父子节点的关联关系
-        //             },
-        //             data: {
-        //                 key: {
-        //                     title: "title"         // 节点数据保存节点提示信息的属性名称
-        //                 },
-        //                 simpleData: {
-        //                     enable: true           // true / false 分别表示 使用 / 不使用 简单数据模式
-        //                 }
-        //             },
-        //         };
-        //         var options = $.extend(defaults, options);
-        //         $.tree._option = options;
-        //         // 树结构初始化加载
-        //         var setting = {
-        //             callback: {
-        //                 onClick: options.onClick,                      // 用于捕获节点被点击的事件回调函数
-        //                 onCheck: options.onCheck,                      // 用于捕获 checkbox / radio 被勾选 或 取消勾选的事件回调函数
-        //                 onDblClick: options.onDblClick                 // 用于捕获鼠标双击之后的事件回调函数
-        //             },
-        //             check: options.check,
-        //             view: options.view,
-        //             data: options.data
-        //         };
-        //         $.get(options.url, function(data) {
-        //             var treeId = $("#treeId").val();
-        //             tree = $.fn.zTree.init($("#" + options.id), setting, data);
-        //             $._tree = tree;
-        //             for (var i = 0; i < options.expandLevel; i++) {
-        //                 var nodes = tree.getNodesByParam("level", i);
-        //                 for (var j = 0; j < nodes.length; j++) {
-        //                     tree.expandNode(nodes[j], true, false, false);
-        //                 }
-        //             }
-        //             var node = tree.getNodesByParam("id", treeId, null)[0];
-        //             $.tree.selectByIdName(treeId, node);
-        //             // 回调tree方法
-        //             if (typeof(options.callBack) === "function"){
-        //                 options.callBack(tree);
-        //             }
-        //         });
-        //     },
+        // 树插件封装处理
+        tree: {
+            _option: {},
+            _lastValue: {},
+            // 初始化树结构
+            init: function(options) {
+                var defaults = {
+                    id: "tree",                    // 属性ID
+                    expandLevel: 0,                // 展开等级节点
+                    view: {
+                        selectedMulti: false,      // 设置是否允许同时选中多个节点
+                        nameIsHTML: true           // 设置 name 属性是否支持 HTML 脚本
+                    },
+                    check: {
+                        enable: false,             // 置 zTree 的节点上是否显示 checkbox / radio
+                        nocheckInherit: true,      // 设置子节点是否自动继承
+                        chkboxType: { "Y": "ps", "N": "ps" } // 父子节点的关联关系
+                    },
+                    data: {
+                        key: {
+                            title: "title"         // 节点数据保存节点提示信息的属性名称
+                        },
+                        simpleData: {
+                            enable: true           // true / false 分别表示 使用 / 不使用 简单数据模式
+                        }
+                    },
+                };
+                var options = $.extend(defaults, options);
+                $.tree._option = options;
+                // 树结构初始化加载
+                var setting = {
+                    callback: {
+                        onClick: options.onClick,                      // 用于捕获节点被点击的事件回调函数
+                        onCheck: options.onCheck,                      // 用于捕获 checkbox / radio 被勾选 或 取消勾选的事件回调函数
+                        onDblClick: options.onDblClick                 // 用于捕获鼠标双击之后的事件回调函数
+                    },
+                    check: options.check,
+                    view: options.view,
+                    data: options.data
+                };
+                $.get(options.url, function(data) {
+                    var treeId = $("#treeId").val();
+                    tree = $.fn.zTree.init($("#" + options.id), setting, data);
+                    $._tree = tree;
+                    for (var i = 0; i < options.expandLevel; i++) {
+                        var nodes = tree.getNodesByParam("level", i);
+                        for (var j = 0; j < nodes.length; j++) {
+                            tree.expandNode(nodes[j], true, false, false);
+                        }
+                    }
+                    var node = tree.getNodesByParam("id", treeId, null)[0];
+                    $.tree.selectByIdName(treeId, node);
+                    // 回调tree方法
+                    if (typeof(options.callBack) === "function"){
+                        options.callBack(tree);
+                    }
+                });
+            },
         //     // 搜索节点
         //     searchNode: function() {
         //         // 取得输入的关键字的值
@@ -1474,12 +1474,12 @@ var table = {
         //         // 根据搜索值模糊匹配
         //         $.tree.updateNodes($._tree.getNodesByParamFuzzy("name", value));
         //     },
-        //     // 根据Id和Name选中指定节点
-        //     selectByIdName: function(treeId, node) {
-        //         if ($.common.isNotEmpty(treeId) && node && treeId == node.id) {
-        //             $._tree.selectNode(node, true);
-        //         }
-        //     },
+            // 根据Id和Name选中指定节点
+            selectByIdName: function(treeId, node) {
+                if ($.common.isNotEmpty(treeId) && node && treeId == node.id) {
+                    $._tree.selectNode(node, true);
+                }
+            },
         //     // 显示所有节点
         //     showAllNode: function(nodes) {
         //         nodes = $._tree.transformToArray(nodes);
@@ -1581,7 +1581,7 @@ var table = {
         //     expand: function() {
         //         $._tree.expandAll(true);
         //     }
-        // },
+        },
         // 通用方法封装处理
         common: {
             // 判断字符串是否为空
