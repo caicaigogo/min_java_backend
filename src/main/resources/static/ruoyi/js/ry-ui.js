@@ -815,30 +815,30 @@ var table = {
         //             return top.layer.getChildFrame('body', index);
         //         }
         //     },
-        //     // 关闭窗体
-        //     close: function (index) {
-        //         if ($.common.isEmpty(index)) {
-        //             var index = parent.layer.getFrameIndex(window.name);
-        //             parent.layer.close(index);
-        //         } else {
-        //             top.layer.close(index);
-        //         }
-        //     },
+            // 关闭窗体
+            close: function (index) {
+                if ($.common.isEmpty(index)) {
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                } else {
+                    top.layer.close(index);
+                }
+            },
         //     // 关闭全部窗体
         //     closeAll: function () {
         //         top.layer.closeAll();
         //     },
-        //     // 确认窗体
-        //     confirm: function (content, callBack) {
-        //         top.layer.confirm(content, {
-        //             icon: 3,
-        //             title: "系统提示",
-        //             btn: ['确认', '取消']
-        //         }, function (index) {
-        //             $.modal.close(index);
-        //             callBack(true);
-        //         });
-        //     },
+            // 确认窗体
+            confirm: function (content, callBack) {
+                top.layer.confirm(content, {
+                    icon: 3,
+                    title: "系统提示",
+                    btn: ['确认', '取消']
+                }, function (index) {
+                    $.modal.close(index);
+                    callBack(true);
+                });
+            },
             // 弹出层指定宽度
             open: function (title, url, width, height, callback) {
                 // 如果是移动端，就使用自适应大小弹窗

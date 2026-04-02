@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.ruoyi.common.constant.ShiroConstants;
-//import com.ruoyi.common.utils.CookieUtils;
+import com.ruoyi.common.utils.CookieUtils;
 import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.common.utils.ServletUtils;
 import com.ruoyi.common.utils.StringUtils;
@@ -118,19 +118,19 @@ public class IndexController extends BaseController
 //        return AjaxResult.error("密码不正确，请重新输入。");
 //    }
 //
-//    // 切换主题
-//    @GetMapping("/system/switchSkin")
-//    public String switchSkin()
-//    {
-//        return "skin";
-//    }
-//
-//    // 切换菜单
-//    @GetMapping("/system/menuStyle/{style}")
-//    public void menuStyle(@PathVariable String style, HttpServletResponse response)
-//    {
-//        CookieUtils.setCookie(response, "nav-style", style);
-//    }
+    // 切换主题
+    @GetMapping("/system/switchSkin")
+    public String switchSkin()
+    {
+        return "skin";
+    }
+
+    // 切换菜单
+    @GetMapping("/system/menuStyle/{style}")
+    public void menuStyle(@PathVariable String style, HttpServletResponse response)
+    {
+        CookieUtils.setCookie(response, "nav-style", style);
+    }
 
     // 系统介绍
     @GetMapping("/system/main")
