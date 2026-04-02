@@ -510,19 +510,19 @@ $(function() {
 //         $('.page-tabs-content').css("margin-left", "0");
 //         syncMenuTab($('.page-tabs-content').find('.active').attr('data-id'));
 //     }
-//
-//
-//     // 全屏显示
-//     $('#fullScreen').on('click', function () {
-//     	$(document).toggleFullScreen();
-//     });
-//
-//     // 锁定屏幕
-//     $('#lockScreen').on('click', function () {
-//     	storage.set('lockPath', $('.page-tabs-content').find('.active').attr('data-id'));
-//     	location.href  = ctx + "lockscreen";
-//     });
-//
+
+
+    // 全屏显示
+    $('#fullScreen').on('click', function () {
+    	$(document).toggleFullScreen();
+    });
+
+    // 锁定屏幕
+    $('#lockScreen').on('click', function () {
+    	storage.set('lockPath', $('.page-tabs-content').find('.active').attr('data-id'));
+    	location.href  = ctx + "lockscreen";
+    });
+
 //     // 页签刷新按钮
 //     $('.tabReload').on('click', refreshTab);
 //

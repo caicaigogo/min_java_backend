@@ -19,9 +19,9 @@ import com.ruoyi.common.utils.ServletUtils;
 import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.text.Convert;
 import com.ruoyi.framework.config.RuoYiConfig;
-//import com.ruoyi.framework.shiro.service.PasswordService;
+import com.ruoyi.framework.shiro.service.PasswordService;
 import com.ruoyi.framework.web.controller.BaseController;
-//import com.ruoyi.framework.web.domain.AjaxResult;
+import com.ruoyi.framework.web.domain.AjaxResult;
 import com.ruoyi.project.system.config.service.IConfigService;
 import com.ruoyi.project.system.menu.domain.Menu;
 import com.ruoyi.project.system.menu.service.IMenuService;
@@ -41,9 +41,9 @@ public class IndexController extends BaseController
     @Autowired
     private IConfigService configService;
 
-//    @Autowired
-//    private PasswordService passwordService;
-//
+    @Autowired
+    private PasswordService passwordService;
+
     @Autowired
     private RuoYiConfig ruoYiConfig;
 
@@ -91,33 +91,33 @@ public class IndexController extends BaseController
         return webIndex;
     }
 
-//    // 锁定屏幕
-//    @GetMapping("/lockscreen")
-//    public String lockscreen(ModelMap mmap)
-//    {
-//        mmap.put("user", getSysUser());
-//        ServletUtils.getSession().setAttribute(ShiroConstants.LOCK_SCREEN, true);
-//        return "lock";
-//    }
-//
-//    // 解锁屏幕
-//    @PostMapping("/unlockscreen")
-//    @ResponseBody
-//    public AjaxResult unlockscreen(String password)
-//    {
-//        User user = getSysUser();
-//        if (StringUtils.isNull(user))
-//        {
-//            return AjaxResult.error("服务器超时，请重新登录");
-//        }
-//        if (passwordService.matches(user, password))
-//        {
-//            ServletUtils.getSession().removeAttribute(ShiroConstants.LOCK_SCREEN);
-//            return AjaxResult.success();
-//        }
-//        return AjaxResult.error("密码不正确，请重新输入。");
-//    }
-//
+    // 锁定屏幕
+    @GetMapping("/lockscreen")
+    public String lockscreen(ModelMap mmap)
+    {
+        mmap.put("user", getSysUser());
+        ServletUtils.getSession().setAttribute(ShiroConstants.LOCK_SCREEN, true);
+        return "lock";
+    }
+
+    // 解锁屏幕
+    @PostMapping("/unlockscreen")
+    @ResponseBody
+    public AjaxResult unlockscreen(String password)
+    {
+        User user = getSysUser();
+        if (StringUtils.isNull(user))
+        {
+            return AjaxResult.error("服务器超时，请重新登录");
+        }
+        if (passwordService.matches(user, password))
+        {
+            ServletUtils.getSession().removeAttribute(ShiroConstants.LOCK_SCREEN);
+            return AjaxResult.success();
+        }
+        return AjaxResult.error("密码不正确，请重新输入。");
+    }
+
     // 切换主题
     @GetMapping("/system/switchSkin")
     public String switchSkin()

@@ -93,13 +93,13 @@ public class ServletUtils
 //        return getRequestAttributes().getResponse();
 //    }
 //
-//    /**
-//     * 获取session
-//     */
-//    public static HttpSession getSession()
-//    {
-//        return getRequest().getSession();
-//    }
+    /**
+     * 获取session
+     */
+    public static HttpSession getSession()
+    {
+        return getRequest().getSession();
+    }
 
     public static ServletRequestAttributes getRequestAttributes()
     {
