@@ -133,22 +133,22 @@ public interface UserMapper
      */
     public int updateLoginInfo(@Param("userId") Long userId, @Param("loginIp") String loginIp, @Param("loginDate") Date loginDate);
 
-//    /**
-//     * 新增用户信息
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    public int insertUser(User user);
-//
-//    /**
-//     * 校验用户名称是否唯一
-//     *
-//     * @param loginName 登录名称
-//     * @return 结果
-//     */
-//    public User checkLoginNameUnique(String loginName);
-//
+    /**
+     * 新增用户信息
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    public int insertUser(User user);
+
+    /**
+     * 校验用户名称是否唯一
+     *
+     * @param loginName 登录名称
+     * @return 结果
+     */
+    public User checkLoginNameUnique(String loginName);
+
 //    /**
 //     * 校验手机号码是否唯一
 //     *

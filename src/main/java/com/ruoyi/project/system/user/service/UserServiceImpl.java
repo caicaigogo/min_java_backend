@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
-//import com.ruoyi.common.constant.UserConstants;
+import com.ruoyi.common.constant.UserConstants;
 import com.ruoyi.common.exception.ServiceException;
 //import com.ruoyi.common.utils.DateUtils;
 //import com.ruoyi.common.utils.ExceptionUtil;
@@ -24,7 +24,7 @@ import com.ruoyi.common.utils.security.ShiroUtils;
 import com.ruoyi.common.utils.spring.SpringUtils;
 //import com.ruoyi.common.utils.text.Convert;
 import com.ruoyi.framework.aspectj.lang.annotation.DataScope;
-//import com.ruoyi.framework.shiro.service.PasswordService;
+import com.ruoyi.framework.shiro.service.PasswordService;
 //import com.ruoyi.project.system.config.service.IConfigService;
 //import com.ruoyi.project.system.dept.service.IDeptService;
 import com.ruoyi.project.system.post.domain.Post;
@@ -65,9 +65,9 @@ public class UserServiceImpl implements IUserService
 //
 //    @Autowired
 //    private IConfigService configService;
-//
-//    @Autowired
-//    private PasswordService passwordService;
+
+    @Autowired
+    private PasswordService passwordService;
 //
 //    @Autowired
 //    private IDeptService deptService;
@@ -238,20 +238,20 @@ public class UserServiceImpl implements IUserService
 //        return rows;
 //    }
 //
-//    /**
-//     * 注册用户信息
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    @Override
-//    public boolean registerUser(User user)
-//    {
-//        user.setUserType(UserConstants.REGISTER_USER_TYPE);
-//        user.randomSalt();
-//        user.setPassword(passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()));
-//        return userMapper.insertUser(user) > 0;
-//    }
+    /**
+     * 注册用户信息
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    @Override
+    public boolean registerUser(User user)
+    {
+        user.setUserType(UserConstants.REGISTER_USER_TYPE);
+        user.randomSalt();
+        user.setPassword(passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()));
+        return userMapper.insertUser(user) > 0;
+    }
 //
 //    /**
 //     * 修改保存用户信息
@@ -393,24 +393,24 @@ public class UserServiceImpl implements IUserService
 //        }
 //    }
 //
-//    /**
-//     * 校验用户名称是否唯一
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    @Override
-//    public boolean checkLoginNameUnique(User user)
-//    {
-//        Long userId = StringUtils.isNull(user.getUserId()) ? -1L : user.getUserId();
-//        User info = userMapper.checkLoginNameUnique(user.getLoginName());
-//        if (StringUtils.isNotNull(info) && info.getUserId().longValue() != userId.longValue())
-//        {
-//            return UserConstants.NOT_UNIQUE;
-//        }
-//        return UserConstants.UNIQUE;
-//    }
-//
+    /**
+     * 校验用户名称是否唯一
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    @Override
+    public boolean checkLoginNameUnique(User user)
+    {
+        Long userId = StringUtils.isNull(user.getUserId()) ? -1L : user.getUserId();
+        User info = userMapper.checkLoginNameUnique(user.getLoginName());
+        if (StringUtils.isNotNull(info) && info.getUserId().longValue() != userId.longValue())
+        {
+            return UserConstants.NOT_UNIQUE;
+        }
+        return UserConstants.UNIQUE;
+    }
+
 //    /**
 //     * 校验手机号码是否唯一
 //     *

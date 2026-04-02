@@ -101,14 +101,14 @@ public interface IUserService
 //     */
 //    public int insertUser(User user);
 //
-//    /**
-//     * 注册用户信息
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    public boolean registerUser(User user);
-//
+    /**
+     * 注册用户信息
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    public boolean registerUser(User user);
+
 //    /**
 //     * 保存用户信息
 //     *
@@ -160,14 +160,14 @@ public interface IUserService
 //     */
 //    public int resetUserPwd(User user);
 //
-//    /**
-//     * 校验用户名称是否唯一
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    public boolean checkLoginNameUnique(User user);
-//
+    /**
+     * 校验用户名称是否唯一
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    public boolean checkLoginNameUnique(User user);
+
 //    /**
 //     * 校验手机号码是否唯一
 //     *
