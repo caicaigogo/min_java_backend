@@ -152,14 +152,14 @@ public interface IUserService
 //     */
 //    public void insertUserAuth(Long userId, Long[] roleIds);
 //
-//    /**
-//     * 修改用户密码信息
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    public int resetUserPwd(User user);
-//
+    /**
+     * 修改用户密码信息
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    public int resetUserPwd(User user);
+
     /**
      * 校验用户名称是否唯一
      *
@@ -183,14 +183,14 @@ public interface IUserService
 //     * @return 结果
 //     */
 //    public boolean checkEmailUnique(User user);
-//
-//    /**
-//     * 校验用户是否允许操作
-//     *
-//     * @param user 用户信息
-//     */
-//    public void checkUserAllowed(User user);
-//
+
+    /**
+     * 校验用户是否允许操作
+     *
+     * @param user 用户信息
+     */
+    public void checkUserAllowed(User user);
+
     /**
      * 校验用户是否有数据权限
      *

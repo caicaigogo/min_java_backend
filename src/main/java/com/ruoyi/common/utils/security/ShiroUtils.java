@@ -43,15 +43,15 @@ public class ShiroUtils
         return user;
     }
 
-//    public static void setSysUser(User user)
-//    {
-//        Subject subject = getSubject();
-//        PrincipalCollection principalCollection = subject.getPrincipals();
-//        String realmName = principalCollection.getRealmNames().iterator().next();
-//        PrincipalCollection newPrincipalCollection = new SimplePrincipalCollection(user, realmName);
-//        // 重新加载Principal
-//        subject.runAs(newPrincipalCollection);
-//    }
+    public static void setSysUser(User user)
+    {
+        Subject subject = getSubject();
+        PrincipalCollection principalCollection = subject.getPrincipals();
+        String realmName = principalCollection.getRealmNames().iterator().next();
+        PrincipalCollection newPrincipalCollection = new SimplePrincipalCollection(user, realmName);
+        // 重新加载Principal
+        subject.runAs(newPrincipalCollection);
+    }
 
     public static Long getUserId()
     {

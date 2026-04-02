@@ -464,26 +464,26 @@ var table = {
             //         }
             //     });
             // },
-            // // 刷新表格
-            // refresh: function(tableId, pageNumber, pageSize, url) {
-            //     var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-            //     var params = $("#" + currentId).bootstrapTable('getOptions');
-            //     if ($.common.isEmpty(pageNumber)) {
-            //         pageNumber = params.pageNumber;
-            //     }
-            //     if ($.common.isEmpty(pageSize)) {
-            //         pageSize = params.pageSize;
-            //     }
-            //     if ($.common.isEmpty(url)) {
-            //         url = $.common.isEmpty(url) ? params.url : url;
-            //     }
-            //     $("#" + currentId).bootstrapTable('refresh', {
-            //         silent: true,
-            //         url: url,
-            //         pageNumber: pageNumber,
-            //         pageSize: pageSize
-            //     });
-            // },
+            // 刷新表格
+            refresh: function(tableId, pageNumber, pageSize, url) {
+                var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+                var params = $("#" + currentId).bootstrapTable('getOptions');
+                if ($.common.isEmpty(pageNumber)) {
+                    pageNumber = params.pageNumber;
+                }
+                if ($.common.isEmpty(pageSize)) {
+                    pageSize = params.pageSize;
+                }
+                if ($.common.isEmpty(url)) {
+                    url = $.common.isEmpty(url) ? params.url : url;
+                }
+                $("#" + currentId).bootstrapTable('refresh', {
+                    silent: true,
+                    url: url,
+                    pageNumber: pageNumber,
+                    pageSize: pageSize
+                });
+            },
             // // 刷新options配置
             // refreshOptions: function(options, tableId) {
             //     var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
@@ -779,33 +779,33 @@ var table = {
                     btnclass: ['btn btn-primary'],
                 });
             },
-        //     // 错误提示
-        //     alertError: function(content) {
-        //         $.modal.alert(content, modal_status.FAIL);
-        //     },
-        //     // 成功提示
-        //     alertSuccess: function(content) {
-        //         $.modal.alert(content, modal_status.SUCCESS);
-        //     },
+            // 错误提示
+            alertError: function(content) {
+                $.modal.alert(content, modal_status.FAIL);
+            },
+            // 成功提示
+            alertSuccess: function(content) {
+                $.modal.alert(content, modal_status.SUCCESS);
+            },
             // 警告提示
             alertWarning: function(content) {
                 $.modal.alert(content, modal_status.WARNING);
             },
-        //     // 消息提示，重新加载页面
-        //     msgReload: function(msg, type) {
-        //         top.layer.msg(msg, {
-        //             icon: $.modal.icon(type),
-        //             time: 500,
-        //             shade: [0.1, '#8F8F8F']
-        //         },
-        //         function() {
-        //             $.modal.reload();
-        //         });
-        //     },
-        //     // 消息提示成功并刷新父窗体
-        //     msgSuccessReload: function(msg) {
-        //     	$.modal.msgReload(msg, modal_status.SUCCESS);
-        //     },
+            // 消息提示，重新加载页面
+            msgReload: function(msg, type) {
+                top.layer.msg(msg, {
+                    icon: $.modal.icon(type),
+                    time: 500,
+                    shade: [0.1, '#8F8F8F']
+                },
+                function() {
+                    $.modal.reload();
+                });
+            },
+            // 消息提示成功并刷新父窗体
+            msgSuccessReload: function(msg) {
+            	$.modal.msgReload(msg, modal_status.SUCCESS);
+            },
         //     // 获取iframe页的DOM
         //     getChildFrame: function (index) {
         //         if ($.common.isEmpty(index)) {
@@ -839,52 +839,52 @@ var table = {
         //             callBack(true);
         //         });
         //     },
-        //     // 弹出层指定宽度
-        //     open: function (title, url, width, height, callback) {
-        //         // 如果是移动端，就使用自适应大小弹窗
-        //         if ($.common.isMobile()) {
-        //             width = 'auto';
-        //             height = 'auto';
-        //         }
-        //         if ($.common.isEmpty(title)) {
-        //             title = false;
-        //         }
-        //         if ($.common.isEmpty(url)) {
-        //             url = "/404.html";
-        //         }
-        //         if ($.common.isEmpty(width)) {
-        //             width = 800;
-        //         }
-        //         if ($.common.isEmpty(height)) {
-        //             height = ($(window).height() - 50);
-        //         }
-        //         if ($.common.isEmpty(callback)) {
-        //             callback = function(index, layero) {
-        //                 var iframeWin = layero.find('iframe')[0];
-        //                 iframeWin.contentWindow.submitHandler(index, layero);
-        //             }
-        //         }
-        //         top.layer.open({
-        //             type: 2,
-        //             area: [width + 'px', height + 'px'],
-        //             fix: false,
-        //             //不固定
-        //             maxmin: true,
-        //             shade: 0.3,
-        //             title: title,
-        //             content: url,
-        //             btn: ['确定', '关闭'],
-        //             // 弹层外区域关闭
-        //             shadeClose: true,
-        //             yes: callback,
-        //             cancel: function(index) {
-        //                 return true;
-        //             },
-        //             success: function () {
-        //                 $(':focus').blur();
-        //             }
-        //         });
-        //     },
+            // 弹出层指定宽度
+            open: function (title, url, width, height, callback) {
+                // 如果是移动端，就使用自适应大小弹窗
+                if ($.common.isMobile()) {
+                    width = 'auto';
+                    height = 'auto';
+                }
+                if ($.common.isEmpty(title)) {
+                    title = false;
+                }
+                if ($.common.isEmpty(url)) {
+                    url = "/404.html";
+                }
+                if ($.common.isEmpty(width)) {
+                    width = 800;
+                }
+                if ($.common.isEmpty(height)) {
+                    height = ($(window).height() - 50);
+                }
+                if ($.common.isEmpty(callback)) {
+                    callback = function(index, layero) {
+                        var iframeWin = layero.find('iframe')[0];
+                        iframeWin.contentWindow.submitHandler(index, layero);
+                    }
+                }
+                top.layer.open({
+                    type: 2,
+                    area: [width + 'px', height + 'px'],
+                    fix: false,
+                    //不固定
+                    maxmin: true,
+                    shade: 0.3,
+                    title: title,
+                    content: url,
+                    btn: ['确定', '关闭'],
+                    // 弹层外区域关闭
+                    shadeClose: true,
+                    yes: callback,
+                    cancel: function(index) {
+                        return true;
+                    },
+                    success: function () {
+                        $(':focus').blur();
+                    }
+                });
+            },
         //     // 弹出层指定参数选项
         //     openOptions: function (options) {
         //         var _url = $.common.isEmpty(options.url) ? "/404.html" : options.url;
@@ -1016,16 +1016,16 @@ var table = {
         //     closeTab: function (dataId) {
         //         closeItem(dataId);
         //     },
-        //     // 禁用按钮
-        //     disable: function() {
-        //         var doc = window.top == window.parent ? top.window.document : window.parent.document;
-        //         $("a[class*=layui-layer-btn]", doc).addClass("layer-disabled");
-        //     },
-        //     // 启用按钮
-        //     enable: function() {
-        //         var doc = window.top == window.parent ? top.window.document : window.parent.document;
-        //         $("a[class*=layui-layer-btn]", doc).removeClass("layer-disabled");
-        //     },
+            // 禁用按钮
+            disable: function() {
+                var doc = window.top == window.parent ? top.window.document : window.parent.document;
+                $("a[class*=layui-layer-btn]", doc).addClass("layer-disabled");
+            },
+            // 启用按钮
+            enable: function() {
+                var doc = window.top == window.parent ? top.window.document : window.parent.document;
+                $("a[class*=layui-layer-btn]", doc).removeClass("layer-disabled");
+            },
             // 打开遮罩层
             loading: function (message) {
                 $.blockUI({ message: '<div class="loaderbox"><div class="loading-activity"></div> ' + message + '</div>' });
@@ -1036,10 +1036,10 @@ var table = {
                     $.unblockUI();
                 }, 50);
             },
-        //     // 重新加载
-        //     reload: function () {
-        //         parent.location.reload();
-        //     }
+            // 重新加载
+            reload: function () {
+                parent.location.reload();
+            }
         },
         // 操作封装处理
         operate: {
@@ -1227,30 +1227,30 @@ var table = {
                 var url = table.options.viewUrl.replace("{id}", id);
                 $.modal.popupRight(table.options.modalName + "信息详情", url);
             },
-        //     // 保存信息 刷新表格
-        //     save: function(url, data, callback) {
-        //         var config = {
-        //             url: url,
-        //             type: "post",
-        //             dataType: "json",
-        //             data: data,
-        //             beforeSend: function (xhr, settings) {
-        //                 var csrftoken = $('meta[name=csrf-token]').attr('content');
-        //                 if (($.common.equalsIgnoreCase(settings.type, "POST"))) {
-        //                     xhr.setRequestHeader("X-CSRF-Token", csrftoken);
-        //                 }
-        //                 $.modal.loading("正在处理中，请稍候...");
-        //                 $.modal.disable();
-        //             },
-        //             success: function(result) {
-        //                 if (typeof callback == "function") {
-        //                     callback(result);
-        //                 }
-        //                 $.operate.successCallback(result);
-        //             }
-        //         };
-        //         $.ajax(config)
-        //     },
+            // 保存信息 刷新表格
+            save: function(url, data, callback) {
+                var config = {
+                    url: url,
+                    type: "post",
+                    dataType: "json",
+                    data: data,
+                    beforeSend: function (xhr, settings) {
+                        var csrftoken = $('meta[name=csrf-token]').attr('content');
+                        if (($.common.equalsIgnoreCase(settings.type, "POST"))) {
+                            xhr.setRequestHeader("X-CSRF-Token", csrftoken);
+                        }
+                        $.modal.loading("正在处理中，请稍候...");
+                        $.modal.disable();
+                    },
+                    success: function(result) {
+                        if (typeof callback == "function") {
+                            callback(result);
+                        }
+                        $.operate.successCallback(result);
+                    }
+                };
+                $.ajax(config)
+            },
         //     // 保存信息 弹出结果提示框
         //     saveModal: function(url, data, callback) {
         //         var config = {
@@ -1332,30 +1332,30 @@ var table = {
         //         }
         //         $.modal.closeLoading();
         //     },
-        //     // 成功回调执行事件（父窗体静默更新）
-        //     successCallback: function(result) {
-        //         if (result.code == web_status.SUCCESS) {
-        //             var parent = activeWindow();
-        //             if ($.common.isEmpty(parent.table)) {
-        //                 $.modal.msgSuccessReload(result.msg);
-        //             } else if (parent.table.options.type == table_type.bootstrapTable) {
-        //                 parent.$.modal.msgSuccess(result.msg);
-        //                 parent.$.table.refresh();
-        //             } else if (parent.table.options.type == table_type.bootstrapTreeTable) {
-        //                 parent.$.modal.msgSuccess(result.msg);
-        //                 parent.$.treeTable.refresh();
-        //             } else {
-        //                 parent.$.modal.msgSuccess(result.msg);
-        //             }
-        //             $.modal.close();
-        //         } else if (result.code == web_status.WARNING) {
-        //             $.modal.alertWarning(result.msg)
-        //         }  else {
-        //             $.modal.alertError(result.msg);
-        //         }
-        //         $.modal.closeLoading();
-        //         $.modal.enable();
-        //     },
+            // 成功回调执行事件（父窗体静默更新）
+            successCallback: function(result) {
+                if (result.code == web_status.SUCCESS) {
+                    var parent = activeWindow();
+                    if ($.common.isEmpty(parent.table)) {
+                        $.modal.msgSuccessReload(result.msg);
+                    } else if (parent.table.options.type == table_type.bootstrapTable) {
+                        parent.$.modal.msgSuccess(result.msg);
+                        parent.$.table.refresh();
+                    } else if (parent.table.options.type == table_type.bootstrapTreeTable) {
+                        parent.$.modal.msgSuccess(result.msg);
+                        parent.$.treeTable.refresh();
+                    } else {
+                        parent.$.modal.msgSuccess(result.msg);
+                    }
+                    $.modal.close();
+                } else if (result.code == web_status.WARNING) {
+                    $.modal.alertWarning(result.msg)
+                }  else {
+                    $.modal.alertError(result.msg);
+                }
+                $.modal.closeLoading();
+                $.modal.enable();
+            },
         //     // 选项卡成功回调执行事件（父窗体静默更新）
         //     successTabCallback: function(result) {
         //         if (result.code == web_status.SUCCESS) {
@@ -1384,19 +1384,19 @@ var table = {
         //         $.modal.closeLoading();
         //     }
         },
-        // // 校验封装处理
-        // validate: {
-        //     // 表单验证
-        //     form: function (formId) {
-        //         var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
-        //         return $("#" + currentId).validate().form();
-        //     },
+        // 校验封装处理
+        validate: {
+            // 表单验证
+            form: function (formId) {
+                var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
+                return $("#" + currentId).validate().form();
+            },
         //     // 重置表单验证（清除提示信息）
         //     reset: function (formId) {
         //         var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
         //         return $("#" + currentId).validate().resetForm();
         //     }
-        // },
+        },
         // 树插件封装处理
         tree: {
             _option: {},
@@ -1790,12 +1790,12 @@ var table = {
         }
     });
 })(jQuery);
-//
-// /** 表格类型 */
-// table_type = {
-//     bootstrapTable: 0,
-//     bootstrapTreeTable: 1
-// };
+
+/** 表格类型 */
+table_type = {
+    bootstrapTable: 0,
+    bootstrapTreeTable: 1
+};
 
 /** 消息状态码 */
 web_status = {

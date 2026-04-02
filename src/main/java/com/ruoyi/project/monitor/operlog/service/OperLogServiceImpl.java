@@ -1,34 +1,34 @@
-//package com.ruoyi.project.monitor.operlog.service;
-//
-//import java.util.List;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import com.ruoyi.common.utils.text.Convert;
-//import com.ruoyi.project.monitor.operlog.domain.OperLog;
-//import com.ruoyi.project.monitor.operlog.mapper.OperLogMapper;
-//
-///**
-// * 操作日志 服务层处理
-// *
-// * @author ruoyi
-// */
-//@Service
-//public class OperLogServiceImpl implements IOperLogService
-//{
-//    @Autowired
-//    private OperLogMapper operLogMapper;
-//
-//    /**
-//     * 新增操作日志
-//     *
-//     * @param operLog 操作日志对象
-//     */
-//    @Override
-//    public void insertOperlog(OperLog operLog)
-//    {
-//        operLogMapper.insertOperlog(operLog);
-//    }
-//
+package com.ruoyi.project.monitor.operlog.service;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.ruoyi.common.utils.text.Convert;
+import com.ruoyi.project.monitor.operlog.domain.OperLog;
+import com.ruoyi.project.monitor.operlog.mapper.OperLogMapper;
+
+/**
+ * 操作日志 服务层处理
+ *
+ * @author ruoyi
+ */
+@Service
+public class OperLogServiceImpl implements IOperLogService
+{
+    @Autowired
+    private OperLogMapper operLogMapper;
+
+    /**
+     * 新增操作日志
+     *
+     * @param operLog 操作日志对象
+     */
+    @Override
+    public void insertOperlog(OperLog operLog)
+    {
+        operLogMapper.insertOperlog(operLog);
+    }
+
 //    /**
 //     * 查询系统操作日志集合
 //     *
@@ -73,4 +73,4 @@
 //    {
 //        operLogMapper.cleanOperLog();
 //    }
-//}
+}

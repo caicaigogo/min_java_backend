@@ -19,8 +19,8 @@ import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.common.utils.security.AuthorizationUtils;
 import com.ruoyi.common.utils.security.ShiroUtils;
 import com.ruoyi.common.utils.text.Convert;
-//import com.ruoyi.framework.aspectj.lang.annotation.Log;
-//import com.ruoyi.framework.aspectj.lang.enums.BusinessType;
+import com.ruoyi.framework.aspectj.lang.annotation.Log;
+import com.ruoyi.framework.aspectj.lang.enums.BusinessType;
 import com.ruoyi.framework.web.controller.BaseController;
 import com.ruoyi.framework.web.domain.AjaxResult;
 import com.ruoyi.framework.web.domain.Ztree;
@@ -209,26 +209,26 @@ public class UserController extends BaseController
 //        mmap.put("user", userService.selectUserById(userId));
 //        return prefix + "/resetPwd";
 //    }
-//
-//    @RequiresPermissions("system:user:resetPwd")
-//    @Log(title = "重置密码", businessType = BusinessType.UPDATE)
-//    @PostMapping("/resetPwd")
-//    @ResponseBody
-//    public AjaxResult resetPwdSave(User user)
-//    {
-//        userService.checkUserAllowed(user);
-//        userService.checkUserDataScope(user.getUserId());
-//        if (userService.resetUserPwd(user) > 0)
-//        {
-//            if (ShiroUtils.getUserId().longValue() == user.getUserId().longValue())
-//            {
-//                setSysUser(userService.selectUserById(user.getUserId()));
-//            }
-//            return success();
-//        }
-//        return error();
-//    }
-//
+
+    @RequiresPermissions("system:user:resetPwd")
+    @Log(title = "重置密码", businessType = BusinessType.UPDATE)
+    @PostMapping("/resetPwd")
+    @ResponseBody
+    public AjaxResult resetPwdSave(User user)
+    {
+        userService.checkUserAllowed(user);
+        userService.checkUserDataScope(user.getUserId());
+        if (userService.resetUserPwd(user) > 0)
+        {
+            if (ShiroUtils.getUserId().longValue() == user.getUserId().longValue())
+            {
+                setSysUser(userService.selectUserById(user.getUserId()));
+            }
+            return success();
+        }
+        return error();
+    }
+
 //    /**
 //     * 进入授权角色页
 //     */

@@ -174,15 +174,15 @@ public class BaseController
     {
         return ShiroUtils.getSysUser();
     }
-//
-//    /**
-//     * 设置用户缓存信息
-//     */
-//    public void setSysUser(User user)
-//    {
-//        ShiroUtils.setSysUser(user);
-//    }
-//
+
+    /**
+     * 设置用户缓存信息
+     */
+    public void setSysUser(User user)
+    {
+        ShiroUtils.setSysUser(user);
+    }
+
 //    /**
 //     * 获取登录用户id
 //     */

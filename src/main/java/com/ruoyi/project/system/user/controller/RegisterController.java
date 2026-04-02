@@ -31,7 +31,7 @@ public class RegisterController extends BaseController
     {
         return "register";
     }
-//
+
     @PostMapping("/register")
     @ResponseBody
     public AjaxResult ajaxRegister(User user)

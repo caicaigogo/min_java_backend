@@ -67,17 +67,17 @@ public @interface Excel
      * 导出时在excel中每个列的宽度
      */
     public double width() default 16;
-//
-//    /**
-//     * 文字后缀,如% 90 变成90%
-//     */
-//    public String suffix() default "";
-//
-//    /**
-//     * 当值为空时,字段的默认值
-//     */
-//    public String defaultValue() default "";
-//
+
+    /**
+     * 文字后缀,如% 90 变成90%
+     */
+    public String suffix() default "";
+
+    /**
+     * 当值为空时,字段的默认值
+     */
+    public String defaultValue() default "";
+
     /**
      * 提示信息
      */

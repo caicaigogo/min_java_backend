@@ -327,19 +327,19 @@ public class UserServiceImpl implements IUserService
 //        insertUserRole(userId, roleIds);
 //    }
 //
-//    /**
-//     * 修改用户密码
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    @Override
-//    public int resetUserPwd(User user)
-//    {
-//        user.randomSalt();
-//        String password = passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt());
-//        return userMapper.resetUserPwd(user.getUserId(), password, user.getSalt());
-//    }
+    /**
+     * 修改用户密码
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    @Override
+    public int resetUserPwd(User user)
+    {
+        user.randomSalt();
+        String password = passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt());
+        return userMapper.resetUserPwd(user.getUserId(), password, user.getSalt());
+    }
 //
 //    /**
 //     * 新增用户角色信息
@@ -447,20 +447,20 @@ public class UserServiceImpl implements IUserService
 //        return UserConstants.UNIQUE;
 //    }
 //
-//    /**
-//     * 校验用户是否允许操作
-//     *
-//     * @param user 用户信息
-//     */
-//    @Override
-//    public void checkUserAllowed(User user)
-//    {
-//        if (StringUtils.isNotNull(user.getUserId()) && user.isAdmin())
-//        {
-//            throw new ServiceException("不允许操作超级管理员用户");
-//        }
-//    }
-//
+    /**
+     * 校验用户是否允许操作
+     *
+     * @param user 用户信息
+     */
+    @Override
+    public void checkUserAllowed(User user)
+    {
+        if (StringUtils.isNotNull(user.getUserId()) && user.isAdmin())
+        {
+            throw new ServiceException("不允许操作超级管理员用户");
+        }
+    }
+
     /**
      * 校验用户是否有数据权限
      *
