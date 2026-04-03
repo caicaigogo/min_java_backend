@@ -12,7 +12,6 @@ import com.ruoyi.project.system.user.domain.User;
  *
  * @author ruoyi
  */
-@Mapper
 public interface UserMapper
 {
     /**

@@ -10,7 +10,6 @@ import org.apache.ibatis.annotations.Mapper;
  *
  * @author ruoyi
  */
-@Mapper
 public interface MenuMapper
 {
     /**

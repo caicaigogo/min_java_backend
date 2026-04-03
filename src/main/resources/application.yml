@@ -35,7 +35,7 @@ server:
 logging:
   level:
     com.ruoyi: debug
-    org.springframework: warn
+    org.springframework: debug
 
 # 用户配置
 user:

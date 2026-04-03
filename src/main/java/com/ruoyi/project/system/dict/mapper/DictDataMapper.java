@@ -11,7 +11,6 @@ import com.ruoyi.project.system.dict.domain.DictData;
  *
  * @author ruoyi
  */
-@Mapper
 public interface DictDataMapper
 {
 //    /**

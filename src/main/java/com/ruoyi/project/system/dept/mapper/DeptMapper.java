@@ -11,7 +11,6 @@ import com.ruoyi.project.system.dept.domain.Dept;
  *
  * @author ruoyi
  */
-@Mapper
 public interface DeptMapper
 {
 //    /**
