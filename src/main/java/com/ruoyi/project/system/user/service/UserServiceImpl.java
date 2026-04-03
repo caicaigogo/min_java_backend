@@ -595,15 +595,15 @@ public class UserServiceImpl implements IUserService
 //        return successMsg.toString();
 //    }
 //
-//    /**
-//     * 用户状态修改
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    @Override
-//    public int changeStatus(User user)
-//    {
-//        return userMapper.updateUserStatus(user.getUserId(), user.getStatus());
-//    }
+    /**
+     * 用户状态修改
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    @Override
+    public int changeStatus(User user)
+    {
+        return userMapper.updateUserStatus(user.getUserId(), user.getStatus());
+    }
 }

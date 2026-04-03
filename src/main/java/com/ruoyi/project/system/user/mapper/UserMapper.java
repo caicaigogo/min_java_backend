@@ -104,15 +104,15 @@ public interface UserMapper
 //     */
 //    public int updateUserAvatar(@Param("userId") Long userId, @Param("avatar") String avatar);
 //
-//    /**
-//     * 修改用户状态
-//     *
-//     * @param userId 用户ID
-//     * @param status 状态
-//     * @return 结果
-//     */
-//    public int updateUserStatus(@Param("userId") Long userId, @Param("status") String status);
-//
+    /**
+     * 修改用户状态
+     *
+     * @param userId 用户ID
+     * @param status 状态
+     * @return 结果
+     */
+    public int updateUserStatus(@Param("userId") Long userId, @Param("status") String status);
+
     /**
      * 重置用户密码
      *

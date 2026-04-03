@@ -1043,37 +1043,37 @@ var table = {
         },
         // 操作封装处理
         operate: {
-        //     // 提交数据
-        //     submit: function(url, type, dataType, data, callback) {
-        //         var config = {
-        //             url: url,
-        //             type: type,
-        //             dataType: dataType,
-        //             data: data,
-        //             beforeSend: function (xhr, settings) {
-        //                 var csrftoken = $('meta[name=csrf-token]').attr('content');
-        //                 if ($.common.equalsIgnoreCase(settings.type, "POST")) {
-        //                     xhr.setRequestHeader("X-CSRF-Token", csrftoken);
-        //                 }
-        //                 $.modal.loading("正在处理中，请稍候...");
-        //             },
-        //             success: function(result) {
-        //                 if (typeof callback == "function") {
-        //                     callback(result);
-        //                 }
-        //                 $.operate.ajaxSuccess(result);
-        //             }
-        //         };
-        //         $.ajax(config)
-        //     },
-        //     // post请求传输
-        //     post: function(url, data, callback) {
-        //         $.operate.submit(url, "post", "json", data, callback);
-        //     },
-        //     // get请求传输
-        //     get: function(url, callback) {
-        //         $.operate.submit(url, "get", "json", "", callback);
-        //     },
+            // 提交数据
+            submit: function(url, type, dataType, data, callback) {
+                var config = {
+                    url: url,
+                    type: type,
+                    dataType: dataType,
+                    data: data,
+                    beforeSend: function (xhr, settings) {
+                        var csrftoken = $('meta[name=csrf-token]').attr('content');
+                        if ($.common.equalsIgnoreCase(settings.type, "POST")) {
+                            xhr.setRequestHeader("X-CSRF-Token", csrftoken);
+                        }
+                        $.modal.loading("正在处理中，请稍候...");
+                    },
+                    success: function(result) {
+                        if (typeof callback == "function") {
+                            callback(result);
+                        }
+                        $.operate.ajaxSuccess(result);
+                    }
+                };
+                $.ajax(config)
+            },
+            // post请求传输
+            post: function(url, data, callback) {
+                $.operate.submit(url, "post", "json", data, callback);
+            },
+            // get请求传输
+            get: function(url, callback) {
+                $.operate.submit(url, "get", "json", "", callback);
+            },
         //     // 详细信息
         //     detail: function(id, width, height) {
         //         table.set();
@@ -1304,23 +1304,23 @@ var table = {
         //         };
         //         $.ajax(config)
         //     },
-        //     // 保存结果弹出msg刷新table表格
-        //     ajaxSuccess: function (result) {
-        //         if (result.code == web_status.SUCCESS && table.options.type == table_type.bootstrapTable) {
-        //             $.modal.msgSuccess(result.msg);
-        //             $.table.refresh();
-        //         } else if (result.code == web_status.SUCCESS && table.options.type == table_type.bootstrapTreeTable) {
-        //             $.modal.msgSuccess(result.msg);
-        //             $.treeTable.refresh();
-        //         } else if (result.code == web_status.SUCCESS && $.common.isEmpty(table.options.type)) {
-        //             $.modal.msgSuccess(result.msg)
-        //         }  else if (result.code == web_status.WARNING) {
-        //             $.modal.alertWarning(result.msg)
-        //         }  else {
-        //             $.modal.alertError(result.msg);
-        //         }
-        //         $.modal.closeLoading();
-        //     },
+            // 保存结果弹出msg刷新table表格
+            ajaxSuccess: function (result) {
+                if (result.code == web_status.SUCCESS && table.options.type == table_type.bootstrapTable) {
+                    $.modal.msgSuccess(result.msg);
+                    $.table.refresh();
+                } else if (result.code == web_status.SUCCESS && table.options.type == table_type.bootstrapTreeTable) {
+                    $.modal.msgSuccess(result.msg);
+                    $.treeTable.refresh();
+                } else if (result.code == web_status.SUCCESS && $.common.isEmpty(table.options.type)) {
+                    $.modal.msgSuccess(result.msg)
+                }  else if (result.code == web_status.WARNING) {
+                    $.modal.alertWarning(result.msg)
+                }  else {
+                    $.modal.alertError(result.msg);
+                }
+                $.modal.closeLoading();
+            },
         //     // 保存结果重新加载页面
         //     saveReload: function (result) {
         //         if (result.code == web_status.SUCCESS) {

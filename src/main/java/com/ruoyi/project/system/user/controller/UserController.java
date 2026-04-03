@@ -304,20 +304,20 @@ public class UserController extends BaseController
 //        return userService.checkEmailUnique(user);
 //    }
 //
-//    /**
-//     * 用户状态修改
-//     */
-//    @Log(title = "用户管理", businessType = BusinessType.UPDATE)
-//    @RequiresPermissions("system:user:edit")
-//    @PostMapping("/changeStatus")
-//    @ResponseBody
-//    public AjaxResult changeStatus(User user)
-//    {
-//        userService.checkUserAllowed(user);
-//        userService.checkUserDataScope(user.getUserId());
-//        return toAjax(userService.changeStatus(user));
-//    }
-//
+    /**
+     * 用户状态修改
+     */
+    @Log(title = "用户管理", businessType = BusinessType.UPDATE)
+    @RequiresPermissions("system:user:edit")
+    @PostMapping("/changeStatus")
+    @ResponseBody
+    public AjaxResult changeStatus(User user)
+    {
+        userService.checkUserAllowed(user);
+        userService.checkUserDataScope(user.getUserId());
+        return toAjax(userService.changeStatus(user));
+    }
+
     /**
      * 加载部门列表树
      */
