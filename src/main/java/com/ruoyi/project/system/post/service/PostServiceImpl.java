@@ -1,28 +1,28 @@
-//package com.ruoyi.project.system.post.service;
-//
-//import java.util.List;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import com.ruoyi.common.constant.UserConstants;
-//import com.ruoyi.common.exception.ServiceException;
-//import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.security.ShiroUtils;
-//import com.ruoyi.common.utils.text.Convert;
-//import com.ruoyi.project.system.post.domain.Post;
-//import com.ruoyi.project.system.post.mapper.PostMapper;
+package com.ruoyi.project.system.post.service;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.ruoyi.common.constant.UserConstants;
+import com.ruoyi.common.exception.ServiceException;
+import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.security.ShiroUtils;
+import com.ruoyi.common.utils.text.Convert;
+import com.ruoyi.project.system.post.domain.Post;
+import com.ruoyi.project.system.post.mapper.PostMapper;
 //import com.ruoyi.project.system.user.mapper.UserPostMapper;
-//
-///**
-// * 岗位信息 服务层处理
-// *
-// * @author ruoyi
-// */
-//@Service
-//public class PostServiceImpl implements IPostService
-//{
-//    @Autowired
-//    private PostMapper postMapper;
-//
+
+/**
+ * 岗位信息 服务层处理
+ *
+ * @author ruoyi
+ */
+@Service
+public class PostServiceImpl implements IPostService
+{
+    @Autowired
+    private PostMapper postMapper;
+
 //    @Autowired
 //    private UserPostMapper userPostMapper;
 //
@@ -38,42 +38,42 @@
 //        return postMapper.selectPostList(post);
 //    }
 //
-//    /**
-//     * 查询所有岗位
-//     *
-//     * @return 岗位列表
-//     */
-//    @Override
-//    public List<Post> selectPostAll()
-//    {
-//        return postMapper.selectPostAll();
-//    }
-//
-//    /**
-//     * 根据用户ID查询岗位
-//     *
-//     * @param userId 用户ID
-//     * @return 岗位列表
-//     */
-//    @Override
-//    public List<Post> selectPostsByUserId(Long userId)
-//    {
-//        List<Post> userPosts = postMapper.selectPostsByUserId(userId);
-//        List<Post> posts = postMapper.selectPostAll();
-//        for (Post post : posts)
-//        {
-//            for (Post userRole : userPosts)
-//            {
-//                if (post.getPostId().longValue() == userRole.getPostId().longValue())
-//                {
-//                    post.setFlag(true);
-//                    break;
-//                }
-//            }
-//        }
-//        return posts;
-//    }
-//
+    /**
+     * 查询所有岗位
+     *
+     * @return 岗位列表
+     */
+    @Override
+    public List<Post> selectPostAll()
+    {
+        return postMapper.selectPostAll();
+    }
+
+    /**
+     * 根据用户ID查询岗位
+     *
+     * @param userId 用户ID
+     * @return 岗位列表
+     */
+    @Override
+    public List<Post> selectPostsByUserId(Long userId)
+    {
+        List<Post> userPosts = postMapper.selectPostsByUserId(userId);
+        List<Post> posts = postMapper.selectPostAll();
+        for (Post post : posts)
+        {
+            for (Post userRole : userPosts)
+            {
+                if (post.getPostId().longValue() == userRole.getPostId().longValue())
+                {
+                    post.setFlag(true);
+                    break;
+                }
+            }
+        }
+        return posts;
+    }
+
 //    /**
 //     * 通过岗位ID查询岗位信息
 //     *
@@ -180,4 +180,4 @@
 //        }
 //        return UserConstants.UNIQUE;
 //    }
-//}
+}

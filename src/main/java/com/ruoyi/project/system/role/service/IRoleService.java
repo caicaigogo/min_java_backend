@@ -12,13 +12,13 @@ import com.ruoyi.project.system.user.domain.UserRole;
  */
 public interface IRoleService
 {
-//    /**
-//     * 根据条件分页查询角色数据
-//     *
-//     * @param role 角色信息
-//     * @return 角色数据集合信息
-//     */
-//    public List<Role> selectRoleList(Role role);
+    /**
+     * 根据条件分页查询角色数据
+     *
+     * @param role 角色信息
+     * @return 角色数据集合信息
+     */
+    public List<Role> selectRoleList(Role role);
 
     /**
      * 根据用户ID查询角色列表
@@ -28,21 +28,21 @@ public interface IRoleService
      */
     public Set<String> selectRoleKeys(Long userId);
 
-//    /**
-//     * 根据用户ID查询角色权限
-//     *
-//     * @param userId 用户ID
-//     * @return 角色列表
-//     */
-//    public List<Role> selectRolesByUserId(Long userId);
-//
-//    /**
-//     * 查询所有角色
-//     *
-//     * @return 角色列表
-//     */
-//    public List<Role> selectRoleAll();
-//
+    /**
+     * 根据用户ID查询角色权限
+     *
+     * @param userId 用户ID
+     * @return 角色列表
+     */
+    public List<Role> selectRolesByUserId(Long userId);
+
+    /**
+     * 查询所有角色
+     *
+     * @return 角色列表
+     */
+    public List<Role> selectRoleAll();
+
 //    /**
 //     * 通过角色ID查询角色
 //     *

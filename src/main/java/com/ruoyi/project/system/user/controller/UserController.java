@@ -27,7 +27,7 @@ import com.ruoyi.framework.web.domain.Ztree;
 import com.ruoyi.framework.web.page.TableDataInfo;
 import com.ruoyi.project.system.dept.domain.Dept;
 import com.ruoyi.project.system.dept.service.IDeptService;
-//import com.ruoyi.project.system.post.service.IPostService;
+import com.ruoyi.project.system.post.service.IPostService;
 import com.ruoyi.project.system.role.domain.Role;
 import com.ruoyi.project.system.role.service.IRoleService;
 import com.ruoyi.project.system.user.domain.User;
@@ -46,15 +46,15 @@ public class UserController extends BaseController
 
     @Autowired
     private IUserService userService;
-//
-//    @Autowired
-//    private IRoleService roleService;
-//
+
+    @Autowired
+    private IRoleService roleService;
+
     @Autowired
     private IDeptService deptService;
-//
-//    @Autowired
-//    private IPostService postService;
+
+    @Autowired
+    private IPostService postService;
 
     @RequiresPermissions("system:user:view")
     @GetMapping()
@@ -143,21 +143,21 @@ public class UserController extends BaseController
 //        return toAjax(userService.insertUser(user));
 //    }
 //
-//    /**
-//     * 修改用户
-//     */
-//    @RequiresPermissions("system:user:edit")
-//    @GetMapping("/edit/{userId}")
-//    public String edit(@PathVariable("userId") Long userId, ModelMap mmap)
-//    {
-//        userService.checkUserDataScope(userId);
-//        List<Role> roles = roleService.selectRolesByUserId(userId);
-//        mmap.put("user", userService.selectUserById(userId));
-//        mmap.put("roles", ShiroUtils.isAdmin(userId) ? roles : roles.stream().filter(r -> !r.isAdmin()).collect(Collectors.toList()));
-//        mmap.put("posts", postService.selectPostsByUserId(userId));
-//        return prefix + "/edit";
-//    }
-//
+    /**
+     * 修改用户
+     */
+    @RequiresPermissions("system:user:edit")
+    @GetMapping("/edit/{userId}")
+    public String edit(@PathVariable("userId") Long userId, ModelMap mmap)
+    {
+        userService.checkUserDataScope(userId);
+        List<Role> roles = roleService.selectRolesByUserId(userId);
+        mmap.put("user", userService.selectUserById(userId));
+        mmap.put("roles", ShiroUtils.isAdmin(userId) ? roles : roles.stream().filter(r -> !r.isAdmin()).collect(Collectors.toList()));
+        mmap.put("posts", postService.selectPostsByUserId(userId));
+        return prefix + "/edit";
+    }
+
     /**
      * 查询用户详细
      */

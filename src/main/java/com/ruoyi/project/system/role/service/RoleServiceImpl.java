@@ -12,9 +12,9 @@ import com.ruoyi.common.constant.UserConstants;
 //import com.ruoyi.common.exception.ServiceException;
 import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.common.utils.security.ShiroUtils;
-//import com.ruoyi.common.utils.spring.SpringUtils;
+import com.ruoyi.common.utils.spring.SpringUtils;
 //import com.ruoyi.common.utils.text.Convert;
-//import com.ruoyi.framework.aspectj.lang.annotation.DataScope;
+import com.ruoyi.framework.aspectj.lang.annotation.DataScope;
 import com.ruoyi.project.system.role.domain.Role;
 //import com.ruoyi.project.system.role.domain.RoleDept;
 //import com.ruoyi.project.system.role.domain.RoleMenu;
@@ -43,19 +43,19 @@ public class RoleServiceImpl implements IRoleService
 //
 //    @Autowired
 //    private RoleDeptMapper roleDeptMapper;
-//
-//    /**
-//     * 根据条件分页查询角色数据
-//     *
-//     * @param role 角色信息
-//     * @return 角色数据集合信息
-//     */
-//    @Override
-//    @DataScope(deptAlias = "d")
-//    public List<Role> selectRoleList(Role role)
-//    {
-//        return roleMapper.selectRoleList(role);
-//    }
+
+    /**
+     * 根据条件分页查询角色数据
+     *
+     * @param role 角色信息
+     * @return 角色数据集合信息
+     */
+    @Override
+    @DataScope(deptAlias = "d")
+    public List<Role> selectRoleList(Role role)
+    {
+        return roleMapper.selectRoleList(role);
+    }
 
     /**
      * 根据用户ID查询权限
@@ -77,43 +77,43 @@ public class RoleServiceImpl implements IRoleService
         }
         return permsSet;
     }
-//
-//    /**
-//     * 根据用户ID查询角色
-//     *
-//     * @param userId 用户ID
-//     * @return 角色列表
-//     */
-//    @Override
-//    public List<Role> selectRolesByUserId(Long userId)
-//    {
-//        List<Role> userRoles = roleMapper.selectRolesByUserId(userId);
-//        List<Role> roles = selectRoleAll();
-//        for (Role role : roles)
-//        {
-//            for (Role userRole : userRoles)
-//            {
-//                if (role.getRoleId().longValue() == userRole.getRoleId().longValue())
-//                {
-//                    role.setFlag(true);
-//                    break;
-//                }
-//            }
-//        }
-//        return roles;
-//    }
-//
-//    /**
-//     * 查询所有角色
-//     *
-//     * @return 角色列表
-//     */
-//    @Override
-//    public List<Role> selectRoleAll()
-//    {
-//        return SpringUtils.getAopProxy(this).selectRoleList(new Role());
-//    }
-//
+
+    /**
+     * 根据用户ID查询角色
+     *
+     * @param userId 用户ID
+     * @return 角色列表
+     */
+    @Override
+    public List<Role> selectRolesByUserId(Long userId)
+    {
+        List<Role> userRoles = roleMapper.selectRolesByUserId(userId);
+        List<Role> roles = selectRoleAll();
+        for (Role role : roles)
+        {
+            for (Role userRole : userRoles)
+            {
+                if (role.getRoleId().longValue() == userRole.getRoleId().longValue())
+                {
+                    role.setFlag(true);
+                    break;
+                }
+            }
+        }
+        return roles;
+    }
+
+    /**
+     * 查询所有角色
+     *
+     * @return 角色列表
+     */
+    @Override
+    public List<Role> selectRoleAll()
+    {
+        return SpringUtils.getAopProxy(this).selectRoleList(new Role());
+    }
+
 //    /**
 //     * 通过角色ID查询角色
 //     *

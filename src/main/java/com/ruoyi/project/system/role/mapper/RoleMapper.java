@@ -12,14 +12,14 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface RoleMapper
 {
-//    /**
-//     * 根据条件分页查询角色数据
-//     *
-//     * @param role 角色信息
-//     * @return 角色数据集合信息
-//     */
-//    public List<Role> selectRoleList(Role role);
-//
+    /**
+     * 根据条件分页查询角色数据
+     *
+     * @param role 角色信息
+     * @return 角色数据集合信息
+     */
+    public List<Role> selectRoleList(Role role);
+
     /**
      * 根据用户ID查询角色
      *

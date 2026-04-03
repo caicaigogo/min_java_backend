@@ -19,13 +19,13 @@ public interface PostMapper
 //     * @return 岗位数据集合
 //     */
 //    public List<Post> selectPostList(Post post);
-//
-//    /**
-//     * 查询所有岗位
-//     *
-//     * @return 岗位列表
-//     */
-//    public List<Post> selectPostAll();
+
+    /**
+     * 查询所有岗位
+     *
+     * @return 岗位列表
+     */
+    public List<Post> selectPostAll();
 
     /**
      * 根据用户ID查询岗位

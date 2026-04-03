@@ -982,10 +982,10 @@ var table = {
         //         });
         //         top.layer.full(index);
         //     },
-        //     // 选卡页方式打开
-        //     openTab: function (title, url, isRefresh) {
-        //         createMenuItem(url, title, isRefresh);
-        //     },
+            // 选卡页方式打开
+            openTab: function (title, url, isRefresh) {
+                createMenuItem(url, title, isRefresh);
+            },
         //     // 选卡页同一页签打开
         //     parentTab: function (title, url) {
         //         var dataId = window.frameElement.getAttribute('data-id');
@@ -1180,11 +1180,11 @@ var table = {
         //             $.modal.open("修改" + table.options.modalName, $.operate.editUrl(id));
         //         }
         //     },
-        //     // 修改信息，以tab页展现
-        //     editTab: function(id) {
-        //         table.set();
-        //         $.modal.openTab("修改" + table.options.modalName, $.operate.editUrl(id));
-        //     },
+            // 修改信息，以tab页展现
+            editTab: function(id) {
+                table.set();
+                $.modal.openTab("修改" + table.options.modalName, $.operate.editUrl(id));
+            },
         //     // 修改信息 全屏
         //     editFull: function(id) {
         //         table.set();
@@ -1206,21 +1206,21 @@ var table = {
         //         }
         //         $.modal.openFull("修改" + table.options.modalName, url);
         //     },
-        //     // 修改访问地址
-        //     editUrl: function(id) {
-        //         var url = "/404.html";
-        //         if ($.common.isNotEmpty(id)) {
-        //             url = table.options.updateUrl.replace("{id}", id);
-        //         } else {
-        //             var id = $.common.isEmpty(table.options.uniqueId) ? $.table.selectFirstColumns() : $.table.selectColumns(table.options.uniqueId);
-        //             if (id.length == 0) {
-        //                 $.modal.alertWarning("请至少选择一条记录");
-        //                 return;
-        //             }
-        //             url = table.options.updateUrl.replace("{id}", id);
-        //         }
-        //         return url;
-        //     },
+            // 修改访问地址
+            editUrl: function(id) {
+                var url = "/404.html";
+                if ($.common.isNotEmpty(id)) {
+                    url = table.options.updateUrl.replace("{id}", id);
+                } else {
+                    var id = $.common.isEmpty(table.options.uniqueId) ? $.table.selectFirstColumns() : $.table.selectColumns(table.options.uniqueId);
+                    if (id.length == 0) {
+                        $.modal.alertWarning("请至少选择一条记录");
+                        return;
+                    }
+                    url = table.options.updateUrl.replace("{id}", id);
+                }
+                return url;
+            },
             // 右侧弹出详情
             view: function(id){
                 table.set();

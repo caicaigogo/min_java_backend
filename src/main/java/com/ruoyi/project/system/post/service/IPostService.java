@@ -1,15 +1,15 @@
-//package com.ruoyi.project.system.post.service;
-//
-//import java.util.List;
-//import com.ruoyi.project.system.post.domain.Post;
-//
-///**
-// * 岗位信息 服务层
-// *
-// * @author ruoyi
-// */
-//public interface IPostService
-//{
+package com.ruoyi.project.system.post.service;
+
+import java.util.List;
+import com.ruoyi.project.system.post.domain.Post;
+
+/**
+ * 岗位信息 服务层
+ *
+ * @author ruoyi
+ */
+public interface IPostService
+{
 //    /**
 //     * 查询岗位信息集合
 //     *
@@ -17,22 +17,22 @@
 //     * @return 岗位信息集合
 //     */
 //    public List<Post> selectPostList(Post post);
-//
-//    /**
-//     * 查询所有岗位
-//     *
-//     * @return 岗位列表
-//     */
-//    public List<Post> selectPostAll();
-//
-//    /**
-//     * 根据用户ID查询岗位
-//     *
-//     * @param userId 用户ID
-//     * @return 岗位列表
-//     */
-//    public List<Post> selectPostsByUserId(Long userId);
-//
+
+    /**
+     * 查询所有岗位
+     *
+     * @return 岗位列表
+     */
+    public List<Post> selectPostAll();
+
+    /**
+     * 根据用户ID查询岗位
+     *
+     * @param userId 用户ID
+     * @return 岗位列表
+     */
+    public List<Post> selectPostsByUserId(Long userId);
+
 //    /**
 //     * 通过岗位ID查询岗位信息
 //     *
@@ -88,4 +88,4 @@
 //     * @return 结果
 //     */
 //    public boolean checkPostCodeUnique(Post post);
-//}
+}
