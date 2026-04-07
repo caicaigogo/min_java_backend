@@ -260,20 +260,20 @@ public class UserController extends BaseController
 //        AuthorizationUtils.clearAllCachedAuthorizationInfo();
 //        return success();
 //    }
-//
-//    @RequiresPermissions("system:user:remove")
-//    @Log(title = "用户管理", businessType = BusinessType.DELETE)
-//    @PostMapping("/remove")
-//    @ResponseBody
-//    public AjaxResult remove(String ids)
-//    {
-//        if (ArrayUtils.contains(Convert.toLongArray(ids), getUserId()))
-//        {
-//            return error("当前用户不能删除");
-//        }
-//        return toAjax(userService.deleteUserByIds(ids));
-//    }
-//
+
+    @RequiresPermissions("system:user:remove")
+    @Log(title = "用户管理", businessType = BusinessType.DELETE)
+    @PostMapping("/remove")
+    @ResponseBody
+    public AjaxResult remove(String ids)
+    {
+        if (ArrayUtils.contains(Convert.toLongArray(ids), getUserId()))
+        {
+            return error("当前用户不能删除");
+        }
+        return toAjax(userService.deleteUserByIds(ids));
+    }
+
 //    /**
 //     * 校验用户名
 //     */

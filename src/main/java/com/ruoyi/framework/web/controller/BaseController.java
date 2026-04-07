@@ -183,14 +183,14 @@ public class BaseController
         ShiroUtils.setSysUser(user);
     }
 
-//    /**
-//     * 获取登录用户id
-//     */
-//    public Long getUserId()
-//    {
-//        return getSysUser().getUserId();
-//    }
-//
+    /**
+     * 获取登录用户id
+     */
+    public Long getUserId()
+    {
+        return getSysUser().getUserId();
+    }
+
 //    /**
 //     * 获取登录用户名
 //     */

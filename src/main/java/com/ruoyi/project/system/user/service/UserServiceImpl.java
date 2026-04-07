@@ -22,7 +22,7 @@ import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.common.utils.html.EscapeUtil;
 import com.ruoyi.common.utils.security.ShiroUtils;
 import com.ruoyi.common.utils.spring.SpringUtils;
-//import com.ruoyi.common.utils.text.Convert;
+import com.ruoyi.common.utils.text.Convert;
 import com.ruoyi.framework.aspectj.lang.annotation.DataScope;
 import com.ruoyi.framework.shiro.service.PasswordService;
 //import com.ruoyi.project.system.config.service.IConfigService;
@@ -35,8 +35,8 @@ import com.ruoyi.project.system.user.domain.User;
 //import com.ruoyi.project.system.user.domain.UserPost;
 //import com.ruoyi.project.system.user.domain.UserRole;
 import com.ruoyi.project.system.user.mapper.UserMapper;
-//import com.ruoyi.project.system.user.mapper.UserPostMapper;
-//import com.ruoyi.project.system.user.mapper.UserRoleMapper;
+import com.ruoyi.project.system.user.mapper.UserPostMapper;
+import com.ruoyi.project.system.user.mapper.UserRoleMapper;
 
 /**
  * 用户 业务层处理
@@ -57,11 +57,11 @@ public class UserServiceImpl implements IUserService
     @Autowired
     private PostMapper postMapper;
 
-//    @Autowired
-//    private UserPostMapper userPostMapper;
-//
-//    @Autowired
-//    private UserRoleMapper userRoleMapper;
+    @Autowired
+    private UserPostMapper userPostMapper;
+
+    @Autowired
+    private UserRoleMapper userRoleMapper;
 //
 //    @Autowired
 //    private IConfigService configService;
@@ -191,30 +191,30 @@ public class UserServiceImpl implements IUserService
 //        userPostMapper.deleteUserPostByUserId(userId);
 //        return userMapper.deleteUserById(userId);
 //    }
-//
-//    /**
-//     * 批量删除用户信息
-//     *
-//     * @param ids 需要删除的数据ID
-//     * @return 结果
-//     */
-//    @Override
-//    @Transactional
-//    public int deleteUserByIds(String ids)
-//    {
-//        Long[] userIds = Convert.toLongArray(ids);
-//        for (Long userId : userIds)
-//        {
-//            checkUserAllowed(new User(userId));
-//            checkUserDataScope(userId);
-//        }
-//        // 删除用户与角色关联
-//        userRoleMapper.deleteUserRole(userIds);
-//        // 删除用户与岗位关联
-//        userPostMapper.deleteUserPost(userIds);
-//        return userMapper.deleteUserByIds(userIds);
-//    }
-//
+
+    /**
+     * 批量删除用户信息
+     *
+     * @param ids 需要删除的数据ID
+     * @return 结果
+     */
+    @Override
+    @Transactional
+    public int deleteUserByIds(String ids)
+    {
+        Long[] userIds = Convert.toLongArray(ids);
+        for (Long userId : userIds)
+        {
+            checkUserAllowed(new User(userId));
+            checkUserDataScope(userId);
+        }
+        // 删除用户与角色关联
+        userRoleMapper.deleteUserRole(userIds);
+        // 删除用户与岗位关联
+        userPostMapper.deleteUserPost(userIds);
+        return userMapper.deleteUserByIds(userIds);
+    }
+
 //    /**
 //     * 新增保存用户信息
 //     *

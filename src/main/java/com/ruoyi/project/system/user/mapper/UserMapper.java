@@ -78,13 +78,13 @@ public interface UserMapper
 //     */
 //    public int deleteUserById(Long userId);
 //
-//    /**
-//     * 批量删除用户信息
-//     *
-//     * @param ids 需要删除的数据ID
-//     * @return 结果
-//     */
-//    public int deleteUserByIds(Long[] ids);
+    /**
+     * 批量删除用户信息
+     *
+     * @param ids 需要删除的数据ID
+     * @return 结果
+     */
+    public int deleteUserByIds(Long[] ids);
 //
 //    /**
 //     * 修改用户信息

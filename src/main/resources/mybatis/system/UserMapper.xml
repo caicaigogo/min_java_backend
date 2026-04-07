@@ -158,14 +158,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!--	<delete id="deleteUserById" parameterType="Long">-->
 <!-- 		update sys_user set del_flag = '2' where user_id = #{userId}-->
 <!-- 	</delete>-->
-<!-- 	-->
-<!-- 	<delete id="deleteUserByIds" parameterType="Long">-->
-<!-- 		update sys_user set del_flag = '2' where user_id in-->
-<!-- 		<foreach collection="array" item="userId" open="(" separator="," close=")">-->
-<!-- 			#{userId}-->
-<!--        </foreach> -->
-<!-- 	</delete>-->
-<!-- 	-->
+
+ 	<delete id="deleteUserByIds" parameterType="Long">
+ 		update sys_user set del_flag = '2' where user_id in
+ 		<foreach collection="array" item="userId" open="(" separator="," close=")">
+ 			#{userId}
+        </foreach>
+ 	</delete>
+
 <!-- 	<update id="updateUserAvatar" parameterType="User">-->
 <!-- 		update sys_user set avatar = #{avatar} where user_id = #{userId}-->
 <!--	</update>-->
