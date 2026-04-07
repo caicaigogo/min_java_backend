@@ -356,23 +356,23 @@ var table = {
             //         return $.common.nullToStr(value);
             //     }
             // },
-            // // 搜索-默认第一个form
-            // search: function(formId, tableId, pageNumber, pageSize) {
-            //     table.set(tableId);
-            //     table.options.formId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
-            //     var params = $.common.isEmpty(tableId) ? $("#" + table.options.id).bootstrapTable('getOptions') : $("#" + tableId).bootstrapTable('getOptions');
-            //     if ($.common.isNotEmpty(pageNumber)) {
-            //         params.pageNumber = pageNumber;
-            //     }
-            //     if ($.common.isNotEmpty(pageSize)) {
-            //         params.pageSize = pageSize;
-            //     }
-            //     if ($.common.isNotEmpty(tableId)) {
-            //         $("#" + tableId).bootstrapTable('refresh', params);
-            //     } else{
-            //         $("#" + table.options.id).bootstrapTable('refresh', params);
-            //     }
-            // },
+            // 搜索-默认第一个form
+            search: function(formId, tableId, pageNumber, pageSize) {
+                table.set(tableId);
+                table.options.formId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
+                var params = $.common.isEmpty(tableId) ? $("#" + table.options.id).bootstrapTable('getOptions') : $("#" + tableId).bootstrapTable('getOptions');
+                if ($.common.isNotEmpty(pageNumber)) {
+                    params.pageNumber = pageNumber;
+                }
+                if ($.common.isNotEmpty(pageSize)) {
+                    params.pageSize = pageSize;
+                }
+                if ($.common.isNotEmpty(tableId)) {
+                    $("#" + tableId).bootstrapTable('refresh', params);
+                } else{
+                    $("#" + table.options.id).bootstrapTable('refresh', params);
+                }
+            },
             // // 导出数据
             // exportExcel: function(formId) {
             //     table.set();

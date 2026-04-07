@@ -16,16 +16,16 @@ $(function() {
         alwaysVisible: false
     });
 
-//     // 菜单切换
-//     $('.navbar-minimalize').click(function() {
-//     	if (isMobile) {
-//     	    $("body").toggleClass("canvas-menu");
-//     	} else {
-//     	    $("body").toggleClass("mini-navbar");
-//     	}
-//         SmoothlyMenu();
-//     });
-//
+    // 菜单切换
+    $('.navbar-minimalize').click(function() {
+    	if (isMobile) {
+    	    $("body").toggleClass("canvas-menu");
+    	} else {
+    	    $("body").toggleClass("mini-navbar");
+    	}
+        SmoothlyMenu();
+    });
+
     $('#side-menu>li').click(function() {
     	if ($('body').hasClass('canvas-menu mini-navbar')) {
             NavToggle();
@@ -38,12 +38,12 @@ $(function() {
         }
     });
 
-//     $('.nav-close').click(NavToggle);
-//
-//     //ios浏览器兼容性处理
-//     if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-//         $('#content-main').css('overflow-y', 'auto');
-//     }
+    $('.nav-close').click(NavToggle);
+
+    //ios浏览器兼容性处理
+    if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+        $('#content-main').css('overflow-y', 'auto');
+    }
 
 });
 
@@ -74,7 +74,7 @@ function openToCurrentTab(obj) {
         $(obj).css({"visibility": "visible", "position": "static"}).siblings('.RuoYi_iframe').css({"visibility": "hidden", "position": "absolute", "left": "0", "top": "0"});
     }
 }
-//
+
 // function syncMenuTab(dataId) {
 //     if (isLinkage) {
 //         var $dataObj = $('a[href$="' + decodeURI(dataId) + '"]');
@@ -103,13 +103,13 @@ function NavToggle() {
     $('.navbar-minimalize').trigger('click');
 }
 
-// function fixedSidebar() {
-//     $('#side-menu').hide();
-//     $("nav .logo").addClass("hide");
-//     setTimeout(function() {
-//         $('#side-menu').fadeIn(500);
-//     }, 100);
-// }
+function fixedSidebar() {
+    $('#side-menu').hide();
+    $("nav .logo").addClass("hide");
+    setTimeout(function() {
+        $('#side-menu').fadeIn(500);
+    }, 100);
+}
 
 // 设置锚点
 function setIframeUrl(href) {
@@ -122,22 +122,22 @@ function setIframeUrl(href) {
 	}
 }
 
-// function SmoothlyMenu() {
-//     if (isMobile && !$('body').hasClass('canvas-menu')) {
-//     	$('.navbar-static-side').fadeIn();
-//     	fixedSidebar();
-//     } else if (!isMobile &&!$('body').hasClass('mini-navbar')) {
-//     	fixedSidebar();
-//     	$("nav .logo").removeClass("hide");
-//     } else if (isMobile && $('body').hasClass('fixed-sidebar')) {
-//     	$('.navbar-static-side').fadeOut();
-//     	fixedSidebar();
-//     } else if (!isMobile && $('body').hasClass('fixed-sidebar')) {
-//     	fixedSidebar();
-//     } else {
-//         $('#side-menu').removeAttr('style');
-//     }
-// }
+function SmoothlyMenu() {
+    if (isMobile && !$('body').hasClass('canvas-menu')) {
+    	$('.navbar-static-side').fadeIn();
+    	fixedSidebar();
+    } else if (!isMobile &&!$('body').hasClass('mini-navbar')) {
+    	fixedSidebar();
+    	$("nav .logo").removeClass("hide");
+    } else if (isMobile && $('body').hasClass('fixed-sidebar')) {
+    	$('.navbar-static-side').fadeOut();
+    	fixedSidebar();
+    } else if (!isMobile && $('body').hasClass('fixed-sidebar')) {
+    	fixedSidebar();
+    } else {
+        $('#side-menu').removeAttr('style');
+    }
+}
 
 /**
  * iframe处理
@@ -318,11 +318,11 @@ $(function() {
             }
             $('.mainContent').append(str1);
 
-            // $.modal.loading("数据加载中，请稍候...");
-            //
-            // $('.mainContent iframe:visible').on('load', function() {
-            // 	$.modal.closeLoading();
-            // });
+            $.modal.loading("数据加载中，请稍候...");
+
+            $('.mainContent iframe:visible').on('load', function() {
+            	$.modal.closeLoading();
+            });
 
             // 添加选项卡
             $('.menuTabs .page-tabs-content').append(str);
@@ -331,17 +331,17 @@ $(function() {
         return false;
     }
 
-//     function menuBlank() {
-//     	// 新窗口打开外网以http://开头，如http://ruoyi.vip
-//     	var dataUrl = $(this).attr('href');
-//     	window.open(dataUrl);
-//     	return false;
-//     }
+    function menuBlank() {
+    	// 新窗口打开外网以http://开头，如http://ruoyi.vip
+    	var dataUrl = $(this).attr('href');
+    	window.open(dataUrl);
+    	return false;
+    }
 
     $('.menuItem').on('click', menuItem);
-//
-//     $('.menuBlank').on('click', menuBlank);
-//
+
+    $('.menuBlank').on('click', menuBlank);
+
 //     // 关闭选项卡菜单
 //     function closeTab() {
 //         var closeTabId = $(this).parents('.menuTab').data('id');

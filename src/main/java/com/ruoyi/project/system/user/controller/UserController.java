@@ -200,15 +200,15 @@ public class UserController extends BaseController
 //        AuthorizationUtils.clearAllCachedAuthorizationInfo();
 //        return toAjax(userService.updateUser(user));
 //    }
-//
-//    @RequiresPermissions("system:user:resetPwd")
-//    @GetMapping("/resetPwd/{userId}")
-//    public String resetPwd(@PathVariable("userId") Long userId, ModelMap mmap)
-//    {
-//        userService.checkUserDataScope(userId);
-//        mmap.put("user", userService.selectUserById(userId));
-//        return prefix + "/resetPwd";
-//    }
+
+    @RequiresPermissions("system:user:resetPwd")
+    @GetMapping("/resetPwd/{userId}")
+    public String resetPwd(@PathVariable("userId") Long userId, ModelMap mmap)
+    {
+        userService.checkUserDataScope(userId);
+        mmap.put("user", userService.selectUserById(userId));
+        return prefix + "/resetPwd";
+    }
 
     @RequiresPermissions("system:user:resetPwd")
     @Log(title = "重置密码", businessType = BusinessType.UPDATE)
@@ -229,21 +229,22 @@ public class UserController extends BaseController
         return error();
     }
 
-//    /**
-//     * 进入授权角色页
-//     */
-//    @RequiresPermissions("system:user:edit")
-//    @GetMapping("/authRole/{userId}")
-//    public String authRole(@PathVariable("userId") Long userId, ModelMap mmap)
-//    {
-//        userService.checkUserDataScope(userId);
-//        User user = userService.selectUserById(userId);
-//        // 获取用户所属的角色列表
-//        List<Role> roles = roleService.selectRolesByUserId(userId);
-//        mmap.put("user", user);
-//        mmap.put("roles", ShiroUtils.isAdmin(userId) ? roles : roles.stream().filter(r -> !r.isAdmin()).collect(Collectors.toList()));
-//        return prefix + "/authRole";
-//    }
+    /**
+     * 进入授权角色页
+     */
+    @RequiresPermissions("system:user:edit")
+    @GetMapping("/authRole/{userId}")
+    public String authRole(@PathVariable("userId") Long userId, ModelMap mmap)
+    {
+        userService.checkUserDataScope(userId);
+        User user = userService.selectUserById(userId);
+        // 获取用户所属的角色列表
+        List<Role> roles = roleService.selectRolesByUserId(userId);
+        mmap.put("user", user);
+        mmap.put("roles", ShiroUtils.isAdmin(userId) ? roles : roles.stream().filter(r -> !r.isAdmin()).collect(Collectors.toList()));
+        mmap.put("roles", ShiroUtils.isAdmin(userId) ? roles : roles.stream().filter(r -> !r.isAdmin()).collect(Collectors.toList()));
+        return prefix + "/authRole";
+    }
 //
 //    /**
 //     * 用户授权角色
