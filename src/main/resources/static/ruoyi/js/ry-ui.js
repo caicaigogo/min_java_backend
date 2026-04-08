@@ -1012,10 +1012,10 @@ var table = {
                     content: url
                 });
             },
-        //     // 关闭选项卡
-        //     closeTab: function (dataId) {
-        //         closeItem(dataId);
-        //     },
+            // 关闭选项卡
+            closeTab: function (dataId) {
+                closeItem(dataId);
+            },
             // 禁用按钮
             disable: function() {
                 var doc = window.top == window.parent ? top.window.document : window.parent.document;
