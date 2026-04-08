@@ -69,13 +69,13 @@ public interface DeptMapper
 //     */
 //    public int updateDeptChildren(@Param("depts") List<Dept> depts);
 //
-//    /**
-//     * 根据部门ID查询信息
-//     *
-//     * @param deptId 部门ID
-//     * @return 部门信息
-//     */
-//    public Dept selectDeptById(Long deptId);
+    /**
+     * 根据部门ID查询信息
+     *
+     * @param deptId 部门ID
+     * @return 部门信息
+     */
+    public Dept selectDeptById(Long deptId);
 //
 //    /**
 //     * 校验部门名称是否唯一

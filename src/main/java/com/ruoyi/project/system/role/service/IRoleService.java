@@ -115,12 +115,12 @@ public interface IRoleService
 //     */
 //    public void checkRoleAllowed(Role role);
 //
-//    /**
-//     * 校验角色是否有数据权限
-//     *
-//     * @param roleIds 角色id
-//     */
-//    public void checkRoleDataScope(Long... roleIds);
+    /**
+     * 校验角色是否有数据权限
+     *
+     * @param roleIds 角色id
+     */
+    public void checkRoleDataScope(Long... roleIds);
 //
 //    /**
 //     * 通过角色ID查询角色使用数量

@@ -12,14 +12,14 @@ import com.ruoyi.project.system.role.domain.Role;
  */
 public interface IDeptService
 {
-//    /**
-//     * 查询部门管理数据
-//     *
-//     * @param dept 部门信息
-//     * @return 部门信息集合
-//     */
-//    public List<Dept> selectDeptList(Dept dept);
-//
+    /**
+     * 查询部门管理数据
+     *
+     * @param dept 部门信息
+     * @return 部门信息集合
+     */
+    public List<Dept> selectDeptList(Dept dept);
+
     /**
      * 查询部门管理树
      *
@@ -84,13 +84,13 @@ public interface IDeptService
 //     */
 //    public int updateDept(Dept dept);
 //
-//    /**
-//     * 根据部门ID查询信息
-//     *
-//     * @param deptId 部门ID
-//     * @return 部门信息
-//     */
-//    public Dept selectDeptById(Long deptId);
+    /**
+     * 根据部门ID查询信息
+     *
+     * @param deptId 部门ID
+     * @return 部门信息
+     */
+    public Dept selectDeptById(Long deptId);
 //
 //    /**
 //     * 根据ID查询所有子部门（正常状态）
@@ -108,10 +108,10 @@ public interface IDeptService
 //     */
 //    public boolean checkDeptNameUnique(Dept dept);
 //
-//    /**
-//     * 校验部门是否有数据权限
-//     *
-//     * @param deptId 部门id
-//     */
-//    public void checkDeptDataScope(Long deptId);
+    /**
+     * 校验部门是否有数据权限
+     *
+     * @param deptId 部门id
+     */
+    public void checkDeptDataScope(Long deptId);
 }

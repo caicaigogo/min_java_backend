@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.ruoyi.common.constant.UserConstants;
-//import com.ruoyi.common.exception.ServiceException;
+import com.ruoyi.common.exception.ServiceException;
 import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.security.ShiroUtils;
+import com.ruoyi.common.utils.security.ShiroUtils;
 import com.ruoyi.common.utils.spring.SpringUtils;
 //import com.ruoyi.common.utils.text.Convert;
 import com.ruoyi.framework.aspectj.lang.annotation.DataScope;
@@ -22,7 +22,7 @@ import com.ruoyi.project.system.role.domain.Role;
 import com.ruoyi.project.system.role.mapper.RoleMapper;
 //import com.ruoyi.project.system.role.mapper.RoleMenuMapper;
 import com.ruoyi.project.system.user.domain.UserRole;
-//import com.ruoyi.project.system.user.mapper.UserRoleMapper;
+import com.ruoyi.project.system.user.mapper.UserRoleMapper;
 
 /**
  * 角色 业务层处理
@@ -321,30 +321,30 @@ public class RoleServiceImpl implements IRoleService
 //            throw new ServiceException("不允许操作超级管理员角色");
 //        }
 //    }
-//
-//    /**
-//     * 校验角色是否有数据权限
-//     *
-//     * @param roleId 角色id
-//     */
-//    @Override
-//    public void checkRoleDataScope(Long... roleIds)
-//    {
-//        if (!ShiroUtils.isAdmin())
-//        {
-//            for (Long roleId : roleIds)
-//            {
-//                Role role = new Role();
-//                role.setRoleId(roleId);
-//                List<Role> roles = SpringUtils.getAopProxy(this).selectRoleList(role);
-//                if (StringUtils.isEmpty(roles))
-//                {
-//                    throw new ServiceException("没有权限访问角色数据！");
-//                }
-//            }
-//        }
-//    }
-//
+
+    /**
+     * 校验角色是否有数据权限
+     *
+     * @param roleId 角色id
+     */
+    @Override
+    public void checkRoleDataScope(Long... roleIds)
+    {
+        if (!ShiroUtils.isAdmin())
+        {
+            for (Long roleId : roleIds)
+            {
+                Role role = new Role();
+                role.setRoleId(roleId);
+                List<Role> roles = SpringUtils.getAopProxy(this).selectRoleList(role);
+                if (StringUtils.isEmpty(roles))
+                {
+                    throw new ServiceException("没有权限访问角色数据！");
+                }
+            }
+        }
+    }
+
 //    /**
 //     * 通过角色ID查询角色使用数量
 //     *

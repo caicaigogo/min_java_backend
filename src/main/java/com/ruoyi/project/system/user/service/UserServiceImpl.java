@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import com.ruoyi.common.constant.UserConstants;
 import com.ruoyi.common.exception.ServiceException;
-//import com.ruoyi.common.utils.DateUtils;
+import com.ruoyi.common.utils.DateUtils;
 //import com.ruoyi.common.utils.ExceptionUtil;
 //import com.ruoyi.common.utils.Md5Utils;
 import com.ruoyi.common.utils.StringUtils;
@@ -32,8 +32,8 @@ import com.ruoyi.project.system.post.mapper.PostMapper;
 import com.ruoyi.project.system.role.domain.Role;
 import com.ruoyi.project.system.role.mapper.RoleMapper;
 import com.ruoyi.project.system.user.domain.User;
-//import com.ruoyi.project.system.user.domain.UserPost;
-//import com.ruoyi.project.system.user.domain.UserRole;
+import com.ruoyi.project.system.user.domain.UserPost;
+import com.ruoyi.project.system.user.domain.UserRole;
 import com.ruoyi.project.system.user.mapper.UserMapper;
 import com.ruoyi.project.system.user.mapper.UserPostMapper;
 import com.ruoyi.project.system.user.mapper.UserRoleMapper;
@@ -215,29 +215,29 @@ public class UserServiceImpl implements IUserService
         return userMapper.deleteUserByIds(userIds);
     }
 
-//    /**
-//     * 新增保存用户信息
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    @Override
-//    @Transactional
-//    public int insertUser(User user)
-//    {
-//        user.randomSalt();
-//        user.setPassword(passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()));
-//        user.setPwdUpdateDate(DateUtils.getNowDate());
-//        user.setCreateBy(ShiroUtils.getLoginName());
-//        // 新增用户信息
-//        int rows = userMapper.insertUser(user);
-//        // 新增用户岗位关联
-//        insertUserPost(user);
-//        // 新增用户与角色管理
-//        insertUserRole(user.getUserId(), user.getRoleIds());
-//        return rows;
-//    }
-//
+    /**
+     * 新增保存用户信息
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    @Override
+    @Transactional
+    public int insertUser(User user)
+    {
+        user.randomSalt();
+        user.setPassword(passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()));
+        user.setPwdUpdateDate(DateUtils.getNowDate());
+        user.setCreateBy(ShiroUtils.getLoginName());
+        // 新增用户信息
+        int rows = userMapper.insertUser(user);
+        // 新增用户岗位关联
+        insertUserPost(user);
+        // 新增用户与角色管理
+        insertUserRole(user.getUserId(), user.getRoleIds());
+        return rows;
+    }
+
     /**
      * 注册用户信息
      *
@@ -340,59 +340,59 @@ public class UserServiceImpl implements IUserService
         String password = passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt());
         return userMapper.resetUserPwd(user.getUserId(), password, user.getSalt());
     }
-//
-//    /**
-//     * 新增用户角色信息
-//     *
-//     * @param userId 用户ID
-//     * @param roleIds 角色组
-//     */
-//    public void insertUserRole(Long userId, Long[] roleIds)
-//    {
-//        if (StringUtils.isNotNull(roleIds))
-//        {
-//            // 新增用户与角色管理
-//            List<UserRole> list = new ArrayList<UserRole>();
-//            for (Long roleId : roleIds)
-//            {
-//                UserRole ur = new UserRole();
-//                ur.setUserId(userId);
-//                ur.setRoleId(roleId);
-//                list.add(ur);
-//            }
-//            if (list.size() > 0)
-//            {
-//                userRoleMapper.batchUserRole(list);
-//            }
-//        }
-//    }
-//
-//    /**
-//     * 新增用户岗位信息
-//     *
-//     * @param user 用户对象
-//     */
-//    public void insertUserPost(User user)
-//    {
-//        Long[] posts = user.getPostIds();
-//        if (StringUtils.isNotNull(posts))
-//        {
-//            // 新增用户与岗位管理
-//            List<UserPost> list = new ArrayList<UserPost>();
-//            for (Long postId : user.getPostIds())
-//            {
-//                UserPost up = new UserPost();
-//                up.setUserId(user.getUserId());
-//                up.setPostId(postId);
-//                list.add(up);
-//            }
-//            if (list.size() > 0)
-//            {
-//                userPostMapper.batchUserPost(list);
-//            }
-//        }
-//    }
-//
+
+    /**
+     * 新增用户角色信息
+     *
+     * @param userId 用户ID
+     * @param roleIds 角色组
+     */
+    public void insertUserRole(Long userId, Long[] roleIds)
+    {
+        if (StringUtils.isNotNull(roleIds))
+        {
+            // 新增用户与角色管理
+            List<UserRole> list = new ArrayList<UserRole>();
+            for (Long roleId : roleIds)
+            {
+                UserRole ur = new UserRole();
+                ur.setUserId(userId);
+                ur.setRoleId(roleId);
+                list.add(ur);
+            }
+            if (list.size() > 0)
+            {
+                userRoleMapper.batchUserRole(list);
+            }
+        }
+    }
+
+    /**
+     * 新增用户岗位信息
+     *
+     * @param user 用户对象
+     */
+    public void insertUserPost(User user)
+    {
+        Long[] posts = user.getPostIds();
+        if (StringUtils.isNotNull(posts))
+        {
+            // 新增用户与岗位管理
+            List<UserPost> list = new ArrayList<UserPost>();
+            for (Long postId : user.getPostIds())
+            {
+                UserPost up = new UserPost();
+                up.setUserId(user.getUserId());
+                up.setPostId(postId);
+                list.add(up);
+            }
+            if (list.size() > 0)
+            {
+                userPostMapper.batchUserPost(list);
+            }
+        }
+    }
+
     /**
      * 校验用户名称是否唯一
      *
@@ -411,42 +411,42 @@ public class UserServiceImpl implements IUserService
         return UserConstants.UNIQUE;
     }
 
-//    /**
-//     * 校验手机号码是否唯一
-//     *
-//     * @param user 用户信息
-//     * @return
-//     */
-//    @Override
-//    public boolean checkPhoneUnique(User user)
-//    {
-//        Long userId = StringUtils.isNull(user.getUserId()) ? -1L : user.getUserId();
-//        User info = userMapper.checkPhoneUnique(user.getPhonenumber());
-//        if (StringUtils.isNotNull(info) && info.getUserId().longValue() != userId.longValue())
-//        {
-//            return UserConstants.NOT_UNIQUE;
-//        }
-//        return UserConstants.UNIQUE;
-//    }
-//
-//    /**
-//     * 校验email是否唯一
-//     *
-//     * @param user 用户信息
-//     * @return
-//     */
-//    @Override
-//    public boolean checkEmailUnique(User user)
-//    {
-//        Long userId = StringUtils.isNull(user.getUserId()) ? -1L : user.getUserId();
-//        User info = userMapper.checkEmailUnique(user.getEmail());
-//        if (StringUtils.isNotNull(info) && info.getUserId().longValue() != userId.longValue())
-//        {
-//            return UserConstants.NOT_UNIQUE;
-//        }
-//        return UserConstants.UNIQUE;
-//    }
-//
+    /**
+     * 校验手机号码是否唯一
+     *
+     * @param user 用户信息
+     * @return
+     */
+    @Override
+    public boolean checkPhoneUnique(User user)
+    {
+        Long userId = StringUtils.isNull(user.getUserId()) ? -1L : user.getUserId();
+        User info = userMapper.checkPhoneUnique(user.getPhonenumber());
+        if (StringUtils.isNotNull(info) && info.getUserId().longValue() != userId.longValue())
+        {
+            return UserConstants.NOT_UNIQUE;
+        }
+        return UserConstants.UNIQUE;
+    }
+
+    /**
+     * 校验email是否唯一
+     *
+     * @param user 用户信息
+     * @return
+     */
+    @Override
+    public boolean checkEmailUnique(User user)
+    {
+        Long userId = StringUtils.isNull(user.getUserId()) ? -1L : user.getUserId();
+        User info = userMapper.checkEmailUnique(user.getEmail());
+        if (StringUtils.isNotNull(info) && info.getUserId().longValue() != userId.longValue())
+        {
+            return UserConstants.NOT_UNIQUE;
+        }
+        return UserConstants.UNIQUE;
+    }
+
     /**
      * 校验用户是否允许操作
      *

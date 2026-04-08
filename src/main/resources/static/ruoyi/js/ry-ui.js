@@ -689,8 +689,8 @@ var table = {
         //         $(".table [data-toggle='tooltip']").tooltip();
         //     },
         // },
-        // // 表单封装处理
-        // form: {
+        // 表单封装处理
+        form: {
         //     // 表单重置
         //     reset: function(formId, tableId, pageNumber, pageSize) {
         //         table.set(tableId);
@@ -709,31 +709,31 @@ var table = {
         //         }
         //         resetDate();
         //     },
-        //     // 获取选中复选框项
-        //     selectCheckeds: function(name) {
-        //         var checkeds = "";
-        //         $('input:checkbox[name="' + name + '"]:checked').each(function(i) {
-        //             if (0 == i) {
-        //                 checkeds = $(this).val();
-        //             } else {
-        //                 checkeds += ("," + $(this).val());
-        //             }
-        //         });
-        //         return checkeds;
-        //     },
-        //     // 获取选中下拉框项
-        //     selectSelects: function(name) {
-        //         var selects = "";
-        //         $('#' + name + ' option:selected').each(function (i) {
-        //             if (0 == i) {
-        //                 selects = $(this).val();
-        //             } else {
-        //                 selects += ("," + $(this).val());
-        //             }
-        //         });
-        //         return selects;
-        //     }
-        // },
+            // 获取选中复选框项
+            selectCheckeds: function(name) {
+                var checkeds = "";
+                $('input:checkbox[name="' + name + '"]:checked').each(function(i) {
+                    if (0 == i) {
+                        checkeds = $(this).val();
+                    } else {
+                        checkeds += ("," + $(this).val());
+                    }
+                });
+                return checkeds;
+            },
+            // 获取选中下拉框项
+            selectSelects: function(name) {
+                var selects = "";
+                $('#' + name + ' option:selected').each(function (i) {
+                    if (0 == i) {
+                        selects = $(this).val();
+                    } else {
+                        selects += ("," + $(this).val());
+                    }
+                });
+                return selects;
+            }
+        },
         // 弹出层封装处理
         modal: {
             // 显示图标
@@ -806,15 +806,15 @@ var table = {
             msgSuccessReload: function(msg) {
             	$.modal.msgReload(msg, modal_status.SUCCESS);
             },
-        //     // 获取iframe页的DOM
-        //     getChildFrame: function (index) {
-        //         if ($.common.isEmpty(index)) {
-        //             var index = parent.layer.getFrameIndex(window.name);
-        //             return parent.layer.getChildFrame('body', index);
-        //         } else {
-        //             return top.layer.getChildFrame('body', index);
-        //         }
-        //     },
+            // 获取iframe页的DOM
+            getChildFrame: function (index) {
+                if ($.common.isEmpty(index)) {
+                    var index = parent.layer.getFrameIndex(window.name);
+                    return parent.layer.getChildFrame('body', index);
+                } else {
+                    return top.layer.getChildFrame('body', index);
+                }
+            },
             // 关闭窗体
             close: function (index) {
                 if ($.common.isEmpty(index)) {
@@ -824,10 +824,10 @@ var table = {
                     top.layer.close(index);
                 }
             },
-        //     // 关闭全部窗体
-        //     closeAll: function () {
-        //         top.layer.closeAll();
-        //     },
+            // 关闭全部窗体
+            closeAll: function () {
+                top.layer.closeAll();
+            },
             // 确认窗体
             confirm: function (content, callBack) {
                 top.layer.confirm(content, {
@@ -885,59 +885,59 @@ var table = {
                     }
                 });
             },
-        //     // 弹出层指定参数选项
-        //     openOptions: function (options) {
-        //         var _url = $.common.isEmpty(options.url) ? "/404.html" : options.url;
-        //         var _title = $.common.isEmpty(options.title) ? "系统窗口" : options.title;
-        //         var _width = $.common.isEmpty(options.width) ? "800" : options.width;
-        //         var _height = $.common.isEmpty(options.height) ? ($(window).height() - 50) : options.height;
-        //         var _btn = ['<i class="fa fa-check"></i> 确认', '<i class="fa fa-close"></i> 关闭'];
-        //         // 如果是移动端，就使用自适应大小弹窗
-        //         if ($.common.isMobile()) {
-        //             _width = 'auto';
-        //             _height = 'auto';
-        //         }
-        //         if ($.common.isEmpty(options.yes)) {
-        //             options.yes = function(index, layero) {
-        //                 options.callBack(index, layero);
-        //             }
-        //         }
-        //         var btnCallback = {};
-        //         if (options.btn instanceof Array){
-        //             for (var i = 1, len = options.btn.length; i < len; i++) {
-        //                 var btn = options["btn" + (i + 1)];
-        //                 if (btn) {
-        //                     btnCallback["btn" + (i + 1)] = btn;
-        //                 }
-        //             }
-        //         }
-        //         var index = top.layer.open($.extend({
-        //             id: options.id,       // 唯一id
-        //             anim: options.anim,   // 弹出动画 0-6
-        //             type: 2,
-        //             maxmin: $.common.isEmpty(options.maxmin) ? true : options.maxmin,
-        //             shade: 0.3,
-        //             title: _title,
-        //             fix: false,
-        //             area: [_width + 'px', _height + 'px'],
-        //             content: _url,
-        //             closeBtn: $.common.isEmpty(options.closeBtn) ? 1 : options.closeBtn,
-        //             shadeClose: $.common.isEmpty(options.shadeClose) ? true : options.shadeClose,
-        //             skin: options.skin,
-        //             // options.btn设置为0表示不显示按钮
-        //             btn: $.common.isEmpty(options.btn) ? _btn : options.btn,
-        //             yes: options.yes,
-        //             cancel: function () {
-        //                 return true;
-        //             },
-        //             success: function () {
-        //                 $(':focus').blur();
-        //             }
-        //         }, btnCallback));
-        //         if ($.common.isNotEmpty(options.full) && options.full === true) {
-        //             top.layer.full(index);
-        //         }
-        //     },
+            // 弹出层指定参数选项
+            openOptions: function (options) {
+                var _url = $.common.isEmpty(options.url) ? "/404.html" : options.url;
+                var _title = $.common.isEmpty(options.title) ? "系统窗口" : options.title;
+                var _width = $.common.isEmpty(options.width) ? "800" : options.width;
+                var _height = $.common.isEmpty(options.height) ? ($(window).height() - 50) : options.height;
+                var _btn = ['<i class="fa fa-check"></i> 确认', '<i class="fa fa-close"></i> 关闭'];
+                // 如果是移动端，就使用自适应大小弹窗
+                if ($.common.isMobile()) {
+                    _width = 'auto';
+                    _height = 'auto';
+                }
+                if ($.common.isEmpty(options.yes)) {
+                    options.yes = function(index, layero) {
+                        options.callBack(index, layero);
+                    }
+                }
+                var btnCallback = {};
+                if (options.btn instanceof Array){
+                    for (var i = 1, len = options.btn.length; i < len; i++) {
+                        var btn = options["btn" + (i + 1)];
+                        if (btn) {
+                            btnCallback["btn" + (i + 1)] = btn;
+                        }
+                    }
+                }
+                var index = top.layer.open($.extend({
+                    id: options.id,       // 唯一id
+                    anim: options.anim,   // 弹出动画 0-6
+                    type: 2,
+                    maxmin: $.common.isEmpty(options.maxmin) ? true : options.maxmin,
+                    shade: 0.3,
+                    title: _title,
+                    fix: false,
+                    area: [_width + 'px', _height + 'px'],
+                    content: _url,
+                    closeBtn: $.common.isEmpty(options.closeBtn) ? 1 : options.closeBtn,
+                    shadeClose: $.common.isEmpty(options.shadeClose) ? true : options.shadeClose,
+                    skin: options.skin,
+                    // options.btn设置为0表示不显示按钮
+                    btn: $.common.isEmpty(options.btn) ? _btn : options.btn,
+                    yes: options.yes,
+                    cancel: function () {
+                        return true;
+                    },
+                    success: function () {
+                        $(':focus').blur();
+                    }
+                }, btnCallback));
+                if ($.common.isNotEmpty(options.full) && options.full === true) {
+                    top.layer.full(index);
+                }
+            },
         //     // 弹出层全屏
         //     openFull: function (title, url, width, height) {
         //         // 如果是移动端，就使用自适应大小弹窗
@@ -1145,26 +1145,26 @@ var table = {
         //             $.operate.submit(url, "post", "json", "");
         //         });
         //     },
-        //     // 添加信息
-        //     add: function(id) {
-        //         table.set();
-        //         $.modal.open("添加" + table.options.modalName, $.operate.addUrl(id));
-        //     },
-        //     // 添加信息，以tab页展现
-        //     addTab: function (id) {
-        //         table.set();
-        //         $.modal.openTab("添加" + table.options.modalName, $.operate.addUrl(id));
-        //     },
+            // 添加信息
+            add: function(id) {
+                table.set();
+                $.modal.open("添加" + table.options.modalName, $.operate.addUrl(id));
+            },
+            // 添加信息，以tab页展现
+            addTab: function (id) {
+                table.set();
+                $.modal.openTab("添加" + table.options.modalName, $.operate.addUrl(id));
+            },
         //     // 添加信息 全屏
         //     addFull: function(id) {
         //         table.set();
         //         $.modal.openFull("添加" + table.options.modalName, $.operate.addUrl(id));
         //     },
-        //     // 添加访问地址
-        //     addUrl: function(id) {
-        //         var url = $.common.isEmpty(id) ? table.options.createUrl.replace("{id}", "") : table.options.createUrl.replace("{id}", id);
-        //         return url;
-        //     },
+            // 添加访问地址
+            addUrl: function(id) {
+                var url = $.common.isEmpty(id) ? table.options.createUrl.replace("{id}", "") : table.options.createUrl.replace("{id}", id);
+                return url;
+            },
         //     // 修改信息
         //     edit: function(id) {
         //         table.set();
@@ -1281,29 +1281,29 @@ var table = {
         //         };
         //         $.ajax(config)
         //     },
-        //     // 保存选项卡信息
-        //     saveTab: function(url, data, callback) {
-        //         var config = {
-        //             url: url,
-        //             type: "post",
-        //             dataType: "json",
-        //             data: data,
-        //             beforeSend: function (xhr, settings) {
-        //                 var csrftoken = $('meta[name=csrf-token]').attr('content');
-        //                 if (($.common.equalsIgnoreCase(settings.type, "POST"))) {
-        //                     xhr.setRequestHeader("X-CSRF-Token", csrftoken);
-        //                 }
-        //                 $.modal.loading("正在处理中，请稍候...");
-        //             },
-        //             success: function(result) {
-        //                 if (typeof callback == "function") {
-        //                     callback(result);
-        //                 }
-        //                 $.operate.successTabCallback(result);
-        //             }
-        //         };
-        //         $.ajax(config)
-        //     },
+            // 保存选项卡信息
+            saveTab: function(url, data, callback) {
+                var config = {
+                    url: url,
+                    type: "post",
+                    dataType: "json",
+                    data: data,
+                    beforeSend: function (xhr, settings) {
+                        var csrftoken = $('meta[name=csrf-token]').attr('content');
+                        if (($.common.equalsIgnoreCase(settings.type, "POST"))) {
+                            xhr.setRequestHeader("X-CSRF-Token", csrftoken);
+                        }
+                        $.modal.loading("正在处理中，请稍候...");
+                    },
+                    success: function(result) {
+                        if (typeof callback == "function") {
+                            callback(result);
+                        }
+                        $.operate.successTabCallback(result);
+                    }
+                };
+                $.ajax(config)
+            },
             // 保存结果弹出msg刷新table表格
             ajaxSuccess: function (result) {
                 if (result.code == web_status.SUCCESS && table.options.type == table_type.bootstrapTable) {
@@ -1356,33 +1356,33 @@ var table = {
                 $.modal.closeLoading();
                 $.modal.enable();
             },
-        //     // 选项卡成功回调执行事件（父窗体静默更新）
-        //     successTabCallback: function(result) {
-        //         if (result.code == web_status.SUCCESS) {
-        //             var topWindow = $(window.parent.document);
-        //             var currentId = $('.page-tabs-content', topWindow).find('.active').attr('data-panel');
-        //             var topWindow = $('.RuoYi_iframe[data-id="' + currentId + '"]', topWindow)[0];
-        //             if ($.common.isNotEmpty(topWindow) && $.common.isNotEmpty(currentId)) {
-        //             	var $contentWindow = topWindow.contentWindow;
-        //             	$contentWindow.$.modal.msgSuccess(result.msg);
-        //                 $contentWindow.$(".layui-layer-padding").removeAttr("style");
-        //                 if ($contentWindow.table.options.type == table_type.bootstrapTable) {
-        //                     $contentWindow.$.table.refresh();
-        //                 } else if ($contentWindow.table.options.type == table_type.bootstrapTreeTable) {
-        //                     $contentWindow.$.treeTable.refresh();
-        //                 }
-        //             } else {
-        //                 $.modal.msgSuccess(result.msg);
-        //             }
-        //             $.modal.close();
-        //             $.modal.closeTab();
-        //         } else if (result.code == web_status.WARNING) {
-        //             $.modal.alertWarning(result.msg)
-        //         } else {
-        //             $.modal.alertError(result.msg);
-        //         }
-        //         $.modal.closeLoading();
-        //     }
+            // 选项卡成功回调执行事件（父窗体静默更新）
+            successTabCallback: function(result) {
+                if (result.code == web_status.SUCCESS) {
+                    var topWindow = $(window.parent.document);
+                    var currentId = $('.page-tabs-content', topWindow).find('.active').attr('data-panel');
+                    var topWindow = $('.RuoYi_iframe[data-id="' + currentId + '"]', topWindow)[0];
+                    if ($.common.isNotEmpty(topWindow) && $.common.isNotEmpty(currentId)) {
+                    	var $contentWindow = topWindow.contentWindow;
+                    	$contentWindow.$.modal.msgSuccess(result.msg);
+                        $contentWindow.$(".layui-layer-padding").removeAttr("style");
+                        if ($contentWindow.table.options.type == table_type.bootstrapTable) {
+                            $contentWindow.$.table.refresh();
+                        } else if ($contentWindow.table.options.type == table_type.bootstrapTreeTable) {
+                            $contentWindow.$.treeTable.refresh();
+                        }
+                    } else {
+                        $.modal.msgSuccess(result.msg);
+                    }
+                    $.modal.close();
+                    $.modal.closeTab();
+                } else if (result.code == web_status.WARNING) {
+                    $.modal.alertWarning(result.msg)
+                } else {
+                    $.modal.alertError(result.msg);
+                }
+                $.modal.closeLoading();
+            }
         },
         // 校验封装处理
         validate: {
@@ -1455,79 +1455,79 @@ var table = {
                     }
                 });
             },
-        //     // 搜索节点
-        //     searchNode: function() {
-        //         // 取得输入的关键字的值
-        //         var value = $.common.trim($("#keyword").val());
-        //         if ($.tree._lastValue == value) {
-        //             return;
-        //         }
-        //         // 保存最后一次搜索名称
-        //         $.tree._lastValue = value;
-        //         var nodes = $._tree.getNodes();
-        //         // 如果要查空字串，就退出不查了。
-        //         if (value == "") {
-        //             $.tree.showAllNode(nodes);
-        //             return;
-        //         }
-        //         $.tree.hideAllNode(nodes);
-        //         // 根据搜索值模糊匹配
-        //         $.tree.updateNodes($._tree.getNodesByParamFuzzy("name", value));
-        //     },
+            // 搜索节点
+            searchNode: function() {
+                // 取得输入的关键字的值
+                var value = $.common.trim($("#keyword").val());
+                if ($.tree._lastValue == value) {
+                    return;
+                }
+                // 保存最后一次搜索名称
+                $.tree._lastValue = value;
+                var nodes = $._tree.getNodes();
+                // 如果要查空字串，就退出不查了。
+                if (value == "") {
+                    $.tree.showAllNode(nodes);
+                    return;
+                }
+                $.tree.hideAllNode(nodes);
+                // 根据搜索值模糊匹配
+                $.tree.updateNodes($._tree.getNodesByParamFuzzy("name", value));
+            },
             // 根据Id和Name选中指定节点
             selectByIdName: function(treeId, node) {
                 if ($.common.isNotEmpty(treeId) && node && treeId == node.id) {
                     $._tree.selectNode(node, true);
                 }
             },
-        //     // 显示所有节点
-        //     showAllNode: function(nodes) {
-        //         nodes = $._tree.transformToArray(nodes);
-        //         for (var i = nodes.length - 1; i >= 0; i--) {
-        //             if (nodes[i].getParentNode() != null) {
-        //                 $._tree.expandNode(nodes[i], true, false, false, false);
-        //             } else {
-        //                 $._tree.expandNode(nodes[i], true, true, false, false);
-        //             }
-        //             $._tree.showNode(nodes[i]);
-        //             $.tree.showAllNode(nodes[i].children);
-        //         }
-        //     },
-        //     // 隐藏所有节点
-        //     hideAllNode: function(nodes) {
-        //         var nodes = $._tree.transformToArray(nodes);
-        //         for (var i = nodes.length - 1; i >= 0; i--) {
-        //             $._tree.hideNode(nodes[i]);
-        //         }
-        //     },
-        //     // 显示所有父节点
-        //     showParent: function(treeNode) {
-        //         var parentNode;
-        //         while ((parentNode = treeNode.getParentNode()) != null) {
-        //             $._tree.showNode(parentNode);
-        //             $._tree.expandNode(parentNode, true, false, false);
-        //             treeNode = parentNode;
-        //         }
-        //     },
-        //     // 显示所有孩子节点
-        //     showChildren: function(treeNode) {
-        //         if (treeNode.isParent) {
-        //             for (var idx in treeNode.children) {
-        //                 var node = treeNode.children[idx];
-        //                 $._tree.showNode(node);
-        //                 $.tree.showChildren(node);
-        //             }
-        //         }
-        //     },
-        //     // 更新节点状态
-        //     updateNodes: function(nodeList) {
-        //         $._tree.showNodes(nodeList);
-        //         for (var i = 0, l = nodeList.length; i < l; i++) {
-        //             var treeNode = nodeList[i];
-        //             $.tree.showChildren(treeNode);
-        //             $.tree.showParent(treeNode)
-        //         }
-        //     },
+            // 显示所有节点
+            showAllNode: function(nodes) {
+                nodes = $._tree.transformToArray(nodes);
+                for (var i = nodes.length - 1; i >= 0; i--) {
+                    if (nodes[i].getParentNode() != null) {
+                        $._tree.expandNode(nodes[i], true, false, false, false);
+                    } else {
+                        $._tree.expandNode(nodes[i], true, true, false, false);
+                    }
+                    $._tree.showNode(nodes[i]);
+                    $.tree.showAllNode(nodes[i].children);
+                }
+            },
+            // 隐藏所有节点
+            hideAllNode: function(nodes) {
+                var nodes = $._tree.transformToArray(nodes);
+                for (var i = nodes.length - 1; i >= 0; i--) {
+                    $._tree.hideNode(nodes[i]);
+                }
+            },
+            // 显示所有父节点
+            showParent: function(treeNode) {
+                var parentNode;
+                while ((parentNode = treeNode.getParentNode()) != null) {
+                    $._tree.showNode(parentNode);
+                    $._tree.expandNode(parentNode, true, false, false);
+                    treeNode = parentNode;
+                }
+            },
+            // 显示所有孩子节点
+            showChildren: function(treeNode) {
+                if (treeNode.isParent) {
+                    for (var idx in treeNode.children) {
+                        var node = treeNode.children[idx];
+                        $._tree.showNode(node);
+                        $.tree.showChildren(node);
+                    }
+                }
+            },
+            // 更新节点状态
+            updateNodes: function(nodeList) {
+                $._tree.showNodes(nodeList);
+                for (var i = 0, l = nodeList.length; i < l; i++) {
+                    var treeNode = nodeList[i];
+                    $.tree.showChildren(treeNode);
+                    $.tree.showParent(treeNode)
+                }
+            },
         //     // 获取当前被勾选集合
         //     getCheckedNodes: function(column) {
         //         var _column = $.common.isEmpty(column) ? "id" : column;
@@ -1573,14 +1573,14 @@ var table = {
         //         $('#btnHide').toggle();
         //         $('#keyword').focus();
         //     },
-        //     // 折叠
-        //     collapse: function() {
-        //         $._tree.expandAll(false);
-        //     },
-        //     // 展开
-        //     expand: function() {
-        //         $._tree.expandAll(true);
-        //     }
+            // 折叠
+            collapse: function() {
+                $._tree.expandAll(false);
+            },
+            // 展开
+            expand: function() {
+                $._tree.expandAll(true);
+            }
         },
         // 通用方法封装处理
         common: {

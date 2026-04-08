@@ -42,14 +42,14 @@ public interface UserRoleMapper
 //     * @return 结果
 //     */
 //    public int countUserRoleByRoleId(Long roleId);
-//
-//    /**
-//     * 批量新增用户角色信息
-//     *
-//     * @param userRoleList 用户角色列表
-//     * @return 结果
-//     */
-//    public int batchUserRole(List<UserRole> userRoleList);
+
+    /**
+     * 批量新增用户角色信息
+     *
+     * @param userRoleList 用户角色列表
+     * @return 结果
+     */
+    public int batchUserRole(List<UserRole> userRoleList);
 //
 //    /**
 //     * 删除用户和角色关联信息

@@ -93,14 +93,14 @@ public interface IUserService
      */
     public int deleteUserByIds(String ids);
 
-//    /**
-//     * 保存用户信息
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    public int insertUser(User user);
-//
+    /**
+     * 保存用户信息
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    public int insertUser(User user);
+
     /**
      * 注册用户信息
      *
@@ -168,21 +168,21 @@ public interface IUserService
      */
     public boolean checkLoginNameUnique(User user);
 
-//    /**
-//     * 校验手机号码是否唯一
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    public boolean checkPhoneUnique(User user);
-//
-//    /**
-//     * 校验email是否唯一
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    public boolean checkEmailUnique(User user);
+    /**
+     * 校验手机号码是否唯一
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    public boolean checkPhoneUnique(User user);
+
+    /**
+     * 校验email是否唯一
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    public boolean checkEmailUnique(User user);
 
     /**
      * 校验用户是否允许操作

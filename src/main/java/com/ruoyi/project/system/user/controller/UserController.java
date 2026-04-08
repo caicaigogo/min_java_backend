@@ -105,44 +105,44 @@ public class UserController extends BaseController
 //        return util.importTemplateExcel("用户数据");
 //    }
 //
-//    /**
-//     * 新增用户
-//     */
-//    @RequiresPermissions("system:user:add")
-//    @GetMapping("/add")
-//    public String add(ModelMap mmap)
-//    {
-//        mmap.put("roles", roleService.selectRoleAll().stream().filter(r -> !r.isAdmin()).collect(Collectors.toList()));
-//        mmap.put("posts", postService.selectPostAll());
-//        return prefix + "/add";
-//    }
-//
-//    /**
-//     * 新增保存用户
-//     */
-//    @RequiresPermissions("system:user:add")
-//    @Log(title = "用户管理", businessType = BusinessType.INSERT)
-//    @PostMapping("/add")
-//    @ResponseBody
-//    public AjaxResult addSave(@Validated User user)
-//    {
-//        deptService.checkDeptDataScope(user.getDeptId());
-//        roleService.checkRoleDataScope(user.getRoleIds());
-//        if (!userService.checkLoginNameUnique(user))
-//        {
-//            return error("新增用户'" + user.getLoginName() + "'失败，登录账号已存在");
-//        }
-//        else if (StringUtils.isNotEmpty(user.getPhonenumber()) && !userService.checkPhoneUnique(user))
-//        {
-//            return error("新增用户'" + user.getLoginName() + "'失败，手机号码已存在");
-//        }
-//        else if (StringUtils.isNotEmpty(user.getEmail()) && !userService.checkEmailUnique(user))
-//        {
-//            return error("新增用户'" + user.getLoginName() + "'失败，邮箱账号已存在");
-//        }
-//        return toAjax(userService.insertUser(user));
-//    }
-//
+    /**
+     * 新增用户
+     */
+    @RequiresPermissions("system:user:add")
+    @GetMapping("/add")
+    public String add(ModelMap mmap)
+    {
+        mmap.put("roles", roleService.selectRoleAll().stream().filter(r -> !r.isAdmin()).collect(Collectors.toList()));
+        mmap.put("posts", postService.selectPostAll());
+        return prefix + "/add";
+    }
+
+    /**
+     * 新增保存用户
+     */
+    @RequiresPermissions("system:user:add")
+    @Log(title = "用户管理", businessType = BusinessType.INSERT)
+    @PostMapping("/add")
+    @ResponseBody
+    public AjaxResult addSave(@Validated User user)
+    {
+        deptService.checkDeptDataScope(user.getDeptId());
+        roleService.checkRoleDataScope(user.getRoleIds());
+        if (!userService.checkLoginNameUnique(user))
+        {
+            return error("新增用户'" + user.getLoginName() + "'失败，登录账号已存在");
+        }
+        else if (StringUtils.isNotEmpty(user.getPhonenumber()) && !userService.checkPhoneUnique(user))
+        {
+            return error("新增用户'" + user.getLoginName() + "'失败，手机号码已存在");
+        }
+        else if (StringUtils.isNotEmpty(user.getEmail()) && !userService.checkEmailUnique(user))
+        {
+            return error("新增用户'" + user.getLoginName() + "'失败，邮箱账号已存在");
+        }
+        return toAjax(userService.insertUser(user));
+    }
+
     /**
      * 修改用户
      */
@@ -275,36 +275,36 @@ public class UserController extends BaseController
         return toAjax(userService.deleteUserByIds(ids));
     }
 
-//    /**
-//     * 校验用户名
-//     */
-//    @PostMapping("/checkLoginNameUnique")
-//    @ResponseBody
-//    public boolean checkLoginNameUnique(User user)
-//    {
-//        return userService.checkLoginNameUnique(user);
-//    }
-//
-//    /**
-//     * 校验手机号码
-//     */
-//    @PostMapping("/checkPhoneUnique")
-//    @ResponseBody
-//    public boolean checkPhoneUnique(User user)
-//    {
-//        return userService.checkPhoneUnique(user);
-//    }
-//
-//    /**
-//     * 校验email邮箱
-//     */
-//    @PostMapping("/checkEmailUnique")
-//    @ResponseBody
-//    public boolean checkEmailUnique(User user)
-//    {
-//        return userService.checkEmailUnique(user);
-//    }
-//
+    /**
+     * 校验用户名
+     */
+    @PostMapping("/checkLoginNameUnique")
+    @ResponseBody
+    public boolean checkLoginNameUnique(User user)
+    {
+        return userService.checkLoginNameUnique(user);
+    }
+
+    /**
+     * 校验手机号码
+     */
+    @PostMapping("/checkPhoneUnique")
+    @ResponseBody
+    public boolean checkPhoneUnique(User user)
+    {
+        return userService.checkPhoneUnique(user);
+    }
+
+    /**
+     * 校验email邮箱
+     */
+    @PostMapping("/checkEmailUnique")
+    @ResponseBody
+    public boolean checkEmailUnique(User user)
+    {
+        return userService.checkEmailUnique(user);
+    }
+
     /**
      * 用户状态修改
      */
@@ -331,16 +331,16 @@ public class UserController extends BaseController
         return ztrees;
     }
 
-//    /**
-//     * 选择部门树
-//     *
-//     * @param deptId 部门ID
-//     */
-//    @RequiresPermissions("system:user:list")
-//    @GetMapping("/selectDeptTree/{deptId}")
-//    public String selectDeptTree(@PathVariable("deptId") Long deptId, ModelMap mmap)
-//    {
-//        mmap.put("dept", deptService.selectDeptById(deptId));
-//        return prefix + "/deptTree";
-//    }
+    /**
+     * 选择部门树
+     *
+     * @param deptId 部门ID
+     */
+    @RequiresPermissions("system:user:list")
+    @GetMapping("/selectDeptTree/{deptId}")
+    public String selectDeptTree(@PathVariable("deptId") Long deptId, ModelMap mmap)
+    {
+        mmap.put("dept", deptService.selectDeptById(deptId));
+        return prefix + "/deptTree";
+    }
 }

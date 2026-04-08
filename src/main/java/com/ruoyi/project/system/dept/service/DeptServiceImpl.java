@@ -29,19 +29,19 @@ public class DeptServiceImpl implements IDeptService
     @Autowired
     private DeptMapper deptMapper;
 
-//    /**
-//     * 查询部门管理数据
-//     *
-//     * @param dept 部门信息
-//     * @return 部门信息集合
-//     */
-//    @Override
-//    @DataScope(deptAlias = "d")
-//    public List<Dept> selectDeptList(Dept dept)
-//    {
-//        return deptMapper.selectDeptList(dept);
-//    }
-//
+    /**
+     * 查询部门管理数据
+     *
+     * @param dept 部门信息
+     * @return 部门信息集合
+     */
+    @Override
+    @DataScope(deptAlias = "d")
+    public List<Dept> selectDeptList(Dept dept)
+    {
+        return deptMapper.selectDeptList(dept);
+    }
+
     /**
      * 查询部门管理树
      *
@@ -284,18 +284,18 @@ public class DeptServiceImpl implements IDeptService
 //        }
 //    }
 //
-//    /**
-//     * 根据部门ID查询信息
-//     *
-//     * @param deptId 部门ID
-//     * @return 部门信息
-//     */
-//    @Override
-//    public Dept selectDeptById(Long deptId)
-//    {
-//        return deptMapper.selectDeptById(deptId);
-//    }
-//
+    /**
+     * 根据部门ID查询信息
+     *
+     * @param deptId 部门ID
+     * @return 部门信息
+     */
+    @Override
+    public Dept selectDeptById(Long deptId)
+    {
+        return deptMapper.selectDeptById(deptId);
+    }
+
 //    /**
 //     * 根据ID查询所有子部门（正常状态）
 //     *
@@ -325,24 +325,24 @@ public class DeptServiceImpl implements IDeptService
 //        }
 //        return UserConstants.UNIQUE;
 //    }
-//
-//    /**
-//     * 校验部门是否有数据权限
-//     *
-//     * @param deptId 部门id
-//     */
-//    @Override
-//    public void checkDeptDataScope(Long deptId)
-//    {
-//        if (!ShiroUtils.isAdmin() && StringUtils.isNotNull(deptId))
-//        {
-//            Dept dept = new Dept();
-//            dept.setDeptId(deptId);
-//            List<Dept> depts = SpringUtils.getAopProxy(this).selectDeptList(dept);
-//            if (StringUtils.isEmpty(depts))
-//            {
-//                throw new ServiceException("没有权限访问部门数据！");
-//            }
-//        }
-//    }
+
+    /**
+     * 校验部门是否有数据权限
+     *
+     * @param deptId 部门id
+     */
+    @Override
+    public void checkDeptDataScope(Long deptId)
+    {
+        if (!ShiroUtils.isAdmin() && StringUtils.isNotNull(deptId))
+        {
+            Dept dept = new Dept();
+            dept.setDeptId(deptId);
+            List<Dept> depts = SpringUtils.getAopProxy(this).selectDeptList(dept);
+            if (StringUtils.isEmpty(depts))
+            {
+                throw new ServiceException("没有权限访问部门数据！");
+            }
+        }
+    }
 }
