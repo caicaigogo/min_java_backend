@@ -313,20 +313,20 @@ public class UserServiceImpl implements IUserService
         userMapper.updateLoginInfo(userId, loginIp, loginDate);
     }
 
-//    /**
-//     * 用户授权角色
-//     *
-//     * @param userId 用户ID
-//     * @param roleIds 角色组
-//     */
-//    @Override
-//    @Transactional
-//    public void insertUserAuth(Long userId, Long[] roleIds)
-//    {
-//        userRoleMapper.deleteUserRoleByUserId(userId);
-//        insertUserRole(userId, roleIds);
-//    }
-//
+    /**
+     * 用户授权角色
+     *
+     * @param userId 用户ID
+     * @param roleIds 角色组
+     */
+    @Override
+    @Transactional
+    public void insertUserAuth(Long userId, Long[] roleIds)
+    {
+        userRoleMapper.deleteUserRoleByUserId(userId);
+        insertUserRole(userId, roleIds);
+    }
+
     /**
      * 修改用户密码
      *

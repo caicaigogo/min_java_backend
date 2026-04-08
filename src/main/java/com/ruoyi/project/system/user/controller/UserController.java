@@ -242,25 +242,24 @@ public class UserController extends BaseController
         List<Role> roles = roleService.selectRolesByUserId(userId);
         mmap.put("user", user);
         mmap.put("roles", ShiroUtils.isAdmin(userId) ? roles : roles.stream().filter(r -> !r.isAdmin()).collect(Collectors.toList()));
-        mmap.put("roles", ShiroUtils.isAdmin(userId) ? roles : roles.stream().filter(r -> !r.isAdmin()).collect(Collectors.toList()));
         return prefix + "/authRole";
     }
-//
-//    /**
-//     * 用户授权角色
-//     */
-//    @RequiresPermissions("system:user:edit")
-//    @Log(title = "用户管理", businessType = BusinessType.GRANT)
-//    @PostMapping("/authRole/insertAuthRole")
-//    @ResponseBody
-//    public AjaxResult insertAuthRole(Long userId, Long[] roleIds)
-//    {
-//        userService.checkUserDataScope(userId);
-//        roleService.checkRoleDataScope(roleIds);
-//        userService.insertUserAuth(userId, roleIds);
-//        AuthorizationUtils.clearAllCachedAuthorizationInfo();
-//        return success();
-//    }
+
+    /**
+     * 用户授权角色
+     */
+    @RequiresPermissions("system:user:edit")
+    @Log(title = "用户管理", businessType = BusinessType.GRANT)
+    @PostMapping("/authRole/insertAuthRole")
+    @ResponseBody
+    public AjaxResult insertAuthRole(Long userId, Long[] roleIds)
+    {
+        userService.checkUserDataScope(userId);
+        roleService.checkRoleDataScope(roleIds);
+        userService.insertUserAuth(userId, roleIds);
+        AuthorizationUtils.clearAllCachedAuthorizationInfo();
+        return success();
+    }
 
     @RequiresPermissions("system:user:remove")
     @Log(title = "用户管理", businessType = BusinessType.DELETE)
