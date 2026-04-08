@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.ruoyi.common.utils.StringUtils;
 //import com.ruoyi.common.utils.poi.ExcelUtil;
-//import com.ruoyi.common.utils.security.AuthorizationUtils;
+import com.ruoyi.common.utils.security.AuthorizationUtils;
 import com.ruoyi.common.utils.security.ShiroUtils;
 import com.ruoyi.common.utils.text.Convert;
 import com.ruoyi.framework.aspectj.lang.annotation.Log;
@@ -171,35 +171,35 @@ public class UserController extends BaseController
         mmap.put("postGroup", userService.selectUserPostGroup(userId));
         return prefix + "/view";
     }
-//
-//    /**
-//     * 修改保存用户
-//     */
-//    @RequiresPermissions("system:user:edit")
-//    @Log(title = "用户管理", businessType = BusinessType.UPDATE)
-//    @PostMapping("/edit")
-//    @ResponseBody
-//    public AjaxResult editSave(@Validated User user)
-//    {
-//        userService.checkUserAllowed(user);
-//        userService.checkUserDataScope(user.getUserId());
-//        deptService.checkDeptDataScope(user.getDeptId());
-//        roleService.checkRoleDataScope(user.getRoleIds());
-//        if (!userService.checkLoginNameUnique(user))
-//        {
-//            return error("修改用户'" + user.getLoginName() + "'失败，登录账号已存在");
-//        }
-//        else if (StringUtils.isNotEmpty(user.getPhonenumber()) && !userService.checkPhoneUnique(user))
-//        {
-//            return error("修改用户'" + user.getLoginName() + "'失败，手机号码已存在");
-//        }
-//        else if (StringUtils.isNotEmpty(user.getEmail()) && !userService.checkEmailUnique(user))
-//        {
-//            return error("修改用户'" + user.getLoginName() + "'失败，邮箱账号已存在");
-//        }
-//        AuthorizationUtils.clearAllCachedAuthorizationInfo();
-//        return toAjax(userService.updateUser(user));
-//    }
+
+    /**
+     * 修改保存用户
+     */
+    @RequiresPermissions("system:user:edit")
+    @Log(title = "用户管理", businessType = BusinessType.UPDATE)
+    @PostMapping("/edit")
+    @ResponseBody
+    public AjaxResult editSave(@Validated User user)
+    {
+        userService.checkUserAllowed(user);
+        userService.checkUserDataScope(user.getUserId());
+        deptService.checkDeptDataScope(user.getDeptId());
+        roleService.checkRoleDataScope(user.getRoleIds());
+        if (!userService.checkLoginNameUnique(user))
+        {
+            return error("修改用户'" + user.getLoginName() + "'失败，登录账号已存在");
+        }
+        else if (StringUtils.isNotEmpty(user.getPhonenumber()) && !userService.checkPhoneUnique(user))
+        {
+            return error("修改用户'" + user.getLoginName() + "'失败，手机号码已存在");
+        }
+        else if (StringUtils.isNotEmpty(user.getEmail()) && !userService.checkEmailUnique(user))
+        {
+            return error("修改用户'" + user.getLoginName() + "'失败，邮箱账号已存在");
+        }
+        AuthorizationUtils.clearAllCachedAuthorizationInfo();
+        return toAjax(userService.updateUser(user));
+    }
 
     @RequiresPermissions("system:user:resetPwd")
     @GetMapping("/resetPwd/{userId}")

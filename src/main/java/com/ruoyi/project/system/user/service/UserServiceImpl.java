@@ -252,30 +252,30 @@ public class UserServiceImpl implements IUserService
         user.setPassword(passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()));
         return userMapper.insertUser(user) > 0;
     }
-//
-//    /**
-//     * 修改保存用户信息
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    @Override
-//    @Transactional
-//    public int updateUser(User user)
-//    {
-//        Long userId = user.getUserId();
-//        user.setUpdateBy(ShiroUtils.getLoginName());
-//        // 删除用户与角色关联
-//        userRoleMapper.deleteUserRoleByUserId(userId);
-//        // 新增用户与角色管理
-//        insertUserRole(user.getUserId(), user.getRoleIds());
-//        // 删除用户与岗位关联
-//        userPostMapper.deleteUserPostByUserId(userId);
-//        // 新增用户与岗位管理
-//        insertUserPost(user);
-//        return userMapper.updateUser(user);
-//    }
-//
+
+    /**
+     * 修改保存用户信息
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    @Override
+    @Transactional
+    public int updateUser(User user)
+    {
+        Long userId = user.getUserId();
+        user.setUpdateBy(ShiroUtils.getLoginName());
+        // 删除用户与角色关联
+        userRoleMapper.deleteUserRoleByUserId(userId);
+        // 新增用户与角色管理
+        insertUserRole(user.getUserId(), user.getRoleIds());
+        // 删除用户与岗位关联
+        userPostMapper.deleteUserPostByUserId(userId);
+        // 新增用户与岗位管理
+        insertUserPost(user);
+        return userMapper.updateUser(user);
+    }
+
 //    /**
 //     * 修改用户个人详细信息
 //     *

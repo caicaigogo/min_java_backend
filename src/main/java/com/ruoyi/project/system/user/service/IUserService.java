@@ -109,13 +109,13 @@ public interface IUserService
      */
     public boolean registerUser(User user);
 
-//    /**
-//     * 保存用户信息
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    public int updateUser(User user);
+    /**
+     * 保存用户信息
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    public int updateUser(User user);
 //
 //    /**
 //     * 修改用户详细信息

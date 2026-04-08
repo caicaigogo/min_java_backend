@@ -85,14 +85,14 @@ public interface UserMapper
      * @return 结果
      */
     public int deleteUserByIds(Long[] ids);
-//
-//    /**
-//     * 修改用户信息
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    public int updateUser(User user);
+
+    /**
+     * 修改用户信息
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    public int updateUser(User user);
 //
 //    /**
 //     * 修改用户头像

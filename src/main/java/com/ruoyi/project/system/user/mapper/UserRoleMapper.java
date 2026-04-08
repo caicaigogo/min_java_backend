@@ -18,15 +18,15 @@ public interface UserRoleMapper
 //     * @return 用户和角色关联列表
 //     */
 //    public List<UserRole> selectUserRoleByUserId(Long userId);
-//
-//    /**
-//     * 通过用户ID删除用户和角色关联
-//     *
-//     * @param userId 用户ID
-//     * @return 结果
-//     */
-//    public int deleteUserRoleByUserId(Long userId);
-//
+
+    /**
+     * 通过用户ID删除用户和角色关联
+     *
+     * @param userId 用户ID
+     * @return 结果
+     */
+    public int deleteUserRoleByUserId(Long userId);
+
     /**
      * 批量删除用户和角色关联
      *
