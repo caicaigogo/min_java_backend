@@ -73,10 +73,10 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils
 //        return parseDateToStr(YYYY_MM_DD, date);
 //    }
 //
-//    public static final String parseDateToStr(final String format, final Date date)
-//    {
-//        return new SimpleDateFormat(format).format(date);
-//    }
+    public static final String parseDateToStr(final String format, final Date date)
+    {
+        return new SimpleDateFormat(format).format(date);
+    }
 //
 //    public static final Date dateTime(final String format, final String ts)
 //    {
@@ -170,22 +170,22 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils
 //        return day + "天" + hour + "小时" + min + "分钟";
 //    }
 //
-//    /**
-//     * 增加 LocalDateTime ==> Date
-//     */
-//    public static Date toDate(LocalDateTime temporalAccessor)
-//    {
-//        ZonedDateTime zdt = temporalAccessor.atZone(ZoneId.systemDefault());
-//        return Date.from(zdt.toInstant());
-//    }
-//
-//    /**
-//     * 增加 LocalDate ==> Date
-//     */
-//    public static Date toDate(LocalDate temporalAccessor)
-//    {
-//        LocalDateTime localDateTime = LocalDateTime.of(temporalAccessor, LocalTime.of(0, 0, 0));
-//        ZonedDateTime zdt = localDateTime.atZone(ZoneId.systemDefault());
-//        return Date.from(zdt.toInstant());
-//    }
+    /**
+     * 增加 LocalDateTime ==> Date
+     */
+    public static Date toDate(LocalDateTime temporalAccessor)
+    {
+        ZonedDateTime zdt = temporalAccessor.atZone(ZoneId.systemDefault());
+        return Date.from(zdt.toInstant());
+    }
+
+    /**
+     * 增加 LocalDate ==> Date
+     */
+    public static Date toDate(LocalDate temporalAccessor)
+    {
+        LocalDateTime localDateTime = LocalDateTime.of(temporalAccessor, LocalTime.of(0, 0, 0));
+        ZonedDateTime zdt = localDateTime.atZone(ZoneId.systemDefault());
+        return Date.from(zdt.toInstant());
+    }
 }

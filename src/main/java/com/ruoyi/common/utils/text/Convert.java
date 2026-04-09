@@ -436,58 +436,58 @@ public class Convert
         return toLong(value, null);
     }
 
-//    /**
-//     * 转换为double<br>
-//     * 如果给定的值为空，或者转换失败，返回默认值<br>
-//     * 转换失败不会报错
-//     *
-//     * @param value 被转换的值
-//     * @param defaultValue 转换错误时的默认值
-//     * @return 结果
-//     */
-//    public static Double toDouble(Object value, Double defaultValue)
-//    {
-//        if (value == null)
-//        {
-//            return defaultValue;
-//        }
-//        if (value instanceof Double)
-//        {
-//            return (Double) value;
-//        }
-//        if (value instanceof Number)
-//        {
-//            return ((Number) value).doubleValue();
-//        }
-//        final String valueStr = toStr(value, null);
-//        if (StringUtils.isEmpty(valueStr))
-//        {
-//            return defaultValue;
-//        }
-//        try
-//        {
-//            // 支持科学计数法
-//            return new BigDecimal(valueStr.trim()).doubleValue();
-//        }
-//        catch (Exception e)
-//        {
-//            return defaultValue;
-//        }
-//    }
-//
-//    /**
-//     * 转换为double<br>
-//     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
-//     * 转换失败不会报错
-//     *
-//     * @param value 被转换的值
-//     * @return 结果
-//     */
-//    public static Double toDouble(Object value)
-//    {
-//        return toDouble(value, null);
-//    }
-//
+    /**
+     * 转换为double<br>
+     * 如果给定的值为空，或者转换失败，返回默认值<br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @param defaultValue 转换错误时的默认值
+     * @return 结果
+     */
+    public static Double toDouble(Object value, Double defaultValue)
+    {
+        if (value == null)
+        {
+            return defaultValue;
+        }
+        if (value instanceof Double)
+        {
+            return (Double) value;
+        }
+        if (value instanceof Number)
+        {
+            return ((Number) value).doubleValue();
+        }
+        final String valueStr = toStr(value, null);
+        if (StringUtils.isEmpty(valueStr))
+        {
+            return defaultValue;
+        }
+        try
+        {
+            // 支持科学计数法
+            return new BigDecimal(valueStr.trim()).doubleValue();
+        }
+        catch (Exception e)
+        {
+            return defaultValue;
+        }
+    }
+
+    /**
+     * 转换为double<br>
+     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */
+    public static Double toDouble(Object value)
+    {
+        return toDouble(value, null);
+    }
+
 //    /**
 //     * 转换为Float<br>
 //     * 如果给定的值为空，或者转换失败，返回默认值<br>

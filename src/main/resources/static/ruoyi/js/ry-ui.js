@@ -373,28 +373,28 @@ var table = {
                     $("#" + table.options.id).bootstrapTable('refresh', params);
                 }
             },
-            // // 导出数据
-            // exportExcel: function(formId) {
-            //     table.set();
-            //     $.modal.confirm("确定导出所有" + table.options.modalName + "吗？", function() {
-            //         var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
-            //         var params = $("#" + table.options.id).bootstrapTable('getOptions');
-            //         var dataParam = $("#" + currentId).serializeArray();
-            //         dataParam.push({ "name": "orderByColumn", "value": params.sortName });
-            //         dataParam.push({ "name": "isAsc", "value": params.sortOrder });
-            //         $.modal.loading("正在导出数据，请稍候...");
-            //         $.post(table.options.exportUrl, dataParam, function(result) {
-            //             if (result.code == web_status.SUCCESS) {
-            //                 window.location.href = ctx + "common/download?fileName=" + encodeURI(result.msg) + "&delete=" + true;
-            //             } else if (result.code == web_status.WARNING) {
-            //                 $.modal.alertWarning(result.msg)
-            //             } else {
-            //                 $.modal.alertError(result.msg);
-            //             }
-            //             $.modal.closeLoading();
-            //         });
-            //     });
-            // },
+            // 导出数据
+            exportExcel: function(formId) {
+                table.set();
+                $.modal.confirm("确定导出所有" + table.options.modalName + "吗？", function() {
+                    var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
+                    var params = $("#" + table.options.id).bootstrapTable('getOptions');
+                    var dataParam = $("#" + currentId).serializeArray();
+                    dataParam.push({ "name": "orderByColumn", "value": params.sortName });
+                    dataParam.push({ "name": "isAsc", "value": params.sortOrder });
+                    $.modal.loading("正在导出数据，请稍候...");
+                    $.post(table.options.exportUrl, dataParam, function(result) {
+                        if (result.code == web_status.SUCCESS) {
+                            window.location.href = ctx + "common/download?fileName=" + encodeURI(result.msg) + "&delete=" + true;
+                        } else if (result.code == web_status.WARNING) {
+                            $.modal.alertWarning(result.msg)
+                        } else {
+                            $.modal.alertError(result.msg);
+                        }
+                        $.modal.closeLoading();
+                    });
+                });
+            },
             // // 下载模板
             // importTemplate: function() {
             //     $.get(activeWindow().table.options.importTemplateUrl, function(result) {

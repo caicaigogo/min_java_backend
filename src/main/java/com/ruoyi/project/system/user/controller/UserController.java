@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.poi.ExcelUtil;
+import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.common.utils.security.AuthorizationUtils;
 import com.ruoyi.common.utils.security.ShiroUtils;
 import com.ruoyi.common.utils.text.Convert;
@@ -72,18 +72,18 @@ public class UserController extends BaseController
         List<User> list = userService.selectUserList(user);
         return getDataTable(list);
     }
-//
-//    @Log(title = "用户管理", businessType = BusinessType.EXPORT)
-//    @RequiresPermissions("system:user:export")
-//    @PostMapping("/export")
-//    @ResponseBody
-//    public AjaxResult export(User user)
-//    {
-//        List<User> list = userService.selectUserList(user);
-//        ExcelUtil<User> util = new ExcelUtil<User>(User.class);
-//        return util.exportExcel(list, "用户数据");
-//    }
-//
+
+    @Log(title = "用户管理", businessType = BusinessType.EXPORT)
+    @RequiresPermissions("system:user:export")
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export(User user)
+    {
+        List<User> list = userService.selectUserList(user);
+        ExcelUtil<User> util = new ExcelUtil<User>(User.class);
+        return util.exportExcel(list, "用户数据");
+    }
+
 //    @Log(title = "用户管理", businessType = BusinessType.IMPORT)
 //    @RequiresPermissions("system:user:import")
 //    @PostMapping("/importData")
