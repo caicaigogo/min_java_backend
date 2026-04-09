@@ -1,28 +1,28 @@
-//package com.ruoyi.common.utils.file;
-//
-//import java.io.File;
-//import java.io.IOException;
-//import java.nio.file.Paths;
-//import java.util.Objects;
-//import org.apache.commons.io.FilenameUtils;
-//import org.springframework.web.multipart.MultipartFile;
-//import com.ruoyi.common.constant.Constants;
+package com.ruoyi.common.utils.file;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.Objects;
+import org.apache.commons.io.FilenameUtils;
+import org.springframework.web.multipart.MultipartFile;
+import com.ruoyi.common.constant.Constants;
 //import com.ruoyi.common.exception.file.FileNameLengthLimitExceededException;
 //import com.ruoyi.common.exception.file.FileSizeLimitExceededException;
 //import com.ruoyi.common.exception.file.InvalidExtensionException;
-//import com.ruoyi.common.utils.DateUtils;
-//import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.uuid.IdUtils;
+import com.ruoyi.common.utils.DateUtils;
+import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.uuid.IdUtils;
 //import com.ruoyi.common.utils.uuid.Seq;
-//import com.ruoyi.framework.config.RuoYiConfig;
-//
-///**
-// * 文件上传工具类
-// *
-// * @author ruoyi
-// */
-//public class FileUploadUtils
-//{
+import com.ruoyi.framework.config.RuoYiConfig;
+
+/**
+ * 文件上传工具类
+ *
+ * @author ruoyi
+ */
+public class FileUploadUtils
+{
 //    /**
 //     * 默认大小 50M
 //     */
@@ -154,26 +154,26 @@
 //        return StringUtils.format("{}/{}.{}", DateUtils.datePath(), IdUtils.fastSimpleUUID(), getExtension(file));
 //    }
 //
-//    public static final File getAbsoluteFile(String uploadDir, String fileName) throws IOException
-//    {
-//        File desc = new File(uploadDir + File.separator + fileName);
-//
-//        if (!desc.exists())
-//        {
-//            if (!desc.getParentFile().exists())
-//            {
-//                desc.getParentFile().mkdirs();
-//            }
-//        }
-//        return desc;
-//    }
-//
-//    public static final String getPathFileName(String uploadDir, String fileName) throws IOException
-//    {
-//        int dirLastIndex = RuoYiConfig.getProfile().length() + 1;
-//        String currentDir = StringUtils.substring(uploadDir, dirLastIndex);
-//        return Constants.RESOURCE_PREFIX + "/" + currentDir + "/" + fileName;
-//    }
+    public static final File getAbsoluteFile(String uploadDir, String fileName) throws IOException
+    {
+        File desc = new File(uploadDir + File.separator + fileName);
+
+        if (!desc.exists())
+        {
+            if (!desc.getParentFile().exists())
+            {
+                desc.getParentFile().mkdirs();
+            }
+        }
+        return desc;
+    }
+
+    public static final String getPathFileName(String uploadDir, String fileName) throws IOException
+    {
+        int dirLastIndex = RuoYiConfig.getProfile().length() + 1;
+        String currentDir = StringUtils.substring(uploadDir, dirLastIndex);
+        return Constants.RESOURCE_PREFIX + "/" + currentDir + "/" + fileName;
+    }
 //
 //    /**
 //     * 文件大小校验
@@ -257,4 +257,4 @@
 //        }
 //        return extension;
 //    }
-//}
+}

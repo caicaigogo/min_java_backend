@@ -61,22 +61,22 @@ public class DictUtils
         return getDictLabel(dictType, dictValue, SEPARATOR);
     }
 
-//    /**
-//     * 根据字典类型和字典标签获取字典值
-//     *
-//     * @param dictType 字典类型
-//     * @param dictLabel 字典标签
-//     * @return 字典值
-//     */
-//    public static String getDictValue(String dictType, String dictLabel)
-//    {
-//        if (StringUtils.isEmpty(dictLabel))
-//        {
-//            return StringUtils.EMPTY;
-//        }
-//        return getDictValue(dictType, dictLabel, SEPARATOR);
-//    }
-//
+    /**
+     * 根据字典类型和字典标签获取字典值
+     *
+     * @param dictType 字典类型
+     * @param dictLabel 字典标签
+     * @return 字典值
+     */
+    public static String getDictValue(String dictType, String dictLabel)
+    {
+        if (StringUtils.isEmpty(dictLabel))
+        {
+            return StringUtils.EMPTY;
+        }
+        return getDictValue(dictType, dictLabel, SEPARATOR);
+    }
+
     /**
      * 根据字典类型和字典值获取字典标签
      *
@@ -120,70 +120,70 @@ public class DictUtils
         return StringUtils.stripEnd(propertyString.toString(), separator);
     }
 
-//    /**
-//     * 根据字典类型和字典标签获取字典值
-//     *
-//     * @param dictType 字典类型
-//     * @param dictLabel 字典标签
-//     * @param separator 分隔符
-//     * @return 字典值
-//     */
-//    public static String getDictValue(String dictType, String dictLabel, String separator)
-//    {
-//        StringBuilder propertyString = new StringBuilder();
-//        List<DictData> datas = getDictCache(dictType);
-//        if (StringUtils.isNull(datas))
-//        {
-//            return StringUtils.EMPTY;
-//        }
-//        if (StringUtils.containsAny(dictLabel, separator))
-//        {
-//            for (DictData dict : datas)
-//            {
-//                for (String label : dictLabel.split(separator))
-//                {
-//                    if (label.equals(dict.getDictLabel()))
-//                    {
-//                        propertyString.append(dict.getDictValue()).append(separator);
-//                        break;
-//                    }
-//                }
-//            }
-//        }
-//        else
-//        {
-//            for (DictData dict : datas)
-//            {
-//                if (dictLabel.equals(dict.getDictLabel()))
-//                {
-//                    return dict.getDictValue();
-//                }
-//            }
-//        }
-//        return StringUtils.stripEnd(propertyString.toString(), separator);
-//    }
-//
-//    /**
-//     * 根据字典类型获取字典所有值
-//     *
-//     * @param dictType 字典类型
-//     * @return 字典值
-//     */
-//    public static String getDictValues(String dictType)
-//    {
-//        StringBuilder propertyString = new StringBuilder();
-//        List<DictData> datas = getDictCache(dictType);
-//        if (StringUtils.isNull(datas))
-//        {
-//            return StringUtils.EMPTY;
-//        }
-//        for (DictData dict : datas)
-//        {
-//            propertyString.append(dict.getDictValue()).append(SEPARATOR);
-//        }
-//        return StringUtils.stripEnd(propertyString.toString(), SEPARATOR);
-//    }
-//
+    /**
+     * 根据字典类型和字典标签获取字典值
+     *
+     * @param dictType 字典类型
+     * @param dictLabel 字典标签
+     * @param separator 分隔符
+     * @return 字典值
+     */
+    public static String getDictValue(String dictType, String dictLabel, String separator)
+    {
+        StringBuilder propertyString = new StringBuilder();
+        List<DictData> datas = getDictCache(dictType);
+        if (StringUtils.isNull(datas))
+        {
+            return StringUtils.EMPTY;
+        }
+        if (StringUtils.containsAny(dictLabel, separator))
+        {
+            for (DictData dict : datas)
+            {
+                for (String label : dictLabel.split(separator))
+                {
+                    if (label.equals(dict.getDictLabel()))
+                    {
+                        propertyString.append(dict.getDictValue()).append(separator);
+                        break;
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (DictData dict : datas)
+            {
+                if (dictLabel.equals(dict.getDictLabel()))
+                {
+                    return dict.getDictValue();
+                }
+            }
+        }
+        return StringUtils.stripEnd(propertyString.toString(), separator);
+    }
+
+    /**
+     * 根据字典类型获取字典所有值
+     *
+     * @param dictType 字典类型
+     * @return 字典值
+     */
+    public static String getDictValues(String dictType)
+    {
+        StringBuilder propertyString = new StringBuilder();
+        List<DictData> datas = getDictCache(dictType);
+        if (StringUtils.isNull(datas))
+        {
+            return StringUtils.EMPTY;
+        }
+        for (DictData dict : datas)
+        {
+            propertyString.append(dict.getDictValue()).append(SEPARATOR);
+        }
+        return StringUtils.stripEnd(propertyString.toString(), SEPARATOR);
+    }
+
     /**
      * 根据字典类型获取字典所有标签
      *
@@ -204,24 +204,24 @@ public class DictUtils
         }
         return StringUtils.stripEnd(propertyString.toString(), SEPARATOR);
     }
-//
-//    /**
-//     * 删除指定字典缓存
-//     *
-//     * @param key 字典键
-//     */
-//    public static void removeDictCache(String key)
-//    {
-//        CacheUtils.remove(getCacheName(), getCacheKey(key));
-//    }
-//
-//    /**
-//     * 清空字典缓存
-//     */
-//    public static void clearDictCache()
-//    {
-//        CacheUtils.removeAll(getCacheName());
-//    }
+
+    /**
+     * 删除指定字典缓存
+     *
+     * @param key 字典键
+     */
+    public static void removeDictCache(String key)
+    {
+        CacheUtils.remove(getCacheName(), getCacheKey(key));
+    }
+
+    /**
+     * 清空字典缓存
+     */
+    public static void clearDictCache()
+    {
+        CacheUtils.removeAll(getCacheName());
+    }
 
     /**
      * 获取cache name

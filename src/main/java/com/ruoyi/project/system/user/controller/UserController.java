@@ -84,27 +84,27 @@ public class UserController extends BaseController
         return util.exportExcel(list, "用户数据");
     }
 
-//    @Log(title = "用户管理", businessType = BusinessType.IMPORT)
-//    @RequiresPermissions("system:user:import")
-//    @PostMapping("/importData")
-//    @ResponseBody
-//    public AjaxResult importData(MultipartFile file, boolean updateSupport) throws Exception
-//    {
-//        ExcelUtil<User> util = new ExcelUtil<User>(User.class);
-//        List<User> userList = util.importExcel(file.getInputStream());
-//        String message = userService.importUser(userList, updateSupport);
-//        return AjaxResult.success(message);
-//    }
-//
-//    @RequiresPermissions("system:user:view")
-//    @GetMapping("/importTemplate")
-//    @ResponseBody
-//    public AjaxResult importTemplate()
-//    {
-//        ExcelUtil<User> util = new ExcelUtil<User>(User.class);
-//        return util.importTemplateExcel("用户数据");
-//    }
-//
+    @Log(title = "用户管理", businessType = BusinessType.IMPORT)
+    @RequiresPermissions("system:user:import")
+    @PostMapping("/importData")
+    @ResponseBody
+    public AjaxResult importData(MultipartFile file, boolean updateSupport) throws Exception
+    {
+        ExcelUtil<User> util = new ExcelUtil<User>(User.class);
+        List<User> userList = util.importExcel(file.getInputStream());
+        String message = userService.importUser(userList, updateSupport);
+        return AjaxResult.success(message);
+    }
+
+    @RequiresPermissions("system:user:view")
+    @GetMapping("/importTemplate")
+    @ResponseBody
+    public AjaxResult importTemplate()
+    {
+        ExcelUtil<User> util = new ExcelUtil<User>(User.class);
+        return util.importTemplateExcel("用户数据");
+    }
+
     /**
      * 新增用户
      */

@@ -1,14 +1,14 @@
-//package com.ruoyi.common.utils.html;
-//
-//import com.ruoyi.common.utils.StringUtils;
-//
-///**
-// * 转义和反转义工具类
-// *
-// * @author ruoyi
-// */
-//public class EscapeUtil
-//{
+package com.ruoyi.common.utils.html;
+
+import com.ruoyi.common.utils.StringUtils;
+
+/**
+ * 转义和反转义工具类
+ *
+ * @author ruoyi
+ */
+public class EscapeUtil
+{
 //    public static final String RE_HTML_MARK = "(<[^<]*?>)|(<[\\s]*?/[^<]*?>)|(<[^<]*?/[\\s]*?>)";
 //
 //    private static final char[][] TEXT = new char[64][];
@@ -50,16 +50,16 @@
 //        return decode(content);
 //    }
 //
-//    /**
-//     * 清除所有HTML标签，但是不删除标签内的内容
-//     *
-//     * @param content 文本
-//     * @return 清除标签后的文本
-//     */
-//    public static String clean(String content)
-//    {
-//        return new HTMLFilter().filter(content);
-//    }
+    /**
+     * 清除所有HTML标签，但是不删除标签内的内容
+     *
+     * @param content 文本
+     * @return 清除标签后的文本
+     */
+    public static String clean(String content)
+    {
+        return new HTMLFilter().filter(content);
+    }
 //
 //    /**
 //     * Escape编码
@@ -164,4 +164,4 @@
 //        System.out.println("escape: " + escape);
 //        System.out.println("unescape: " + EscapeUtil.unescape(escape));
 //    }
-//}
+}

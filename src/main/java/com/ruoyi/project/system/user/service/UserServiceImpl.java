@@ -15,18 +15,18 @@ import org.springframework.util.CollectionUtils;
 import com.ruoyi.common.constant.UserConstants;
 import com.ruoyi.common.exception.ServiceException;
 import com.ruoyi.common.utils.DateUtils;
-//import com.ruoyi.common.utils.ExceptionUtil;
-//import com.ruoyi.common.utils.Md5Utils;
+import com.ruoyi.common.utils.ExceptionUtil;
+import com.ruoyi.common.utils.Md5Utils;
 import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.bean.BeanValidators;
-//import com.ruoyi.common.utils.html.EscapeUtil;
+import com.ruoyi.common.utils.bean.BeanValidators;
+import com.ruoyi.common.utils.html.EscapeUtil;
 import com.ruoyi.common.utils.security.ShiroUtils;
 import com.ruoyi.common.utils.spring.SpringUtils;
 import com.ruoyi.common.utils.text.Convert;
 import com.ruoyi.framework.aspectj.lang.annotation.DataScope;
 import com.ruoyi.framework.shiro.service.PasswordService;
-//import com.ruoyi.project.system.config.service.IConfigService;
-//import com.ruoyi.project.system.dept.service.IDeptService;
+import com.ruoyi.project.system.config.service.IConfigService;
+import com.ruoyi.project.system.dept.service.IDeptService;
 import com.ruoyi.project.system.post.domain.Post;
 import com.ruoyi.project.system.post.mapper.PostMapper;
 import com.ruoyi.project.system.role.domain.Role;
@@ -62,19 +62,19 @@ public class UserServiceImpl implements IUserService
 
     @Autowired
     private UserRoleMapper userRoleMapper;
-//
-//    @Autowired
-//    private IConfigService configService;
+
+    @Autowired
+    private IConfigService configService;
 
     @Autowired
     private PasswordService passwordService;
-//
-//    @Autowired
-//    private IDeptService deptService;
-//
-//    @Autowired
-//    protected Validator validator;
-//
+
+    @Autowired
+    private IDeptService deptService;
+
+    @Autowired
+    protected Validator validator;
+
     /**
      * 根据条件分页查询用户列表
      *
@@ -515,86 +515,86 @@ public class UserServiceImpl implements IUserService
         return list.stream().map(Post::getPostName).collect(Collectors.joining(","));
     }
 
-//    /**
-//     * 导入用户数据
-//     *
-//     * @param userList 用户数据列表
-//     * @param isUpdateSupport 是否更新支持，如果已存在，则进行更新数据
-//     * @return 结果
-//     */
-//    @Override
-//    public String importUser(List<User> userList, Boolean isUpdateSupport)
-//    {
-//        if (StringUtils.isNull(userList) || userList.size() == 0)
-//        {
-//            throw new ServiceException("导入用户数据不能为空！");
-//        }
-//        int successNum = 0;
-//        int failureNum = 0;
-//        StringBuilder successMsg = new StringBuilder();
-//        StringBuilder failureMsg = new StringBuilder();
-//        String operName = ShiroUtils.getLoginName();
-//        for (User user : userList)
-//        {
-//            try
-//            {
-//                // 验证是否存在这个用户
-//                User u = userMapper.selectUserByLoginName(user.getLoginName());
-//                if (StringUtils.isNull(u))
-//                {
-//                    BeanValidators.validateWithException(validator, user);
-//                    deptService.checkDeptDataScope(user.getDeptId());
-//                    String password = configService.selectConfigByKey("sys.user.initPassword");
-//                    user.setPassword(Md5Utils.hash(user.getLoginName() + password));
-//                    user.setCreateBy(operName);
-//                    userMapper.insertUser(user);
-//                    successNum++;
-//                    successMsg.append("<br/>" + successNum + "、账号 " + user.getLoginName() + " 导入成功");
-//                }
-//                else if (isUpdateSupport)
-//                {
-//                    BeanValidators.validateWithException(validator, user);
-//                    checkUserAllowed(u);
-//                    checkUserDataScope(u.getUserId());
-//                    deptService.checkDeptDataScope(user.getDeptId());
-//                    user.setUserId(u.getUserId());
-//                    user.setDeptId(u.getDeptId());
-//                    user.setUpdateBy(operName);
-//                    userMapper.updateUser(user);
-//                    successNum++;
-//                    successMsg.append("<br/>" + successNum + "、账号 " + user.getLoginName() + " 更新成功");
-//                }
-//                else
-//                {
-//                    failureNum++;
-//                    failureMsg.append("<br/>" + failureNum + "、账号 " + user.getLoginName() + " 已存在");
-//                }
-//            }
-//            catch (Exception e)
-//            {
-//                failureNum++;
-//                String loginName = user.getLoginName();
-//                if (ExceptionUtil.isCausedBy(e, ConstraintViolationException.class))
-//                {
-//                    loginName = EscapeUtil.clean(loginName);
-//                }
-//                String msg = "<br/>" + failureNum + "、账号 " + loginName + " 导入失败：";
-//                failureMsg.append(msg + e.getMessage());
-//                log.error(msg, e);
-//            }
-//        }
-//        if (failureNum > 0)
-//        {
-//            failureMsg.insert(0, "很抱歉，导入失败！共 " + failureNum + " 条数据格式不正确，错误如下：");
-//            throw new ServiceException(failureMsg.toString());
-//        }
-//        else
-//        {
-//            successMsg.insert(0, "恭喜您，数据已全部导入成功！共 " + successNum + " 条，数据如下：");
-//        }
-//        return successMsg.toString();
-//    }
-//
+    /**
+     * 导入用户数据
+     *
+     * @param userList 用户数据列表
+     * @param isUpdateSupport 是否更新支持，如果已存在，则进行更新数据
+     * @return 结果
+     */
+    @Override
+    public String importUser(List<User> userList, Boolean isUpdateSupport)
+    {
+        if (StringUtils.isNull(userList) || userList.size() == 0)
+        {
+            throw new ServiceException("导入用户数据不能为空！");
+        }
+        int successNum = 0;
+        int failureNum = 0;
+        StringBuilder successMsg = new StringBuilder();
+        StringBuilder failureMsg = new StringBuilder();
+        String operName = ShiroUtils.getLoginName();
+        for (User user : userList)
+        {
+            try
+            {
+                // 验证是否存在这个用户
+                User u = userMapper.selectUserByLoginName(user.getLoginName());
+                if (StringUtils.isNull(u))
+                {
+                    BeanValidators.validateWithException(validator, user);
+                    deptService.checkDeptDataScope(user.getDeptId());
+                    String password = configService.selectConfigByKey("sys.user.initPassword");
+                    user.setPassword(Md5Utils.hash(user.getLoginName() + password));
+                    user.setCreateBy(operName);
+                    userMapper.insertUser(user);
+                    successNum++;
+                    successMsg.append("<br/>" + successNum + "、账号 " + user.getLoginName() + " 导入成功");
+                }
+                else if (isUpdateSupport)
+                {
+                    BeanValidators.validateWithException(validator, user);
+                    checkUserAllowed(u);
+                    checkUserDataScope(u.getUserId());
+                    deptService.checkDeptDataScope(user.getDeptId());
+                    user.setUserId(u.getUserId());
+                    user.setDeptId(u.getDeptId());
+                    user.setUpdateBy(operName);
+                    userMapper.updateUser(user);
+                    successNum++;
+                    successMsg.append("<br/>" + successNum + "、账号 " + user.getLoginName() + " 更新成功");
+                }
+                else
+                {
+                    failureNum++;
+                    failureMsg.append("<br/>" + failureNum + "、账号 " + user.getLoginName() + " 已存在");
+                }
+            }
+            catch (Exception e)
+            {
+                failureNum++;
+                String loginName = user.getLoginName();
+                if (ExceptionUtil.isCausedBy(e, ConstraintViolationException.class))
+                {
+                    loginName = EscapeUtil.clean(loginName);
+                }
+                String msg = "<br/>" + failureNum + "、账号 " + loginName + " 导入失败：";
+                failureMsg.append(msg + e.getMessage());
+                log.error(msg, e);
+            }
+        }
+        if (failureNum > 0)
+        {
+            failureMsg.insert(0, "很抱歉，导入失败！共 " + failureNum + " 条数据格式不正确，错误如下：");
+            throw new ServiceException(failureMsg.toString());
+        }
+        else
+        {
+            successMsg.insert(0, "恭喜您，数据已全部导入成功！共 " + successNum + " 条，数据如下：");
+        }
+        return successMsg.toString();
+    }
+
     /**
      * 用户状态修改
      *

@@ -488,56 +488,56 @@ public class Convert
         return toDouble(value, null);
     }
 
-//    /**
-//     * 转换为Float<br>
-//     * 如果给定的值为空，或者转换失败，返回默认值<br>
-//     * 转换失败不会报错
-//     *
-//     * @param value 被转换的值
-//     * @param defaultValue 转换错误时的默认值
-//     * @return 结果
-//     */
-//    public static Float toFloat(Object value, Float defaultValue)
-//    {
-//        if (value == null)
-//        {
-//            return defaultValue;
-//        }
-//        if (value instanceof Float)
-//        {
-//            return (Float) value;
-//        }
-//        if (value instanceof Number)
-//        {
-//            return ((Number) value).floatValue();
-//        }
-//        final String valueStr = toStr(value, null);
-//        if (StringUtils.isEmpty(valueStr))
-//        {
-//            return defaultValue;
-//        }
-//        try
-//        {
-//            return Float.parseFloat(valueStr.trim());
-//        }
-//        catch (Exception e)
-//        {
-//            return defaultValue;
-//        }
-//    }
-//
-//    /**
-//     * 转换为Float<br>
-//     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
-//     * 转换失败不会报错
-//     *
-//     * @param value 被转换的值
-//     * @return 结果
-//     */
-//    public static Float toFloat(Object value)
-//    {
-//        return toFloat(value, null);
-//    }
+    /**
+     * 转换为Float<br>
+     * 如果给定的值为空，或者转换失败，返回默认值<br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @param defaultValue 转换错误时的默认值
+     * @return 结果
+     */
+    public static Float toFloat(Object value, Float defaultValue)
+    {
+        if (value == null)
+        {
+            return defaultValue;
+        }
+        if (value instanceof Float)
+        {
+            return (Float) value;
+        }
+        if (value instanceof Number)
+        {
+            return ((Number) value).floatValue();
+        }
+        final String valueStr = toStr(value, null);
+        if (StringUtils.isEmpty(valueStr))
+        {
+            return defaultValue;
+        }
+        try
+        {
+            return Float.parseFloat(valueStr.trim());
+        }
+        catch (Exception e)
+        {
+            return defaultValue;
+        }
+    }
+
+    /**
+     * 转换为Float<br>
+     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */
+    public static Float toFloat(Object value)
+    {
+        return toFloat(value, null);
+    }
 
     /**
      * 转换为boolean<br>
@@ -692,66 +692,66 @@ public class Convert
 //    {
 //        return toBigInteger(value, null);
 //    }
-//
-//    /**
-//     * 转换为BigDecimal<br>
-//     * 如果给定的值为空，或者转换失败，返回默认值<br>
-//     * 转换失败不会报错
-//     *
-//     * @param value 被转换的值
-//     * @param defaultValue 转换错误时的默认值
-//     * @return 结果
-//     */
-//    public static BigDecimal toBigDecimal(Object value, BigDecimal defaultValue)
-//    {
-//        if (value == null)
-//        {
-//            return defaultValue;
-//        }
-//        if (value instanceof BigDecimal)
-//        {
-//            return (BigDecimal) value;
-//        }
-//        if (value instanceof Long)
-//        {
-//            return new BigDecimal((Long) value);
-//        }
-//        if (value instanceof Double)
-//        {
-//            return BigDecimal.valueOf((Double) value);
-//        }
-//        if (value instanceof Integer)
-//        {
-//            return new BigDecimal((Integer) value);
-//        }
-//        final String valueStr = toStr(value, null);
-//        if (StringUtils.isEmpty(valueStr))
-//        {
-//            return defaultValue;
-//        }
-//        try
-//        {
-//            return new BigDecimal(valueStr);
-//        }
-//        catch (Exception e)
-//        {
-//            return defaultValue;
-//        }
-//    }
-//
-//    /**
-//     * 转换为BigDecimal<br>
-//     * 如果给定的值为空，或者转换失败，返回默认值<br>
-//     * 转换失败不会报错
-//     *
-//     * @param value 被转换的值
-//     * @return 结果
-//     */
-//    public static BigDecimal toBigDecimal(Object value)
-//    {
-//        return toBigDecimal(value, null);
-//    }
-//
+
+    /**
+     * 转换为BigDecimal<br>
+     * 如果给定的值为空，或者转换失败，返回默认值<br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @param defaultValue 转换错误时的默认值
+     * @return 结果
+     */
+    public static BigDecimal toBigDecimal(Object value, BigDecimal defaultValue)
+    {
+        if (value == null)
+        {
+            return defaultValue;
+        }
+        if (value instanceof BigDecimal)
+        {
+            return (BigDecimal) value;
+        }
+        if (value instanceof Long)
+        {
+            return new BigDecimal((Long) value);
+        }
+        if (value instanceof Double)
+        {
+            return BigDecimal.valueOf((Double) value);
+        }
+        if (value instanceof Integer)
+        {
+            return new BigDecimal((Integer) value);
+        }
+        final String valueStr = toStr(value, null);
+        if (StringUtils.isEmpty(valueStr))
+        {
+            return defaultValue;
+        }
+        try
+        {
+            return new BigDecimal(valueStr);
+        }
+        catch (Exception e)
+        {
+            return defaultValue;
+        }
+    }
+
+    /**
+     * 转换为BigDecimal<br>
+     * 如果给定的值为空，或者转换失败，返回默认值<br>
+     * 转换失败不会报错
+     *
+     * @param value 被转换的值
+     * @return 结果
+     */
+    public static BigDecimal toBigDecimal(Object value)
+    {
+        return toBigDecimal(value, null);
+    }
+
     /**
      * 将对象转为字符串<br>
      * 1、Byte数组和ByteBuffer会被转换为对应字符串的数组 2、对象数组会调用Arrays.toString方法
