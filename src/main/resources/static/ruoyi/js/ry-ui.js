@@ -1321,17 +1321,17 @@ var table = {
                 }
                 $.modal.closeLoading();
             },
-        //     // 保存结果重新加载页面
-        //     saveReload: function (result) {
-        //         if (result.code == web_status.SUCCESS) {
-        //             $.modal.msgSuccessReload(result.msg);
-        //         } else if (result.code == web_status.WARNING) {
-        //             $.modal.alertWarning(result.msg)
-        //         }  else {
-        //             $.modal.alertError(result.msg);
-        //         }
-        //         $.modal.closeLoading();
-        //     },
+            // 保存结果重新加载页面
+            saveReload: function (result) {
+                if (result.code == web_status.SUCCESS) {
+                    $.modal.msgSuccessReload(result.msg);
+                } else if (result.code == web_status.WARNING) {
+                    $.modal.alertWarning(result.msg)
+                }  else {
+                    $.modal.alertError(result.msg);
+                }
+                $.modal.closeLoading();
+            },
             // 成功回调执行事件（父窗体静默更新）
             successCallback: function(result) {
                 if (result.code == web_status.SUCCESS) {

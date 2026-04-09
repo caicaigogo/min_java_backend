@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.file.FileUploadUtils;
-//import com.ruoyi.common.utils.file.FileUtils;
-//import com.ruoyi.common.utils.file.MimeTypeUtils;
+import com.ruoyi.common.utils.file.FileUploadUtils;
+import com.ruoyi.common.utils.file.FileUtils;
+import com.ruoyi.common.utils.file.MimeTypeUtils;
 import com.ruoyi.framework.aspectj.lang.annotation.Log;
 import com.ruoyi.framework.aspectj.lang.enums.BusinessType;
 import com.ruoyi.framework.config.RuoYiConfig;
@@ -95,17 +95,6 @@ public class ProfileController extends BaseController
         return error("修改密码异常，请联系管理员");
     }
 
-//    /**
-//     * 修改用户
-//     */
-//    @GetMapping("/edit")
-//    public String edit(ModelMap mmap)
-//    {
-//        User user = getSysUser();
-//        mmap.put("user", userService.selectUserById(user.getUserId()));
-//        return prefix + "/edit";
-//    }
-//
     /**
      * 修改头像
      */
@@ -145,39 +134,39 @@ public class ProfileController extends BaseController
         }
         return error();
     }
-//
-//    /**
-//     * 保存头像
-//     */
-//    @Log(title = "个人信息", businessType = BusinessType.UPDATE)
-//    @PostMapping("/updateAvatar")
-//    @ResponseBody
-//    public AjaxResult updateAvatar(@RequestParam("avatarfile") MultipartFile file)
-//    {
-//        try
-//        {
-//            if (!file.isEmpty())
-//            {
-//                User currentUser = getSysUser();
-//                String avatar = FileUploadUtils.upload(RuoYiConfig.getAvatarPath(), file, MimeTypeUtils.IMAGE_EXTENSION, true);
-//                if (userService.updateUserAvatar(currentUser.getUserId(), avatar))
-//                {
-//                    String oldAvatar = currentUser.getAvatar();
-//                    if (StringUtils.isNotEmpty(oldAvatar))
-//                    {
-//                        FileUtils.deleteFile(RuoYiConfig.getProfile() + FileUtils.stripPrefix(oldAvatar));
-//                    }
-//                    currentUser.setAvatar(avatar);
-//                    setSysUser(currentUser);
-//                    return success();
-//                }
-//            }
-//            return error();
-//        }
-//        catch (Exception e)
-//        {
-//            log.error("修改头像失败！", e);
-//            return error(e.getMessage());
-//        }
-//    }
+
+    /**
+     * 保存头像
+     */
+    @Log(title = "个人信息", businessType = BusinessType.UPDATE)
+    @PostMapping("/updateAvatar")
+    @ResponseBody
+    public AjaxResult updateAvatar(@RequestParam("avatarfile") MultipartFile file)
+    {
+        try
+        {
+            if (!file.isEmpty())
+            {
+                User currentUser = getSysUser();
+                String avatar = FileUploadUtils.upload(RuoYiConfig.getAvatarPath(), file, MimeTypeUtils.IMAGE_EXTENSION, true);
+                if (userService.updateUserAvatar(currentUser.getUserId(), avatar))
+                {
+                    String oldAvatar = currentUser.getAvatar();
+                    if (StringUtils.isNotEmpty(oldAvatar))
+                    {
+                        FileUtils.deleteFile(RuoYiConfig.getProfile() + FileUtils.stripPrefix(oldAvatar));
+                    }
+                    currentUser.setAvatar(avatar);
+                    setSysUser(currentUser);
+                    return success();
+                }
+            }
+            return error();
+        }
+        catch (Exception e)
+        {
+            log.error("修改头像失败！", e);
+            return error(e.getMessage());
+        }
+    }
 }

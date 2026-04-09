@@ -287,19 +287,19 @@ public class UserServiceImpl implements IUserService
     {
         return userMapper.updateUser(user);
     }
-//
-//    /**
-//     * 修改用户头像
-//     *
-//     * @param userId 用户ID
-//     * @param avatar 头像地址
-//     * @return 结果
-//     */
-//    public boolean updateUserAvatar(Long userId, String avatar)
-//    {
-//        return userMapper.updateUserAvatar(userId, avatar) > 0;
-//    }
-//
+
+    /**
+     * 修改用户头像
+     *
+     * @param userId 用户ID
+     * @param avatar 头像地址
+     * @return 结果
+     */
+    public boolean updateUserAvatar(Long userId, String avatar)
+    {
+        return userMapper.updateUserAvatar(userId, avatar) > 0;
+    }
+
     /**
      * 更新用户登录信息（IP和登录时间）
      *

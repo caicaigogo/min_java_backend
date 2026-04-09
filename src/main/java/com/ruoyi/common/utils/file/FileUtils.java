@@ -104,16 +104,16 @@ public class FileUtils
         return FileUploadUtils.getPathFileName(uploadDir, pathName);
     }
 
-//    /**
-//     * 移除路径中的请求前缀片段
-//     *
-//     * @param filePath 文件路径
-//     * @return 移除后的文件路径
-//     */
-//    public static String stripPrefix(String filePath)
-//    {
-//        return StringUtils.substringAfter(filePath, Constants.RESOURCE_PREFIX);
-//    }
+    /**
+     * 移除路径中的请求前缀片段
+     *
+     * @param filePath 文件路径
+     * @return 移除后的文件路径
+     */
+    public static String stripPrefix(String filePath)
+    {
+        return StringUtils.substringAfter(filePath, Constants.RESOURCE_PREFIX);
+    }
 
     /**
      * 删除文件

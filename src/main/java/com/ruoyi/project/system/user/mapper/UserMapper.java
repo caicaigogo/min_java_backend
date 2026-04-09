@@ -93,16 +93,16 @@ public interface UserMapper
      * @return 结果
      */
     public int updateUser(User user);
-//
-//    /**
-//     * 修改用户头像
-//     *
-//     * @param userId 用户ID
-//     * @param avatar 头像地址
-//     * @return 结果
-//     */
-//    public int updateUserAvatar(@Param("userId") Long userId, @Param("avatar") String avatar);
-//
+
+    /**
+     * 修改用户头像
+     *
+     * @param userId 用户ID
+     * @param avatar 头像地址
+     * @return 结果
+     */
+    public int updateUserAvatar(@Param("userId") Long userId, @Param("avatar") String avatar);
+
     /**
      * 修改用户状态
      *

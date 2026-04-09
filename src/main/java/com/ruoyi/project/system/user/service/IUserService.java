@@ -125,15 +125,15 @@ public interface IUserService
      */
     public int updateUserInfo(User user);
 
-//    /**
-//     * 修改用户头像
-//     *
-//     * @param userId 用户ID
-//     * @param avatar 头像地址
-//     * @return 结果
-//     */
-//    public boolean updateUserAvatar(Long userId, String avatar);
-//
+    /**
+     * 修改用户头像
+     *
+     * @param userId 用户ID
+     * @param avatar 头像地址
+     * @return 结果
+     */
+    public boolean updateUserAvatar(Long userId, String avatar);
+
 	/**
      * 更新用户登录信息（IP和登录时间）
      *
