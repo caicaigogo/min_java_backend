@@ -1251,36 +1251,36 @@ var table = {
                 };
                 $.ajax(config)
             },
-        //     // 保存信息 弹出结果提示框
-        //     saveModal: function(url, data, callback) {
-        //         var config = {
-        //             url: url,
-        //             type: "post",
-        //             dataType: "json",
-        //             data: data,
-        //             beforeSend: function (xhr, settings) {
-        //                 var csrftoken = $('meta[name=csrf-token]').attr('content');
-        //                 if (($.common.equalsIgnoreCase(settings.type, "POST"))) {
-        //                     xhr.setRequestHeader("X-CSRF-Token", csrftoken);
-        //                 }
-        //                 $.modal.loading("正在处理中，请稍候...");
-        //             },
-        //             success: function(result) {
-        //                 if (typeof callback == "function") {
-        //                     callback(result);
-        //                 }
-        //                 if (result.code == web_status.SUCCESS) {
-        //                     $.modal.alertSuccess(result.msg)
-        //                 } else if (result.code == web_status.WARNING) {
-        //                     $.modal.alertWarning(result.msg)
-        //                 } else {
-        //                     $.modal.alertError(result.msg);
-        //                 }
-        //                 $.modal.closeLoading();
-        //             }
-        //         };
-        //         $.ajax(config)
-        //     },
+            // 保存信息 弹出结果提示框
+            saveModal: function(url, data, callback) {
+                var config = {
+                    url: url,
+                    type: "post",
+                    dataType: "json",
+                    data: data,
+                    beforeSend: function (xhr, settings) {
+                        var csrftoken = $('meta[name=csrf-token]').attr('content');
+                        if (($.common.equalsIgnoreCase(settings.type, "POST"))) {
+                            xhr.setRequestHeader("X-CSRF-Token", csrftoken);
+                        }
+                        $.modal.loading("正在处理中，请稍候...");
+                    },
+                    success: function(result) {
+                        if (typeof callback == "function") {
+                            callback(result);
+                        }
+                        if (result.code == web_status.SUCCESS) {
+                            $.modal.alertSuccess(result.msg)
+                        } else if (result.code == web_status.WARNING) {
+                            $.modal.alertWarning(result.msg)
+                        } else {
+                            $.modal.alertError(result.msg);
+                        }
+                        $.modal.closeLoading();
+                    }
+                };
+                $.ajax(config)
+            },
             // 保存选项卡信息
             saveTab: function(url, data, callback) {
                 var config = {

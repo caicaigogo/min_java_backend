@@ -116,15 +116,15 @@ public interface IUserService
      * @return 结果
      */
     public int updateUser(User user);
-//
-//    /**
-//     * 修改用户详细信息
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    public int updateUserInfo(User user);
-//
+
+    /**
+     * 修改用户详细信息
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    public int updateUserInfo(User user);
+
 //    /**
 //     * 修改用户头像
 //     *

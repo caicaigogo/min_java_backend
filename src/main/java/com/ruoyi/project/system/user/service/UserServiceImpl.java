@@ -276,17 +276,17 @@ public class UserServiceImpl implements IUserService
         return userMapper.updateUser(user);
     }
 
-//    /**
-//     * 修改用户个人详细信息
-//     *
-//     * @param user 用户信息
-//     * @return 结果
-//     */
-//    @Override
-//    public int updateUserInfo(User user)
-//    {
-//        return userMapper.updateUser(user);
-//    }
+    /**
+     * 修改用户个人详细信息
+     *
+     * @param user 用户信息
+     * @return 结果
+     */
+    @Override
+    public int updateUserInfo(User user)
+    {
+        return userMapper.updateUser(user);
+    }
 //
 //    /**
 //     * 修改用户头像

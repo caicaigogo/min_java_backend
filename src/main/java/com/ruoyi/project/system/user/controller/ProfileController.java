@@ -43,18 +43,18 @@ public class ProfileController extends BaseController
     @Autowired
     private PasswordService passwordService;
 
-//    /**
-//     * 个人信息
-//     */
-//    @GetMapping()
-//    public String profile(ModelMap mmap)
-//    {
-//        User user = getSysUser();
-//        mmap.put("user", user);
-//        mmap.put("roleGroup", userService.selectUserRoleGroup(user.getUserId()));
-//        mmap.put("postGroup", userService.selectUserPostGroup(user.getUserId()));
-//        return prefix + "/profile";
-//    }
+    /**
+     * 个人信息
+     */
+    @GetMapping()
+    public String profile(ModelMap mmap)
+    {
+        User user = getSysUser();
+        mmap.put("user", user);
+        mmap.put("roleGroup", userService.selectUserRoleGroup(user.getUserId()));
+        mmap.put("postGroup", userService.selectUserPostGroup(user.getUserId()));
+        return prefix + "/profile";
+    }
 
     @GetMapping("/checkPassword")
     @ResponseBody
@@ -106,45 +106,45 @@ public class ProfileController extends BaseController
 //        return prefix + "/edit";
 //    }
 //
-//    /**
-//     * 修改头像
-//     */
-//    @GetMapping("/avatar")
-//    public String avatar(ModelMap mmap)
-//    {
-//        User user = getSysUser();
-//        mmap.put("user", userService.selectUserById(user.getUserId()));
-//        return prefix + "/avatar";
-//    }
-//
-//    /**
-//     * 修改用户
-//     */
-//    @Log(title = "个人信息", businessType = BusinessType.UPDATE)
-//    @PostMapping("/update")
-//    @ResponseBody
-//    public AjaxResult update(User user)
-//    {
-//        User currentUser = getSysUser();
-//        currentUser.setUserName(user.getUserName());
-//        currentUser.setEmail(user.getEmail());
-//        currentUser.setPhonenumber(user.getPhonenumber());
-//        currentUser.setSex(user.getSex());
-//        if (StringUtils.isNotEmpty(user.getPhonenumber()) && !userService.checkPhoneUnique(currentUser))
-//        {
-//            return error("修改用户'" + currentUser.getLoginName() + "'失败，手机号码已存在");
-//        }
-//        else if (StringUtils.isNotEmpty(user.getEmail()) && !userService.checkEmailUnique(currentUser))
-//        {
-//            return error("修改用户'" + currentUser.getLoginName() + "'失败，邮箱账号已存在");
-//        }
-//        if (userService.updateUserInfo(currentUser) > 0)
-//        {
-//            setSysUser(userService.selectUserById(currentUser.getUserId()));
-//            return success();
-//        }
-//        return error();
-//    }
+    /**
+     * 修改头像
+     */
+    @GetMapping("/avatar")
+    public String avatar(ModelMap mmap)
+    {
+        User user = getSysUser();
+        mmap.put("user", userService.selectUserById(user.getUserId()));
+        return prefix + "/avatar";
+    }
+
+    /**
+     * 修改用户
+     */
+    @Log(title = "个人信息", businessType = BusinessType.UPDATE)
+    @PostMapping("/update")
+    @ResponseBody
+    public AjaxResult update(User user)
+    {
+        User currentUser = getSysUser();
+        currentUser.setUserName(user.getUserName());
+        currentUser.setEmail(user.getEmail());
+        currentUser.setPhonenumber(user.getPhonenumber());
+        currentUser.setSex(user.getSex());
+        if (StringUtils.isNotEmpty(user.getPhonenumber()) && !userService.checkPhoneUnique(currentUser))
+        {
+            return error("修改用户'" + currentUser.getLoginName() + "'失败，手机号码已存在");
+        }
+        else if (StringUtils.isNotEmpty(user.getEmail()) && !userService.checkEmailUnique(currentUser))
+        {
+            return error("修改用户'" + currentUser.getLoginName() + "'失败，邮箱账号已存在");
+        }
+        if (userService.updateUserInfo(currentUser) > 0)
+        {
+            setSysUser(userService.selectUserById(currentUser.getUserId()));
+            return success();
+        }
+        return error();
+    }
 //
 //    /**
 //     * 保存头像
