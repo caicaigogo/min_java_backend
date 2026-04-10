@@ -35,14 +35,14 @@ public interface IDeptService
 //     * @return 所有部门信息
 //     */
 //    public List<Ztree> selectDeptTreeExcludeChild(Dept dept);
-//
-//    /**
-//     * 根据角色ID查询菜单
-//     *
-//     * @param role 角色对象
-//     * @return 菜单列表
-//     */
-//    public List<Ztree> roleDeptTreeData(Role role);
+
+    /**
+     * 根据角色ID查询菜单
+     *
+     * @param role 角色对象
+     * @return 菜单列表
+     */
+    public List<Ztree> roleDeptTreeData(Role role);
 //
 //    /**
 //     * 根据父部门ID查询下级部门数量

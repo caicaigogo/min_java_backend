@@ -40,11 +40,11 @@ public class RoleController extends BaseController
     @Autowired
     private IRoleService roleService;
 
-//    @Autowired
-//    private IUserService userService;
-//
-//    @Autowired
-//    private IDeptService deptService;
+    @Autowired
+    private IUserService userService;
+
+    @Autowired
+    private IDeptService deptService;
 
     @RequiresPermissions("system:role:view")
     @GetMapping()
@@ -141,36 +141,36 @@ public class RoleController extends BaseController
         return toAjax(roleService.updateRole(role));
     }
 
-//    /**
-//     * 角色分配数据权限
-//     */
-//    @RequiresPermissions("system:role:edit")
-//    @GetMapping("/authDataScope/{roleId}")
-//    public String authDataScope(@PathVariable("roleId") Long roleId, ModelMap mmap)
-//    {
-//        roleService.checkRoleDataScope(roleId);
-//        mmap.put("role", roleService.selectRoleById(roleId));
-//        return prefix + "/dataScope";
-//    }
-//
-//    /**
-//     * 保存角色分配数据权限
-//     */
-//    @RequiresPermissions("system:role:edit")
-//    @Log(title = "角色管理", businessType = BusinessType.UPDATE)
-//    @PostMapping("/authDataScope")
-//    @ResponseBody
-//    public AjaxResult authDataScopeSave(Role role)
-//    {
-//        roleService.checkRoleAllowed(role);
-//        roleService.checkRoleDataScope(role.getRoleId());
-//        if (roleService.authDataScope(role) > 0)
-//        {
-//            setSysUser(userService.selectUserById(getUserId()));
-//            return success();
-//        }
-//        return error();
-//    }
+    /**
+     * 角色分配数据权限
+     */
+    @RequiresPermissions("system:role:edit")
+    @GetMapping("/authDataScope/{roleId}")
+    public String authDataScope(@PathVariable("roleId") Long roleId, ModelMap mmap)
+    {
+        roleService.checkRoleDataScope(roleId);
+        mmap.put("role", roleService.selectRoleById(roleId));
+        return prefix + "/dataScope";
+    }
+
+    /**
+     * 保存角色分配数据权限
+     */
+    @RequiresPermissions("system:role:edit")
+    @Log(title = "角色管理", businessType = BusinessType.UPDATE)
+    @PostMapping("/authDataScope")
+    @ResponseBody
+    public AjaxResult authDataScopeSave(Role role)
+    {
+        roleService.checkRoleAllowed(role);
+        roleService.checkRoleDataScope(role.getRoleId());
+        if (roleService.authDataScope(role) > 0)
+        {
+            setSysUser(userService.selectUserById(getUserId()));
+            return success();
+        }
+        return error();
+    }
 
     @RequiresPermissions("system:role:remove")
     @Log(title = "角色管理", businessType = BusinessType.DELETE)
@@ -309,16 +309,16 @@ public class RoleController extends BaseController
 //        roleService.checkRoleDataScope(roleId);
 //        return toAjax(roleService.insertAuthUsers(roleId, userIds));
 //    }
-//
-//    /**
-//     * 加载角色部门（数据权限）列表树
-//     */
-//    @RequiresPermissions("system:role:edit")
-//    @GetMapping("/deptTreeData")
-//    @ResponseBody
-//    public List<Ztree> deptTreeData(Role role)
-//    {
-//        List<Ztree> ztrees = deptService.roleDeptTreeData(role);
-//        return ztrees;
-//    }
+
+    /**
+     * 加载角色部门（数据权限）列表树
+     */
+    @RequiresPermissions("system:role:edit")
+    @GetMapping("/deptTreeData")
+    @ResponseBody
+    public List<Ztree> deptTreeData(Role role)
+    {
+        List<Ztree> ztrees = deptService.roleDeptTreeData(role);
+        return ztrees;
+    }
 }

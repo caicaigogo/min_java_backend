@@ -16,7 +16,7 @@ import com.ruoyi.common.utils.spring.SpringUtils;
 import com.ruoyi.common.utils.text.Convert;
 import com.ruoyi.framework.aspectj.lang.annotation.DataScope;
 import com.ruoyi.project.system.role.domain.Role;
-//import com.ruoyi.project.system.role.domain.RoleDept;
+import com.ruoyi.project.system.role.domain.RoleDept;
 import com.ruoyi.project.system.role.domain.RoleMenu;
 import com.ruoyi.project.system.role.mapper.RoleDeptMapper;
 import com.ruoyi.project.system.role.mapper.RoleMapper;
@@ -204,25 +204,25 @@ public class RoleServiceImpl implements IRoleService
         roleMenuMapper.deleteRoleMenuByRoleId(role.getRoleId());
         return insertRoleMenu(role);
     }
-//
-//    /**
-//     * 修改数据权限信息
-//     *
-//     * @param role 角色信息
-//     * @return 结果
-//     */
-//    @Override
-//    @Transactional
-//    public int authDataScope(Role role)
-//    {
-//        role.setUpdateBy(ShiroUtils.getLoginName());
-//        // 修改角色信息
-//        roleMapper.updateRole(role);
-//        // 删除角色与部门关联
-//        roleDeptMapper.deleteRoleDeptByRoleId(role.getRoleId());
-//        // 新增角色和部门信息（数据权限）
-//        return insertRoleDept(role);
-//    }
+
+    /**
+     * 修改数据权限信息
+     *
+     * @param role 角色信息
+     * @return 结果
+     */
+    @Override
+    @Transactional
+    public int authDataScope(Role role)
+    {
+        role.setUpdateBy(ShiroUtils.getLoginName());
+        // 修改角色信息
+        roleMapper.updateRole(role);
+        // 删除角色与部门关联
+        roleDeptMapper.deleteRoleDeptByRoleId(role.getRoleId());
+        // 新增角色和部门信息（数据权限）
+        return insertRoleDept(role);
+    }
 
     /**
      * 新增角色菜单信息
@@ -248,30 +248,30 @@ public class RoleServiceImpl implements IRoleService
         return rows;
     }
 
-//    /**
-//     * 新增角色部门信息(数据权限)
-//     *
-//     * @param role 角色对象
-//     */
-//    public int insertRoleDept(Role role)
-//    {
-//        int rows = 1;
-//        // 新增角色与部门（数据权限）管理
-//        List<RoleDept> list = new ArrayList<RoleDept>();
-//        for (Long deptId : role.getDeptIds())
-//        {
-//            RoleDept rd = new RoleDept();
-//            rd.setRoleId(role.getRoleId());
-//            rd.setDeptId(deptId);
-//            list.add(rd);
-//        }
-//        if (list.size() > 0)
-//        {
-//            rows = roleDeptMapper.batchRoleDept(list);
-//        }
-//        return rows;
-//    }
-//
+    /**
+     * 新增角色部门信息(数据权限)
+     *
+     * @param role 角色对象
+     */
+    public int insertRoleDept(Role role)
+    {
+        int rows = 1;
+        // 新增角色与部门（数据权限）管理
+        List<RoleDept> list = new ArrayList<RoleDept>();
+        for (Long deptId : role.getDeptIds())
+        {
+            RoleDept rd = new RoleDept();
+            rd.setRoleId(role.getRoleId());
+            rd.setDeptId(deptId);
+            list.add(rd);
+        }
+        if (list.size() > 0)
+        {
+            rows = roleDeptMapper.batchRoleDept(list);
+        }
+        return rows;
+    }
+
     /**
      * 校验角色名称是否唯一
      *

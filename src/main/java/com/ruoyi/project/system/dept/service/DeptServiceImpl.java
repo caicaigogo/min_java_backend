@@ -76,30 +76,30 @@ public class DeptServiceImpl implements IDeptService
 //        List<Ztree> ztrees = initZtree(depts);
 //        return ztrees;
 //    }
-//
-//    /**
-//     * 根据角色ID查询部门（数据权限）
-//     *
-//     * @param role 角色对象
-//     * @return 部门列表（数据权限）
-//     */
-//    @Override
-//    public List<Ztree> roleDeptTreeData(Role role)
-//    {
-//        Long roleId = role.getRoleId();
-//        List<Ztree> ztrees = new ArrayList<Ztree>();
-//        List<Dept> deptList = SpringUtils.getAopProxy(this).selectDeptList(new Dept());
-//        if (StringUtils.isNotNull(roleId))
-//        {
-//            List<String> roleDeptList = deptMapper.selectRoleDeptTree(roleId);
-//            ztrees = initZtree(deptList, roleDeptList);
-//        }
-//        else
-//        {
-//            ztrees = initZtree(deptList);
-//        }
-//        return ztrees;
-//    }
+
+    /**
+     * 根据角色ID查询部门（数据权限）
+     *
+     * @param role 角色对象
+     * @return 部门列表（数据权限）
+     */
+    @Override
+    public List<Ztree> roleDeptTreeData(Role role)
+    {
+        Long roleId = role.getRoleId();
+        List<Ztree> ztrees = new ArrayList<Ztree>();
+        List<Dept> deptList = SpringUtils.getAopProxy(this).selectDeptList(new Dept());
+        if (StringUtils.isNotNull(roleId))
+        {
+            List<String> roleDeptList = deptMapper.selectRoleDeptTree(roleId);
+            ztrees = initZtree(deptList, roleDeptList);
+        }
+        else
+        {
+            ztrees = initZtree(deptList);
+        }
+        return ztrees;
+    }
 
     /**
      * 对象转部门树

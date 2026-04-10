@@ -150,13 +150,13 @@
 		    };
 		    $.table.init(options);
 		});
-		//
-		// /* 角色管理-分配数据权限 */
-		// function authDataScope(roleId) {
-		//     var url = prefix + '/authDataScope/' + roleId;
-		//     $.modal.open("分配数据权限", url);
-		// }
-		//
+
+		/* 角色管理-分配数据权限 */
+		function authDataScope(roleId) {
+		    var url = prefix + '/authDataScope/' + roleId;
+		    $.modal.open("分配数据权限", url);
+		}
+
 		// /* 角色管理-分配用户 */
 		// function authUser(roleId) {
 		//     var url = prefix + '/authUser/' + roleId;

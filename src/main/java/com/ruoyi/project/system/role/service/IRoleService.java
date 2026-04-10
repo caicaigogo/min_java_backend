@@ -84,14 +84,14 @@ public interface IRoleService
      */
     public int updateRole(Role role);
 
-//    /**
-//     * 修改数据权限信息
-//     *
-//     * @param role 角色信息
-//     * @return 结果
-//     */
-//    public int authDataScope(Role role);
-//
+    /**
+     * 修改数据权限信息
+     *
+     * @param role 角色信息
+     * @return 结果
+     */
+    public int authDataScope(Role role);
+
     /**
      * 校验角色名称是否唯一
      *

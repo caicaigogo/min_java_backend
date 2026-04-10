@@ -86,14 +86,14 @@ public interface DeptMapper
 //     */
 //    public Dept checkDeptNameUnique(@Param("deptName") String deptName, @Param("parentId") Long parentId);
 //
-//    /**
-//     * 根据角色ID查询部门
-//     *
-//     * @param roleId 角色ID
-//     * @return 部门列表
-//     */
-//    public List<String> selectRoleDeptTree(Long roleId);
-//
+    /**
+     * 根据角色ID查询部门
+     *
+     * @param roleId 角色ID
+     * @return 部门列表
+     */
+    public List<String> selectRoleDeptTree(Long roleId);
+
 //    /**
 //     * 修改所在部门正常状态
 //     *
