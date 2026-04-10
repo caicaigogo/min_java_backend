@@ -105,42 +105,42 @@ public class RoleController extends BaseController
         return toAjax(roleService.insertRole(role));
 
     }
-//
-//    /**
-//     * 修改角色
-//     */
-//    @RequiresPermissions("system:role:edit")
-//    @GetMapping("/edit/{roleId}")
-//    public String edit(@PathVariable("roleId") Long roleId, ModelMap mmap)
-//    {
-//        roleService.checkRoleDataScope(roleId);
-//        mmap.put("role", roleService.selectRoleById(roleId));
-//        return prefix + "/edit";
-//    }
-//
-//    /**
-//     * 修改保存角色
-//     */
-//    @RequiresPermissions("system:role:edit")
-//    @Log(title = "角色管理", businessType = BusinessType.UPDATE)
-//    @PostMapping("/edit")
-//    @ResponseBody
-//    public AjaxResult editSave(@Validated Role role)
-//    {
-//        roleService.checkRoleAllowed(role);
-//        roleService.checkRoleDataScope(role.getRoleId());
-//        if (!roleService.checkRoleNameUnique(role))
-//        {
-//            return error("修改角色'" + role.getRoleName() + "'失败，角色名称已存在");
-//        }
-//        else if (!roleService.checkRoleKeyUnique(role))
-//        {
-//            return error("修改角色'" + role.getRoleName() + "'失败，角色权限已存在");
-//        }
-//        AuthorizationUtils.clearAllCachedAuthorizationInfo();
-//        return toAjax(roleService.updateRole(role));
-//    }
-//
+
+    /**
+     * 修改角色
+     */
+    @RequiresPermissions("system:role:edit")
+    @GetMapping("/edit/{roleId}")
+    public String edit(@PathVariable("roleId") Long roleId, ModelMap mmap)
+    {
+        roleService.checkRoleDataScope(roleId);
+        mmap.put("role", roleService.selectRoleById(roleId));
+        return prefix + "/edit";
+    }
+
+    /**
+     * 修改保存角色
+     */
+    @RequiresPermissions("system:role:edit")
+    @Log(title = "角色管理", businessType = BusinessType.UPDATE)
+    @PostMapping("/edit")
+    @ResponseBody
+    public AjaxResult editSave(@Validated Role role)
+    {
+        roleService.checkRoleAllowed(role);
+        roleService.checkRoleDataScope(role.getRoleId());
+        if (!roleService.checkRoleNameUnique(role))
+        {
+            return error("修改角色'" + role.getRoleName() + "'失败，角色名称已存在");
+        }
+        else if (!roleService.checkRoleKeyUnique(role))
+        {
+            return error("修改角色'" + role.getRoleName() + "'失败，角色权限已存在");
+        }
+        AuthorizationUtils.clearAllCachedAuthorizationInfo();
+        return toAjax(roleService.updateRole(role));
+    }
+
 //    /**
 //     * 角色分配数据权限
 //     */

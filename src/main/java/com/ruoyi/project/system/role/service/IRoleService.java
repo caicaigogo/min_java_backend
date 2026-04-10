@@ -43,14 +43,14 @@ public interface IRoleService
      */
     public List<Role> selectRoleAll();
 
-//    /**
-//     * 通过角色ID查询角色
-//     *
-//     * @param roleId 角色ID
-//     * @return 角色对象信息
-//     */
-//    public Role selectRoleById(Long roleId);
-//
+    /**
+     * 通过角色ID查询角色
+     *
+     * @param roleId 角色ID
+     * @return 角色对象信息
+     */
+    public Role selectRoleById(Long roleId);
+
 //    /**
 //     * 通过角色ID删除角色
 //     *
@@ -75,15 +75,15 @@ public interface IRoleService
      * @return 结果
      */
     public int insertRole(Role role);
-//
-//    /**
-//     * 修改保存角色信息
-//     *
-//     * @param role 角色信息
-//     * @return 结果
-//     */
-//    public int updateRole(Role role);
-//
+
+    /**
+     * 修改保存角色信息
+     *
+     * @param role 角色信息
+     * @return 结果
+     */
+    public int updateRole(Role role);
+
 //    /**
 //     * 修改数据权限信息
 //     *
@@ -108,13 +108,13 @@ public interface IRoleService
      */
     public boolean checkRoleKeyUnique(Role role);
 
-//    /**
-//     * 校验角色是否允许操作
-//     *
-//     * @param role 角色信息
-//     */
-//    public void checkRoleAllowed(Role role);
-//
+    /**
+     * 校验角色是否允许操作
+     *
+     * @param role 角色信息
+     */
+    public void checkRoleAllowed(Role role);
+
     /**
      * 校验角色是否有数据权限
      *

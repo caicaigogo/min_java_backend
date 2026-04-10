@@ -1165,21 +1165,21 @@ var table = {
                 var url = $.common.isEmpty(id) ? table.options.createUrl.replace("{id}", "") : table.options.createUrl.replace("{id}", id);
                 return url;
             },
-        //     // 修改信息
-        //     edit: function(id) {
-        //         table.set();
-        //         if ($.common.isEmpty(id) && table.options.type == table_type.bootstrapTreeTable) {
-        //             var row = $("#" + table.options.id).bootstrapTreeTable('getSelections')[0];
-        //             if ($.common.isEmpty(row)) {
-        //                 $.modal.alertWarning("请至少选择一条记录");
-        //                 return;
-        //             }
-        //             var url = table.options.updateUrl.replace("{id}", row[table.options.uniqueId]);
-        //             $.modal.open("修改" + table.options.modalName, url);
-        //         } else {
-        //             $.modal.open("修改" + table.options.modalName, $.operate.editUrl(id));
-        //         }
-        //     },
+            // 修改信息
+            edit: function(id) {
+                table.set();
+                if ($.common.isEmpty(id) && table.options.type == table_type.bootstrapTreeTable) {
+                    var row = $("#" + table.options.id).bootstrapTreeTable('getSelections')[0];
+                    if ($.common.isEmpty(row)) {
+                        $.modal.alertWarning("请至少选择一条记录");
+                        return;
+                    }
+                    var url = table.options.updateUrl.replace("{id}", row[table.options.uniqueId]);
+                    $.modal.open("修改" + table.options.modalName, url);
+                } else {
+                    $.modal.open("修改" + table.options.modalName, $.operate.editUrl(id));
+                }
+            },
             // 修改信息，以tab页展现
             editTab: function(id) {
                 table.set();

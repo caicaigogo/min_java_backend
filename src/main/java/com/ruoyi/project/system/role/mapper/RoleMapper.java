@@ -27,14 +27,14 @@ public interface RoleMapper
      */
     public List<Role> selectRolesByUserId(Long userId);
 
-//    /**
-//     * 通过角色ID查询角色
-//     *
-//     * @param roleId 角色ID
-//     * @return 角色对象信息
-//     */
-//    public Role selectRoleById(Long roleId);
-//
+    /**
+     * 通过角色ID查询角色
+     *
+     * @param roleId 角色ID
+     * @return 角色对象信息
+     */
+    public Role selectRoleById(Long roleId);
+
 //    /**
 //     * 通过角色ID删除角色
 //     *
@@ -50,15 +50,15 @@ public interface RoleMapper
 //     * @return 结果
 //     */
 //    public int deleteRoleByIds(Long[] ids);
-//
-//    /**
-//     * 修改角色信息
-//     *
-//     * @param role 角色信息
-//     * @return 结果
-//     */
-//    public int updateRole(Role role);
-//
+
+    /**
+     * 修改角色信息
+     *
+     * @param role 角色信息
+     * @return 结果
+     */
+    public int updateRole(Role role);
+
     /**
      * 新增角色信息
      *

@@ -114,18 +114,18 @@ public class RoleServiceImpl implements IRoleService
         return SpringUtils.getAopProxy(this).selectRoleList(new Role());
     }
 
-//    /**
-//     * 通过角色ID查询角色
-//     *
-//     * @param roleId 角色ID
-//     * @return 角色对象信息
-//     */
-//    @Override
-//    public Role selectRoleById(Long roleId)
-//    {
-//        return roleMapper.selectRoleById(roleId);
-//    }
-//
+    /**
+     * 通过角色ID查询角色
+     *
+     * @param roleId 角色ID
+     * @return 角色对象信息
+     */
+    @Override
+    public Role selectRoleById(Long roleId)
+    {
+        return roleMapper.selectRoleById(roleId);
+    }
+
 //    /**
 //     * 通过角色ID删除角色
 //     *
@@ -186,24 +186,24 @@ public class RoleServiceImpl implements IRoleService
         roleMapper.insertRole(role);
         return insertRoleMenu(role);
     }
-//
-//    /**
-//     * 修改保存角色信息
-//     *
-//     * @param role 角色信息
-//     * @return 结果
-//     */
-//    @Override
-//    @Transactional
-//    public int updateRole(Role role)
-//    {
-//        role.setUpdateBy(ShiroUtils.getLoginName());
-//        // 修改角色信息
-//        roleMapper.updateRole(role);
-//        // 删除角色与菜单关联
-//        roleMenuMapper.deleteRoleMenuByRoleId(role.getRoleId());
-//        return insertRoleMenu(role);
-//    }
+
+    /**
+     * 修改保存角色信息
+     *
+     * @param role 角色信息
+     * @return 结果
+     */
+    @Override
+    @Transactional
+    public int updateRole(Role role)
+    {
+        role.setUpdateBy(ShiroUtils.getLoginName());
+        // 修改角色信息
+        roleMapper.updateRole(role);
+        // 删除角色与菜单关联
+        roleMenuMapper.deleteRoleMenuByRoleId(role.getRoleId());
+        return insertRoleMenu(role);
+    }
 //
 //    /**
 //     * 修改数据权限信息
@@ -307,20 +307,20 @@ public class RoleServiceImpl implements IRoleService
         }
         return UserConstants.UNIQUE;
     }
-//
-//    /**
-//     * 校验角色是否允许操作
-//     *
-//     * @param role 角色信息
-//     */
-//    @Override
-//    public void checkRoleAllowed(Role role)
-//    {
-//        if (StringUtils.isNotNull(role.getRoleId()) && role.isAdmin())
-//        {
-//            throw new ServiceException("不允许操作超级管理员角色");
-//        }
-//    }
+
+    /**
+     * 校验角色是否允许操作
+     *
+     * @param role 角色信息
+     */
+    @Override
+    public void checkRoleAllowed(Role role)
+    {
+        if (StringUtils.isNotNull(role.getRoleId()) && role.isAdmin())
+        {
+            throw new ServiceException("不允许操作超级管理员角色");
+        }
+    }
 
     /**
      * 校验角色是否有数据权限

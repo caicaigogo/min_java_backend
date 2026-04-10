@@ -10,14 +10,14 @@ import com.ruoyi.project.system.role.domain.RoleMenu;
  */
 public interface RoleMenuMapper
 {
-//    /**
-//     * 通过角色ID删除角色和菜单关联
-//     *
-//     * @param roleId 角色ID
-//     * @return 结果
-//     */
-//    public int deleteRoleMenuByRoleId(Long roleId);
-//
+    /**
+     * 通过角色ID删除角色和菜单关联
+     *
+     * @param roleId 角色ID
+     * @return 结果
+     */
+    public int deleteRoleMenuByRoleId(Long roleId);
+
 //    /**
 //     * 批量删除角色菜单关联信息
 //     *
