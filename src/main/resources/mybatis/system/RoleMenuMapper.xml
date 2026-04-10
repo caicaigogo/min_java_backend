@@ -23,12 +23,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 			#{roleId}-->
 <!--        </foreach> -->
 <!-- 	</delete>-->
-<!--	-->
-<!--	<insert id="batchRoleMenu">-->
-<!--		insert into sys_role_menu(role_id, menu_id) values-->
-<!--		<foreach item="item" index="index" collection="list" separator=",">-->
-<!--			(#{item.roleId},#{item.menuId})-->
-<!--		</foreach>-->
-<!--	</insert>-->
+
+	<insert id="batchRoleMenu">
+		insert into sys_role_menu(role_id, menu_id) values
+		<foreach item="item" index="index" collection="list" separator=",">
+			(#{item.roleId},#{item.menuId})
+		</foreach>
+	</insert>
 
 </mapper>

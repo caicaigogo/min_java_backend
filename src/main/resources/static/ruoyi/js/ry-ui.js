@@ -1528,14 +1528,14 @@ var table = {
                     $.tree.showParent(treeNode)
                 }
             },
-        //     // 获取当前被勾选集合
-        //     getCheckedNodes: function(column) {
-        //         var _column = $.common.isEmpty(column) ? "id" : column;
-        //         var nodes = $._tree.getCheckedNodes(true);
-        //         return $.map(nodes, function (row) {
-        //             return row[_column];
-        //         }).join();
-        //     },
+            // 获取当前被勾选集合
+            getCheckedNodes: function(column) {
+                var _column = $.common.isEmpty(column) ? "id" : column;
+                var nodes = $._tree.getCheckedNodes(true);
+                return $.map(nodes, function (row) {
+                    return row[_column];
+                }).join();
+            },
         //     // 不允许根父节点选择
         //     notAllowParents: function(_tree) {
         //         var nodes = _tree.getSelectedNodes();

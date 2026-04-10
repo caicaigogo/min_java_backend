@@ -17,10 +17,10 @@ import com.ruoyi.common.utils.spring.SpringUtils;
 import com.ruoyi.framework.aspectj.lang.annotation.DataScope;
 import com.ruoyi.project.system.role.domain.Role;
 //import com.ruoyi.project.system.role.domain.RoleDept;
-//import com.ruoyi.project.system.role.domain.RoleMenu;
+import com.ruoyi.project.system.role.domain.RoleMenu;
 //import com.ruoyi.project.system.role.mapper.RoleDeptMapper;
 import com.ruoyi.project.system.role.mapper.RoleMapper;
-//import com.ruoyi.project.system.role.mapper.RoleMenuMapper;
+import com.ruoyi.project.system.role.mapper.RoleMenuMapper;
 import com.ruoyi.project.system.user.domain.UserRole;
 import com.ruoyi.project.system.user.mapper.UserRoleMapper;
 
@@ -34,9 +34,9 @@ public class RoleServiceImpl implements IRoleService
 {
     @Autowired
     private RoleMapper roleMapper;
-//
-//    @Autowired
-//    private RoleMenuMapper roleMenuMapper;
+
+    @Autowired
+    private RoleMenuMapper roleMenuMapper;
 //
 //    @Autowired
 //    private UserRoleMapper userRoleMapper;
@@ -171,21 +171,21 @@ public class RoleServiceImpl implements IRoleService
 //        return roleMapper.deleteRoleByIds(roleIds);
 //    }
 //
-//    /**
-//     * 新增保存角色信息
-//     *
-//     * @param role 角色信息
-//     * @return 结果
-//     */
-//    @Override
-//    @Transactional
-//    public int insertRole(Role role)
-//    {
-//        role.setCreateBy(ShiroUtils.getLoginName());
-//        // 新增角色信息
-//        roleMapper.insertRole(role);
-//        return insertRoleMenu(role);
-//    }
+    /**
+     * 新增保存角色信息
+     *
+     * @param role 角色信息
+     * @return 结果
+     */
+    @Override
+    @Transactional
+    public int insertRole(Role role)
+    {
+        role.setCreateBy(ShiroUtils.getLoginName());
+        // 新增角色信息
+        roleMapper.insertRole(role);
+        return insertRoleMenu(role);
+    }
 //
 //    /**
 //     * 修改保存角色信息
@@ -223,31 +223,31 @@ public class RoleServiceImpl implements IRoleService
 //        // 新增角色和部门信息（数据权限）
 //        return insertRoleDept(role);
 //    }
-//
-//    /**
-//     * 新增角色菜单信息
-//     *
-//     * @param role 角色对象
-//     */
-//    public int insertRoleMenu(Role role)
-//    {
-//        int rows = 1;
-//        // 新增用户与角色管理
-//        List<RoleMenu> list = new ArrayList<RoleMenu>();
-//        for (Long menuId : role.getMenuIds())
-//        {
-//            RoleMenu rm = new RoleMenu();
-//            rm.setRoleId(role.getRoleId());
-//            rm.setMenuId(menuId);
-//            list.add(rm);
-//        }
-//        if (list.size() > 0)
-//        {
-//            rows = roleMenuMapper.batchRoleMenu(list);
-//        }
-//        return rows;
-//    }
-//
+
+    /**
+     * 新增角色菜单信息
+     *
+     * @param role 角色对象
+     */
+    public int insertRoleMenu(Role role)
+    {
+        int rows = 1;
+        // 新增用户与角色管理
+        List<RoleMenu> list = new ArrayList<RoleMenu>();
+        for (Long menuId : role.getMenuIds())
+        {
+            RoleMenu rm = new RoleMenu();
+            rm.setRoleId(role.getRoleId());
+            rm.setMenuId(menuId);
+            list.add(rm);
+        }
+        if (list.size() > 0)
+        {
+            rows = roleMenuMapper.batchRoleMenu(list);
+        }
+        return rows;
+    }
+
 //    /**
 //     * 新增角色部门信息(数据权限)
 //     *
@@ -272,41 +272,41 @@ public class RoleServiceImpl implements IRoleService
 //        return rows;
 //    }
 //
-//    /**
-//     * 校验角色名称是否唯一
-//     *
-//     * @param role 角色信息
-//     * @return 结果
-//     */
-//    @Override
-//    public boolean checkRoleNameUnique(Role role)
-//    {
-//        Long roleId = StringUtils.isNull(role.getRoleId()) ? -1L : role.getRoleId();
-//        Role info = roleMapper.checkRoleNameUnique(role.getRoleName());
-//        if (StringUtils.isNotNull(info) && info.getRoleId().longValue() != roleId.longValue())
-//        {
-//            return UserConstants.NOT_UNIQUE;
-//        }
-//        return UserConstants.UNIQUE;
-//    }
-//
-//    /**
-//     * 校验角色权限是否唯一
-//     *
-//     * @param role 角色信息
-//     * @return 结果
-//     */
-//    @Override
-//    public boolean checkRoleKeyUnique(Role role)
-//    {
-//        Long roleId = StringUtils.isNull(role.getRoleId()) ? -1L : role.getRoleId();
-//        Role info = roleMapper.checkRoleKeyUnique(role.getRoleKey());
-//        if (StringUtils.isNotNull(info) && info.getRoleId().longValue() != roleId.longValue())
-//        {
-//            return UserConstants.NOT_UNIQUE;
-//        }
-//        return UserConstants.UNIQUE;
-//    }
+    /**
+     * 校验角色名称是否唯一
+     *
+     * @param role 角色信息
+     * @return 结果
+     */
+    @Override
+    public boolean checkRoleNameUnique(Role role)
+    {
+        Long roleId = StringUtils.isNull(role.getRoleId()) ? -1L : role.getRoleId();
+        Role info = roleMapper.checkRoleNameUnique(role.getRoleName());
+        if (StringUtils.isNotNull(info) && info.getRoleId().longValue() != roleId.longValue())
+        {
+            return UserConstants.NOT_UNIQUE;
+        }
+        return UserConstants.UNIQUE;
+    }
+
+    /**
+     * 校验角色权限是否唯一
+     *
+     * @param role 角色信息
+     * @return 结果
+     */
+    @Override
+    public boolean checkRoleKeyUnique(Role role)
+    {
+        Long roleId = StringUtils.isNull(role.getRoleId()) ? -1L : role.getRoleId();
+        Role info = roleMapper.checkRoleKeyUnique(role.getRoleKey());
+        if (StringUtils.isNotNull(info) && info.getRoleId().longValue() != roleId.longValue())
+        {
+            return UserConstants.NOT_UNIQUE;
+        }
+        return UserConstants.UNIQUE;
+    }
 //
 //    /**
 //     * 校验角色是否允许操作
@@ -325,7 +325,7 @@ public class RoleServiceImpl implements IRoleService
     /**
      * 校验角色是否有数据权限
      *
-     * @param roleId 角色id
+     * @param roleIds 角色id
      */
     @Override
     public void checkRoleDataScope(Long... roleIds)

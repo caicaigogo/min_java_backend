@@ -59,27 +59,27 @@ public interface RoleMapper
 //     */
 //    public int updateRole(Role role);
 //
-//    /**
-//     * 新增角色信息
-//     *
-//     * @param role 角色信息
-//     * @return 结果
-//     */
-//    public int insertRole(Role role);
-//
-//    /**
-//     * 校验角色名称是否唯一
-//     *
-//     * @param roleName 角色名称
-//     * @return 角色信息
-//     */
-//    public Role checkRoleNameUnique(String roleName);
-//
-//    /**
-//     * 校验角色权限是否唯一
-//     *
-//     * @param roleKey 角色权限
-//     * @return 角色信息
-//     */
-//    public Role checkRoleKeyUnique(String roleKey);
+    /**
+     * 新增角色信息
+     *
+     * @param role 角色信息
+     * @return 结果
+     */
+    public int insertRole(Role role);
+
+    /**
+     * 校验角色名称是否唯一
+     *
+     * @param roleName 角色名称
+     * @return 角色信息
+     */
+    public Role checkRoleNameUnique(String roleName);
+
+    /**
+     * 校验角色权限是否唯一
+     *
+     * @param roleKey 角色权限
+     * @return 角色信息
+     */
+    public Role checkRoleKeyUnique(String roleKey);
 }

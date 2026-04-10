@@ -19,13 +19,13 @@ public interface MenuMapper
      */
     public List<Menu> selectMenuAll();
 
-//    /**
-//     * 根据用户ID查询菜单
-//     *
-//     * @param userId 用户ID
-//     * @return 菜单列表
-//     */
-//    public List<Menu> selectMenuAllByUserId(Long userId);
+    /**
+     * 根据用户ID查询菜单
+     *
+     * @param userId 用户ID
+     * @return 菜单列表
+     */
+    public List<Menu> selectMenuAllByUserId(Long userId);
 
     /**
      * 查询系统正常显示菜单（不含按钮）
@@ -58,14 +58,14 @@ public interface MenuMapper
      */
     public List<String> selectPermsByRoleId(Long roleId);
 
-//    /**
-//     * 根据角色ID查询菜单
-//     *
-//     * @param roleId 角色ID
-//     * @return 菜单列表
-//     */
-//    public List<String> selectMenuTree(Long roleId);
-//
+    /**
+     * 根据角色ID查询菜单
+     *
+     * @param roleId 角色ID
+     * @return 菜单列表
+     */
+    public List<String> selectMenuTree(Long roleId);
+
 //    /**
 //     * 查询系统菜单列表
 //     *

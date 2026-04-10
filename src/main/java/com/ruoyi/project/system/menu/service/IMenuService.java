@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-//import com.ruoyi.framework.web.domain.Ztree;
+import com.ruoyi.framework.web.domain.Ztree;
 import com.ruoyi.project.system.menu.domain.Menu;
 import com.ruoyi.project.system.role.domain.Role;
 import com.ruoyi.project.system.user.domain.User;
@@ -31,13 +31,13 @@ public interface IMenuService
 //     * @return 菜单列表
 //     */
 //    public List<Menu> selectMenuList(Menu menu);
-//
-//    /**
-//     * 查询菜单集合
-//     *
-//     * @return 所有菜单信息
-//     */
-//    public List<Menu> selectMenuAll();
+
+    /**
+     * 查询菜单集合
+     *
+     * @return 所有菜单信息
+     */
+    public List<Menu> selectMenuAll();
 
     /**
      * 根据用户ID查询权限
@@ -54,15 +54,15 @@ public interface IMenuService
      * @return 权限列表
      */
     public Set<String> selectPermsByRoleId(Long roleId);
-//
-//    /**
-//     * 根据角色ID查询菜单
-//     *
-//     * @param role 角色对象
-//     * @return 菜单列表
-//     */
-//    public List<Ztree> roleMenuTreeData(Role role);
-//
+
+    /**
+     * 根据角色ID查询菜单
+     *
+     * @param role 角色对象
+     * @return 菜单列表
+     */
+    public List<Ztree> roleMenuTreeData(Role role);
+
 //    /**
 //     * 查询所有菜单信息
 //     *

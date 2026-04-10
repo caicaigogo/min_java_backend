@@ -74,37 +74,37 @@ public class RoleController extends BaseController
 //        return util.exportExcel(list, "角色数据");
 //    }
 //
-//    /**
-//     * 新增角色
-//     */
-//    @RequiresPermissions("system:role:add")
-//    @GetMapping("/add")
-//    public String add()
-//    {
-//        return prefix + "/add";
-//    }
-//
-//    /**
-//     * 新增保存角色
-//     */
-//    @RequiresPermissions("system:role:add")
-//    @Log(title = "角色管理", businessType = BusinessType.INSERT)
-//    @PostMapping("/add")
-//    @ResponseBody
-//    public AjaxResult addSave(@Validated Role role)
-//    {
-//        if (!roleService.checkRoleNameUnique(role))
-//        {
-//            return error("新增角色'" + role.getRoleName() + "'失败，角色名称已存在");
-//        }
-//        else if (!roleService.checkRoleKeyUnique(role))
-//        {
-//            return error("新增角色'" + role.getRoleName() + "'失败，角色权限已存在");
-//        }
-//        AuthorizationUtils.clearAllCachedAuthorizationInfo();
-//        return toAjax(roleService.insertRole(role));
-//
-//    }
+    /**
+     * 新增角色
+     */
+    @RequiresPermissions("system:role:add")
+    @GetMapping("/add")
+    public String add()
+    {
+        return prefix + "/add";
+    }
+
+    /**
+     * 新增保存角色
+     */
+    @RequiresPermissions("system:role:add")
+    @Log(title = "角色管理", businessType = BusinessType.INSERT)
+    @PostMapping("/add")
+    @ResponseBody
+    public AjaxResult addSave(@Validated Role role)
+    {
+        if (!roleService.checkRoleNameUnique(role))
+        {
+            return error("新增角色'" + role.getRoleName() + "'失败，角色名称已存在");
+        }
+        else if (!roleService.checkRoleKeyUnique(role))
+        {
+            return error("新增角色'" + role.getRoleName() + "'失败，角色权限已存在");
+        }
+        AuthorizationUtils.clearAllCachedAuthorizationInfo();
+        return toAjax(roleService.insertRole(role));
+
+    }
 //
 //    /**
 //     * 修改角色
@@ -180,27 +180,27 @@ public class RoleController extends BaseController
 //    {
 //        return toAjax(roleService.deleteRoleByIds(ids));
 //    }
-//
-//    /**
-//     * 校验角色名称
-//     */
-//    @PostMapping("/checkRoleNameUnique")
-//    @ResponseBody
-//    public boolean checkRoleNameUnique(Role role)
-//    {
-//        return roleService.checkRoleNameUnique(role);
-//    }
-//
-//    /**
-//     * 校验角色权限
-//     */
-//    @PostMapping("/checkRoleKeyUnique")
-//    @ResponseBody
-//    public boolean checkRoleKeyUnique(Role role)
-//    {
-//        return roleService.checkRoleKeyUnique(role);
-//    }
-//
+
+    /**
+     * 校验角色名称
+     */
+    @PostMapping("/checkRoleNameUnique")
+    @ResponseBody
+    public boolean checkRoleNameUnique(Role role)
+    {
+        return roleService.checkRoleNameUnique(role);
+    }
+
+    /**
+     * 校验角色权限
+     */
+    @PostMapping("/checkRoleKeyUnique")
+    @ResponseBody
+    public boolean checkRoleKeyUnique(Role role)
+    {
+        return roleService.checkRoleKeyUnique(role);
+    }
+
 //    /**
 //     * 选择菜单树
 //     */
