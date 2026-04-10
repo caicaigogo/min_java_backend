@@ -18,14 +18,14 @@ public interface RoleMenuMapper
      */
     public int deleteRoleMenuByRoleId(Long roleId);
 
-//    /**
-//     * 批量删除角色菜单关联信息
-//     *
-//     * @param ids 需要删除的数据ID
-//     * @return 结果
-//     */
-//    public int deleteRoleMenu(Long[] ids);
-//
+    /**
+     * 批量删除角色菜单关联信息
+     *
+     * @param ids 需要删除的数据ID
+     * @return 结果
+     */
+    public int deleteRoleMenu(Long[] ids);
+
 //    /**
 //     * 查询菜单使用数量
 //     *

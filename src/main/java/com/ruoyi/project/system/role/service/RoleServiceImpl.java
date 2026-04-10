@@ -13,12 +13,12 @@ import com.ruoyi.common.exception.ServiceException;
 import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.security.ShiroUtils;
 import com.ruoyi.common.utils.spring.SpringUtils;
-//import com.ruoyi.common.utils.text.Convert;
+import com.ruoyi.common.utils.text.Convert;
 import com.ruoyi.framework.aspectj.lang.annotation.DataScope;
 import com.ruoyi.project.system.role.domain.Role;
 //import com.ruoyi.project.system.role.domain.RoleDept;
 import com.ruoyi.project.system.role.domain.RoleMenu;
-//import com.ruoyi.project.system.role.mapper.RoleDeptMapper;
+import com.ruoyi.project.system.role.mapper.RoleDeptMapper;
 import com.ruoyi.project.system.role.mapper.RoleMapper;
 import com.ruoyi.project.system.role.mapper.RoleMenuMapper;
 import com.ruoyi.project.system.user.domain.UserRole;
@@ -37,12 +37,12 @@ public class RoleServiceImpl implements IRoleService
 
     @Autowired
     private RoleMenuMapper roleMenuMapper;
-//
-//    @Autowired
-//    private UserRoleMapper userRoleMapper;
-//
-//    @Autowired
-//    private RoleDeptMapper roleDeptMapper;
+
+    @Autowired
+    private UserRoleMapper userRoleMapper;
+
+    @Autowired
+    private RoleDeptMapper roleDeptMapper;
 
     /**
      * 根据条件分页查询角色数据
@@ -143,34 +143,34 @@ public class RoleServiceImpl implements IRoleService
 //        return roleMapper.deleteRoleById(roleId) > 0 ? true : false;
 //    }
 //
-//    /**
-//     * 批量删除角色信息
-//     *
-//     * @param ids 需要删除的数据ID
-//     * @throws Exception
-//     */
-//    @Override
-//    @Transactional
-//    public int deleteRoleByIds(String ids)
-//    {
-//        Long[] roleIds = Convert.toLongArray(ids);
-//        for (Long roleId : roleIds)
-//        {
-//            checkRoleAllowed(new Role(roleId));
-//            checkRoleDataScope(roleId);
-//            Role role = selectRoleById(roleId);
-//            if (countUserRoleByRoleId(roleId) > 0)
-//            {
-//                throw new ServiceException(String.format("%1$s已分配,不能删除", role.getRoleName()));
-//            }
-//        }
-//        // 删除角色与菜单关联
-//        roleMenuMapper.deleteRoleMenu(roleIds);
-//        // 删除角色与部门关联
-//        roleDeptMapper.deleteRoleDept(roleIds);
-//        return roleMapper.deleteRoleByIds(roleIds);
-//    }
-//
+    /**
+     * 批量删除角色信息
+     *
+     * @param ids 需要删除的数据ID
+     * @throws Exception
+     */
+    @Override
+    @Transactional
+    public int deleteRoleByIds(String ids)
+    {
+        Long[] roleIds = Convert.toLongArray(ids);
+        for (Long roleId : roleIds)
+        {
+            checkRoleAllowed(new Role(roleId));
+            checkRoleDataScope(roleId);
+            Role role = selectRoleById(roleId);
+            if (countUserRoleByRoleId(roleId) > 0)
+            {
+                throw new ServiceException(String.format("%1$s已分配,不能删除", role.getRoleName()));
+            }
+        }
+        // 删除角色与菜单关联
+        roleMenuMapper.deleteRoleMenu(roleIds);
+        // 删除角色与部门关联
+        roleDeptMapper.deleteRoleDept(roleIds);
+        return roleMapper.deleteRoleByIds(roleIds);
+    }
+
     /**
      * 新增保存角色信息
      *
@@ -345,18 +345,18 @@ public class RoleServiceImpl implements IRoleService
         }
     }
 
-//    /**
-//     * 通过角色ID查询角色使用数量
-//     *
-//     * @param roleId 角色ID
-//     * @return 结果
-//     */
-//    @Override
-//    public int countUserRoleByRoleId(Long roleId)
-//    {
-//        return userRoleMapper.countUserRoleByRoleId(roleId);
-//    }
-//
+    /**
+     * 通过角色ID查询角色使用数量
+     *
+     * @param roleId 角色ID
+     * @return 结果
+     */
+    @Override
+    public int countUserRoleByRoleId(Long roleId)
+    {
+        return userRoleMapper.countUserRoleByRoleId(roleId);
+    }
+
 //    /**
 //     * 角色状态修改
 //     *

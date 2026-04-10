@@ -171,15 +171,15 @@ public class RoleController extends BaseController
 //        }
 //        return error();
 //    }
-//
-//    @RequiresPermissions("system:role:remove")
-//    @Log(title = "角色管理", businessType = BusinessType.DELETE)
-//    @PostMapping("/remove")
-//    @ResponseBody
-//    public AjaxResult remove(String ids)
-//    {
-//        return toAjax(roleService.deleteRoleByIds(ids));
-//    }
+
+    @RequiresPermissions("system:role:remove")
+    @Log(title = "角色管理", businessType = BusinessType.DELETE)
+    @PostMapping("/remove")
+    @ResponseBody
+    public AjaxResult remove(String ids)
+    {
+        return toAjax(roleService.deleteRoleByIds(ids));
+    }
 
     /**
      * 校验角色名称

@@ -35,13 +35,13 @@ public interface UserRoleMapper
      */
     public int deleteUserRole(Long[] ids);
 
-//    /**
-//     * 通过角色ID查询角色使用数量
-//     *
-//     * @param roleId 角色ID
-//     * @return 结果
-//     */
-//    public int countUserRoleByRoleId(Long roleId);
+    /**
+     * 通过角色ID查询角色使用数量
+     *
+     * @param roleId 角色ID
+     * @return 结果
+     */
+    public int countUserRoleByRoleId(Long roleId);
 
     /**
      * 批量新增用户角色信息
