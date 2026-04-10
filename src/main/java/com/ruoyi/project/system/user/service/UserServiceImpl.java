@@ -102,18 +102,18 @@ public class UserServiceImpl implements IUserService
         return userMapper.selectAllocatedList(user);
     }
 
-//    /**
-//     * 根据条件分页查询未分配用户角色列表
-//     *
-//     * @param user 用户信息
-//     * @return 用户信息集合信息
-//     */
-//    @Override
-//    @DataScope(deptAlias = "d", userAlias = "u")
-//    public List<User> selectUnallocatedList(User user)
-//    {
-//        return userMapper.selectUnallocatedList(user);
-//    }
+    /**
+     * 根据条件分页查询未分配用户角色列表
+     *
+     * @param user 用户信息
+     * @return 用户信息集合信息
+     */
+    @Override
+    @DataScope(deptAlias = "d", userAlias = "u")
+    public List<User> selectUnallocatedList(User user)
+    {
+        return userMapper.selectUnallocatedList(user);
+    }
 
     /**
      * 通过用户名查询用户

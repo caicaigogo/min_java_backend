@@ -59,12 +59,12 @@ public interface UserRoleMapper
      */
     public int deleteUserRoleInfo(UserRole userRole);
 
-//    /**
-//     * 批量取消授权用户角色
-//     *
-//     * @param roleId 角色ID
-//     * @param userIds 需要删除的用户数据ID
-//     * @return 结果
-//     */
-//    public int deleteUserRoleInfos(@Param("roleId") Long roleId, @Param("userIds") Long[] userIds);
+    /**
+     * 批量取消授权用户角色
+     *
+     * @param roleId 角色ID
+     * @param userIds 需要删除的用户数据ID
+     * @return 结果
+     */
+    public int deleteUserRoleInfos(@Param("roleId") Long roleId, @Param("userIds") Long[] userIds);
 }

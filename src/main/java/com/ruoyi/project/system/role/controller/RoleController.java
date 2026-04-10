@@ -201,15 +201,6 @@ public class RoleController extends BaseController
         return roleService.checkRoleKeyUnique(role);
     }
 
-//    /**
-//     * 选择菜单树
-//     */
-//    @GetMapping("/selectMenuTree")
-//    public String selectMenuTree()
-//    {
-//        return prefix + "/tree";
-//    }
-//
     /**
      * 角色状态修改
      */
@@ -261,54 +252,54 @@ public class RoleController extends BaseController
         return toAjax(roleService.deleteAuthUser(userRole));
     }
 
-//    /**
-//     * 批量取消授权
-//     */
-//    @RequiresPermissions("system:role:edit")
-//    @Log(title = "角色管理", businessType = BusinessType.GRANT)
-//    @PostMapping("/authUser/cancelAll")
-//    @ResponseBody
-//    public AjaxResult cancelAuthUserAll(Long roleId, String userIds)
-//    {
-//        return toAjax(roleService.deleteAuthUsers(roleId, userIds));
-//    }
-//
-//    /**
-//     * 选择用户
-//     */
-//    @RequiresPermissions("system:role:list")
-//    @GetMapping("/authUser/selectUser/{roleId}")
-//    public String selectUser(@PathVariable("roleId") Long roleId, ModelMap mmap)
-//    {
-//        mmap.put("role", roleService.selectRoleById(roleId));
-//        return prefix + "/selectUser";
-//    }
-//
-//    /**
-//     * 查询未分配用户角色列表
-//     */
-//    @RequiresPermissions("system:role:list")
-//    @PostMapping("/authUser/unallocatedList")
-//    @ResponseBody
-//    public TableDataInfo unallocatedList(User user)
-//    {
-//        startPage();
-//        List<User> list = userService.selectUnallocatedList(user);
-//        return getDataTable(list);
-//    }
-//
-//    /**
-//     * 批量选择用户授权
-//     */
-//    @RequiresPermissions("system:role:edit")
-//    @Log(title = "角色管理", businessType = BusinessType.GRANT)
-//    @PostMapping("/authUser/selectAll")
-//    @ResponseBody
-//    public AjaxResult selectAuthUserAll(Long roleId, String userIds)
-//    {
-//        roleService.checkRoleDataScope(roleId);
-//        return toAjax(roleService.insertAuthUsers(roleId, userIds));
-//    }
+    /**
+     * 批量取消授权
+     */
+    @RequiresPermissions("system:role:edit")
+    @Log(title = "角色管理", businessType = BusinessType.GRANT)
+    @PostMapping("/authUser/cancelAll")
+    @ResponseBody
+    public AjaxResult cancelAuthUserAll(Long roleId, String userIds)
+    {
+        return toAjax(roleService.deleteAuthUsers(roleId, userIds));
+    }
+
+    /**
+     * 选择用户
+     */
+    @RequiresPermissions("system:role:list")
+    @GetMapping("/authUser/selectUser/{roleId}")
+    public String selectUser(@PathVariable("roleId") Long roleId, ModelMap mmap)
+    {
+        mmap.put("role", roleService.selectRoleById(roleId));
+        return prefix + "/selectUser";
+    }
+
+    /**
+     * 查询未分配用户角色列表
+     */
+    @RequiresPermissions("system:role:list")
+    @PostMapping("/authUser/unallocatedList")
+    @ResponseBody
+    public TableDataInfo unallocatedList(User user)
+    {
+        startPage();
+        List<User> list = userService.selectUnallocatedList(user);
+        return getDataTable(list);
+    }
+
+    /**
+     * 批量选择用户授权
+     */
+    @RequiresPermissions("system:role:edit")
+    @Log(title = "角色管理", businessType = BusinessType.GRANT)
+    @PostMapping("/authUser/selectAll")
+    @ResponseBody
+    public AjaxResult selectAuthUserAll(Long roleId, String userIds)
+    {
+        roleService.checkRoleDataScope(roleId);
+        return toAjax(roleService.insertAuthUsers(roleId, userIds));
+    }
 
     /**
      * 加载角色部门（数据权限）列表树

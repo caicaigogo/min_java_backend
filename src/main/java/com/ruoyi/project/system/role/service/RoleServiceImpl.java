@@ -380,40 +380,40 @@ public class RoleServiceImpl implements IRoleService
     {
         return userRoleMapper.deleteUserRoleInfo(userRole);
     }
-//
-//    /**
-//     * 批量取消授权用户角色
-//     *
-//     * @param roleId 角色ID
-//     * @param userIds 需要删除的用户数据ID
-//     * @return 结果
-//     */
-//    @Override
-//    public int deleteAuthUsers(Long roleId, String userIds)
-//    {
-//        return userRoleMapper.deleteUserRoleInfos(roleId, Convert.toLongArray(userIds));
-//    }
-//
-//    /**
-//     * 批量选择授权用户角色
-//     *
-//     * @param roleId 角色ID
-//     * @param userIds 需要授权的用户数据ID
-//     * @return 结果
-//     */
-//    @Override
-//    public int insertAuthUsers(Long roleId, String userIds)
-//    {
-//        Long[] users = Convert.toLongArray(userIds);
-//        // 新增用户与角色管理
-//        List<UserRole> list = new ArrayList<UserRole>();
-//        for (Long userId : users)
-//        {
-//            UserRole ur = new UserRole();
-//            ur.setUserId(userId);
-//            ur.setRoleId(roleId);
-//            list.add(ur);
-//        }
-//        return userRoleMapper.batchUserRole(list);
-//    }
+
+    /**
+     * 批量取消授权用户角色
+     *
+     * @param roleId 角色ID
+     * @param userIds 需要删除的用户数据ID
+     * @return 结果
+     */
+    @Override
+    public int deleteAuthUsers(Long roleId, String userIds)
+    {
+        return userRoleMapper.deleteUserRoleInfos(roleId, Convert.toLongArray(userIds));
+    }
+
+    /**
+     * 批量选择授权用户角色
+     *
+     * @param roleId 角色ID
+     * @param userIds 需要授权的用户数据ID
+     * @return 结果
+     */
+    @Override
+    public int insertAuthUsers(Long roleId, String userIds)
+    {
+        Long[] users = Convert.toLongArray(userIds);
+        // 新增用户与角色管理
+        List<UserRole> list = new ArrayList<UserRole>();
+        for (Long userId : users)
+        {
+            UserRole ur = new UserRole();
+            ur.setUserId(userId);
+            ur.setRoleId(roleId);
+            list.add(ur);
+        }
+        return userRoleMapper.batchUserRole(list);
+    }
 }
