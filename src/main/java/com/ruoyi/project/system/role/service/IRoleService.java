@@ -130,14 +130,14 @@ public interface IRoleService
      */
     public int countUserRoleByRoleId(Long roleId);
 
-//    /**
-//     * 角色状态修改
-//     *
-//     * @param role 角色信息
-//     * @return 结果
-//     */
-//    public int changeStatus(Role role);
-//
+    /**
+     * 角色状态修改
+     *
+     * @param role 角色信息
+     * @return 结果
+     */
+    public int changeStatus(Role role);
+
 //    /**
 //     * 取消授权用户角色
 //     *

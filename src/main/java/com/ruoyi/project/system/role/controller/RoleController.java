@@ -62,18 +62,18 @@ public class RoleController extends BaseController
         List<Role> list = roleService.selectRoleList(role);
         return getDataTable(list);
     }
-//
-//    @Log(title = "角色管理", businessType = BusinessType.EXPORT)
-//    @RequiresPermissions("system:role:export")
-//    @PostMapping("/export")
-//    @ResponseBody
-//    public AjaxResult export(Role role)
-//    {
-//        List<Role> list = roleService.selectRoleList(role);
-//        ExcelUtil<Role> util = new ExcelUtil<Role>(Role.class);
-//        return util.exportExcel(list, "角色数据");
-//    }
-//
+
+    @Log(title = "角色管理", businessType = BusinessType.EXPORT)
+    @RequiresPermissions("system:role:export")
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export(Role role)
+    {
+        List<Role> list = roleService.selectRoleList(role);
+        ExcelUtil<Role> util = new ExcelUtil<Role>(Role.class);
+        return util.exportExcel(list, "角色数据");
+    }
+
     /**
      * 新增角色
      */
@@ -210,20 +210,20 @@ public class RoleController extends BaseController
 //        return prefix + "/tree";
 //    }
 //
-//    /**
-//     * 角色状态修改
-//     */
-//    @Log(title = "角色管理", businessType = BusinessType.UPDATE)
-//    @RequiresPermissions("system:role:edit")
-//    @PostMapping("/changeStatus")
-//    @ResponseBody
-//    public AjaxResult changeStatus(Role role)
-//    {
-//        roleService.checkRoleAllowed(role);
-//        roleService.checkRoleDataScope(role.getRoleId());
-//        return toAjax(roleService.changeStatus(role));
-//    }
-//
+    /**
+     * 角色状态修改
+     */
+    @Log(title = "角色管理", businessType = BusinessType.UPDATE)
+    @RequiresPermissions("system:role:edit")
+    @PostMapping("/changeStatus")
+    @ResponseBody
+    public AjaxResult changeStatus(Role role)
+    {
+        roleService.checkRoleAllowed(role);
+        roleService.checkRoleDataScope(role.getRoleId());
+        return toAjax(roleService.changeStatus(role));
+    }
+
 //    /**
 //     * 分配用户
 //     */
