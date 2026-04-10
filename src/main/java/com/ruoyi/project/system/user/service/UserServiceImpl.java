@@ -88,20 +88,20 @@ public class UserServiceImpl implements IUserService
         // 生成数据权限过滤条件
         return userMapper.selectUserList(user);
     }
-//
-//    /**
-//     * 根据条件分页查询已分配用户角色列表
-//     *
-//     * @param user 用户信息
-//     * @return 用户信息集合信息
-//     */
-//    @Override
-//    @DataScope(deptAlias = "d", userAlias = "u")
-//    public List<User> selectAllocatedList(User user)
-//    {
-//        return userMapper.selectAllocatedList(user);
-//    }
-//
+
+    /**
+     * 根据条件分页查询已分配用户角色列表
+     *
+     * @param user 用户信息
+     * @return 用户信息集合信息
+     */
+    @Override
+    @DataScope(deptAlias = "d", userAlias = "u")
+    public List<User> selectAllocatedList(User user)
+    {
+        return userMapper.selectAllocatedList(user);
+    }
+
 //    /**
 //     * 根据条件分页查询未分配用户角色列表
 //     *

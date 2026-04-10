@@ -138,14 +138,14 @@ public interface IRoleService
      */
     public int changeStatus(Role role);
 
-//    /**
-//     * 取消授权用户角色
-//     *
-//     * @param userRole 用户和角色关联信息
-//     * @return 结果
-//     */
-//    public int deleteAuthUser(UserRole userRole);
-//
+    /**
+     * 取消授权用户角色
+     *
+     * @param userRole 用户和角色关联信息
+     * @return 结果
+     */
+    public int deleteAuthUser(UserRole userRole);
+
 //    /**
 //     * 批量取消授权用户角色
 //     *

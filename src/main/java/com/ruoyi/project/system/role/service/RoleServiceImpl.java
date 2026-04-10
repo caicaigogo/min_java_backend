@@ -369,17 +369,17 @@ public class RoleServiceImpl implements IRoleService
         return roleMapper.updateRole(role);
     }
 
-//    /**
-//     * 取消授权用户角色
-//     *
-//     * @param userRole 用户和角色关联信息
-//     * @return 结果
-//     */
-//    @Override
-//    public int deleteAuthUser(UserRole userRole)
-//    {
-//        return userRoleMapper.deleteUserRoleInfo(userRole);
-//    }
+    /**
+     * 取消授权用户角色
+     *
+     * @param userRole 用户和角色关联信息
+     * @return 结果
+     */
+    @Override
+    public int deleteAuthUser(UserRole userRole)
+    {
+        return userRoleMapper.deleteUserRoleInfo(userRole);
+    }
 //
 //    /**
 //     * 批量取消授权用户角色

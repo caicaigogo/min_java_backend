@@ -50,15 +50,15 @@ public interface UserRoleMapper
      * @return 结果
      */
     public int batchUserRole(List<UserRole> userRoleList);
-//
-//    /**
-//     * 删除用户和角色关联信息
-//     *
-//     * @param userRole 用户和角色关联信息
-//     * @return 结果
-//     */
-//    public int deleteUserRoleInfo(UserRole userRole);
-//
+
+    /**
+     * 删除用户和角色关联信息
+     *
+     * @param userRole 用户和角色关联信息
+     * @return 结果
+     */
+    public int deleteUserRoleInfo(UserRole userRole);
+
 //    /**
 //     * 批量取消授权用户角色
 //     *

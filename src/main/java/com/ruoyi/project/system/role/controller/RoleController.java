@@ -224,43 +224,43 @@ public class RoleController extends BaseController
         return toAjax(roleService.changeStatus(role));
     }
 
-//    /**
-//     * 分配用户
-//     */
-//    @RequiresPermissions("system:role:edit")
-//    @GetMapping("/authUser/{roleId}")
-//    public String authUser(@PathVariable("roleId") Long roleId, ModelMap mmap)
-//    {
-//        roleService.checkRoleDataScope(roleId);
-//        mmap.put("role", roleService.selectRoleById(roleId));
-//        return prefix + "/authUser";
-//    }
-//
-//    /**
-//     * 查询已分配用户角色列表
-//     */
-//    @RequiresPermissions("system:role:list")
-//    @PostMapping("/authUser/allocatedList")
-//    @ResponseBody
-//    public TableDataInfo allocatedList(User user)
-//    {
-//        startPage();
-//        List<User> list = userService.selectAllocatedList(user);
-//        return getDataTable(list);
-//    }
-//
-//    /**
-//     * 取消授权
-//     */
-//    @RequiresPermissions("system:role:edit")
-//    @Log(title = "角色管理", businessType = BusinessType.GRANT)
-//    @PostMapping("/authUser/cancel")
-//    @ResponseBody
-//    public AjaxResult cancelAuthUser(UserRole userRole)
-//    {
-//        return toAjax(roleService.deleteAuthUser(userRole));
-//    }
-//
+    /**
+     * 分配用户
+     */
+    @RequiresPermissions("system:role:edit")
+    @GetMapping("/authUser/{roleId}")
+    public String authUser(@PathVariable("roleId") Long roleId, ModelMap mmap)
+    {
+        roleService.checkRoleDataScope(roleId);
+        mmap.put("role", roleService.selectRoleById(roleId));
+        return prefix + "/authUser";
+    }
+
+    /**
+     * 查询已分配用户角色列表
+     */
+    @RequiresPermissions("system:role:list")
+    @PostMapping("/authUser/allocatedList")
+    @ResponseBody
+    public TableDataInfo allocatedList(User user)
+    {
+        startPage();
+        List<User> list = userService.selectAllocatedList(user);
+        return getDataTable(list);
+    }
+
+    /**
+     * 取消授权
+     */
+    @RequiresPermissions("system:role:edit")
+    @Log(title = "角色管理", businessType = BusinessType.GRANT)
+    @PostMapping("/authUser/cancel")
+    @ResponseBody
+    public AjaxResult cancelAuthUser(UserRole userRole)
+    {
+        return toAjax(roleService.deleteAuthUser(userRole));
+    }
+
 //    /**
 //     * 批量取消授权
 //     */
