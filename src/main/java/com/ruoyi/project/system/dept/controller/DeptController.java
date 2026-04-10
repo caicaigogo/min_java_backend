@@ -32,8 +32,8 @@ public class DeptController extends BaseController
 {
     private String prefix = "system/dept";
 
-//    @Autowired
-//    private IDeptService deptService;
+    @Autowired
+    private IDeptService deptService;
 
     @RequiresPermissions("system:dept:view")
     @GetMapping()
@@ -42,15 +42,15 @@ public class DeptController extends BaseController
         return prefix + "/dept";
     }
 
-//    @RequiresPermissions("system:dept:list")
-//    @PostMapping("/list")
-//    @ResponseBody
-//    public List<Dept> list(Dept dept)
-//    {
-//        List<Dept> deptList = deptService.selectDeptList(dept);
-//        return deptList;
-//    }
-//
+    @RequiresPermissions("system:dept:list")
+    @PostMapping("/list")
+    @ResponseBody
+    public List<Dept> list(Dept dept)
+    {
+        List<Dept> deptList = deptService.selectDeptList(dept);
+        return deptList;
+    }
+
 //    /**
 //     * 新增部门
 //     */
