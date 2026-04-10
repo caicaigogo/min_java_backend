@@ -691,24 +691,24 @@ var table = {
         // },
         // 表单封装处理
         form: {
-        //     // 表单重置
-        //     reset: function(formId, tableId, pageNumber, pageSize) {
-        //         table.set(tableId);
-        //         formId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
-        //         $("#" + formId)[0].reset();
-        //         var tableId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-        //         if (table.options.type == table_type.bootstrapTable) {
-        //             var params = $("#" + tableId).bootstrapTable('getOptions');
-        //             params.pageNumber = 1;
-        //             if ($.common.isNotEmpty(pageSize)) {
-        //                 params.pageSize = pageSize;
-        //             }
-        //             $("#" + tableId).bootstrapTable('refresh', params);
-        //         } else if (table.options.type == table_type.bootstrapTreeTable) {
-        //             $("#" + tableId).bootstrapTreeTable('refresh', table.options.ajaxParams);
-        //         }
-        //         resetDate();
-        //     },
+            // 表单重置
+            reset: function(formId, tableId, pageNumber, pageSize) {
+                table.set(tableId);
+                formId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
+                $("#" + formId)[0].reset();
+                var tableId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+                if (table.options.type == table_type.bootstrapTable) {
+                    var params = $("#" + tableId).bootstrapTable('getOptions');
+                    params.pageNumber = 1;
+                    if ($.common.isNotEmpty(pageSize)) {
+                        params.pageSize = pageSize;
+                    }
+                    $("#" + tableId).bootstrapTable('refresh', params);
+                } else if (table.options.type == table_type.bootstrapTreeTable) {
+                    $("#" + tableId).bootstrapTreeTable('refresh', table.options.ajaxParams);
+                }
+                resetDate();
+            },
             // 获取选中复选框项
             selectCheckeds: function(name) {
                 var checkeds = "";

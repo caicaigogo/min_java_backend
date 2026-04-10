@@ -1,67 +1,67 @@
-//package com.ruoyi.project.system.role.controller;
-//
-//import java.util.List;
-//import org.apache.shiro.authz.annotation.RequiresPermissions;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.ModelMap;
-//import org.springframework.validation.annotation.Validated;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.PathVariable;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.ResponseBody;
-//import com.ruoyi.common.utils.poi.ExcelUtil;
-//import com.ruoyi.common.utils.security.AuthorizationUtils;
-//import com.ruoyi.framework.aspectj.lang.annotation.Log;
-//import com.ruoyi.framework.aspectj.lang.enums.BusinessType;
-//import com.ruoyi.framework.web.controller.BaseController;
-//import com.ruoyi.framework.web.domain.AjaxResult;
-//import com.ruoyi.framework.web.domain.Ztree;
-//import com.ruoyi.framework.web.page.TableDataInfo;
-//import com.ruoyi.project.system.dept.service.IDeptService;
-//import com.ruoyi.project.system.role.domain.Role;
-//import com.ruoyi.project.system.role.service.IRoleService;
-//import com.ruoyi.project.system.user.domain.User;
-//import com.ruoyi.project.system.user.domain.UserRole;
-//import com.ruoyi.project.system.user.service.IUserService;
-//
-///**
-// * 角色信息
-// *
-// * @author ruoyi
-// */
-//@Controller
-//@RequestMapping("/system/role")
-//public class RoleController extends BaseController
-//{
-//    private String prefix = "system/role";
-//
-//    @Autowired
-//    private IRoleService roleService;
-//
+package com.ruoyi.project.system.role.controller;
+
+import java.util.List;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.ruoyi.common.utils.poi.ExcelUtil;
+import com.ruoyi.common.utils.security.AuthorizationUtils;
+import com.ruoyi.framework.aspectj.lang.annotation.Log;
+import com.ruoyi.framework.aspectj.lang.enums.BusinessType;
+import com.ruoyi.framework.web.controller.BaseController;
+import com.ruoyi.framework.web.domain.AjaxResult;
+import com.ruoyi.framework.web.domain.Ztree;
+import com.ruoyi.framework.web.page.TableDataInfo;
+import com.ruoyi.project.system.dept.service.IDeptService;
+import com.ruoyi.project.system.role.domain.Role;
+import com.ruoyi.project.system.role.service.IRoleService;
+import com.ruoyi.project.system.user.domain.User;
+import com.ruoyi.project.system.user.domain.UserRole;
+import com.ruoyi.project.system.user.service.IUserService;
+
+/**
+ * 角色信息
+ *
+ * @author ruoyi
+ */
+@Controller
+@RequestMapping("/system/role")
+public class RoleController extends BaseController
+{
+    private String prefix = "system/role";
+
+    @Autowired
+    private IRoleService roleService;
+
 //    @Autowired
 //    private IUserService userService;
 //
 //    @Autowired
 //    private IDeptService deptService;
-//
-//    @RequiresPermissions("system:role:view")
-//    @GetMapping()
-//    public String role()
-//    {
-//        return prefix + "/role";
-//    }
-//
-//    @RequiresPermissions("system:role:list")
-//    @PostMapping("/list")
-//    @ResponseBody
-//    public TableDataInfo list(Role role)
-//    {
-//        startPage();
-//        List<Role> list = roleService.selectRoleList(role);
-//        return getDataTable(list);
-//    }
+
+    @RequiresPermissions("system:role:view")
+    @GetMapping()
+    public String role()
+    {
+        return prefix + "/role";
+    }
+
+    @RequiresPermissions("system:role:list")
+    @PostMapping("/list")
+    @ResponseBody
+    public TableDataInfo list(Role role)
+    {
+        startPage();
+        List<Role> list = roleService.selectRoleList(role);
+        return getDataTable(list);
+    }
 //
 //    @Log(title = "角色管理", businessType = BusinessType.EXPORT)
 //    @RequiresPermissions("system:role:export")
@@ -321,4 +321,4 @@
 //        List<Ztree> ztrees = deptService.roleDeptTreeData(role);
 //        return ztrees;
 //    }
-//}
+}
