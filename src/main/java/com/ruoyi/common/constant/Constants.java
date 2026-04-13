@@ -69,16 +69,16 @@ public class Constants
      */
     public static final String SYS_AUTH_CACHE = "sys-authCache";
 
-//    /**
-//     * 参数管理 cache name
-//     */
-//    public static final String SYS_CONFIG_CACHE = "sys-config";
-//
-//    /**
-//     * 参数管理 cache key
-//     */
-//    public static final String SYS_CONFIG_KEY = "sys_config:";
-//
+    /**
+     * 参数管理 cache name
+     */
+    public static final String SYS_CONFIG_CACHE = "sys-config";
+
+    /**
+     * 参数管理 cache key
+     */
+    public static final String SYS_CONFIG_KEY = "sys_config:";
+
     /**
      * 字典管理 cache name
      */
