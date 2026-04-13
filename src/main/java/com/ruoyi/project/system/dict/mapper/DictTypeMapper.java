@@ -33,13 +33,13 @@ public interface DictTypeMapper
      */
     public DictType selectDictTypeById(Long dictId);
 
-//    /**
-//     * 根据字典类型查询信息
-//     *
-//     * @param dictType 字典类型
-//     * @return 字典类型
-//     */
-//    public DictType selectDictTypeByType(String dictType);
+    /**
+     * 根据字典类型查询信息
+     *
+     * @param dictType 字典类型
+     * @return 字典类型
+     */
+    public DictType selectDictTypeByType(String dictType);
 
     /**
      * 通过字典ID删除字典信息
@@ -49,14 +49,14 @@ public interface DictTypeMapper
      */
     public int deleteDictTypeById(Long dictId);
 
-//    /**
-//     * 批量删除字典类型
-//     *
-//     * @param ids 需要删除的数据
-//     * @return 结果
-//     */
-//    public int deleteDictTypeByIds(Long[] ids);
-//
+    /**
+     * 批量删除字典类型
+     *
+     * @param ids 需要删除的数据
+     * @return 结果
+     */
+    public int deleteDictTypeByIds(Long[] ids);
+
     /**
      * 新增字典类型信息
      *

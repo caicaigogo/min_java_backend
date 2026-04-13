@@ -14,7 +14,7 @@ import com.ruoyi.common.exception.ServiceException;
 import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.security.ShiroUtils;
 import com.ruoyi.common.utils.text.Convert;
-//import com.ruoyi.framework.web.domain.Ztree;
+import com.ruoyi.framework.web.domain.Ztree;
 import com.ruoyi.project.system.dict.domain.DictData;
 import com.ruoyi.project.system.dict.domain.DictType;
 import com.ruoyi.project.system.dict.mapper.DictDataMapper;
@@ -102,17 +102,17 @@ public class DictTypeServiceImpl implements IDictTypeService
         return dictTypeMapper.selectDictTypeById(dictId);
     }
 
-//    /**
-//     * 根据字典类型查询信息
-//     *
-//     * @param dictType 字典类型
-//     * @return 字典类型
-//     */
-//    @Override
-//    public DictType selectDictTypeByType(String dictType)
-//    {
-//        return dictTypeMapper.selectDictTypeByType(dictType);
-//    }
+    /**
+     * 根据字典类型查询信息
+     *
+     * @param dictType 字典类型
+     * @return 字典类型
+     */
+    @Override
+    public DictType selectDictTypeByType(String dictType)
+    {
+        return dictTypeMapper.selectDictTypeByType(dictType);
+    }
 
     /**
      * 批量删除字典类型
@@ -227,36 +227,36 @@ public class DictTypeServiceImpl implements IDictTypeService
         return UserConstants.UNIQUE;
     }
 
-//    /**
-//     * 查询字典类型树
-//     *
-//     * @param dictType 字典类型
-//     * @return 所有字典类型
-//     */
-//    @Override
-//    public List<Ztree> selectDictTree(DictType dictType)
-//    {
-//        List<Ztree> ztrees = new ArrayList<Ztree>();
-//        List<DictType> dictList = dictTypeMapper.selectDictTypeList(dictType);
-//        for (DictType dict : dictList)
-//        {
-//            if (UserConstants.DICT_NORMAL.equals(dict.getStatus()))
-//            {
-//                Ztree ztree = new Ztree();
-//                ztree.setId(dict.getDictId());
-//                ztree.setName(transDictName(dict));
-//                ztree.setTitle(dict.getDictType());
-//                ztrees.add(ztree);
-//            }
-//        }
-//        return ztrees;
-//    }
-//
-//    public String transDictName(DictType dictType)
-//    {
-//        StringBuffer sb = new StringBuffer();
-//        sb.append("(" + dictType.getDictName() + ")");
-//        sb.append("&nbsp;&nbsp;&nbsp;" + dictType.getDictType());
-//        return sb.toString();
-//    }
+    /**
+     * 查询字典类型树
+     *
+     * @param dictType 字典类型
+     * @return 所有字典类型
+     */
+    @Override
+    public List<Ztree> selectDictTree(DictType dictType)
+    {
+        List<Ztree> ztrees = new ArrayList<Ztree>();
+        List<DictType> dictList = dictTypeMapper.selectDictTypeList(dictType);
+        for (DictType dict : dictList)
+        {
+            if (UserConstants.DICT_NORMAL.equals(dict.getStatus()))
+            {
+                Ztree ztree = new Ztree();
+                ztree.setId(dict.getDictId());
+                ztree.setName(transDictName(dict));
+                ztree.setTitle(dict.getDictType());
+                ztrees.add(ztree);
+            }
+        }
+        return ztrees;
+    }
+
+    public String transDictName(DictType dictType)
+    {
+        StringBuffer sb = new StringBuffer();
+        sb.append("(" + dictType.getDictName() + ")");
+        sb.append("&nbsp;&nbsp;&nbsp;" + dictType.getDictType());
+        return sb.toString();
+    }
 }

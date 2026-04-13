@@ -33,11 +33,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select column_id, table_id, column_name, column_comment, column_type, java_type, java_field, is_pk, is_increment, is_required, is_insert, is_edit, is_list, is_query, query_type, html_type, dict_type, sort, create_by, create_time, update_by, update_time from gen_table_column
     </sql>
 
-<!--    <select id="selectGenTableColumnListByTableId" parameterType="GenTableColumn" resultMap="GenTableColumnResult">-->
-<!--        <include refid="selectGenTableColumnVo"/>-->
-<!--        where table_id = #{tableId}-->
-<!--        order by sort-->
-<!--    </select>-->
+    <select id="selectGenTableColumnListByTableId" parameterType="GenTableColumn" resultMap="GenTableColumnResult">
+        <include refid="selectGenTableColumnVo"/>
+        where table_id = #{tableId}
+        order by sort
+    </select>
 
     <select id="selectDbTableColumnsByName" parameterType="String" resultMap="GenTableColumnResult">
 		select column_name, (case when (is_nullable = 'no' <![CDATA[ && ]]> column_key != 'PRI') then '1' else null end) as is_required, (case when column_key = 'PRI' then '1' else '0' end) as is_pk, ordinal_position as sort, column_comment, (case when extra = 'auto_increment' then '1' else '0' end) as is_increment, column_type
@@ -89,39 +89,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          )
     </insert>
 
-<!--    <update id="updateGenTableColumn" parameterType="GenTableColumn">-->
-<!--        update gen_table_column-->
-<!--        <set>-->
-<!--            column_comment = #{columnComment},-->
-<!--            java_type = #{javaType},-->
-<!--            java_field = #{javaField},-->
-<!--            is_insert = #{isInsert},-->
-<!--            is_edit = #{isEdit},-->
-<!--            is_list = #{isList},-->
-<!--            is_query = #{isQuery},-->
-<!--            is_required = #{isRequired},-->
-<!--            query_type = #{queryType},-->
-<!--            html_type = #{htmlType},-->
-<!--            dict_type = #{dictType},-->
-<!--            sort = #{sort},-->
-<!--            update_by = #{updateBy},-->
-<!--            update_time = sysdate()-->
-<!--        </set>-->
-<!--        where column_id = #{columnId}-->
-<!--    </update>-->
+    <update id="updateGenTableColumn" parameterType="GenTableColumn">
+        update gen_table_column
+        <set>
+            column_comment = #{columnComment},
+            java_type = #{javaType},
+            java_field = #{javaField},
+            is_insert = #{isInsert},
+            is_edit = #{isEdit},
+            is_list = #{isList},
+            is_query = #{isQuery},
+            is_required = #{isRequired},
+            query_type = #{queryType},
+            html_type = #{htmlType},
+            dict_type = #{dictType},
+            sort = #{sort},
+            update_by = #{updateBy},
+            update_time = sysdate()
+        </set>
+        where column_id = #{columnId}
+    </update>
 
-<!--    <delete id="deleteGenTableColumnByIds" parameterType="Long">-->
-<!--        delete from gen_table_column where table_id in -->
-<!--        <foreach collection="array" item="tableId" open="(" separator="," close=")">-->
-<!--            #{tableId}-->
-<!--        </foreach>-->
-<!--    </delete>-->
+    <delete id="deleteGenTableColumnByIds" parameterType="Long">
+        delete from gen_table_column where table_id in
+        <foreach collection="array" item="tableId" open="(" separator="," close=")">
+            #{tableId}
+        </foreach>
+    </delete>
 
-<!--    <delete id="deleteGenTableColumns">-->
-<!--        delete from gen_table_column where column_id in -->
-<!--        <foreach collection="list" item="item" open="(" separator="," close=")">-->
-<!--            #{item.columnId}-->
-<!--        </foreach>-->
-<!--    </delete>-->
+    <delete id="deleteGenTableColumns">
+        delete from gen_table_column where column_id in
+        <foreach collection="list" item="item" open="(" separator="," close=")">
+            #{item.columnId}
+        </foreach>
+    </delete>
 
 </mapper>

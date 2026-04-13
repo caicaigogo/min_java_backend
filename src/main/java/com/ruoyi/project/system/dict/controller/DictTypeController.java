@@ -162,25 +162,25 @@ public class DictTypeController extends BaseController
         return dictTypeService.checkDictTypeUnique(dictType);
     }
 
-//    /**
-//     * 选择字典树
-//     */
-//    @GetMapping("/selectDictTree/{columnId}/{dictType}")
-//    public String selectDictTree(@PathVariable("columnId") Long columnId, @PathVariable("dictType") String dictType, ModelMap mmap)
-//    {
-//        mmap.put("columnId", columnId);
-//        mmap.put("dict", dictTypeService.selectDictTypeByType(dictType));
-//        return prefix + "/tree";
-//    }
-//
-//    /**
-//     * 加载字典列表树
-//     */
-//    @GetMapping("/treeData")
-//    @ResponseBody
-//    public List<Ztree> treeData()
-//    {
-//        List<Ztree> ztrees = dictTypeService.selectDictTree(new DictType());
-//        return ztrees;
-//    }
+    /**
+     * 选择字典树
+     */
+    @GetMapping("/selectDictTree/{columnId}/{dictType}")
+    public String selectDictTree(@PathVariable("columnId") Long columnId, @PathVariable("dictType") String dictType, ModelMap mmap)
+    {
+        mmap.put("columnId", columnId);
+        mmap.put("dict", dictTypeService.selectDictTypeByType(dictType));
+        return prefix + "/tree";
+    }
+
+    /**
+     * 加载字典列表树
+     */
+    @GetMapping("/treeData")
+    @ResponseBody
+    public List<Ztree> treeData()
+    {
+        List<Ztree> ztrees = dictTypeService.selectDictTree(new DictType());
+        return ztrees;
+    }
 }

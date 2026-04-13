@@ -43,14 +43,14 @@ public interface IDictTypeService
      */
     public DictType selectDictTypeById(Long dictId);
 
-//    /**
-//     * 根据字典类型查询信息
-//     *
-//     * @param dictType 字典类型
-//     * @return 字典类型
-//     */
-//    public DictType selectDictTypeByType(String dictType);
-//
+    /**
+     * 根据字典类型查询信息
+     *
+     * @param dictType 字典类型
+     * @return 字典类型
+     */
+    public DictType selectDictTypeByType(String dictType);
+
     /**
      * 批量删除字典类型
      *
@@ -97,11 +97,11 @@ public interface IDictTypeService
      */
     public boolean checkDictTypeUnique(DictType dictType);
 
-//    /**
-//     * 查询字典类型树
-//     *
-//     * @param dictType 字典类型
-//     * @return 所有字典类型
-//     */
-//    public List<Ztree> selectDictTree(DictType dictType);
+    /**
+     * 查询字典类型树
+     *
+     * @param dictType 字典类型
+     * @return 所有字典类型
+     */
+    public List<Ztree> selectDictTree(DictType dictType);
 }
