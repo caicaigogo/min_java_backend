@@ -81,71 +81,71 @@ public class DeptController extends BaseController
         }
         return toAjax(deptService.insertDept(dept));
     }
-//
-//    /**
-//     * 修改部门
-//     */
-//    @RequiresPermissions("system:dept:edit")
-//    @GetMapping("/edit/{deptId}")
-//    public String edit(@PathVariable("deptId") Long deptId, ModelMap mmap)
-//    {
-//        deptService.checkDeptDataScope(deptId);
-//        Dept dept = deptService.selectDeptById(deptId);
-//        if (StringUtils.isNotNull(dept) && 100L == deptId)
-//        {
-//            dept.setParentName("无");
-//        }
-//        mmap.put("dept", dept);
-//        return prefix + "/edit";
-//    }
-//
-//    /**
-//     * 修改保存部门
-//     */
-//    @Log(title = "部门管理", businessType = BusinessType.UPDATE)
-//    @RequiresPermissions("system:dept:edit")
-//    @PostMapping("/edit")
-//    @ResponseBody
-//    public AjaxResult editSave(@Validated Dept dept)
-//    {
-//        Long deptId = dept.getDeptId();
-//        deptService.checkDeptDataScope(deptId);
-//        if (!deptService.checkDeptNameUnique(dept))
-//        {
-//            return error("修改部门'" + dept.getDeptName() + "'失败，部门名称已存在");
-//        }
-//        else if (dept.getParentId().equals(deptId))
-//        {
-//            return error("修改部门'" + dept.getDeptName() + "'失败，上级部门不能是自己");
-//        }
-//        else if (StringUtils.equals(UserConstants.DEPT_DISABLE, dept.getStatus()) && deptService.selectNormalChildrenDeptById(deptId) > 0)
-//        {
-//            return AjaxResult.error("该部门包含未停用的子部门！");
-//        }
-//        return toAjax(deptService.updateDept(dept));
-//    }
-//
-//    /**
-//     * 删除
-//     */
-//    @Log(title = "部门管理", businessType = BusinessType.DELETE)
-//    @RequiresPermissions("system:dept:remove")
-//    @GetMapping("/remove/{deptId}")
-//    @ResponseBody
-//    public AjaxResult remove(@PathVariable("deptId") Long deptId)
-//    {
-//        if (deptService.selectDeptCount(deptId) > 0)
-//        {
-//            return AjaxResult.warn("存在下级部门,不允许删除");
-//        }
-//        if (deptService.checkDeptExistUser(deptId))
-//        {
-//            return AjaxResult.warn("部门存在用户,不允许删除");
-//        }
-//        deptService.checkDeptDataScope(deptId);
-//        return toAjax(deptService.deleteDeptById(deptId));
-//    }
-//
+
+    /**
+     * 修改部门
+     */
+    @RequiresPermissions("system:dept:edit")
+    @GetMapping("/edit/{deptId}")
+    public String edit(@PathVariable("deptId") Long deptId, ModelMap mmap)
+    {
+        deptService.checkDeptDataScope(deptId);
+        Dept dept = deptService.selectDeptById(deptId);
+        if (StringUtils.isNotNull(dept) && 100L == deptId)
+        {
+            dept.setParentName("无");
+        }
+        mmap.put("dept", dept);
+        return prefix + "/edit";
+    }
+
+    /**
+     * 修改保存部门
+     */
+    @Log(title = "部门管理", businessType = BusinessType.UPDATE)
+    @RequiresPermissions("system:dept:edit")
+    @PostMapping("/edit")
+    @ResponseBody
+    public AjaxResult editSave(@Validated Dept dept)
+    {
+        Long deptId = dept.getDeptId();
+        deptService.checkDeptDataScope(deptId);
+        if (!deptService.checkDeptNameUnique(dept))
+        {
+            return error("修改部门'" + dept.getDeptName() + "'失败，部门名称已存在");
+        }
+        else if (dept.getParentId().equals(deptId))
+        {
+            return error("修改部门'" + dept.getDeptName() + "'失败，上级部门不能是自己");
+        }
+        else if (StringUtils.equals(UserConstants.DEPT_DISABLE, dept.getStatus()) && deptService.selectNormalChildrenDeptById(deptId) > 0)
+        {
+            return AjaxResult.error("该部门包含未停用的子部门！");
+        }
+        return toAjax(deptService.updateDept(dept));
+    }
+
+    /**
+     * 删除
+     */
+    @Log(title = "部门管理", businessType = BusinessType.DELETE)
+    @RequiresPermissions("system:dept:remove")
+    @GetMapping("/remove/{deptId}")
+    @ResponseBody
+    public AjaxResult remove(@PathVariable("deptId") Long deptId)
+    {
+        if (deptService.selectDeptCount(deptId) > 0)
+        {
+            return AjaxResult.warn("存在下级部门,不允许删除");
+        }
+        if (deptService.checkDeptExistUser(deptId))
+        {
+            return AjaxResult.warn("部门存在用户,不允许删除");
+        }
+        deptService.checkDeptDataScope(deptId);
+        return toAjax(deptService.deleteDeptById(deptId));
+    }
+
     /**
      * 校验部门名称
      */
