@@ -2,7 +2,6 @@ package com.ruoyi.project.system.post.mapper;
 
 import java.util.List;
 import com.ruoyi.project.system.post.domain.Post;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 岗位信息 数据层

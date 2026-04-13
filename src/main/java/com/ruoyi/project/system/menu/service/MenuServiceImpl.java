@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.ruoyi.common.constant.UserConstants;
-//import com.ruoyi.common.exception.ServiceException;
+import com.ruoyi.common.exception.ServiceException;
 import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.TreeUtils;
 import com.ruoyi.common.utils.security.ShiroUtils;
@@ -21,7 +21,7 @@ import com.ruoyi.framework.web.domain.Ztree;
 import com.ruoyi.project.system.menu.domain.Menu;
 import com.ruoyi.project.system.menu.mapper.MenuMapper;
 import com.ruoyi.project.system.role.domain.Role;
-//import com.ruoyi.project.system.role.mapper.RoleMenuMapper;
+import com.ruoyi.project.system.role.mapper.RoleMenuMapper;
 import com.ruoyi.project.system.user.domain.User;
 
 /**
@@ -37,8 +37,8 @@ public class MenuServiceImpl implements IMenuService
     @Autowired
     private MenuMapper menuMapper;
 
-//    @Autowired
-//    private RoleMenuMapper roleMenuMapper;
+    @Autowired
+    private RoleMenuMapper roleMenuMapper;
 
     /**
      * 根据用户查询菜单
@@ -62,27 +62,27 @@ public class MenuServiceImpl implements IMenuService
         return TreeUtils.getChildPerms(menus, 0);
     }
 
-//    /**
-//     * 查询菜单集合
-//     *
-//     * @return 所有菜单信息
-//     */
-//    @Override
-//    public List<Menu> selectMenuList(Menu menu)
-//    {
-//        List<Menu> menuList = null;
-//        User user = ShiroUtils.getSysUser();
-//        if (user.isAdmin())
-//        {
-//            menuList = menuMapper.selectMenuList(menu);
-//        }
-//        else
-//        {
-//            menu.getParams().put("userId", user.getUserId());
-//            menuList = menuMapper.selectMenuListByUserId(menu);
-//        }
-//        return menuList;
-//    }
+    /**
+     * 查询菜单集合
+     *
+     * @return 所有菜单信息
+     */
+    @Override
+    public List<Menu> selectMenuList(Menu menu)
+    {
+        List<Menu> menuList = null;
+        User user = ShiroUtils.getSysUser();
+        if (user.isAdmin())
+        {
+            menuList = menuMapper.selectMenuList(menu);
+        }
+        else
+        {
+            menu.getParams().put("userId", user.getUserId());
+            menuList = menuMapper.selectMenuListByUserId(menu);
+        }
+        return menuList;
+    }
 
     /**
      * 查询菜单集合
@@ -170,19 +170,19 @@ public class MenuServiceImpl implements IMenuService
         }
         return ztrees;
     }
-//
-//    /**
-//     * 查询所有菜单
-//     *
-//     * @return 菜单列表
-//     */
-//    @Override
-//    public List<Ztree> menuTreeData()
-//    {
-//        List<Menu> menuList = selectMenuAll();
-//        List<Ztree> ztrees = initZtree(menuList);
-//        return ztrees;
-//    }
+
+    /**
+     * 查询所有菜单
+     *
+     * @return 菜单列表
+     */
+    @Override
+    public List<Ztree> menuTreeData()
+    {
+        List<Menu> menuList = selectMenuAll();
+        List<Ztree> ztrees = initZtree(menuList);
+        return ztrees;
+    }
 //
 //    /**
 //     * 查询系统所有权限
@@ -203,17 +203,17 @@ public class MenuServiceImpl implements IMenuService
 //        }
 //        return section;
 //    }
-//
-//    /**
-//     * 对象转菜单树
-//     *
-//     * @param menuList 菜单列表
-//     * @return 树结构列表
-//     */
-//    public List<Ztree> initZtree(List<Menu> menuList)
-//    {
-//        return initZtree(menuList, null, false);
-//    }
+
+    /**
+     * 对象转菜单树
+     *
+     * @param menuList 菜单列表
+     * @return 树结构列表
+     */
+    public List<Ztree> initZtree(List<Menu> menuList)
+    {
+        return initZtree(menuList, null, false);
+    }
 
     /**
      * 对象转菜单树
@@ -254,120 +254,120 @@ public class MenuServiceImpl implements IMenuService
         return sb.toString();
     }
 
-//    /**
-//     * 删除菜单管理信息
-//     *
-//     * @param menuId 菜单ID
-//     * @return 结果
-//     */
-//    @Override
-//    public int deleteMenuById(Long menuId)
-//    {
-//        return menuMapper.deleteMenuById(menuId);
-//    }
-//
-//    /**
-//     * 根据菜单ID查询信息
-//     *
-//     * @param menuId 菜单ID
-//     * @return 菜单信息
-//     */
-//    @Override
-//    public Menu selectMenuById(Long menuId)
-//    {
-//        return menuMapper.selectMenuById(menuId);
-//    }
-//
-//    /**
-//     * 查询子菜单数量
-//     *
-//     * @param parentId 菜单ID
-//     * @return 结果
-//     */
-//    @Override
-//    public int selectCountMenuByParentId(Long parentId)
-//    {
-//        return menuMapper.selectCountMenuByParentId(parentId);
-//    }
-//
-//    /**
-//     * 查询菜单使用数量
-//     *
-//     * @param menuId 菜单ID
-//     * @return 结果
-//     */
-//    @Override
-//    public int selectCountRoleMenuByMenuId(Long menuId)
-//    {
-//        return roleMenuMapper.selectCountRoleMenuByMenuId(menuId);
-//    }
-//
-//    /**
-//     * 新增保存菜单信息
-//     *
-//     * @param menu 菜单信息
-//     * @return 结果
-//     */
-//    @Override
-//    public int insertMenu(Menu menu)
-//    {
-//        menu.setCreateBy(ShiroUtils.getLoginName());
-//        return menuMapper.insertMenu(menu);
-//    }
-//
-//    /**
-//     * 修改保存菜单信息
-//     *
-//     * @param menu 菜单信息
-//     * @return 结果
-//     */
-//    @Override
-//    public int updateMenu(Menu menu)
-//    {
-//        menu.setUpdateBy(ShiroUtils.getLoginName());
-//        return menuMapper.updateMenu(menu);
-//    }
-//
-//    /**
-//     * 保存菜单排序
-//     *
-//     * @param menuIds 菜单ID
-//     * @param orderNums 排序ID
-//     */
-//    @Transactional
-//    public void updateMenuSort(String[] menuIds, String[] orderNums)
-//    {
-//        try
-//        {
-//            for (int i = 0; i < menuIds.length; i++)
-//            {
-//                Menu menu = new Menu();
-//                menu.setMenuId(Convert.toLong(menuIds[i]));
-//                menu.setOrderNum(orderNums[i]);
-//                menuMapper.updateMenuSort(menu);
-//            }
-//        }
-//        catch (Exception e)
-//        {
-//            throw new ServiceException("保存排序异常，请联系管理员");
-//        }
-//    }
-//
-//    /**
-//     * 校验菜单名称是否唯一
-//     *
-//     * @param menu 菜单信息
-//     * @return 结果
-//     */
-//    @Override
-//    public boolean checkMenuNameUnique(Menu menu)
-//    {
-//        Long menuId = StringUtils.isNull(menu.getMenuId()) ? -1L : menu.getMenuId();
-//        Menu info = menuMapper.checkMenuNameUnique(menu.getMenuName(), menu.getParentId());
-//        if (StringUtils.isNotNull(info) && info.getMenuId().longValue() != menuId.longValue())
-//        {
-//            return UserConstants.NOT_UNIQUE;
-//        }
-//        return UserConstants.UNIQUE;
-//    }
+    /**
+     * 删除菜单管理信息
+     *
+     * @param menuId 菜单ID
+     * @return 结果
+     */
+    @Override
+    public int deleteMenuById(Long menuId)
+    {
+        return menuMapper.deleteMenuById(menuId);
+    }
+
+    /**
+     * 根据菜单ID查询信息
+     *
+     * @param menuId 菜单ID
+     * @return 菜单信息
+     */
+    @Override
+    public Menu selectMenuById(Long menuId)
+    {
+        return menuMapper.selectMenuById(menuId);
+    }
+
+    /**
+     * 查询子菜单数量
+     *
+     * @param parentId 菜单ID
+     * @return 结果
+     */
+    @Override
+    public int selectCountMenuByParentId(Long parentId)
+    {
+        return menuMapper.selectCountMenuByParentId(parentId);
+    }
+
+    /**
+     * 查询菜单使用数量
+     *
+     * @param menuId 菜单ID
+     * @return 结果
+     */
+    @Override
+    public int selectCountRoleMenuByMenuId(Long menuId)
+    {
+        return roleMenuMapper.selectCountRoleMenuByMenuId(menuId);
+    }
+
+    /**
+     * 新增保存菜单信息
+     *
+     * @param menu 菜单信息
+     * @return 结果
+     */
+    @Override
+    public int insertMenu(Menu menu)
+    {
+        menu.setCreateBy(ShiroUtils.getLoginName());
+        return menuMapper.insertMenu(menu);
+    }
+
+    /**
+     * 修改保存菜单信息
+     *
+     * @param menu 菜单信息
+     * @return 结果
+     */
+    @Override
+    public int updateMenu(Menu menu)
+    {
+        menu.setUpdateBy(ShiroUtils.getLoginName());
+        return menuMapper.updateMenu(menu);
+    }
+
+    /**
+     * 保存菜单排序
+     *
+     * @param menuIds 菜单ID
+     * @param orderNums 排序ID
+     */
+    @Transactional
+    public void updateMenuSort(String[] menuIds, String[] orderNums)
+    {
+        try
+        {
+            for (int i = 0; i < menuIds.length; i++)
+            {
+                Menu menu = new Menu();
+                menu.setMenuId(Convert.toLong(menuIds[i]));
+                menu.setOrderNum(orderNums[i]);
+                menuMapper.updateMenuSort(menu);
+            }
+        }
+        catch (Exception e)
+        {
+            throw new ServiceException("保存排序异常，请联系管理员");
+        }
+    }
+
+    /**
+     * 校验菜单名称是否唯一
+     *
+     * @param menu 菜单信息
+     * @return 结果
+     */
+    @Override
+    public boolean checkMenuNameUnique(Menu menu)
+    {
+        Long menuId = StringUtils.isNull(menu.getMenuId()) ? -1L : menu.getMenuId();
+        Menu info = menuMapper.checkMenuNameUnique(menu.getMenuName(), menu.getParentId());
+        if (StringUtils.isNotNull(info) && info.getMenuId().longValue() != menuId.longValue())
+        {
+            return UserConstants.NOT_UNIQUE;
+        }
+        return UserConstants.UNIQUE;
+    }
 }

@@ -2,7 +2,6 @@ package com.ruoyi.project.system.role.mapper;
 
 import java.util.List;
 import com.ruoyi.project.system.role.domain.Role;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 角色表 数据层

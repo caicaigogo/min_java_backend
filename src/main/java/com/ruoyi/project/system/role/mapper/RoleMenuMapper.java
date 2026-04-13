@@ -26,13 +26,13 @@ public interface RoleMenuMapper
      */
     public int deleteRoleMenu(Long[] ids);
 
-//    /**
-//     * 查询菜单使用数量
-//     *
-//     * @param menuId 菜单ID
-//     * @return 结果
-//     */
-//    public int selectCountRoleMenuByMenuId(Long menuId);
+    /**
+     * 查询菜单使用数量
+     *
+     * @param menuId 菜单ID
+     * @return 结果
+     */
+    public int selectCountRoleMenuByMenuId(Long menuId);
 
     /**
      * 批量新增角色菜单信息

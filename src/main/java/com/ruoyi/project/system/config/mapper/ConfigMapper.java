@@ -1,7 +1,6 @@
 package com.ruoyi.project.system.config.mapper;
 
 import com.ruoyi.project.system.config.domain.Config;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 

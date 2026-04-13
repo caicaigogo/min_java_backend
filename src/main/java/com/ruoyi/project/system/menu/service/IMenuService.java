@@ -24,13 +24,13 @@ public interface IMenuService
      */
     public List<Menu> selectMenusByUser(User user);
 
-//    /**
-//     * 查询系统菜单列表
-//     *
-//     * @param menu 菜单信息
-//     * @return 菜单列表
-//     */
-//    public List<Menu> selectMenuList(Menu menu);
+    /**
+     * 查询系统菜单列表
+     *
+     * @param menu 菜单信息
+     * @return 菜单列表
+     */
+    public List<Menu> selectMenuList(Menu menu);
 
     /**
      * 查询菜单集合
@@ -63,12 +63,12 @@ public interface IMenuService
      */
     public List<Ztree> roleMenuTreeData(Role role);
 
-//    /**
-//     * 查询所有菜单信息
-//     *
-//     * @return 菜单列表
-//     */
-//    public List<Ztree> menuTreeData();
+    /**
+     * 查询所有菜单信息
+     *
+     * @return 菜单列表
+     */
+    public List<Ztree> menuTreeData();
 //
 //    /**
 //     * 查询系统所有权限
@@ -77,67 +77,67 @@ public interface IMenuService
 //     */
 //    public Map<String, String> selectPermsAll();
 //
-//    /**
-//     * 删除菜单管理信息
-//     *
-//     * @param menuId 菜单ID
-//     * @return 结果
-//     */
-//    public int deleteMenuById(Long menuId);
-//
-//    /**
-//     * 根据菜单ID查询信息
-//     *
-//     * @param menuId 菜单ID
-//     * @return 菜单信息
-//     */
-//    public Menu selectMenuById(Long menuId);
-//
-//    /**
-//     * 查询菜单数量
-//     *
-//     * @param parentId 菜单父ID
-//     * @return 结果
-//     */
-//    public int selectCountMenuByParentId(Long parentId);
-//
-//    /**
-//     * 查询菜单使用数量
-//     *
-//     * @param menuId 菜单ID
-//     * @return 结果
-//     */
-//    public int selectCountRoleMenuByMenuId(Long menuId);
-//
-//    /**
-//     * 新增保存菜单信息
-//     *
-//     * @param menu 菜单信息
-//     * @return 结果
-//     */
-//    public int insertMenu(Menu menu);
-//
-//    /**
-//     * 修改保存菜单信息
-//     *
-//     * @param menu 菜单信息
-//     * @return 结果
-//     */
-//    public int updateMenu(Menu menu);
-//
-//    /**
-//     * 保存菜单排序
-//     *
-//     * @param menuIds 菜单ID
-//     * @param orderNums 排序ID
-//     */
-//    public void updateMenuSort(String[] menuIds, String[] orderNums);
-//
-//    /**
-//     * 校验菜单名称是否唯一
-//     *
-//     * @param menu 菜单信息
-//     * @return 结果
-//     */
-//    public boolean checkMenuNameUnique(Menu menu);
+    /**
+     * 删除菜单管理信息
+     *
+     * @param menuId 菜单ID
+     * @return 结果
+     */
+    public int deleteMenuById(Long menuId);
+
+    /**
+     * 根据菜单ID查询信息
+     *
+     * @param menuId 菜单ID
+     * @return 菜单信息
+     */
+    public Menu selectMenuById(Long menuId);
+
+    /**
+     * 查询菜单数量
+     *
+     * @param parentId 菜单父ID
+     * @return 结果
+     */
+    public int selectCountMenuByParentId(Long parentId);
+
+    /**
+     * 查询菜单使用数量
+     *
+     * @param menuId 菜单ID
+     * @return 结果
+     */
+    public int selectCountRoleMenuByMenuId(Long menuId);
+
+    /**
+     * 新增保存菜单信息
+     *
+     * @param menu 菜单信息
+     * @return 结果
+     */
+    public int insertMenu(Menu menu);
+
+    /**
+     * 修改保存菜单信息
+     *
+     * @param menu 菜单信息
+     * @return 结果
+     */
+    public int updateMenu(Menu menu);
+
+    /**
+     * 保存菜单排序
+     *
+     * @param menuIds 菜单ID
+     * @param orderNums 排序ID
+     */
+    public void updateMenuSort(String[] menuIds, String[] orderNums);
+
+    /**
+     * 校验菜单名称是否唯一
+     *
+     * @param menu 菜单信息
+     * @return 结果
+     */
+    public boolean checkMenuNameUnique(Menu menu);
 }
