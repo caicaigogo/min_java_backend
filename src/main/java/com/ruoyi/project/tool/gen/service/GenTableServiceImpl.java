@@ -1,59 +1,59 @@
-//package com.ruoyi.project.tool.gen.service;
-//
-//import java.io.ByteArrayOutputStream;
-//import java.io.File;
-//import java.io.IOException;
-//import java.io.StringWriter;
-//import java.util.LinkedHashMap;
-//import java.util.List;
-//import java.util.Map;
-//import java.util.function.Function;
-//import java.util.stream.Collectors;
-//import java.util.zip.ZipEntry;
-//import java.util.zip.ZipOutputStream;
-//import org.apache.commons.io.FileUtils;
-//import org.apache.commons.io.IOUtils;
-//import org.apache.velocity.Template;
-//import org.apache.velocity.VelocityContext;
-//import org.apache.velocity.app.Velocity;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
-//import com.alibaba.fastjson.JSON;
-//import com.alibaba.fastjson.JSONObject;
-//import com.ruoyi.common.constant.Constants;
-//import com.ruoyi.common.constant.GenConstants;
-//import com.ruoyi.common.exception.ServiceException;
-//import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.security.ShiroUtils;
-//import com.ruoyi.common.utils.text.CharsetKit;
-//import com.ruoyi.common.utils.text.Convert;
-//import com.ruoyi.project.tool.gen.domain.GenTable;
-//import com.ruoyi.project.tool.gen.domain.GenTableColumn;
-//import com.ruoyi.project.tool.gen.mapper.GenTableColumnMapper;
-//import com.ruoyi.project.tool.gen.mapper.GenTableMapper;
-//import com.ruoyi.project.tool.gen.util.GenUtils;
+package com.ruoyi.project.tool.gen.service;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.Velocity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.ruoyi.common.constant.Constants;
+import com.ruoyi.common.constant.GenConstants;
+import com.ruoyi.common.exception.ServiceException;
+import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.security.ShiroUtils;
+import com.ruoyi.common.utils.text.CharsetKit;
+import com.ruoyi.common.utils.text.Convert;
+import com.ruoyi.project.tool.gen.domain.GenTable;
+import com.ruoyi.project.tool.gen.domain.GenTableColumn;
+import com.ruoyi.project.tool.gen.mapper.GenTableColumnMapper;
+import com.ruoyi.project.tool.gen.mapper.GenTableMapper;
+import com.ruoyi.project.tool.gen.util.GenUtils;
 //import com.ruoyi.project.tool.gen.util.VelocityInitializer;
 //import com.ruoyi.project.tool.gen.util.VelocityUtils;
-//
-///**
-// * 业务 服务层实现
-// *
-// * @author ruoyi
-// */
-//@Service
-//public class GenTableServiceImpl implements IGenTableService
-//{
-//    private static final Logger log = LoggerFactory.getLogger(GenTableServiceImpl.class);
-//
-//    @Autowired
-//    private GenTableMapper genTableMapper;
-//
-//    @Autowired
-//    private GenTableColumnMapper genTableColumnMapper;
-//
+
+/**
+ * 业务 服务层实现
+ *
+ * @author ruoyi
+ */
+@Service
+public class GenTableServiceImpl implements IGenTableService
+{
+    private static final Logger log = LoggerFactory.getLogger(GenTableServiceImpl.class);
+
+    @Autowired
+    private GenTableMapper genTableMapper;
+
+    @Autowired
+    private GenTableColumnMapper genTableColumnMapper;
+
 //    /**
 //     * 查询业务信息
 //     *
@@ -67,19 +67,19 @@
 //        setTableFromOptions(genTable);
 //        return genTable;
 //    }
-//
-//    /**
-//     * 查询业务列表
-//     *
-//     * @param genTable 业务信息
-//     * @return 业务集合
-//     */
-//    @Override
-//    public List<GenTable> selectGenTableList(GenTable genTable)
-//    {
-//        return genTableMapper.selectGenTableList(genTable);
-//    }
-//
+
+    /**
+     * 查询业务列表
+     *
+     * @param genTable 业务信息
+     * @return 业务集合
+     */
+    @Override
+    public List<GenTable> selectGenTableList(GenTable genTable)
+    {
+        return genTableMapper.selectGenTableList(genTable);
+    }
+
 //    /**
 //     * 查询据库列表
 //     *
@@ -91,19 +91,19 @@
 //    {
 //        return genTableMapper.selectDbTableList(genTable);
 //    }
-//
-//    /**
-//     * 查询据库列表
-//     *
-//     * @param tableNames 表名称组
-//     * @return 数据库表集合
-//     */
-//    @Override
-//    public List<GenTable> selectDbTableListByNames(String[] tableNames)
-//    {
-//        return genTableMapper.selectDbTableListByNames(tableNames);
-//    }
-//
+
+    /**
+     * 查询据库列表
+     *
+     * @param tableNames 表名称组
+     * @return 数据库表集合
+     */
+    @Override
+    public List<GenTable> selectDbTableListByNames(String[] tableNames)
+    {
+        return genTableMapper.selectDbTableListByNames(tableNames);
+    }
+
 //    /**
 //     * 查询所有表信息
 //     *
@@ -150,54 +150,54 @@
 //        genTableMapper.deleteGenTableByIds(Convert.toLongArray(ids));
 //        genTableColumnMapper.deleteGenTableColumnByIds(Convert.toLongArray(ids));
 //    }
-//
-//    /**
-//     * 创建表
-//     *
-//     * @param sql 创建表语句
-//     * @return 结果
-//     */
-//    @Override
-//    public boolean createTable(String sql)
-//    {
-//        return genTableMapper.createTable(sql) == 0;
-//    }
-//
-//    /**
-//     * 导入表结构
-//     *
-//     * @param tableList 导入表列表
-//     */
-//    @Override
-//    @Transactional
-//    public void importGenTable(List<GenTable> tableList)
-//    {
-//        String operName = ShiroUtils.getLoginName();
-//        try
-//        {
-//            for (GenTable table : tableList)
-//            {
-//                String tableName = table.getTableName();
-//                GenUtils.initTable(table, operName);
-//                int row = genTableMapper.insertGenTable(table);
-//                if (row > 0)
-//                {
-//                    // 保存列信息
-//                    List<GenTableColumn> genTableColumns = genTableColumnMapper.selectDbTableColumnsByName(tableName);
-//                    for (GenTableColumn column : genTableColumns)
-//                    {
-//                        GenUtils.initColumnField(column, table);
-//                        genTableColumnMapper.insertGenTableColumn(column);
-//                    }
-//                }
-//            }
-//        }
-//        catch (Exception e)
-//        {
-//            throw new ServiceException("导入失败：" + e.getMessage());
-//        }
-//    }
-//
+
+    /**
+     * 创建表
+     *
+     * @param sql 创建表语句
+     * @return 结果
+     */
+    @Override
+    public boolean createTable(String sql)
+    {
+        return genTableMapper.createTable(sql) == 0;
+    }
+
+    /**
+     * 导入表结构
+     *
+     * @param tableList 导入表列表
+     */
+    @Override
+    @Transactional
+    public void importGenTable(List<GenTable> tableList)
+    {
+        String operName = ShiroUtils.getLoginName();
+        try
+        {
+            for (GenTable table : tableList)
+            {
+                String tableName = table.getTableName();
+                GenUtils.initTable(table, operName);
+                int row = genTableMapper.insertGenTable(table);
+                if (row > 0)
+                {
+                    // 保存列信息
+                    List<GenTableColumn> genTableColumns = genTableColumnMapper.selectDbTableColumnsByName(tableName);
+                    for (GenTableColumn column : genTableColumns)
+                    {
+                        GenUtils.initColumnField(column, table);
+                        genTableColumnMapper.insertGenTableColumn(column);
+                    }
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            throw new ServiceException("导入失败：" + e.getMessage());
+        }
+    }
+
 //    /**
 //     * 预览代码
 //     *
@@ -531,4 +531,4 @@
 //        }
 //        return genPath + File.separator + VelocityUtils.getFileName(template, table);
 //    }
-//}
+}

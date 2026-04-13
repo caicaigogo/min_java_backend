@@ -1,79 +1,79 @@
-//package com.ruoyi.project.tool.gen.controller;
-//
-//import java.io.IOException;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Map;
-//import javax.servlet.http.HttpServletResponse;
-//import org.apache.commons.io.IOUtils;
-//import org.apache.shiro.authz.annotation.RequiresPermissions;
-//import org.apache.shiro.authz.annotation.RequiresRoles;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.ModelMap;
-//import org.springframework.validation.annotation.Validated;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.PathVariable;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.ResponseBody;
-//import com.alibaba.druid.DbType;
-//import com.alibaba.druid.sql.SQLUtils;
-//import com.alibaba.druid.sql.ast.SQLStatement;
-//import com.alibaba.druid.sql.dialect.mysql.ast.statement.MySqlCreateTableStatement;
-//import com.alibaba.fastjson.JSON;
-//import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.sql.SqlUtil;
-//import com.ruoyi.common.utils.text.Convert;
-//import com.ruoyi.framework.aspectj.lang.annotation.Log;
-//import com.ruoyi.framework.aspectj.lang.enums.BusinessType;
-//import com.ruoyi.framework.config.GenConfig;
-//import com.ruoyi.framework.web.controller.BaseController;
-//import com.ruoyi.framework.web.domain.AjaxResult;
+package com.ruoyi.project.tool.gen.controller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.io.IOUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.alibaba.druid.DbType;
+import com.alibaba.druid.sql.SQLUtils;
+import com.alibaba.druid.sql.ast.SQLStatement;
+import com.alibaba.druid.sql.dialect.mysql.ast.statement.MySqlCreateTableStatement;
+import com.alibaba.fastjson.JSON;
+import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.sql.SqlUtil;
+import com.ruoyi.common.utils.text.Convert;
+import com.ruoyi.framework.aspectj.lang.annotation.Log;
+import com.ruoyi.framework.aspectj.lang.enums.BusinessType;
+import com.ruoyi.framework.config.GenConfig;
+import com.ruoyi.framework.web.controller.BaseController;
+import com.ruoyi.framework.web.domain.AjaxResult;
 //import com.ruoyi.framework.web.domain.CxSelect;
-//import com.ruoyi.framework.web.page.TableDataInfo;
-//import com.ruoyi.project.tool.gen.domain.GenTable;
-//import com.ruoyi.project.tool.gen.domain.GenTableColumn;
+import com.ruoyi.framework.web.page.TableDataInfo;
+import com.ruoyi.project.tool.gen.domain.GenTable;
+import com.ruoyi.project.tool.gen.domain.GenTableColumn;
 //import com.ruoyi.project.tool.gen.service.IGenTableColumnService;
-//import com.ruoyi.project.tool.gen.service.IGenTableService;
-//
-///**
-// * 代码生成 操作处理
-// *
-// * @author ruoyi
-// */
-//@Controller
-//@RequestMapping("/tool/gen")
-//public class GenController extends BaseController
-//{
-//    private String prefix = "tool/gen";
-//
-//    @Autowired
-//    private IGenTableService genTableService;
-//
+import com.ruoyi.project.tool.gen.service.IGenTableService;
+
+/**
+ * 代码生成 操作处理
+ *
+ * @author ruoyi
+ */
+@Controller
+@RequestMapping("/tool/gen")
+public class GenController extends BaseController
+{
+    private String prefix = "tool/gen";
+
+    @Autowired
+    private IGenTableService genTableService;
+
 //    @Autowired
 //    private IGenTableColumnService genTableColumnService;
-//
-//    @RequiresPermissions("tool:gen:view")
-//    @GetMapping()
-//    public String gen()
-//    {
-//        return prefix + "/gen";
-//    }
-//
-//    /**
-//     * 查询代码生成列表
-//     */
-//    @RequiresPermissions("tool:gen:list")
-//    @PostMapping("/list")
-//    @ResponseBody
-//    public TableDataInfo genList(GenTable genTable)
-//    {
-//        startPage();
-//        List<GenTable> list = genTableService.selectGenTableList(genTable);
-//        return getDataTable(list);
-//    }
-//
+
+    @RequiresPermissions("tool:gen:view")
+    @GetMapping()
+    public String gen()
+    {
+        return prefix + "/gen";
+    }
+
+    /**
+     * 查询代码生成列表
+     */
+    @RequiresPermissions("tool:gen:list")
+    @PostMapping("/list")
+    @ResponseBody
+    public TableDataInfo genList(GenTable genTable)
+    {
+        startPage();
+        List<GenTable> list = genTableService.selectGenTableList(genTable);
+        return getDataTable(list);
+    }
+
 //    /**
 //     * 查询数据库列表
 //     */
@@ -111,16 +111,16 @@
 //    {
 //        return prefix + "/importTable";
 //    }
-//
-//    /**
-//     * 创建表结构
-//     */
-//    @GetMapping("/createTable")
-//    public String createTable()
-//    {
-//        return prefix + "/createTable";
-//    }
-//
+
+    /**
+     * 创建表结构
+     */
+    @GetMapping("/createTable")
+    public String createTable()
+    {
+        return prefix + "/createTable";
+    }
+
 //    /**
 //     * 导入表结构（保存）
 //     */
@@ -189,41 +189,41 @@
 //        genTableService.deleteGenTableByIds(ids);
 //        return AjaxResult.success();
 //    }
-//
-//    @RequiresRoles("admin")
-//    @Log(title = "创建表", businessType = BusinessType.OTHER)
-//    @PostMapping("/createTable")
-//    @ResponseBody
-//    public AjaxResult create(String sql)
-//    {
-//        try
-//        {
-//            SqlUtil.filterKeyword(sql);
-//            List<SQLStatement> sqlStatements = SQLUtils.parseStatements(sql, DbType.mysql);
-//            List<String> tableNames = new ArrayList<>();
-//            for (SQLStatement sqlStatement : sqlStatements)
-//            {
-//                if (sqlStatement instanceof MySqlCreateTableStatement)
-//                {
-//                    MySqlCreateTableStatement createTableStatement = (MySqlCreateTableStatement) sqlStatement;
-//                    if (genTableService.createTable(createTableStatement.toString()))
-//                    {
-//                        String tableName = createTableStatement.getTableName().replaceAll("`", "");
-//                        tableNames.add(tableName);
-//                    }
-//                }
-//            }
-//            List<GenTable> tableList = genTableService.selectDbTableListByNames(tableNames.toArray(new String[tableNames.size()]));
-//            genTableService.importGenTable(tableList);
-//            return AjaxResult.success();
-//        }
-//        catch (Exception e)
-//        {
-//            logger.error(e.getMessage(), e);
-//            return AjaxResult.error("创建表结构异常");
-//        }
-//    }
-//
+
+    @RequiresRoles("admin")
+    @Log(title = "创建表", businessType = BusinessType.OTHER)
+    @PostMapping("/createTable")
+    @ResponseBody
+    public AjaxResult create(String sql)
+    {
+        try
+        {
+            SqlUtil.filterKeyword(sql);
+            List<SQLStatement> sqlStatements = SQLUtils.parseStatements(sql, DbType.mysql);
+            List<String> tableNames = new ArrayList<>();
+            for (SQLStatement sqlStatement : sqlStatements)
+            {
+                if (sqlStatement instanceof MySqlCreateTableStatement)
+                {
+                    MySqlCreateTableStatement createTableStatement = (MySqlCreateTableStatement) sqlStatement;
+                    if (genTableService.createTable(createTableStatement.toString()))
+                    {
+                        String tableName = createTableStatement.getTableName().replaceAll("`", "");
+                        tableNames.add(tableName);
+                    }
+                }
+            }
+            List<GenTable> tableList = genTableService.selectDbTableListByNames(tableNames.toArray(new String[tableNames.size()]));
+            genTableService.importGenTable(tableList);
+            return AjaxResult.success();
+        }
+        catch (Exception e)
+        {
+            logger.error(e.getMessage(), e);
+            return AjaxResult.error("创建表结构异常");
+        }
+    }
+
 //    /**
 //     * 预览代码
 //     */
@@ -303,4 +303,4 @@
 //        response.setContentType("application/octet-stream; charset=UTF-8");
 //        IOUtils.write(data, response.getOutputStream());
 //    }
-//}
+}

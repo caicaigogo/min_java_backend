@@ -1,23 +1,23 @@
-//package com.ruoyi.project.tool.gen.mapper;
-//
-//import java.util.List;
-//import com.ruoyi.project.tool.gen.domain.GenTable;
-//
-///**
-// * 业务 数据层
-// *
-// * @author ruoyi
-// */
-//public interface GenTableMapper
-//{
-//    /**
-//     * 查询业务列表
-//     *
-//     * @param genTable 业务信息
-//     * @return 业务集合
-//     */
-//    public List<GenTable> selectGenTableList(GenTable genTable);
-//
+package com.ruoyi.project.tool.gen.mapper;
+
+import java.util.List;
+import com.ruoyi.project.tool.gen.domain.GenTable;
+
+/**
+ * 业务 数据层
+ *
+ * @author ruoyi
+ */
+public interface GenTableMapper
+{
+    /**
+     * 查询业务列表
+     *
+     * @param genTable 业务信息
+     * @return 业务集合
+     */
+    public List<GenTable> selectGenTableList(GenTable genTable);
+
 //    /**
 //     * 查询据库列表
 //     *
@@ -26,14 +26,14 @@
 //     */
 //    public List<GenTable> selectDbTableList(GenTable genTable);
 //
-//    /**
-//     * 查询据库列表
-//     *
-//     * @param tableNames 表名称组
-//     * @return 数据库表集合
-//     */
-//    public List<GenTable> selectDbTableListByNames(String[] tableNames);
-//
+    /**
+     * 查询据库列表
+     *
+     * @param tableNames 表名称组
+     * @return 数据库表集合
+     */
+    public List<GenTable> selectDbTableListByNames(String[] tableNames);
+
 //    /**
 //     * 查询所有表信息
 //     *
@@ -57,14 +57,14 @@
 //     */
 //    public GenTable selectGenTableByName(String tableName);
 //
-//    /**
-//     * 新增业务
-//     *
-//     * @param genTable 业务信息
-//     * @return 结果
-//     */
-//    public int insertGenTable(GenTable genTable);
-//
+    /**
+     * 新增业务
+     *
+     * @param genTable 业务信息
+     * @return 结果
+     */
+    public int insertGenTable(GenTable genTable);
+
 //    /**
 //     * 修改业务
 //     *
@@ -80,12 +80,12 @@
 //     * @return 结果
 //     */
 //    public int deleteGenTableByIds(Long[] ids);
-//
-//    /**
-//     * 创建表
-//     *
-//     * @param sql
-//     * @return 结果
-//     */
-//    public int createTable(String sql);
-//}
+
+    /**
+     * 创建表
+     *
+     * @param sql
+     * @return 结果
+     */
+    public int createTable(String sql);
+}
