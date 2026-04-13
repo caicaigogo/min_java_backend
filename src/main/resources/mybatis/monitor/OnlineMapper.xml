@@ -45,18 +45,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		delete from sys_user_online where sessionId = #{sessionId}
  	</delete>
 
-<!-- 	<select id="selectUserOnlineList" parameterType="UserOnline" resultMap="UserOnlineResult">-->
-<!--		<include refid="selectOnlineVo"/>-->
-<!--		<where>-->
-<!--			<if test="ipaddr != null and ipaddr != ''">-->
-<!--				AND ipaddr like concat('%', #{ipaddr}, '%')-->
-<!--			</if>-->
-<!--			<if test="loginName != null and loginName != ''">-->
-<!--				AND login_name like concat('%', #{loginName}, '%')-->
-<!--			</if>-->
-<!--		</where>-->
-<!--	</select>-->
-<!--	-->
+ 	<select id="selectUserOnlineList" parameterType="UserOnline" resultMap="UserOnlineResult">
+		<include refid="selectOnlineVo"/>
+		<where>
+			<if test="ipaddr != null and ipaddr != ''">
+				AND ipaddr like concat('%', #{ipaddr}, '%')
+			</if>
+			<if test="loginName != null and loginName != ''">
+				AND login_name like concat('%', #{loginName}, '%')
+			</if>
+		</where>
+	</select>
+
 <!--	<select id="selectOnlineByExpired" parameterType="String" resultMap="UserOnlineResult">-->
 <!--		<include refid="selectOnlineVo"/> o -->
 <!--		WHERE o.last_access_time <![CDATA[ <= ]]> #{lastAccessTime} ORDER BY o.last_access_time ASC-->

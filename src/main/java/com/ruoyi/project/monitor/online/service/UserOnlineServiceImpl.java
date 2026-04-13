@@ -91,17 +91,17 @@ public class UserOnlineServiceImpl implements IUserOnlineService
         userOnlineDao.saveOnline(online);
     }
 
-//    /**
-//     * 查询会话集合
-//     *
-//     * @param pageUtilEntity 分页参数
-//     */
-//    @Override
-//    public List<UserOnline> selectUserOnlineList(UserOnline userOnline)
-//    {
-//        return userOnlineDao.selectUserOnlineList(userOnline);
-//    }
-//
+    /**
+     * 查询会话集合
+     *
+     * @param userOnline 会话参数
+     */
+    @Override
+    public List<UserOnline> selectUserOnlineList(UserOnline userOnline)
+    {
+        return userOnlineDao.selectUserOnlineList(userOnline);
+    }
+
 //    /**
 //     * 强退用户
 //     *

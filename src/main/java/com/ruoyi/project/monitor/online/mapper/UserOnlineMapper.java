@@ -34,15 +34,15 @@ public interface UserOnlineMapper
      * @return 结果
      */
     public int saveOnline(UserOnline online);
-//
-//    /**
-//     * 查询会话集合
-//     *
-//     * @param userOnline 会话参数
-//     * @return 会话集合
-//     */
-//    public List<UserOnline> selectUserOnlineList(UserOnline userOnline);
-//
+
+    /**
+     * 查询会话集合
+     *
+     * @param userOnline 会话参数
+     * @return 会话集合
+     */
+    public List<UserOnline> selectUserOnlineList(UserOnline userOnline);
+
 //    /**
 //     * 查询过期会话集合
 //     *

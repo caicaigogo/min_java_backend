@@ -42,14 +42,14 @@ public interface IUserOnlineService
      */
     public void saveOnline(UserOnline online);
 
-//    /**
-//     * 查询会话集合
-//     *
-//     * @param userOnline 分页参数
-//     * @return 会话集合
-//     */
-//    public List<UserOnline> selectUserOnlineList(UserOnline userOnline);
-//
+    /**
+     * 查询会话集合
+     *
+     * @param userOnline 分页参数
+     * @return 会话集合
+     */
+    public List<UserOnline> selectUserOnlineList(UserOnline userOnline);
+
 //    /**
 //     * 强退用户
 //     *
