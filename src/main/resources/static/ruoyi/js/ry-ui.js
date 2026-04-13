@@ -1074,43 +1074,43 @@ var table = {
             get: function(url, callback) {
                 $.operate.submit(url, "get", "json", "", callback);
             },
-        //     // 详细信息
-        //     detail: function(id, width, height) {
-        //         table.set();
-        //         var _url = $.operate.detailUrl(id);
-        //         var options = {
-        //             title: table.options.modalName + "详细",
-        //             width: width,
-        //             height: height,
-        //             url: _url,
-        //             btn: 0,
-        //             yes: function (index, layero) {
-        //                 $.modal.close(index);
-        //             }
-        //         };
-        //         $.modal.openOptions(options);
-        //     },
-        //     // 详细信息，以tab页展现
-        //     detailTab: function(id) {
-        //         table.set();
-        //         $.modal.openTab("详细" + table.options.modalName, $.operate.detailUrl(id));
-        //     },
-        //     // 详细访问地址
-        //     detailUrl: function(id) {
-        //         var url = "/404.html";
-        //         if ($.common.isNotEmpty(id)) {
-        //             url = table.options.detailUrl.replace("{id}", id);
-        //         } else {
-        //             var id = $.common.isEmpty(table.options.uniqueId) ? $.table.selectFirstColumns() : $.table.selectColumns(table.options.uniqueId);
-        //             if (id.length == 0) {
-        //                 $.modal.alertWarning("请至少选择一条记录");
-        //                 return;
-        //             }
-        //             url = table.options.detailUrl.replace("{id}", id);
-        //         }
-        //         return url;
-        //     },
-        //     // 删除信息
+            // 详细信息
+            detail: function(id, width, height) {
+                table.set();
+                var _url = $.operate.detailUrl(id);
+                var options = {
+                    title: table.options.modalName + "详细",
+                    width: width,
+                    height: height,
+                    url: _url,
+                    btn: 0,
+                    yes: function (index, layero) {
+                        $.modal.close(index);
+                    }
+                };
+                $.modal.openOptions(options);
+            },
+            // 详细信息，以tab页展现
+            detailTab: function(id) {
+                table.set();
+                $.modal.openTab("详细" + table.options.modalName, $.operate.detailUrl(id));
+            },
+            // 详细访问地址
+            detailUrl: function(id) {
+                var url = "/404.html";
+                if ($.common.isNotEmpty(id)) {
+                    url = table.options.detailUrl.replace("{id}", id);
+                } else {
+                    var id = $.common.isEmpty(table.options.uniqueId) ? $.table.selectFirstColumns() : $.table.selectColumns(table.options.uniqueId);
+                    if (id.length == 0) {
+                        $.modal.alertWarning("请至少选择一条记录");
+                        return;
+                    }
+                    url = table.options.detailUrl.replace("{id}", id);
+                }
+                return url;
+            },
+            // 删除信息
             remove: function(id) {
                 table.set();
                 $.modal.confirm("确定删除该条" + table.options.modalName + "信息吗？", function() {
@@ -1137,14 +1137,14 @@ var table = {
                     $.operate.submit(url, "post", "json", data);
                 });
             },
-        //     // 清空信息
-        //     clean: function() {
-        //         table.set();
-        //         $.modal.confirm("确定清空所有" + table.options.modalName + "吗？", function() {
-        //             var url = table.options.cleanUrl;
-        //             $.operate.submit(url, "post", "json", "");
-        //         });
-        //     },
+            // 清空信息
+            clean: function() {
+                table.set();
+                $.modal.confirm("确定清空所有" + table.options.modalName + "吗？", function() {
+                    var url = table.options.cleanUrl;
+                    $.operate.submit(url, "post", "json", "");
+                });
+            },
             // 添加信息
             add: function(id) {
                 table.set();
