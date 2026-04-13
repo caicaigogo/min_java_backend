@@ -191,11 +191,11 @@ public class BaseController
         return getSysUser().getUserId();
     }
 
-//    /**
-//     * 获取登录用户名
-//     */
-//    public String getLoginName()
-//    {
-//        return getSysUser().getLoginName();
-//    }
+    /**
+     * 获取登录用户名
+     */
+    public String getLoginName()
+    {
+        return getSysUser().getLoginName();
+    }
 }

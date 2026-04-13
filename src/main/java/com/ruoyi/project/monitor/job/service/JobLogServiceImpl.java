@@ -1,23 +1,23 @@
-//package com.ruoyi.project.monitor.job.service;
-//
-//import java.util.List;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import com.ruoyi.common.utils.text.Convert;
-//import com.ruoyi.project.monitor.job.domain.JobLog;
-//import com.ruoyi.project.monitor.job.mapper.JobLogMapper;
-//
-///**
-// * 定时任务调度日志信息 服务层
-// *
-// * @author ruoyi
-// */
-//@Service
-//public class JobLogServiceImpl implements IJobLogService
-//{
-//    @Autowired
-//    private JobLogMapper jobLogMapper;
-//
+package com.ruoyi.project.monitor.job.service;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.ruoyi.common.utils.text.Convert;
+import com.ruoyi.project.monitor.job.domain.JobLog;
+import com.ruoyi.project.monitor.job.mapper.JobLogMapper;
+
+/**
+ * 定时任务调度日志信息 服务层
+ *
+ * @author ruoyi
+ */
+@Service
+public class JobLogServiceImpl implements IJobLogService
+{
+    @Autowired
+    private JobLogMapper jobLogMapper;
+
 //    /**
 //     * 获取quartz调度器日志的计划任务
 //     *
@@ -41,18 +41,18 @@
 //    {
 //        return jobLogMapper.selectJobLogById(jobLogId);
 //    }
-//
-//    /**
-//     * 新增任务日志
-//     *
-//     * @param jobLog 调度日志信息
-//     */
-//    @Override
-//    public void addJobLog(JobLog jobLog)
-//    {
-//        jobLogMapper.insertJobLog(jobLog);
-//    }
-//
+
+    /**
+     * 新增任务日志
+     *
+     * @param jobLog 调度日志信息
+     */
+    @Override
+    public void addJobLog(JobLog jobLog)
+    {
+        jobLogMapper.insertJobLog(jobLog);
+    }
+
 //    /**
 //     * 批量删除调度日志信息
 //     *
@@ -84,4 +84,4 @@
 //    {
 //        jobLogMapper.cleanJobLog();
 //    }
-//}
+}

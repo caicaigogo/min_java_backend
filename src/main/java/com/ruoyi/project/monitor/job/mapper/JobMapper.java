@@ -1,23 +1,23 @@
-//package com.ruoyi.project.monitor.job.mapper;
-//
-//import java.util.List;
-//import com.ruoyi.project.monitor.job.domain.Job;
-//
-///**
-// * 调度任务信息 数据层
-// *
-// * @author ruoyi
-// */
-//public interface JobMapper
-//{
-//    /**
-//     * 查询调度任务日志集合
-//     *
-//     * @param job 调度信息
-//     * @return 操作日志集合
-//     */
-//    public List<Job> selectJobList(Job job);
-//
+package com.ruoyi.project.monitor.job.mapper;
+
+import java.util.List;
+import com.ruoyi.project.monitor.job.domain.Job;
+
+/**
+ * 调度任务信息 数据层
+ *
+ * @author ruoyi
+ */
+public interface JobMapper
+{
+    /**
+     * 查询调度任务日志集合
+     *
+     * @param job 调度信息
+     * @return 操作日志集合
+     */
+    public List<Job> selectJobList(Job job);
+
 //    /**
 //     * 查询所有调度任务
 //     *
@@ -57,11 +57,11 @@
 //     */
 //    public int updateJob(Job job);
 //
-//    /**
-//     * 新增调度任务信息
-//     *
-//     * @param job 调度任务信息
-//     * @return 结果
-//     */
-//    public int insertJob(Job job);
-//}
+    /**
+     * 新增调度任务信息
+     *
+     * @param job 调度任务信息
+     * @return 结果
+     */
+    public int insertJob(Job job);
+}

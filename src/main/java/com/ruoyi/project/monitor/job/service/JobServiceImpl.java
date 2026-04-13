@@ -1,36 +1,36 @@
-//package com.ruoyi.project.monitor.job.service;
-//
-//import java.util.List;
-//import javax.annotation.PostConstruct;
-//import org.quartz.JobDataMap;
-//import org.quartz.JobKey;
-//import org.quartz.Scheduler;
-//import org.quartz.SchedulerException;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
-//import com.ruoyi.common.constant.ScheduleConstants;
-//import com.ruoyi.common.exception.job.TaskException;
-//import com.ruoyi.common.utils.text.Convert;
-//import com.ruoyi.project.monitor.job.domain.Job;
-//import com.ruoyi.project.monitor.job.mapper.JobMapper;
-//import com.ruoyi.project.monitor.job.util.CronUtils;
-//import com.ruoyi.project.monitor.job.util.ScheduleUtils;
-//
-///**
-// * 定时任务调度信息 服务层
-// *
-// * @author ruoyi
-// */
-//@Service
-//public class JobServiceImpl implements IJobService
-//{
-//    @Autowired
-//    private Scheduler scheduler;
-//
-//    @Autowired
-//    private JobMapper jobMapper;
-//
+package com.ruoyi.project.monitor.job.service;
+
+import java.util.List;
+import javax.annotation.PostConstruct;
+import org.quartz.JobDataMap;
+import org.quartz.JobKey;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.ruoyi.common.constant.ScheduleConstants;
+import com.ruoyi.common.exception.job.TaskException;
+import com.ruoyi.common.utils.text.Convert;
+import com.ruoyi.project.monitor.job.domain.Job;
+import com.ruoyi.project.monitor.job.mapper.JobMapper;
+import com.ruoyi.project.monitor.job.util.CronUtils;
+import com.ruoyi.project.monitor.job.util.ScheduleUtils;
+
+/**
+ * 定时任务调度信息 服务层
+ *
+ * @author ruoyi
+ */
+@Service
+public class JobServiceImpl implements IJobService
+{
+    @Autowired
+    private Scheduler scheduler;
+
+    @Autowired
+    private JobMapper jobMapper;
+
 //    /**
 //     * 项目启动时，初始化定时器
 //     * 主要是防止手动修改数据库导致未同步到定时任务处理（注：不能手动修改数据库ID和任务组名，否则会导致脏数据）
@@ -45,19 +45,19 @@
 //            ScheduleUtils.createScheduleJob(scheduler, job);
 //        }
 //    }
-//
-//    /**
-//     * 获取quartz调度器的计划任务列表
-//     *
-//     * @param job 调度信息
-//     * @return
-//     */
-//    @Override
-//    public List<Job> selectJobList(Job job)
-//    {
-//        return jobMapper.selectJobList(job);
-//    }
-//
+
+    /**
+     * 获取quartz调度器的计划任务列表
+     *
+     * @param job 调度信息
+     * @return
+     */
+    @Override
+    public List<Job> selectJobList(Job job)
+    {
+        return jobMapper.selectJobList(job);
+    }
+
 //    /**
 //     * 通过调度任务ID查询调度信息
 //     *
@@ -192,24 +192,24 @@
 //        }
 //        return result;
 //    }
-//
-//    /**
-//     * 新增任务
-//     *
-//     * @param job 调度信息 调度信息
-//     */
-//    @Override
-//    @Transactional(rollbackFor = Exception.class)
-//    public int insertJob(Job job) throws SchedulerException, TaskException
-//    {
-//        job.setStatus(ScheduleConstants.Status.PAUSE.getValue());
-//        int rows = jobMapper.insertJob(job);
-//        if (rows > 0)
-//        {
-//            ScheduleUtils.createScheduleJob(scheduler, job);
-//        }
-//        return rows;
-//    }
+
+    /**
+     * 新增任务
+     *
+     * @param job 调度信息 调度信息
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public int insertJob(Job job) throws SchedulerException, TaskException
+    {
+        job.setStatus(ScheduleConstants.Status.PAUSE.getValue());
+        int rows = jobMapper.insertJob(job);
+        if (rows > 0)
+        {
+            ScheduleUtils.createScheduleJob(scheduler, job);
+        }
+        return rows;
+    }
 //
 //    /**
 //     * 更新任务的时间表达式
@@ -247,16 +247,16 @@
 //        }
 //        ScheduleUtils.createScheduleJob(scheduler, job);
 //    }
-//
-//    /**
-//     * 校验cron表达式是否有效
-//     *
-//     * @param cronExpression 表达式
-//     * @return 结果
-//     */
-//    @Override
-//    public boolean checkCronExpressionIsValid(String cronExpression)
-//    {
-//        return CronUtils.isValid(cronExpression);
-//    }
-//}
+
+    /**
+     * 校验cron表达式是否有效
+     *
+     * @param cronExpression 表达式
+     * @return 结果
+     */
+    @Override
+    public boolean checkCronExpressionIsValid(String cronExpression)
+    {
+        return CronUtils.isValid(cronExpression);
+    }
+}

@@ -1,15 +1,15 @@
-//package com.ruoyi.project.monitor.job.mapper;
-//
-//import java.util.List;
-//import com.ruoyi.project.monitor.job.domain.JobLog;
-//
-///**
-// * 调度任务日志信息 数据层
-// *
-// * @author ruoyi
-// */
-//public interface JobLogMapper
-//{
+package com.ruoyi.project.monitor.job.mapper;
+
+import java.util.List;
+import com.ruoyi.project.monitor.job.domain.JobLog;
+
+/**
+ * 调度任务日志信息 数据层
+ *
+ * @author ruoyi
+ */
+public interface JobLogMapper
+{
 //    /**
 //     * 获取quartz调度器日志的计划任务
 //     *
@@ -32,15 +32,15 @@
 //     * @return 调度任务日志对象信息
 //     */
 //    public JobLog selectJobLogById(Long jobLogId);
-//
-//    /**
-//     * 新增任务日志
-//     *
-//     * @param jobLog 调度日志信息
-//     * @return 结果
-//     */
-//    public int insertJobLog(JobLog jobLog);
-//
+
+    /**
+     * 新增任务日志
+     *
+     * @param jobLog 调度日志信息
+     * @return 结果
+     */
+    public int insertJobLog(JobLog jobLog);
+
 //    /**
 //     * 批量删除调度日志信息
 //     *
@@ -61,4 +61,4 @@
 //     * 清空任务日志
 //     */
 //    public void cleanJobLog();
-//}
+}
