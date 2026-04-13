@@ -597,98 +597,98 @@ var table = {
             //     $("#" + currentId).bootstrapTable('hideAllColumns');
             // }
         },
-        // // 表格树封装处理
-        // treeTable: {
-        //     // 初始化表格
-        //     init: function(options) {
-        //         var defaults = {
-        //             id: "bootstrap-tree-table",
-        //             type: 1, // 0 代表bootstrapTable 1代表bootstrapTreeTable
-        //             height: 0,
-        //             rootIdValue: 0,
-        //             ajaxParams: {},
-        //             toolbar: "toolbar",
-        //             striped: false,
-        //             pagination: false,
-        //             pageSize: 10,
-        //             pageList: [10, 25, 50],
-        //             expandColumn: 1,
-        //             showSearch: true,
-        //             showRefresh: true,
-        //             showColumns: true,
-        //             expandAll: true,
-        //             expandFirst: true
-        //         };
-        //         var options = $.extend(defaults, options);
-        //         table.options = options;
-        //         table.config[options.id] = options;
-        //         $.table.initEvent();
-        //         $.bttTable = $('#' + options.id).bootstrapTreeTable({
-        //             code: options.code,                                 // 用于设置父子关系
-        //             parentCode: options.parentCode,                     // 用于设置父子关系
-        //             type: 'post',                                       // 请求方式（*）
-        //             url: options.url,                                   // 请求后台的URL（*）
-        //             data: options.data,                                 // 无url时用于渲染的数据
-        //             ajaxParams: options.ajaxParams,                     // 请求数据的ajax的data属性
-        //             rootIdValue: options.rootIdValue,                   // 设置指定根节点id值
-        //             height: options.height,                             // 表格树的高度
-        //             pagination: options.pagination,                     // 是否显示分页
-        //             dataUrl: options.dataUrl,                           // 加载子节点异步请求数据url
-        //             pageSize: options.pageSize,                         // 每页的记录行数
-        //             pageList: options.pageList,                         // 可供选择的每页的行数
-        //             expandColumn: options.expandColumn,                 // 在哪一列上面显示展开按钮
-        //             striped: options.striped,                           // 是否显示行间隔色
-        //             bordered: options.bordered,                         // 是否显示边框
-        //             toolbar: '#' + options.toolbar,                     // 指定工作栏
-        //             showSearch: options.showSearch,                     // 是否显示检索信息
-        //             showRefresh: options.showRefresh,                   // 是否显示刷新按钮
-        //             showColumns: options.showColumns,                   // 是否显示隐藏某列下拉框
-        //             expandAll: options.expandAll,                       // 是否全部展开
-        //             expandFirst: options.expandFirst,                   // 是否默认第一级展开--expandAll为false时生效
-        //             columns: options.columns,                           // 显示列信息（*）
-        //             onClickRow: options.onClickRow,                     // 单击某行事件
-        //             responseHandler: $.treeTable.responseHandler,       // 在加载服务器发送来的数据之前处理函数
-        //             onLoadSuccess: $.treeTable.onLoadSuccess            // 当所有数据被加载时触发处理函数
-        //         });
-        //     },
-        //     // 条件查询
-        //     search: function(formId) {
-        //         var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
-        //         var params = $.common.formToJSON(currentId);
-        //         $.bttTable.bootstrapTreeTable('refresh', $.extend(params, table.options.ajaxParams));
-        //     },
-        //     // 刷新
-        //     refresh: function() {
-        //         $.bttTable.bootstrapTreeTable('refresh');
-        //     },
-        //     // 查询表格树指定列值deDuplication（ true去重、false不去重）
-        //     selectColumns: function(column, deDuplication) {
-        //         var distinct = $.common.isEmpty(deDuplication) ? true : deDuplication;
-        //         var rows = $.map($.bttTable.bootstrapTreeTable('getSelections'), function (row) {
-        //             return $.common.getItemField(row, column);
-        //         });
-        //         return distinct ? $.common.uniqueFn(rows) : rows;
-        //     },
-        //     // 请求获取数据后处理回调函数，校验异常状态提醒
-        //     responseHandler: function(res) {
-        //         if (typeof table.options.responseHandler == "function") {
-        //             table.options.responseHandler(res);
-        //         }
-        //         if (res.code != undefined && res.code != web_status.SUCCESS) {
-        //             $.modal.alertWarning(res.msg);
-        //             return [];
-        //         } else {
-        //             return res;
-        //         }
-        //     },
-        //     // 当所有数据被加载时触发
-        //     onLoadSuccess: function(data) {
-        //         if (typeof table.options.onLoadSuccess == "function") {
-        //             table.options.onLoadSuccess(data);
-        //         }
-        //         $(".table [data-toggle='tooltip']").tooltip();
-        //     },
-        // },
+        // 表格树封装处理
+        treeTable: {
+            // 初始化表格
+            init: function(options) {
+                var defaults = {
+                    id: "bootstrap-tree-table",
+                    type: 1, // 0 代表bootstrapTable 1代表bootstrapTreeTable
+                    height: 0,
+                    rootIdValue: 0,
+                    ajaxParams: {},
+                    toolbar: "toolbar",
+                    striped: false,
+                    pagination: false,
+                    pageSize: 10,
+                    pageList: [10, 25, 50],
+                    expandColumn: 1,
+                    showSearch: true,
+                    showRefresh: true,
+                    showColumns: true,
+                    expandAll: true,
+                    expandFirst: true
+                };
+                var options = $.extend(defaults, options);
+                table.options = options;
+                table.config[options.id] = options;
+                $.table.initEvent();
+                $.bttTable = $('#' + options.id).bootstrapTreeTable({
+                    code: options.code,                                 // 用于设置父子关系
+                    parentCode: options.parentCode,                     // 用于设置父子关系
+                    type: 'post',                                       // 请求方式（*）
+                    url: options.url,                                   // 请求后台的URL（*）
+                    data: options.data,                                 // 无url时用于渲染的数据
+                    ajaxParams: options.ajaxParams,                     // 请求数据的ajax的data属性
+                    rootIdValue: options.rootIdValue,                   // 设置指定根节点id值
+                    height: options.height,                             // 表格树的高度
+                    pagination: options.pagination,                     // 是否显示分页
+                    dataUrl: options.dataUrl,                           // 加载子节点异步请求数据url
+                    pageSize: options.pageSize,                         // 每页的记录行数
+                    pageList: options.pageList,                         // 可供选择的每页的行数
+                    expandColumn: options.expandColumn,                 // 在哪一列上面显示展开按钮
+                    striped: options.striped,                           // 是否显示行间隔色
+                    bordered: options.bordered,                         // 是否显示边框
+                    toolbar: '#' + options.toolbar,                     // 指定工作栏
+                    showSearch: options.showSearch,                     // 是否显示检索信息
+                    showRefresh: options.showRefresh,                   // 是否显示刷新按钮
+                    showColumns: options.showColumns,                   // 是否显示隐藏某列下拉框
+                    expandAll: options.expandAll,                       // 是否全部展开
+                    expandFirst: options.expandFirst,                   // 是否默认第一级展开--expandAll为false时生效
+                    columns: options.columns,                           // 显示列信息（*）
+                    onClickRow: options.onClickRow,                     // 单击某行事件
+                    responseHandler: $.treeTable.responseHandler,       // 在加载服务器发送来的数据之前处理函数
+                    onLoadSuccess: $.treeTable.onLoadSuccess            // 当所有数据被加载时触发处理函数
+                });
+            },
+            // 条件查询
+            search: function(formId) {
+                var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
+                var params = $.common.formToJSON(currentId);
+                $.bttTable.bootstrapTreeTable('refresh', $.extend(params, table.options.ajaxParams));
+            },
+            // 刷新
+            refresh: function() {
+                $.bttTable.bootstrapTreeTable('refresh');
+            },
+            // 查询表格树指定列值deDuplication（ true去重、false不去重）
+            selectColumns: function(column, deDuplication) {
+                var distinct = $.common.isEmpty(deDuplication) ? true : deDuplication;
+                var rows = $.map($.bttTable.bootstrapTreeTable('getSelections'), function (row) {
+                    return $.common.getItemField(row, column);
+                });
+                return distinct ? $.common.uniqueFn(rows) : rows;
+            },
+            // 请求获取数据后处理回调函数，校验异常状态提醒
+            responseHandler: function(res) {
+                if (typeof table.options.responseHandler == "function") {
+                    table.options.responseHandler(res);
+                }
+                if (res.code != undefined && res.code != web_status.SUCCESS) {
+                    $.modal.alertWarning(res.msg);
+                    return [];
+                } else {
+                    return res;
+                }
+            },
+            // 当所有数据被加载时触发
+            onLoadSuccess: function(data) {
+                if (typeof table.options.onLoadSuccess == "function") {
+                    table.options.onLoadSuccess(data);
+                }
+                $(".table [data-toggle='tooltip']").tooltip();
+            },
+        },
         // 表单封装处理
         form: {
             // 表单重置
@@ -1566,13 +1566,13 @@ var table = {
         //         }
         //         return true;
         //     },
-        //     // 隐藏/显示搜索栏
-        //     toggleSearch: function() {
-        //         $('#search').slideToggle(200);
-        //         $('#btnShow').toggle();
-        //         $('#btnHide').toggle();
-        //         $('#keyword').focus();
-        //     },
+            // 隐藏/显示搜索栏
+            toggleSearch: function() {
+                $('#search').slideToggle(200);
+                $('#btnShow').toggle();
+                $('#btnHide').toggle();
+                $('#keyword').focus();
+            },
             // 折叠
             collapse: function() {
                 $._tree.expandAll(false);

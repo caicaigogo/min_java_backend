@@ -45,14 +45,14 @@ public interface DeptMapper
 //     */
 //    public int deleteDeptById(Long deptId);
 //
-//    /**
-//     * 新增部门信息
-//     *
-//     * @param dept 部门信息
-//     * @return 结果
-//     */
-//    public int insertDept(Dept dept);
-//
+    /**
+     * 新增部门信息
+     *
+     * @param dept 部门信息
+     * @return 结果
+     */
+    public int insertDept(Dept dept);
+
 //    /**
 //     * 修改部门信息
 //     *
@@ -76,16 +76,16 @@ public interface DeptMapper
      * @return 部门信息
      */
     public Dept selectDeptById(Long deptId);
-//
-//    /**
-//     * 校验部门名称是否唯一
-//     *
-//     * @param deptName 部门名称
-//     * @param parentId 父部门ID
-//     * @return 结果
-//     */
-//    public Dept checkDeptNameUnique(@Param("deptName") String deptName, @Param("parentId") Long parentId);
-//
+
+    /**
+     * 校验部门名称是否唯一
+     *
+     * @param deptName 部门名称
+     * @param parentId 父部门ID
+     * @return 结果
+     */
+    public Dept checkDeptNameUnique(@Param("deptName") String deptName, @Param("parentId") Long parentId);
+
     /**
      * 根据角色ID查询部门
      *

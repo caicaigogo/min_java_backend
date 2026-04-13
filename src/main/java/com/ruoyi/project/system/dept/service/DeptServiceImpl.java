@@ -56,26 +56,26 @@ public class DeptServiceImpl implements IDeptService
         List<Ztree> ztrees = initZtree(deptList);
         return ztrees;
     }
-//
-//    /**
-//     * 查询部门管理树（排除下级）
-//     *
-//     * @param deptId 部门ID
-//     * @return 所有部门信息
-//     */
-//    @Override
-//    @DataScope(deptAlias = "d")
-//    public List<Ztree> selectDeptTreeExcludeChild(Dept dept)
-//    {
-//        Long excludeId = dept.getExcludeId();
-//        List<Dept> depts = deptMapper.selectDeptList(dept);
-//        if (excludeId.intValue() > 0)
-//        {
-//            depts.removeIf(d -> d.getDeptId().intValue() == excludeId || ArrayUtils.contains(StringUtils.split(d.getAncestors(), ","), excludeId + ""));
-//        }
-//        List<Ztree> ztrees = initZtree(depts);
-//        return ztrees;
-//    }
+
+    /**
+     * 查询部门管理树（排除下级）
+     *
+     * @param dept 部门信息
+     * @return 所有部门信息
+     */
+    @Override
+    @DataScope(deptAlias = "d")
+    public List<Ztree> selectDeptTreeExcludeChild(Dept dept)
+    {
+        Long excludeId = dept.getExcludeId();
+        List<Dept> depts = deptMapper.selectDeptList(dept);
+        if (excludeId.intValue() > 0)
+        {
+            depts.removeIf(d -> d.getDeptId().intValue() == excludeId || ArrayUtils.contains(StringUtils.split(d.getAncestors(), ","), excludeId + ""));
+        }
+        List<Ztree> ztrees = initZtree(depts);
+        return ztrees;
+    }
 
     /**
      * 根据角色ID查询部门（数据权限）
@@ -181,26 +181,26 @@ public class DeptServiceImpl implements IDeptService
 //        return deptMapper.deleteDeptById(deptId);
 //    }
 //
-//    /**
-//     * 新增保存部门信息
-//     *
-//     * @param dept 部门信息
-//     * @return 结果
-//     */
-//    @Override
-//    public int insertDept(Dept dept)
-//    {
-//        Dept info = deptMapper.selectDeptById(dept.getParentId());
-//        // 如果父节点不为"正常"状态,则不允许新增子节点
-//        if (!UserConstants.DEPT_NORMAL.equals(info.getStatus()))
-//        {
-//            throw new ServiceException("部门停用，不允许新增");
-//        }
-//        dept.setCreateBy(ShiroUtils.getLoginName());
-//        dept.setAncestors(info.getAncestors() + "," + dept.getParentId());
-//        return deptMapper.insertDept(dept);
-//    }
-//
+    /**
+     * 新增保存部门信息
+     *
+     * @param dept 部门信息
+     * @return 结果
+     */
+    @Override
+    public int insertDept(Dept dept)
+    {
+        Dept info = deptMapper.selectDeptById(dept.getParentId());
+        // 如果父节点不为"正常"状态,则不允许新增子节点
+        if (!UserConstants.DEPT_NORMAL.equals(info.getStatus()))
+        {
+            throw new ServiceException("部门停用，不允许新增");
+        }
+        dept.setCreateBy(ShiroUtils.getLoginName());
+        dept.setAncestors(info.getAncestors() + "," + dept.getParentId());
+        return deptMapper.insertDept(dept);
+    }
+
 //    /**
 //     * 修改保存部门信息
 //     *
@@ -307,24 +307,24 @@ public class DeptServiceImpl implements IDeptService
 //    {
 //        return deptMapper.selectNormalChildrenDeptById(deptId);
 //    }
-//
-//    /**
-//     * 校验部门名称是否唯一
-//     *
-//     * @param dept 部门信息
-//     * @return 结果
-//     */
-//    @Override
-//    public boolean checkDeptNameUnique(Dept dept)
-//    {
-//        Long deptId = StringUtils.isNull(dept.getDeptId()) ? -1L : dept.getDeptId();
-//        Dept info = deptMapper.checkDeptNameUnique(dept.getDeptName(), dept.getParentId());
-//        if (StringUtils.isNotNull(info) && info.getDeptId().longValue() != deptId.longValue())
-//        {
-//            return UserConstants.NOT_UNIQUE;
-//        }
-//        return UserConstants.UNIQUE;
-//    }
+
+    /**
+     * 校验部门名称是否唯一
+     *
+     * @param dept 部门信息
+     * @return 结果
+     */
+    @Override
+    public boolean checkDeptNameUnique(Dept dept)
+    {
+        Long deptId = StringUtils.isNull(dept.getDeptId()) ? -1L : dept.getDeptId();
+        Dept info = deptMapper.checkDeptNameUnique(dept.getDeptName(), dept.getParentId());
+        if (StringUtils.isNotNull(info) && info.getDeptId().longValue() != deptId.longValue())
+        {
+            return UserConstants.NOT_UNIQUE;
+        }
+        return UserConstants.UNIQUE;
+    }
 
     /**
      * 校验部门是否有数据权限

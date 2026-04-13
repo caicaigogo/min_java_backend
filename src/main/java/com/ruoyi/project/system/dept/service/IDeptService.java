@@ -27,14 +27,14 @@ public interface IDeptService
      * @return 所有部门信息
      */
     public List<Ztree> selectDeptTree(Dept dept);
-//
-//    /**
-//     * 查询部门管理树（排除下级）
-//     *
-//     * @param dept 部门信息
-//     * @return 所有部门信息
-//     */
-//    public List<Ztree> selectDeptTreeExcludeChild(Dept dept);
+
+    /**
+     * 查询部门管理树（排除下级）
+     *
+     * @param dept 部门信息
+     * @return 所有部门信息
+     */
+    public List<Ztree> selectDeptTreeExcludeChild(Dept dept);
 
     /**
      * 根据角色ID查询菜单
@@ -68,14 +68,14 @@ public interface IDeptService
 //     */
 //    public int deleteDeptById(Long deptId);
 //
-//    /**
-//     * 新增保存部门信息
-//     *
-//     * @param dept 部门信息
-//     * @return 结果
-//     */
-//    public int insertDept(Dept dept);
-//
+    /**
+     * 新增保存部门信息
+     *
+     * @param dept 部门信息
+     * @return 结果
+     */
+    public int insertDept(Dept dept);
+
 //    /**
 //     * 修改保存部门信息
 //     *
@@ -100,14 +100,14 @@ public interface IDeptService
 //     */
 //    public int selectNormalChildrenDeptById(Long deptId);
 //
-//    /**
-//     * 校验部门名称是否唯一
-//     *
-//     * @param dept 部门信息
-//     * @return 结果
-//     */
-//    public boolean checkDeptNameUnique(Dept dept);
-//
+    /**
+     * 校验部门名称是否唯一
+     *
+     * @param dept 部门信息
+     * @return 结果
+     */
+    public boolean checkDeptNameUnique(Dept dept);
+
     /**
      * 校验部门是否有数据权限
      *
