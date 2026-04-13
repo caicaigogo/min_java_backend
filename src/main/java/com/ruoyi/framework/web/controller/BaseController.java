@@ -9,16 +9,16 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-//import com.ruoyi.common.utils.DateUtils;
+import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.common.utils.PageUtils;
-//import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.security.ShiroUtils;
-//import com.ruoyi.common.utils.sql.SqlUtil;
+import com.ruoyi.common.utils.sql.SqlUtil;
 import com.ruoyi.framework.web.domain.AjaxResult;
-//import com.ruoyi.framework.web.domain.AjaxResult.Type;
-//import com.ruoyi.framework.web.page.PageDomain;
+import com.ruoyi.framework.web.domain.AjaxResult.Type;
+import com.ruoyi.framework.web.page.PageDomain;
 import com.ruoyi.framework.web.page.TableDataInfo;
-//import com.ruoyi.framework.web.page.TableSupport;
+import com.ruoyi.framework.web.page.TableSupport;
 import com.ruoyi.project.system.user.domain.User;
 
 /**
@@ -159,13 +159,13 @@ public class BaseController
 //        return new AjaxResult(type, message);
 //    }
 //
-//    /**
-//     * 页面跳转
-//     */
-//    public String redirect(String url)
-//    {
-//        return StringUtils.format("redirect:{}", url);
-//    }
+    /**
+     * 页面跳转
+     */
+    public String redirect(String url)
+    {
+        return StringUtils.format("redirect:{}", url);
+    }
 
     /**
      * 获取用户缓存信息
