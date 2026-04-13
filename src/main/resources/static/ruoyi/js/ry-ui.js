@@ -938,50 +938,50 @@ var table = {
                     top.layer.full(index);
                 }
             },
-        //     // 弹出层全屏
-        //     openFull: function (title, url, width, height) {
-        //         // 如果是移动端，就使用自适应大小弹窗
-        //         if ($.common.isMobile()) {
-        //             width = 'auto';
-        //             height = 'auto';
-        //         }
-        //         if ($.common.isEmpty(title)) {
-        //             title = false;
-        //         }
-        //         if ($.common.isEmpty(url)) {
-        //             url = "/404.html";
-        //         }
-        //         if ($.common.isEmpty(width)) {
-        //             width = 800;
-        //         }
-        //         if ($.common.isEmpty(height)) {
-        //             height = ($(window).height() - 50);
-        //         }
-        //         var index = top.layer.open({
-        //             type: 2,
-        //             area: [width + 'px', height + 'px'],
-        //             fix: false,
-        //             //不固定
-        //             maxmin: true,
-        //             shade: 0.3,
-        //             title: title,
-        //             content: url,
-        //             btn: ['确定', '关闭'],
-        //             // 弹层外区域关闭
-        //             shadeClose: true,
-        //             yes: function(index, layero) {
-        //                 var iframeWin = layero.find('iframe')[0];
-        //                 iframeWin.contentWindow.submitHandler(index, layero);
-        //             },
-        //             cancel: function(index) {
-        //                 return true;
-        //             },
-        //             success: function () {
-        //                 $(':focus').blur();
-        //             }
-        //         });
-        //         top.layer.full(index);
-        //     },
+            // 弹出层全屏
+            openFull: function (title, url, width, height) {
+                // 如果是移动端，就使用自适应大小弹窗
+                if ($.common.isMobile()) {
+                    width = 'auto';
+                    height = 'auto';
+                }
+                if ($.common.isEmpty(title)) {
+                    title = false;
+                }
+                if ($.common.isEmpty(url)) {
+                    url = "/404.html";
+                }
+                if ($.common.isEmpty(width)) {
+                    width = 800;
+                }
+                if ($.common.isEmpty(height)) {
+                    height = ($(window).height() - 50);
+                }
+                var index = top.layer.open({
+                    type: 2,
+                    area: [width + 'px', height + 'px'],
+                    fix: false,
+                    //不固定
+                    maxmin: true,
+                    shade: 0.3,
+                    title: title,
+                    content: url,
+                    btn: ['确定', '关闭'],
+                    // 弹层外区域关闭
+                    shadeClose: true,
+                    yes: function(index, layero) {
+                        var iframeWin = layero.find('iframe')[0];
+                        iframeWin.contentWindow.submitHandler(index, layero);
+                    },
+                    cancel: function(index) {
+                        return true;
+                    },
+                    success: function () {
+                        $(':focus').blur();
+                    }
+                });
+                top.layer.full(index);
+            },
             // 选卡页方式打开
             openTab: function (title, url, isRefresh) {
                 createMenuItem(url, title, isRefresh);
@@ -1155,11 +1155,11 @@ var table = {
                 table.set();
                 $.modal.openTab("添加" + table.options.modalName, $.operate.addUrl(id));
             },
-        //     // 添加信息 全屏
-        //     addFull: function(id) {
-        //         table.set();
-        //         $.modal.openFull("添加" + table.options.modalName, $.operate.addUrl(id));
-        //     },
+            // 添加信息 全屏
+            addFull: function(id) {
+                table.set();
+                $.modal.openFull("添加" + table.options.modalName, $.operate.addUrl(id));
+            },
             // 添加访问地址
             addUrl: function(id) {
                 var url = $.common.isEmpty(id) ? table.options.createUrl.replace("{id}", "") : table.options.createUrl.replace("{id}", id);
@@ -1185,27 +1185,27 @@ var table = {
                 table.set();
                 $.modal.openTab("修改" + table.options.modalName, $.operate.editUrl(id));
             },
-        //     // 修改信息 全屏
-        //     editFull: function(id) {
-        //         table.set();
-        //         var url = "/404.html";
-        //         if ($.common.isNotEmpty(id)) {
-        //             url = table.options.updateUrl.replace("{id}", id);
-        //         } else {
-        //             if (table.options.type == table_type.bootstrapTreeTable) {
-        //                 var row = $("#" + table.options.id).bootstrapTreeTable('getSelections')[0];
-        //                 if ($.common.isEmpty(row)) {
-        //                     $.modal.alertWarning("请至少选择一条记录");
-        //                     return;
-        //                 }
-        //                 url = table.options.updateUrl.replace("{id}", row[table.options.uniqueId]);
-        //             } else {
-        //                 var row = $.common.isEmpty(table.options.uniqueId) ? $.table.selectFirstColumns() : $.table.selectColumns(table.options.uniqueId);
-        //                 url = table.options.updateUrl.replace("{id}", row);
-        //             }
-        //         }
-        //         $.modal.openFull("修改" + table.options.modalName, url);
-        //     },
+            // 修改信息 全屏
+            editFull: function(id) {
+                table.set();
+                var url = "/404.html";
+                if ($.common.isNotEmpty(id)) {
+                    url = table.options.updateUrl.replace("{id}", id);
+                } else {
+                    if (table.options.type == table_type.bootstrapTreeTable) {
+                        var row = $("#" + table.options.id).bootstrapTreeTable('getSelections')[0];
+                        if ($.common.isEmpty(row)) {
+                            $.modal.alertWarning("请至少选择一条记录");
+                            return;
+                        }
+                        url = table.options.updateUrl.replace("{id}", row[table.options.uniqueId]);
+                    } else {
+                        var row = $.common.isEmpty(table.options.uniqueId) ? $.table.selectFirstColumns() : $.table.selectColumns(table.options.uniqueId);
+                        url = table.options.updateUrl.replace("{id}", row);
+                    }
+                }
+                $.modal.openFull("修改" + table.options.modalName, url);
+            },
             // 修改访问地址
             editUrl: function(id) {
                 var url = "/404.html";

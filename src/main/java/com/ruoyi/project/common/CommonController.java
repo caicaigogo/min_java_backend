@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.ruoyi.common.utils.StringUtils;
-//import com.ruoyi.common.utils.file.FileUploadUtils;
+import com.ruoyi.common.utils.file.FileUploadUtils;
 import com.ruoyi.common.utils.file.FileUtils;
 import com.ruoyi.framework.config.RuoYiConfig;
-//import com.ruoyi.framework.config.ServerConfig;
+import com.ruoyi.framework.config.ServerConfig;
 import com.ruoyi.framework.web.domain.AjaxResult;
 
 /**
@@ -32,11 +32,11 @@ public class CommonController
 {
     private static final Logger log = LoggerFactory.getLogger(CommonController.class);
 
-//    @Autowired
-//    private ServerConfig serverConfig;
-//
-//    private static final String FILE_DELIMETER = ",";
-//
+    @Autowired
+    private ServerConfig serverConfig;
+
+    private static final String FILE_DELIMETER = ",";
+
     /**
      * 通用下载请求
      *
@@ -69,33 +69,33 @@ public class CommonController
         }
     }
 
-//    /**
-//     * 通用上传请求（单个）
-//     */
-//    @PostMapping("/upload")
-//    @ResponseBody
-//    public AjaxResult uploadFile(MultipartFile file) throws Exception
-//    {
-//        try
-//        {
-//            // 上传文件路径
-//            String filePath = RuoYiConfig.getUploadPath();
-//            // 上传并返回新文件名称
-//            String fileName = FileUploadUtils.upload(filePath, file);
-//            String url = serverConfig.getUrl() + fileName;
-//            AjaxResult ajax = AjaxResult.success();
-//            ajax.put("url", url);
-//            ajax.put("fileName", fileName);
-//            ajax.put("newFileName", FileUtils.getName(fileName));
-//            ajax.put("originalFilename", file.getOriginalFilename());
-//            return ajax;
-//        }
-//        catch (Exception e)
-//        {
-//            return AjaxResult.error(e.getMessage());
-//        }
-//    }
-//
+    /**
+     * 通用上传请求（单个）
+     */
+    @PostMapping("/upload")
+    @ResponseBody
+    public AjaxResult uploadFile(MultipartFile file) throws Exception
+    {
+        try
+        {
+            // 上传文件路径
+            String filePath = RuoYiConfig.getUploadPath();
+            // 上传并返回新文件名称
+            String fileName = FileUploadUtils.upload(filePath, file);
+            String url = serverConfig.getUrl() + fileName;
+            AjaxResult ajax = AjaxResult.success();
+            ajax.put("url", url);
+            ajax.put("fileName", fileName);
+            ajax.put("newFileName", FileUtils.getName(fileName));
+            ajax.put("originalFilename", file.getOriginalFilename());
+            return ajax;
+        }
+        catch (Exception e)
+        {
+            return AjaxResult.error(e.getMessage());
+        }
+    }
+
 //    /**
 //     * 通用上传请求（多个）
 //     */

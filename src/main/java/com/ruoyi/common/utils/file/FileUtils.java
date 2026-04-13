@@ -266,24 +266,24 @@ public class FileUtils
         return strFileExtendName;
     }
 
-//    /**
-//     * 获取文件名称 /profile/upload/2022/04/16/ruoyi.png -- ruoyi.png
-//     *
-//     * @param fileName 路径名称
-//     * @return 没有文件路径的名称
-//     */
-//    public static String getName(String fileName)
-//    {
-//        if (fileName == null)
-//        {
-//            return null;
-//        }
-//        int lastUnixPos = fileName.lastIndexOf('/');
-//        int lastWindowsPos = fileName.lastIndexOf('\\');
-//        int index = Math.max(lastUnixPos, lastWindowsPos);
-//        return fileName.substring(index + 1);
-//    }
-//
+    /**
+     * 获取文件名称 /profile/upload/2022/04/16/ruoyi.png -- ruoyi.png
+     *
+     * @param fileName 路径名称
+     * @return 没有文件路径的名称
+     */
+    public static String getName(String fileName)
+    {
+        if (fileName == null)
+        {
+            return null;
+        }
+        int lastUnixPos = fileName.lastIndexOf('/');
+        int lastWindowsPos = fileName.lastIndexOf('\\');
+        int index = Math.max(lastUnixPos, lastWindowsPos);
+        return fileName.substring(index + 1);
+    }
+
 //    /**
 //     * 获取不带后缀文件名称 /profile/upload/2022/04/16/ruoyi.png -- ruoyi
 //     *
