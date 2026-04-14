@@ -126,23 +126,23 @@ public class RoleServiceImpl implements IRoleService
         return roleMapper.selectRoleById(roleId);
     }
 
-//    /**
-//     * 通过角色ID删除角色
-//     *
-//     * @param roleId 角色ID
-//     * @return 结果
-//     */
-//    @Override
-//    @Transactional
-//    public boolean deleteRoleById(Long roleId)
-//    {
-//        // 删除角色与菜单关联
-//        roleMenuMapper.deleteRoleMenuByRoleId(roleId);
-//        // 删除角色与部门关联
-//        roleDeptMapper.deleteRoleDeptByRoleId(roleId);
-//        return roleMapper.deleteRoleById(roleId) > 0 ? true : false;
-//    }
-//
+    /**
+     * 通过角色ID删除角色
+     *
+     * @param roleId 角色ID
+     * @return 结果
+     */
+    @Override
+    @Transactional
+    public boolean deleteRoleById(Long roleId)
+    {
+        // 删除角色与菜单关联
+        roleMenuMapper.deleteRoleMenuByRoleId(roleId);
+        // 删除角色与部门关联
+        roleDeptMapper.deleteRoleDeptByRoleId(roleId);
+        return roleMapper.deleteRoleById(roleId) > 0 ? true : false;
+    }
+
     /**
      * 批量删除角色信息
      *

@@ -69,14 +69,14 @@ public interface IMenuService
      * @return 菜单列表
      */
     public List<Ztree> menuTreeData();
-//
-//    /**
-//     * 查询系统所有权限
-//     *
-//     * @return 权限列表
-//     */
-//    public Map<String, String> selectPermsAll();
-//
+
+    /**
+     * 查询系统所有权限
+     *
+     * @return 权限列表
+     */
+    public Map<String, String> selectPermsAll();
+
     /**
      * 删除菜单管理信息
      *

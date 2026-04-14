@@ -27,7 +27,7 @@ import com.ruoyi.framework.config.RuoYiConfig;
  */
 public class FileUtils
 {
-//    public static String FILENAME_PATTERN = "[a-zA-Z0-9_\\-\\|\\.\\u4e00-\\u9fa5]+";
+    public static String FILENAME_PATTERN = "[a-zA-Z0-9_\\-\\|\\.\\u4e00-\\u9fa5]+";
 
     /**
      * 输出指定文件的byte数组
@@ -132,18 +132,18 @@ public class FileUtils
         }
         return flag;
     }
-//
-//    /**
-//     * 文件名称验证
-//     *
-//     * @param filename 文件名称
-//     * @return true 正常 false 非法
-//     */
-//    public static boolean isValidFilename(String filename)
-//    {
-//        return filename.matches(FILENAME_PATTERN);
-//    }
-//
+
+    /**
+     * 文件名称验证
+     *
+     * @param filename 文件名称
+     * @return true 正常 false 非法
+     */
+    public static boolean isValidFilename(String filename)
+    {
+        return filename.matches(FILENAME_PATTERN);
+    }
+
     /**
      * 检查文件是否可下载
      *
@@ -168,40 +168,40 @@ public class FileUtils
         return false;
     }
 
-//    /**
-//     * 下载文件名重新编码
-//     *
-//     * @param request 请求对象
-//     * @param fileName 文件名
-//     * @return 编码后的文件名
-//     */
-//    public static String setFileDownloadHeader(HttpServletRequest request, String fileName) throws UnsupportedEncodingException
-//    {
-//        final String agent = request.getHeader("USER-AGENT");
-//        String filename = fileName;
-//        if (agent.contains("MSIE"))
-//        {
-//            // IE浏览器
-//            filename = URLEncoder.encode(filename, "utf-8");
-//            filename = filename.replace("+", " ");
-//        }
-//        else if (agent.contains("Firefox"))
-//        {
-//            // 火狐浏览器
-//            filename = new String(fileName.getBytes(), "ISO8859-1");
-//        }
-//        else if (agent.contains("Chrome"))
-//        {
-//            // google浏览器
-//            filename = URLEncoder.encode(filename, "utf-8");
-//        }
-//        else
-//        {
-//            // 其它浏览器
-//            filename = URLEncoder.encode(filename, "utf-8");
-//        }
-//        return filename;
-//    }
+    /**
+     * 下载文件名重新编码
+     *
+     * @param request 请求对象
+     * @param fileName 文件名
+     * @return 编码后的文件名
+     */
+    public static String setFileDownloadHeader(HttpServletRequest request, String fileName) throws UnsupportedEncodingException
+    {
+        final String agent = request.getHeader("USER-AGENT");
+        String filename = fileName;
+        if (agent.contains("MSIE"))
+        {
+            // IE浏览器
+            filename = URLEncoder.encode(filename, "utf-8");
+            filename = filename.replace("+", " ");
+        }
+        else if (agent.contains("Firefox"))
+        {
+            // 火狐浏览器
+            filename = new String(fileName.getBytes(), "ISO8859-1");
+        }
+        else if (agent.contains("Chrome"))
+        {
+            // google浏览器
+            filename = URLEncoder.encode(filename, "utf-8");
+        }
+        else
+        {
+            // 其它浏览器
+            filename = URLEncoder.encode(filename, "utf-8");
+        }
+        return filename;
+    }
 
     /**
      * 下载文件名重新编码
@@ -284,19 +284,19 @@ public class FileUtils
         return fileName.substring(index + 1);
     }
 
-//    /**
-//     * 获取不带后缀文件名称 /profile/upload/2022/04/16/ruoyi.png -- ruoyi
-//     *
-//     * @param fileName 路径名称
-//     * @return 没有文件路径和后缀的名称
-//     */
-//    public static String getNameNotSuffix(String fileName)
-//    {
-//        if (fileName == null)
-//        {
-//            return null;
-//        }
-//        String baseName = FilenameUtils.getBaseName(fileName);
-//        return baseName;
-//    }
+    /**
+     * 获取不带后缀文件名称 /profile/upload/2022/04/16/ruoyi.png -- ruoyi
+     *
+     * @param fileName 路径名称
+     * @return 没有文件路径和后缀的名称
+     */
+    public static String getNameNotSuffix(String fileName)
+    {
+        if (fileName == null)
+        {
+            return null;
+        }
+        String baseName = FilenameUtils.getBaseName(fileName);
+        return baseName;
+    }
 }

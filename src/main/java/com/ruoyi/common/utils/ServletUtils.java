@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-//import com.ruoyi.common.constant.Constants;
+import com.ruoyi.common.constant.Constants;
 import com.ruoyi.common.utils.text.Convert;
 
 /**
@@ -37,30 +37,30 @@ public class ServletUtils
         return getRequest().getParameter(name);
     }
 
-//    /**
-//     * 获取String参数
-//     */
-//    public static String getParameter(String name, String defaultValue)
-//    {
-//        return Convert.toStr(getRequest().getParameter(name), defaultValue);
-//    }
-//
-//    /**
-//     * 获取Integer参数
-//     */
-//    public static Integer getParameterToInt(String name)
-//    {
-//        return Convert.toInt(getRequest().getParameter(name));
-//    }
-//
-//    /**
-//     * 获取Integer参数
-//     */
-//    public static Integer getParameterToInt(String name, Integer defaultValue)
-//    {
-//        return Convert.toInt(getRequest().getParameter(name), defaultValue);
-//    }
-//
+    /**
+     * 获取String参数
+     */
+    public static String getParameter(String name, String defaultValue)
+    {
+        return Convert.toStr(getRequest().getParameter(name), defaultValue);
+    }
+
+    /**
+     * 获取Integer参数
+     */
+    public static Integer getParameterToInt(String name)
+    {
+        return Convert.toInt(getRequest().getParameter(name));
+    }
+
+    /**
+     * 获取Integer参数
+     */
+    public static Integer getParameterToInt(String name, Integer defaultValue)
+    {
+        return Convert.toInt(getRequest().getParameter(name), defaultValue);
+    }
+
     /**
      * 获取Boolean参数
      */
@@ -85,14 +85,14 @@ public class ServletUtils
         return getRequestAttributes().getRequest();
     }
 
-//    /**
-//     * 获取response
-//     */
-//    public static HttpServletResponse getResponse()
-//    {
-//        return getRequestAttributes().getResponse();
-//    }
-//
+    /**
+     * 获取response
+     */
+    public static HttpServletResponse getResponse()
+    {
+        return getRequestAttributes().getResponse();
+    }
+
     /**
      * 获取session
      */
@@ -182,41 +182,41 @@ public class ServletUtils
         return flag;
     }
 
-//    /**
-//     * 内容编码
-//     *
-//     * @param str 内容
-//     * @return 编码后的内容
-//     */
-//    public static String urlEncode(String str)
-//    {
-//        try
-//        {
-//            return URLEncoder.encode(str, Constants.UTF8);
-//        }
-//        catch (UnsupportedEncodingException e)
-//        {
-//            return StringUtils.EMPTY;
-//        }
-//    }
-//
-//    /**
-//     * 内容解码
-//     *
-//     * @param str 内容
-//     * @return 解码后的内容
-//     */
-//    public static String urlDecode(String str)
-//    {
-//        try
-//        {
-//            return URLDecoder.decode(str, Constants.UTF8);
-//        }
-//        catch (UnsupportedEncodingException e)
-//        {
-//            return StringUtils.EMPTY;
-//        }
-//    }
+    /**
+     * 内容编码
+     *
+     * @param str 内容
+     * @return 编码后的内容
+     */
+    public static String urlEncode(String str)
+    {
+        try
+        {
+            return URLEncoder.encode(str, Constants.UTF8);
+        }
+        catch (UnsupportedEncodingException e)
+        {
+            return StringUtils.EMPTY;
+        }
+    }
+
+    /**
+     * 内容解码
+     *
+     * @param str 内容
+     * @return 解码后的内容
+     */
+    public static String urlDecode(String str)
+    {
+        try
+        {
+            return URLDecoder.decode(str, Constants.UTF8);
+        }
+        catch (UnsupportedEncodingException e)
+        {
+            return StringUtils.EMPTY;
+        }
+    }
 
     /**
      * 生成CSRF Token

@@ -43,11 +43,11 @@ public interface UserOnlineMapper
      */
     public List<UserOnline> selectUserOnlineList(UserOnline userOnline);
 
-//    /**
-//     * 查询过期会话集合
-//     *
-//     * @param lastAccessTime 过期时间
-//     * @return 会话集合
-//     */
-//    public List<UserOnline> selectOnlineByExpired(String lastAccessTime);
+    /**
+     * 查询过期会话集合
+     *
+     * @param lastAccessTime 过期时间
+     * @return 会话集合
+     */
+    public List<UserOnline> selectOnlineByExpired(String lastAccessTime);
 }

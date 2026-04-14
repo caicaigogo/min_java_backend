@@ -34,14 +34,14 @@ public interface RoleMapper
      */
     public Role selectRoleById(Long roleId);
 
-//    /**
-//     * 通过角色ID删除角色
-//     *
-//     * @param roleId 角色ID
-//     * @return 结果
-//     */
-//    public int deleteRoleById(Long roleId);
-//
+    /**
+     * 通过角色ID删除角色
+     *
+     * @param roleId 角色ID
+     * @return 结果
+     */
+    public int deleteRoleById(Long roleId);
+
     /**
      * 批量角色用户信息
      *

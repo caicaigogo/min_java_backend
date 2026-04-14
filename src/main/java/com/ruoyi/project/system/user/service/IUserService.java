@@ -3,7 +3,7 @@ package com.ruoyi.project.system.user.service;
 import java.util.Date;
 import java.util.List;
 import com.ruoyi.project.system.user.domain.User;
-//import com.ruoyi.project.system.user.domain.UserRole;
+import com.ruoyi.project.system.user.domain.UserRole;
 
 /**
  * 用户 业务层
@@ -43,23 +43,23 @@ public interface IUserService
      * @return 用户对象信息
      */
     public User selectUserByLoginName(String userName);
-//
-//    /**
-//     * 通过手机号码查询用户
-//     *
-//     * @param phoneNumber 手机号码
-//     * @return 用户对象信息
-//     */
-//    public User selectUserByPhoneNumber(String phoneNumber);
-//
-//    /**
-//     * 通过邮箱查询用户
-//     *
-//     * @param email 邮箱
-//     * @return 用户对象信息
-//     */
-//    public User selectUserByEmail(String email);
-//
+
+    /**
+     * 通过手机号码查询用户
+     *
+     * @param phoneNumber 手机号码
+     * @return 用户对象信息
+     */
+    public User selectUserByPhoneNumber(String phoneNumber);
+
+    /**
+     * 通过邮箱查询用户
+     *
+     * @param email 邮箱
+     * @return 用户对象信息
+     */
+    public User selectUserByEmail(String email);
+
     /**
      * 通过用户ID查询用户
      *
@@ -68,22 +68,22 @@ public interface IUserService
      */
     public User selectUserById(Long userId);
 
-//    /**
-//     * 通过用户ID查询用户和角色关联
-//     *
-//     * @param userId 用户ID
-//     * @return 用户和角色关联列表
-//     */
-//    public List<UserRole> selectUserRoleByUserId(Long userId);
-//
-//    /**
-//     * 通过用户ID删除用户
-//     *
-//     * @param userId 用户ID
-//     * @return 结果
-//     */
-//    public int deleteUserById(Long userId);
-//
+    /**
+     * 通过用户ID查询用户和角色关联
+     *
+     * @param userId 用户ID
+     * @return 用户和角色关联列表
+     */
+    public List<UserRole> selectUserRoleByUserId(Long userId);
+
+    /**
+     * 通过用户ID删除用户
+     *
+     * @param userId 用户ID
+     * @return 结果
+     */
+    public int deleteUserById(Long userId);
+
     /**
      * 批量删除用户信息
      *

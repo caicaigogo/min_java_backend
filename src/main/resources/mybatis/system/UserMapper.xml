@@ -154,10 +154,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="selectUserVo"/>
 		where u.user_id = #{userId}
 	</select>
-<!--	-->
-<!--	<delete id="deleteUserById" parameterType="Long">-->
-<!-- 		update sys_user set del_flag = '2' where user_id = #{userId}-->
-<!-- 	</delete>-->
+
+	<delete id="deleteUserById" parameterType="Long">
+ 		update sys_user set del_flag = '2' where user_id = #{userId}
+ 	</delete>
 
  	<delete id="deleteUserByIds" parameterType="Long">
  		update sys_user set del_flag = '2' where user_id in

@@ -7,30 +7,30 @@ package com.ruoyi.common.constant;
  */
 public class ShiroConstants
 {
-//    /**
-//     * 当前登录的用户
-//     */
-//    public static final String CURRENT_USER = "currentUser";
-//
-//    /**
-//     * 用户名字段
-//     */
-//    public static final String CURRENT_USERNAME = "username";
-//
+    /**
+     * 当前登录的用户
+     */
+    public static final String CURRENT_USER = "currentUser";
+
+    /**
+     * 用户名字段
+     */
+    public static final String CURRENT_USERNAME = "username";
+
     /**
      * 锁定屏幕字段
      */
     public static final String LOCK_SCREEN = "lockscreen";
 
-//    /**
-//     * 消息key
-//     */
-//    public static final String MESSAGE = "message";
-//
-//    /**
-//     * 错误key
-//     */
-//    public static final String ERROR = "errorMsg";
+    /**
+     * 消息key
+     */
+    public static final String MESSAGE = "message";
+
+    /**
+     * 错误key
+     */
+    public static final String ERROR = "errorMsg";
 
     /**
      * csrf session content

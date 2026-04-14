@@ -28,20 +28,20 @@ public class ThreadPoolConfig
 
     // 线程池维护线程所允许的空闲时间
     private int keepAliveSeconds = 300;
-//
-//    @Bean(name = "threadPoolTaskExecutor")
-//    public ThreadPoolTaskExecutor threadPoolTaskExecutor()
-//    {
-//        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-//        executor.setMaxPoolSize(maxPoolSize);
-//        executor.setCorePoolSize(corePoolSize);
-//        executor.setQueueCapacity(queueCapacity);
-//        executor.setKeepAliveSeconds(keepAliveSeconds);
-//        // 线程池对拒绝任务(无线程可用)的处理策略
-//        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
-//        return executor;
-//    }
-//
+
+    @Bean(name = "threadPoolTaskExecutor")
+    public ThreadPoolTaskExecutor threadPoolTaskExecutor()
+    {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setMaxPoolSize(maxPoolSize);
+        executor.setCorePoolSize(corePoolSize);
+        executor.setQueueCapacity(queueCapacity);
+        executor.setKeepAliveSeconds(keepAliveSeconds);
+        // 线程池对拒绝任务(无线程可用)的处理策略
+        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        return executor;
+    }
+
     /**
      * 执行周期性或定时任务
      */

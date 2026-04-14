@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.springframework.util.AntPathMatcher;
-//import com.ruoyi.common.constant.Constants;
+import com.ruoyi.common.constant.Constants;
 import com.ruoyi.common.utils.text.StrFormatter;
 
 /**
@@ -22,21 +22,21 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
 
     /** 下划线 */
     private static final char SEPARATOR = '_';
-//
-//    /** 星号 */
-//    private static final char ASTERISK = '*';
-//
-//    /**
-//     * 获取参数不为空值
-//     *
-//     * @param value defaultValue 要判断的value
-//     * @return value 返回值
-//     */
-//    public static <T> T nvl(T value, T defaultValue)
-//    {
-//        return value != null ? value : defaultValue;
-//    }
-//
+
+    /** 星号 */
+    private static final char ASTERISK = '*';
+
+    /**
+     * 获取参数不为空值
+     *
+     * @param value defaultValue 要判断的value
+     * @return value 返回值
+     */
+    public static <T> T nvl(T value, T defaultValue)
+    {
+        return value != null ? value : defaultValue;
+    }
+
     /**
      * * 判断一个Collection是否为空， 包含List，Set，Queue
      *
@@ -165,50 +165,50 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
     {
         return (str == null ? "" : str.trim());
     }
-//
-//    /**
-//     * 替换指定字符串的指定区间内字符为"*"
-//     *
-//     * @param str 字符串
-//     * @param startInclude 开始位置（包含）
-//     * @param endExclude 结束位置（不包含）
-//     * @return 替换后的字符串
-//     */
-//    public static String hide(CharSequence str, int startInclude, int endExclude)
-//    {
-//        if (isEmpty(str))
-//        {
-//            return NULLSTR;
-//        }
-//        final int strLength = str.length();
-//        if (startInclude > strLength)
-//        {
-//            return NULLSTR;
-//        }
-//        if (endExclude > strLength)
-//        {
-//            endExclude = strLength;
-//        }
-//        if (startInclude > endExclude)
-//        {
-//            // 如果起始位置大于结束位置，不替换
-//            return NULLSTR;
-//        }
-//        final char[] chars = new char[strLength];
-//        for (int i = 0; i < strLength; i++)
-//        {
-//            if (i >= startInclude && i < endExclude)
-//            {
-//                chars[i] = ASTERISK;
-//            }
-//            else
-//            {
-//                chars[i] = str.charAt(i);
-//            }
-//        }
-//        return new String(chars);
-//    }
-//
+
+    /**
+     * 替换指定字符串的指定区间内字符为"*"
+     *
+     * @param str 字符串
+     * @param startInclude 开始位置（包含）
+     * @param endExclude 结束位置（不包含）
+     * @return 替换后的字符串
+     */
+    public static String hide(CharSequence str, int startInclude, int endExclude)
+    {
+        if (isEmpty(str))
+        {
+            return NULLSTR;
+        }
+        final int strLength = str.length();
+        if (startInclude > strLength)
+        {
+            return NULLSTR;
+        }
+        if (endExclude > strLength)
+        {
+            endExclude = strLength;
+        }
+        if (startInclude > endExclude)
+        {
+            // 如果起始位置大于结束位置，不替换
+            return NULLSTR;
+        }
+        final char[] chars = new char[strLength];
+        for (int i = 0; i < strLength; i++)
+        {
+            if (i >= startInclude && i < endExclude)
+            {
+                chars[i] = ASTERISK;
+            }
+            else
+            {
+                chars[i] = str.charAt(i);
+            }
+        }
+        return new String(chars);
+    }
+
     /**
      * 截取字符串
      *
@@ -333,30 +333,30 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
         }
         return StrFormatter.format(template, params);
     }
-//
-//    /**
-//     * 是否为http(s)://开头
-//     *
-//     * @param link 链接
-//     * @return 结果
-//     */
-//    public static boolean ishttp(String link)
-//    {
-//        return StringUtils.startsWithAny(link, Constants.HTTP, Constants.HTTPS);
-//    }
-//
-//    /**
-//     * 字符串转set
-//     *
-//     * @param str 字符串
-//     * @param sep 分隔符
-//     * @return set集合
-//     */
-//    public static final Set<String> str2Set(String str, String sep)
-//    {
-//        return new HashSet<String>(str2List(str, sep, true, false));
-//    }
-//
+
+    /**
+     * 是否为http(s)://开头
+     *
+     * @param link 链接
+     * @return 结果
+     */
+    public static boolean ishttp(String link)
+    {
+        return StringUtils.startsWithAny(link, Constants.HTTP, Constants.HTTPS);
+    }
+
+    /**
+     * 字符串转set
+     *
+     * @param str 字符串
+     * @param sep 分隔符
+     * @return set集合
+     */
+    public static final Set<String> str2Set(String str, String sep)
+    {
+        return new HashSet<String>(str2List(str, sep, true, false));
+    }
+
     /**
      * 字符串转list
      *
@@ -434,29 +434,29 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
         }
     }
 
-//    /**
-//     * 查找指定字符串是否包含指定字符串列表中的任意一个字符串同时串忽略大小写
-//     *
-//     * @param cs 指定字符串
-//     * @param searchCharSequences 需要检查的字符串数组
-//     * @return 是否包含任意一个字符串
-//     */
-//    public static boolean containsAnyIgnoreCase(CharSequence cs, CharSequence... searchCharSequences)
-//    {
-//        if (isEmpty(cs) || isEmpty(searchCharSequences))
-//        {
-//            return false;
-//        }
-//        for (CharSequence testStr : searchCharSequences)
-//        {
-//            if (containsIgnoreCase(cs, testStr))
-//            {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//
+    /**
+     * 查找指定字符串是否包含指定字符串列表中的任意一个字符串同时串忽略大小写
+     *
+     * @param cs 指定字符串
+     * @param searchCharSequences 需要检查的字符串数组
+     * @return 是否包含任意一个字符串
+     */
+    public static boolean containsAnyIgnoreCase(CharSequence cs, CharSequence... searchCharSequences)
+    {
+        if (isEmpty(cs) || isEmpty(searchCharSequences))
+        {
+            return false;
+        }
+        for (CharSequence testStr : searchCharSequences)
+        {
+            if (containsIgnoreCase(cs, testStr))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * 驼峰转下划线命名
      */
@@ -528,22 +528,22 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
         return false;
     }
 
-//    /**
-//     * 删除最后一个字符串
-//     *
-//     * @param str 输入字符串
-//     * @param spit 以什么类型结尾的
-//     * @return 截取后的字符串
-//     */
-//    public static String lastStringDel(String str, String spit)
-//    {
-//        if (!StringUtils.isEmpty(str) && str.endsWith(spit))
-//        {
-//            return str.subSequence(0, str.length() - 1).toString();
-//        }
-//        return str;
-//    }
-//
+    /**
+     * 删除最后一个字符串
+     *
+     * @param str 输入字符串
+     * @param spit 以什么类型结尾的
+     * @return 截取后的字符串
+     */
+    public static String lastStringDel(String str, String spit)
+    {
+        if (!StringUtils.isEmpty(str) && str.endsWith(spit))
+        {
+            return str.subSequence(0, str.length() - 1).toString();
+        }
+        return str;
+    }
+
     /**
      * 将下划线大写方式命名的字符串转换为驼峰式。如果转换前的下划线大写方式命名的字符串为空，则返回空字符串。 例如：HELLO_WORLD->HelloWorld
      *

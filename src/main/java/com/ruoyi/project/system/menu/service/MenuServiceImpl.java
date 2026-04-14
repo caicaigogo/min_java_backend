@@ -32,7 +32,7 @@ import com.ruoyi.project.system.user.domain.User;
 @Service
 public class MenuServiceImpl implements IMenuService
 {
-//    public static final String PREMISSION_STRING = "perms[\"{0}\"]";
+    public static final String PREMISSION_STRING = "perms[\"{0}\"]";
 
     @Autowired
     private MenuMapper menuMapper;
@@ -183,26 +183,26 @@ public class MenuServiceImpl implements IMenuService
         List<Ztree> ztrees = initZtree(menuList);
         return ztrees;
     }
-//
-//    /**
-//     * 查询系统所有权限
-//     *
-//     * @return 权限列表
-//     */
-//    @Override
-//    public LinkedHashMap<String, String> selectPermsAll()
-//    {
-//        LinkedHashMap<String, String> section = new LinkedHashMap<>();
-//        List<Menu> permissions = selectMenuAll();
-//        if (StringUtils.isNotEmpty(permissions))
-//        {
-//            for (Menu menu : permissions)
-//            {
-//                section.put(menu.getUrl(), MessageFormat.format(PREMISSION_STRING, menu.getPerms()));
-//            }
-//        }
-//        return section;
-//    }
+
+    /**
+     * 查询系统所有权限
+     *
+     * @return 权限列表
+     */
+    @Override
+    public LinkedHashMap<String, String> selectPermsAll()
+    {
+        LinkedHashMap<String, String> section = new LinkedHashMap<>();
+        List<Menu> permissions = selectMenuAll();
+        if (StringUtils.isNotEmpty(permissions))
+        {
+            for (Menu menu : permissions)
+            {
+                section.put(menu.getUrl(), MessageFormat.format(PREMISSION_STRING, menu.getPerms()));
+            }
+        }
+        return section;
+    }
 
     /**
      * 对象转菜单树

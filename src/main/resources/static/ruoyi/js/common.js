@@ -449,145 +449,145 @@ var storage = {
     }
 };
 
-// // 主子表操作封装处理
-// var sub = {
-//     editRow: function() {
-//     	var dataColumns = [];
-// 		for (var columnIndex = 0; columnIndex < table.options.columns.length; columnIndex++) {
-//     		if (table.options.columns[columnIndex].visible != false) {
-//     			dataColumns.push(table.options.columns[columnIndex]);
-//     		}
-//     	}
-// 		var params = new Array();
-// 		var data = $("#" + table.options.id).bootstrapTable('getData');
-//     	var count = data.length;
-//     	for (var dataIndex = 0; dataIndex < count; dataIndex++) {
-//     	    var columns = $('#' + table.options.id + ' tr[data-index="' + dataIndex + '"] td:visible');
-//     	    var obj = new Object();
-//     	    for (var i = 0; i < columns.length; i++) {
-//     	        var inputValue = $(columns[i]).find('input');
-//     	        var selectValue = $(columns[i]).find('select');
-//     	        var textareaValue = $(columns[i]).find('textarea');
-//     	        var key = dataColumns[i].field;
-//     	        if ($.common.isNotEmpty(inputValue.val())) {
-//     	            obj[key] = inputValue.val();
-//     	        } else if ($.common.isNotEmpty(selectValue.val())) {
-//     	            obj[key] = selectValue.val();
-//     	        } else if ($.common.isNotEmpty(textareaValue.val())) {
-//     	            obj[key] = textareaValue.val();
-//     	        } else {
-//     	            if (key == "index" && $.common.isNotEmpty(data[dataIndex].index)) {
-//     	                obj[key] = data[dataIndex].index;
-//     	            } else {
-//     	                obj[key] = "";
-//     	            }
-//     	        }
-//     	    }
-//     	    var item = data[dataIndex];
-//     	    var extendObj = $.extend({}, item, obj);
-//     	    params.push({ index: dataIndex, row: extendObj });
-//     	}
-//     	$("#" + table.options.id).bootstrapTable("updateRow", params);
-//     },
-//     delRow: function(column) {
-//     	sub.editRow();
-//     	var subColumn = $.common.isEmpty(column) ? "index" : column;
-//     	var ids = $.table.selectColumns(subColumn);
-//         if (ids.length == 0) {
-//             $.modal.alertWarning("请至少选择一条记录");
-//             return;
-//         }
-//         $("#" + table.options.id).bootstrapTable('remove', { field: subColumn, values: ids });
-//     },
-//     delRowByIndex: function(value, tableId) {
-//     	var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-//     	sub.editRow();
-//         $("#" + currentId).bootstrapTable('remove', { field: "index", values: [value] });
-//         sub.editRow();
-//     },
-//     addRow: function(row, tableId) {
-//     	var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-//     	table.set(currentId);
-//     	var count = $("#" + currentId).bootstrapTable('getData').length;
-//     	sub.editRow();
-//     	$("#" + currentId).bootstrapTable('insertRow', { index: count + 1, row: row });
-//     }
-// };
-//
-// // 动态加载css文件
-// function loadCss(file, headElem) {
-//     var link = document.createElement('link');
-//     link.href = file;
-//     link.rel = 'stylesheet';
-//     link.type = 'text/css';
-//     if (headElem) headElem.appendChild(link);
-//     else document.getElementsByTagName('head')[0].appendChild(link);
-// }
-//
-// // 动态加载js文件
-// function loadJs(file, headElem) {
-//     var script = document.createElement('script');
-//     script.src = file;
-//     script.type = 'text/javascript';
-//     if (headElem) headElem.appendChild(script);
-//     else document.getElementsByTagName('head')[0].appendChild(script);
-// }
-//
-// // 禁止后退键（Backspace）
-// window.onload = function() {
-// 	document.getElementsByTagName("body")[0].onkeydown = function() {
-// 		// 获取事件对象
-// 		var elem = event.relatedTarget || event.srcElement || event.target || event.currentTarget;
-// 		// 判断按键为backSpace键
-// 		if (event.keyCode == 8) {
-// 			// 判断是否需要阻止按下键盘的事件默认传递
-// 			var name = elem.nodeName;
-// 			var className = elem.className;
-// 			// 屏蔽特定的样式名称
-// 			if (className.indexOf('note-editable') != -1)
-// 			{
-// 				return true;
-// 			}
-// 			if (name != 'INPUT' && name != 'TEXTAREA') {
-// 				return _stopIt(event);
-// 			}
-// 			var type_e = elem.type.toUpperCase();
-// 			if (name == 'INPUT' && (type_e != 'TEXT' && type_e != 'TEXTAREA' && type_e != 'PASSWORD' && type_e != 'FILE' && type_e != 'SEARCH' && type_e != 'NUMBER' && type_e != 'EMAIL' && type_e != 'URL')) {
-// 				return _stopIt(event);
-// 			}
-// 			if (name == 'INPUT' && (elem.readOnly == true || elem.disabled == true)) {
-// 				return _stopIt(event);
-// 			}
-// 		}
-// 	};
-// };
-// function _stopIt(e) {
-// 	if (e.returnValue) {
-// 		e.returnValue = false;
-// 	}
-// 	if (e.preventDefault) {
-// 		e.preventDefault();
-// 	}
-// 	return false;
-// }
-//
-// /** 设置全局ajax处理 */
-// $.ajaxSetup({
-//     beforeSend: function (xhr, settings) {
-//         var csrftoken = $('meta[name=csrf-token]').attr('content')
-//         if (($.common.equalsIgnoreCase(settings.type, "POST"))) {
-//             xhr.setRequestHeader("X-CSRF-Token", csrftoken)
-//         }
-//     },
-//     complete: function(XMLHttpRequest, textStatus) {
-//         if (textStatus == 'timeout') {
-//             $.modal.alertWarning("服务器超时，请稍后再试！");
-//             $.modal.enable();
-//             $.modal.closeLoading();
-//         } else if (textStatus == "parsererror" || textStatus == "error") {
-//             $.modal.alertWarning("服务器错误，请联系管理员！");
-//             $.modal.enable();
-//             $.modal.closeLoading();
-//         }
-//     }
-// });
+// 主子表操作封装处理
+var sub = {
+    editRow: function() {
+    	var dataColumns = [];
+		for (var columnIndex = 0; columnIndex < table.options.columns.length; columnIndex++) {
+    		if (table.options.columns[columnIndex].visible != false) {
+    			dataColumns.push(table.options.columns[columnIndex]);
+    		}
+    	}
+		var params = new Array();
+		var data = $("#" + table.options.id).bootstrapTable('getData');
+    	var count = data.length;
+    	for (var dataIndex = 0; dataIndex < count; dataIndex++) {
+    	    var columns = $('#' + table.options.id + ' tr[data-index="' + dataIndex + '"] td:visible');
+    	    var obj = new Object();
+    	    for (var i = 0; i < columns.length; i++) {
+    	        var inputValue = $(columns[i]).find('input');
+    	        var selectValue = $(columns[i]).find('select');
+    	        var textareaValue = $(columns[i]).find('textarea');
+    	        var key = dataColumns[i].field;
+    	        if ($.common.isNotEmpty(inputValue.val())) {
+    	            obj[key] = inputValue.val();
+    	        } else if ($.common.isNotEmpty(selectValue.val())) {
+    	            obj[key] = selectValue.val();
+    	        } else if ($.common.isNotEmpty(textareaValue.val())) {
+    	            obj[key] = textareaValue.val();
+    	        } else {
+    	            if (key == "index" && $.common.isNotEmpty(data[dataIndex].index)) {
+    	                obj[key] = data[dataIndex].index;
+    	            } else {
+    	                obj[key] = "";
+    	            }
+    	        }
+    	    }
+    	    var item = data[dataIndex];
+    	    var extendObj = $.extend({}, item, obj);
+    	    params.push({ index: dataIndex, row: extendObj });
+    	}
+    	$("#" + table.options.id).bootstrapTable("updateRow", params);
+    },
+    delRow: function(column) {
+    	sub.editRow();
+    	var subColumn = $.common.isEmpty(column) ? "index" : column;
+    	var ids = $.table.selectColumns(subColumn);
+        if (ids.length == 0) {
+            $.modal.alertWarning("请至少选择一条记录");
+            return;
+        }
+        $("#" + table.options.id).bootstrapTable('remove', { field: subColumn, values: ids });
+    },
+    delRowByIndex: function(value, tableId) {
+    	var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+    	sub.editRow();
+        $("#" + currentId).bootstrapTable('remove', { field: "index", values: [value] });
+        sub.editRow();
+    },
+    addRow: function(row, tableId) {
+    	var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+    	table.set(currentId);
+    	var count = $("#" + currentId).bootstrapTable('getData').length;
+    	sub.editRow();
+    	$("#" + currentId).bootstrapTable('insertRow', { index: count + 1, row: row });
+    }
+};
+
+// 动态加载css文件
+function loadCss(file, headElem) {
+    var link = document.createElement('link');
+    link.href = file;
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    if (headElem) headElem.appendChild(link);
+    else document.getElementsByTagName('head')[0].appendChild(link);
+}
+
+// 动态加载js文件
+function loadJs(file, headElem) {
+    var script = document.createElement('script');
+    script.src = file;
+    script.type = 'text/javascript';
+    if (headElem) headElem.appendChild(script);
+    else document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+// 禁止后退键（Backspace）
+window.onload = function() {
+	document.getElementsByTagName("body")[0].onkeydown = function() {
+		// 获取事件对象
+		var elem = event.relatedTarget || event.srcElement || event.target || event.currentTarget;
+		// 判断按键为backSpace键
+		if (event.keyCode == 8) {
+			// 判断是否需要阻止按下键盘的事件默认传递
+			var name = elem.nodeName;
+			var className = elem.className;
+			// 屏蔽特定的样式名称
+			if (className.indexOf('note-editable') != -1)
+			{
+				return true;
+			}
+			if (name != 'INPUT' && name != 'TEXTAREA') {
+				return _stopIt(event);
+			}
+			var type_e = elem.type.toUpperCase();
+			if (name == 'INPUT' && (type_e != 'TEXT' && type_e != 'TEXTAREA' && type_e != 'PASSWORD' && type_e != 'FILE' && type_e != 'SEARCH' && type_e != 'NUMBER' && type_e != 'EMAIL' && type_e != 'URL')) {
+				return _stopIt(event);
+			}
+			if (name == 'INPUT' && (elem.readOnly == true || elem.disabled == true)) {
+				return _stopIt(event);
+			}
+		}
+	};
+};
+function _stopIt(e) {
+	if (e.returnValue) {
+		e.returnValue = false;
+	}
+	if (e.preventDefault) {
+		e.preventDefault();
+	}
+	return false;
+}
+
+/** 设置全局ajax处理 */
+$.ajaxSetup({
+    beforeSend: function (xhr, settings) {
+        var csrftoken = $('meta[name=csrf-token]').attr('content')
+        if (($.common.equalsIgnoreCase(settings.type, "POST"))) {
+            xhr.setRequestHeader("X-CSRF-Token", csrftoken)
+        }
+    },
+    complete: function(XMLHttpRequest, textStatus) {
+        if (textStatus == 'timeout') {
+            $.modal.alertWarning("服务器超时，请稍后再试！");
+            $.modal.enable();
+            $.modal.closeLoading();
+        } else if (textStatus == "parsererror" || textStatus == "error") {
+            $.modal.alertWarning("服务器错误，请联系管理员！");
+            $.modal.enable();
+            $.modal.closeLoading();
+        }
+    }
+});

@@ -127,30 +127,30 @@ public class UserServiceImpl implements IUserService
         return userMapper.selectUserByLoginName(userName);
     }
 
-//    /**
-//     * 通过手机号码查询用户
-//     *
-//     * @param phoneNumber 手机号码
-//     * @return 用户对象信息
-//     */
-//    @Override
-//    public User selectUserByPhoneNumber(String phoneNumber)
-//    {
-//        return userMapper.selectUserByPhoneNumber(phoneNumber);
-//    }
-//
-//    /**
-//     * 通过邮箱查询用户
-//     *
-//     * @param email 邮箱
-//     * @return 用户对象信息
-//     */
-//    @Override
-//    public User selectUserByEmail(String email)
-//    {
-//        return userMapper.selectUserByEmail(email);
-//    }
-//
+    /**
+     * 通过手机号码查询用户
+     *
+     * @param phoneNumber 手机号码
+     * @return 用户对象信息
+     */
+    @Override
+    public User selectUserByPhoneNumber(String phoneNumber)
+    {
+        return userMapper.selectUserByPhoneNumber(phoneNumber);
+    }
+
+    /**
+     * 通过邮箱查询用户
+     *
+     * @param email 邮箱
+     * @return 用户对象信息
+     */
+    @Override
+    public User selectUserByEmail(String email)
+    {
+        return userMapper.selectUserByEmail(email);
+    }
+
     /**
      * 通过用户ID查询用户
      *
@@ -162,35 +162,35 @@ public class UserServiceImpl implements IUserService
     {
         return userMapper.selectUserById(userId);
     }
-//
-//    /**
-//     * 通过用户ID查询用户和角色关联
-//     *
-//     * @param userId 用户ID
-//     * @return 用户和角色关联列表
-//     */
-//    @Override
-//    public List<UserRole> selectUserRoleByUserId(Long userId)
-//    {
-//        return userRoleMapper.selectUserRoleByUserId(userId);
-//    }
-//
-//    /**
-//     * 通过用户ID删除用户
-//     *
-//     * @param userId 用户ID
-//     * @return 结果
-//     */
-//    @Override
-//    @Transactional
-//    public int deleteUserById(Long userId)
-//    {
-//        // 删除用户与角色关联
-//        userRoleMapper.deleteUserRoleByUserId(userId);
-//        // 删除用户与岗位表
-//        userPostMapper.deleteUserPostByUserId(userId);
-//        return userMapper.deleteUserById(userId);
-//    }
+
+    /**
+     * 通过用户ID查询用户和角色关联
+     *
+     * @param userId 用户ID
+     * @return 用户和角色关联列表
+     */
+    @Override
+    public List<UserRole> selectUserRoleByUserId(Long userId)
+    {
+        return userRoleMapper.selectUserRoleByUserId(userId);
+    }
+
+    /**
+     * 通过用户ID删除用户
+     *
+     * @param userId 用户ID
+     * @return 结果
+     */
+    @Override
+    @Transactional
+    public int deleteUserById(Long userId)
+    {
+        // 删除用户与角色关联
+        userRoleMapper.deleteUserRoleByUserId(userId);
+        // 删除用户与岗位表
+        userPostMapper.deleteUserPostByUserId(userId);
+        return userMapper.deleteUserById(userId);
+    }
 
     /**
      * 批量删除用户信息

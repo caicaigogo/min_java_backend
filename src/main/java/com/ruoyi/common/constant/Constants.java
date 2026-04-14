@@ -19,10 +19,10 @@ public class Constants
      */
     public static final String GBK = "GBK";
 
-//    /**
-//     * 系统语言
-//     */
-//    public static final Locale DEFAULT_LOCALE = Locale.SIMPLIFIED_CHINESE;
+    /**
+     * 系统语言
+     */
+    public static final Locale DEFAULT_LOCALE = Locale.SIMPLIFIED_CHINESE;
 
     /**
      * http请求

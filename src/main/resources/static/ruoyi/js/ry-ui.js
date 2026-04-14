@@ -328,34 +328,34 @@ var table = {
                     return _text;
                 }
             },
-            // // 下拉按钮切换
-            // dropdownToggle: function (value) {
-            //     var actions = [];
-            //     actions.push('<div class="btn-group">');
-            //     actions.push('<button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">');
-            //     actions.push('<i class="fa fa-cog"></i>&nbsp;<span class="fa fa-chevron-down"></span></button>');
-            //     actions.push('<ul class="dropdown-menu">');
-            //     actions.push(value.replace(/<a/g,"<li><a").replace(/<\/a>/g,"</a></li>"));
-            //     actions.push('</ul>');
-            //     actions.push('</div>');
-            //     return actions.join('');
-            // },
-            // // 图片预览
-            // imageView: function (value, height, width, target) {
-            //     if ($.common.isEmpty(width)) {
-            //         width = 'auto';
-            //     }
-            //     if ($.common.isEmpty(height)) {
-            //         height = 'auto';
-            //     }
-            //     // blank or self
-            //     var _target = $.common.isEmpty(target) ? 'self' : target;
-            //     if ($.common.isNotEmpty(value)) {
-            //         return $.common.sprintf("<img class='img-circle img-xs' data-height='%s' data-width='%s' data-target='%s' src='%s'/>", height, width, _target, value);
-            //     } else {
-            //         return $.common.nullToStr(value);
-            //     }
-            // },
+            // 下拉按钮切换
+            dropdownToggle: function (value) {
+                var actions = [];
+                actions.push('<div class="btn-group">');
+                actions.push('<button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">');
+                actions.push('<i class="fa fa-cog"></i>&nbsp;<span class="fa fa-chevron-down"></span></button>');
+                actions.push('<ul class="dropdown-menu">');
+                actions.push(value.replace(/<a/g,"<li><a").replace(/<\/a>/g,"</a></li>"));
+                actions.push('</ul>');
+                actions.push('</div>');
+                return actions.join('');
+            },
+            // 图片预览
+            imageView: function (value, height, width, target) {
+                if ($.common.isEmpty(width)) {
+                    width = 'auto';
+                }
+                if ($.common.isEmpty(height)) {
+                    height = 'auto';
+                }
+                // blank or self
+                var _target = $.common.isEmpty(target) ? 'self' : target;
+                if ($.common.isNotEmpty(value)) {
+                    return $.common.sprintf("<img class='img-circle img-xs' data-height='%s' data-width='%s' data-target='%s' src='%s'/>", height, width, _target, value);
+                } else {
+                    return $.common.nullToStr(value);
+                }
+            },
             // 搜索-默认第一个form
             search: function(formId, tableId, pageNumber, pageSize) {
                 table.set(tableId);
@@ -484,11 +484,11 @@ var table = {
                     pageSize: pageSize
                 });
             },
-            // // 刷新options配置
-            // refreshOptions: function(options, tableId) {
-            //     var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-            //     $("#" + currentId).bootstrapTable('refreshOptions', options);
-            // },
+            // 刷新options配置
+            refreshOptions: function(options, tableId) {
+                var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+                $("#" + currentId).bootstrapTable('refreshOptions', options);
+            },
             // 查询表格指定列值 deDuplication（ true去重、false不去重）
             selectColumns: function(column, deDuplication) {
                 var distinct = $.common.isEmpty(deDuplication) ? true : deDuplication;
@@ -553,49 +553,49 @@ var table = {
                 }
                 return actions.join('');
             },
-            // // 回显数据字典（字符串数组）
-            // selectDictLabels: function(datas, value, separator) {
-            //     if ($.common.isEmpty(datas) || $.common.isEmpty(value)) {
-            //         return '';
-            //     }
-            //     var currentSeparator = $.common.isEmpty(separator) ? "," : separator;
-            //     var actions = [];
-            //     $.each(value.split(currentSeparator), function(i, val) {
-            //         var match = false
-            //         $.each(datas, function(index, dict) {
-            //             if (dict.dictValue == ('' + val)) {
-            //                 var listClass = $.common.equals("default", dict.listClass) || $.common.isEmpty(dict.listClass) ? "" : "badge badge-" + dict.listClass;
-            //                 actions.push($.common.sprintf("<span class='%s'>%s</span>", listClass, dict.dictLabel));
-            //                 match = true
-            //                 return false;
-            //             }
-            //         });
-            //         if (!match) {
-            //             actions.push($.common.sprintf("<span> %s </span>", val));
-            //         }
-            //     });
-            //     return actions.join('');
-            // },
-            // // 显示表格指定列
-            // showColumn: function(column, tableId) {
-            //     var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-            //     $("#" + currentId).bootstrapTable('showColumn', column);
-            // },
-            // // 隐藏表格指定列
-            // hideColumn: function(column, tableId) {
-            //     var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-            //     $("#" + currentId).bootstrapTable('hideColumn', column);
-            // },
-            // // 显示所有表格列
-            // showAllColumns: function(tableId) {
-            //     var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-            //     $("#" + currentId).bootstrapTable('showAllColumns');
-            // },
-            // // 隐藏所有表格列
-            // hideAllColumns: function(tableId) {
-            //     var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
-            //     $("#" + currentId).bootstrapTable('hideAllColumns');
-            // }
+            // 回显数据字典（字符串数组）
+            selectDictLabels: function(datas, value, separator) {
+                if ($.common.isEmpty(datas) || $.common.isEmpty(value)) {
+                    return '';
+                }
+                var currentSeparator = $.common.isEmpty(separator) ? "," : separator;
+                var actions = [];
+                $.each(value.split(currentSeparator), function(i, val) {
+                    var match = false
+                    $.each(datas, function(index, dict) {
+                        if (dict.dictValue == ('' + val)) {
+                            var listClass = $.common.equals("default", dict.listClass) || $.common.isEmpty(dict.listClass) ? "" : "badge badge-" + dict.listClass;
+                            actions.push($.common.sprintf("<span class='%s'>%s</span>", listClass, dict.dictLabel));
+                            match = true
+                            return false;
+                        }
+                    });
+                    if (!match) {
+                        actions.push($.common.sprintf("<span> %s </span>", val));
+                    }
+                });
+                return actions.join('');
+            },
+            // 显示表格指定列
+            showColumn: function(column, tableId) {
+                var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+                $("#" + currentId).bootstrapTable('showColumn', column);
+            },
+            // 隐藏表格指定列
+            hideColumn: function(column, tableId) {
+                var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+                $("#" + currentId).bootstrapTable('hideColumn', column);
+            },
+            // 显示所有表格列
+            showAllColumns: function(tableId) {
+                var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+                $("#" + currentId).bootstrapTable('showAllColumns');
+            },
+            // 隐藏所有表格列
+            hideAllColumns: function(tableId) {
+                var currentId = $.common.isEmpty(tableId) ? table.options.id : tableId;
+                $("#" + currentId).bootstrapTable('hideAllColumns');
+            }
         },
         // 表格树封装处理
         treeTable: {
@@ -986,12 +986,12 @@ var table = {
             openTab: function (title, url, isRefresh) {
                 createMenuItem(url, title, isRefresh);
             },
-        //     // 选卡页同一页签打开
-        //     parentTab: function (title, url) {
-        //         var dataId = window.frameElement.getAttribute('data-id');
-        //         createMenuItem(url, title);
-        //         closeItem(dataId);
-        //     },
+            // 选卡页同一页签打开
+            parentTab: function (title, url) {
+                var dataId = window.frameElement.getAttribute('data-id');
+                createMenuItem(url, title);
+                closeItem(dataId);
+            },
             // 右侧弹出窗口打开
             popupRight: function(title, url){
                 var width = 150;
@@ -1391,11 +1391,11 @@ var table = {
                 var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
                 return $("#" + currentId).validate().form();
             },
-        //     // 重置表单验证（清除提示信息）
-        //     reset: function (formId) {
-        //         var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
-        //         return $("#" + currentId).validate().resetForm();
-        //     }
+            // 重置表单验证（清除提示信息）
+            reset: function (formId) {
+                var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
+                return $("#" + currentId).validate().resetForm();
+            }
         },
         // 树插件封装处理
         tree: {
@@ -1536,36 +1536,36 @@ var table = {
                     return row[_column];
                 }).join();
             },
-        //     // 不允许根父节点选择
-        //     notAllowParents: function(_tree) {
-        //         var nodes = _tree.getSelectedNodes();
-        //         if (nodes.length == 0){
-        //             $.modal.msgError("请选择节点后提交");
-        //             return false;
-        //         }
-        //         for (var i = 0; i < nodes.length; i++) {
-        //             if (nodes[i].level == 0) {
-        //                 $.modal.msgError("不能选择根节点（" + nodes[i].name + "）");
-        //                 return false;
-        //             }
-        //             if (nodes[i].isParent) {
-        //                 $.modal.msgError("不能选择父节点（" + nodes[i].name + "）");
-        //                 return false;
-        //             }
-        //         }
-        //         return true;
-        //     },
-        //     // 不允许最后层级节点选择
-        //     notAllowLastLevel: function(_tree) {
-        //         var nodes = _tree.getSelectedNodes();
-        //         for (var i = 0; i < nodes.length; i++) {
-        //             if (!nodes[i].isParent) {
-        //                 $.modal.msgError("不能选择最后层级节点（" + nodes[i].name + "）");
-        //                 return false;
-        //             }
-        //         }
-        //         return true;
-        //     },
+            // 不允许根父节点选择
+            notAllowParents: function(_tree) {
+                var nodes = _tree.getSelectedNodes();
+                if (nodes.length == 0){
+                    $.modal.msgError("请选择节点后提交");
+                    return false;
+                }
+                for (var i = 0; i < nodes.length; i++) {
+                    if (nodes[i].level == 0) {
+                        $.modal.msgError("不能选择根节点（" + nodes[i].name + "）");
+                        return false;
+                    }
+                    if (nodes[i].isParent) {
+                        $.modal.msgError("不能选择父节点（" + nodes[i].name + "）");
+                        return false;
+                    }
+                }
+                return true;
+            },
+            // 不允许最后层级节点选择
+            notAllowLastLevel: function(_tree) {
+                var nodes = _tree.getSelectedNodes();
+                for (var i = 0; i < nodes.length; i++) {
+                    if (!nodes[i].isParent) {
+                        $.modal.msgError("不能选择最后层级节点（" + nodes[i].name + "）");
+                        return false;
+                    }
+                }
+                return true;
+            },
             // 隐藏/显示搜索栏
             toggleSearch: function() {
                 $('#search').slideToggle(200);
@@ -1649,39 +1649,39 @@ var table = {
                 });
                 return flag ? str : '';
             },
-            // // 日期格式化 时间戳  -> yyyy-MM-dd HH-mm-ss
-            // dateFormat: function(date, format) {
-            //     var that = this;
-            //     if (that.isEmpty(date)) return "";
-            //     if (!date) return;
-            //     if (!format) format = "yyyy-MM-dd";
-            //     switch (typeof date) {
-            //     case "string":
-            //         date = new Date(date.replace(/-/g, "/"));
-            //         break;
-            //     case "number":
-            //         date = new Date(date);
-            //         break;
-            //     }
-            //     if (!date instanceof Date) return;
-            //     var dict = {
-            //         "yyyy": date.getFullYear(),
-            //         "M": date.getMonth() + 1,
-            //         "d": date.getDate(),
-            //         "H": date.getHours(),
-            //         "m": date.getMinutes(),
-            //         "s": date.getSeconds(),
-            //         "MM": ("" + (date.getMonth() + 101)).substr(1),
-            //         "dd": ("" + (date.getDate() + 100)).substr(1),
-            //         "HH": ("" + (date.getHours() + 100)).substr(1),
-            //         "mm": ("" + (date.getMinutes() + 100)).substr(1),
-            //         "ss": ("" + (date.getSeconds() + 100)).substr(1)
-            //     };
-            //     return format.replace(/(yyyy|MM?|dd?|HH?|ss?|mm?)/g,
-            //     function() {
-            //         return dict[arguments[0]];
-            //     });
-            // },
+            // 日期格式化 时间戳  -> yyyy-MM-dd HH-mm-ss
+            dateFormat: function(date, format) {
+                var that = this;
+                if (that.isEmpty(date)) return "";
+                if (!date) return;
+                if (!format) format = "yyyy-MM-dd";
+                switch (typeof date) {
+                case "string":
+                    date = new Date(date.replace(/-/g, "/"));
+                    break;
+                case "number":
+                    date = new Date(date);
+                    break;
+                }
+                if (!date instanceof Date) return;
+                var dict = {
+                    "yyyy": date.getFullYear(),
+                    "M": date.getMonth() + 1,
+                    "d": date.getDate(),
+                    "H": date.getHours(),
+                    "m": date.getMinutes(),
+                    "s": date.getSeconds(),
+                    "MM": ("" + (date.getMonth() + 101)).substr(1),
+                    "dd": ("" + (date.getDate() + 100)).substr(1),
+                    "HH": ("" + (date.getHours() + 100)).substr(1),
+                    "mm": ("" + (date.getMinutes() + 100)).substr(1),
+                    "ss": ("" + (date.getSeconds() + 100)).substr(1)
+                };
+                return format.replace(/(yyyy|MM?|dd?|HH?|ss?|mm?)/g,
+                function() {
+                    return dict[arguments[0]];
+                });
+            },
             // 获取节点数据，支持多层级访问
             getItemField: function (item, field) {
                 var value = item;
@@ -1739,20 +1739,20 @@ var table = {
                 });
                 return json;
             },
-            // // 数据字典转下拉框
-            // dictToSelect: function(datas, value, name) {
-            //     var actions = [];
-            //     actions.push($.common.sprintf("<select class='form-control' name='%s'>", name));
-            //     $.each(datas, function(index, dict) {
-            //         actions.push($.common.sprintf("<option value='%s'", dict.dictValue));
-            //         if (dict.dictValue == ('' + value)) {
-            //             actions.push(' selected');
-            //         }
-            //         actions.push($.common.sprintf(">%s</option>", dict.dictLabel));
-            //     });
-            //     actions.push('</select>');
-            //     return actions.join('');
-            // },
+            // 数据字典转下拉框
+            dictToSelect: function(datas, value, name) {
+                var actions = [];
+                actions.push($.common.sprintf("<select class='form-control' name='%s'>", name));
+                $.each(datas, function(index, dict) {
+                    actions.push($.common.sprintf("<option value='%s'", dict.dictValue));
+                    if (dict.dictValue == ('' + value)) {
+                        actions.push(' selected');
+                    }
+                    actions.push($.common.sprintf(">%s</option>", dict.dictLabel));
+                });
+                actions.push('</select>');
+                return actions.join('');
+            },
             // 获取obj对象长度
             getLength: function(obj) {
                 var count = 0;　　
@@ -1767,26 +1767,26 @@ var table = {
             isMobile: function () {
                 return navigator.userAgent.match(/(Android|iPhone|SymbianOS|Windows Phone|iPad|iPod)/i);
             },
-            // // 数字正则表达式，只能为0-9数字
-            // numValid : function(text){
-            //     var patten = new RegExp(/^[0-9]+$/);
-            //     return patten.test(text);
-            // },
-            // // 英文正则表达式，只能为a-z和A-Z字母
-            // enValid : function(text){
-            //     var patten = new RegExp(/^[a-zA-Z]+$/);
-            //     return patten.test(text);
-            // },
-            // // 英文、数字正则表达式，必须包含（字母，数字）
-            // enNumValid : function(text){
-            //     var patten = new RegExp(/^(?=.*[a-zA-Z]+)(?=.*[0-9]+)[a-zA-Z0-9]+$/);
-            //     return patten.test(text);
-            // },
-            // // 英文、数字、特殊字符正则表达式，必须包含（字母，数字，特殊字符!@#$%^&*()-=_+）
-            // charValid : function(text){
-            //     var patten = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[~!@#\$%\^&\*\(\)\-=_\+])[A-Za-z\d~!@#\$%\^&\*\(\)\-=_\+]{6,}$/);
-            //     return patten.test(text);
-            // },
+            // 数字正则表达式，只能为0-9数字
+            numValid : function(text){
+                var patten = new RegExp(/^[0-9]+$/);
+                return patten.test(text);
+            },
+            // 英文正则表达式，只能为a-z和A-Z字母
+            enValid : function(text){
+                var patten = new RegExp(/^[a-zA-Z]+$/);
+                return patten.test(text);
+            },
+            // 英文、数字正则表达式，必须包含（字母，数字）
+            enNumValid : function(text){
+                var patten = new RegExp(/^(?=.*[a-zA-Z]+)(?=.*[0-9]+)[a-zA-Z0-9]+$/);
+                return patten.test(text);
+            },
+            // 英文、数字、特殊字符正则表达式，必须包含（字母，数字，特殊字符!@#$%^&*()-=_+）
+            charValid : function(text){
+                var patten = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[~!@#\$%\^&\*\(\)\-=_\+])[A-Za-z\d~!@#\$%\^&\*\(\)\-=_\+]{6,}$/);
+                return patten.test(text);
+            },
         }
     });
 })(jQuery);

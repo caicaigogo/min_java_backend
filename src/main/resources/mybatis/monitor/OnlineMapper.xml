@@ -57,9 +57,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 
-<!--	<select id="selectOnlineByExpired" parameterType="String" resultMap="UserOnlineResult">-->
-<!--		<include refid="selectOnlineVo"/> o -->
-<!--		WHERE o.last_access_time <![CDATA[ <= ]]> #{lastAccessTime} ORDER BY o.last_access_time ASC-->
-<!--	</select>-->
+	<select id="selectOnlineByExpired" parameterType="String" resultMap="UserOnlineResult">
+		<include refid="selectOnlineVo"/> o
+		WHERE o.last_access_time <![CDATA[ <= ]]> #{lastAccessTime} ORDER BY o.last_access_time ASC
+	</select>
 
 </mapper>

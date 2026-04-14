@@ -30,23 +30,23 @@ public class BaseController
 {
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-//    /**
-//     * 将前台传递过来的日期格式的字符串，自动转化为Date类型
-//     */
-//    @InitBinder
-//    public void initBinder(WebDataBinder binder)
-//    {
-//        // Date 类型转换
-//        binder.registerCustomEditor(Date.class, new PropertyEditorSupport()
-//        {
-//            @Override
-//            public void setAsText(String text)
-//            {
-//                setValue(DateUtils.parseDate(text));
-//            }
-//        });
-//    }
-//
+    /**
+     * 将前台传递过来的日期格式的字符串，自动转化为Date类型
+     */
+    @InitBinder
+    public void initBinder(WebDataBinder binder)
+    {
+        // Date 类型转换
+        binder.registerCustomEditor(Date.class, new PropertyEditorSupport()
+        {
+            @Override
+            public void setAsText(String text)
+            {
+                setValue(DateUtils.parseDate(text));
+            }
+        });
+    }
+
     /**
      * 设置请求分页数据
      */
@@ -55,19 +55,19 @@ public class BaseController
         PageUtils.startPage();
     }
 
-//    /**
-//     * 设置请求排序数据
-//     */
-//    protected void startOrderBy()
-//    {
-//        PageDomain pageDomain = TableSupport.buildPageRequest();
-//        if (StringUtils.isNotEmpty(pageDomain.getOrderBy()))
-//        {
-//            String orderBy = SqlUtil.escapeOrderBySql(pageDomain.getOrderBy());
-//            PageHelper.orderBy(orderBy);
-//        }
-//    }
-//
+    /**
+     * 设置请求排序数据
+     */
+    protected void startOrderBy()
+    {
+        PageDomain pageDomain = TableSupport.buildPageRequest();
+        if (StringUtils.isNotEmpty(pageDomain.getOrderBy()))
+        {
+            String orderBy = SqlUtil.escapeOrderBySql(pageDomain.getOrderBy());
+            PageHelper.orderBy(orderBy);
+        }
+    }
+
     /**
      * 清理分页的线程变量
      */
@@ -151,14 +151,14 @@ public class BaseController
         return AjaxResult.error(message);
     }
 
-//    /**
-//     * 返回错误码消息
-//     */
-//    public AjaxResult error(Type type, String message)
-//    {
-//        return new AjaxResult(type, message);
-//    }
-//
+    /**
+     * 返回错误码消息
+     */
+    public AjaxResult error(Type type, String message)
+    {
+        return new AjaxResult(type, message);
+    }
+
     /**
      * 页面跳转
      */

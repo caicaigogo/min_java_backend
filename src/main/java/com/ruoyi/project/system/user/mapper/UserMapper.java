@@ -45,22 +45,22 @@ public interface UserMapper
      */
     public User selectUserByLoginName(String userName);
 
-//    /**
-//     * 通过手机号码查询用户
-//     *
-//     * @param phoneNumber 手机号码
-//     * @return 用户对象信息
-//     */
-//    public User selectUserByPhoneNumber(String phoneNumber);
-//
-//    /**
-//     * 通过邮箱查询用户
-//     *
-//     * @param email 邮箱
-//     * @return 用户对象信息
-//     */
-//    public User selectUserByEmail(String email);
-//
+    /**
+     * 通过手机号码查询用户
+     *
+     * @param phoneNumber 手机号码
+     * @return 用户对象信息
+     */
+    public User selectUserByPhoneNumber(String phoneNumber);
+
+    /**
+     * 通过邮箱查询用户
+     *
+     * @param email 邮箱
+     * @return 用户对象信息
+     */
+    public User selectUserByEmail(String email);
+
     /**
      * 通过用户ID查询用户
      *
@@ -69,14 +69,14 @@ public interface UserMapper
      */
     public User selectUserById(Long userId);
 
-//    /**
-//     * 通过用户ID删除用户
-//     *
-//     * @param userId 用户ID
-//     * @return 结果
-//     */
-//    public int deleteUserById(Long userId);
-//
+    /**
+     * 通过用户ID删除用户
+     *
+     * @param userId 用户ID
+     * @return 结果
+     */
+    public int deleteUserById(Long userId);
+
     /**
      * 批量删除用户信息
      *
